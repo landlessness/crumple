@@ -1,12 +1,14 @@
 Crumple::Application.routes.draw do |map|
+  devise_for :people
+
+  resources :people
+  
+  resources :thoughts
+
   resources :projects do
     resources :thoughts
   end
 
-  resources :thoughts
-
-  devise_for :people
-  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

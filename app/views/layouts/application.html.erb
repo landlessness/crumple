@@ -8,6 +8,7 @@
 </head>
 <body>
   <% if person_signed_in? %>
+  <%= link_to 'Home', root_path %>
   <%= link_to 'Thoughts', thoughts_path %>
   <%= link_to 'Projects', projects_path %>
   Signed in as <%= current_person.email %> Not you?

@@ -16,7 +16,7 @@
     <%= f.text_area :typing %>
   </div>
   <div>
-    <%= collection_select(:thought, :project_id, current_person.projects.all, :id, :name, :prompt => true) %>
+    Project: <%= collection_select(:thought, :project_id, current_person.projects.all, :id, :name, :prompt => true) %>
   </div>
   <div class="actions">
     <%= f.submit 'Save' %>
