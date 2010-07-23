@@ -7,12 +7,12 @@
 
 <p>
   <b>Creator:</b>
-  <%= @thought.creator %>
+  <%= @thought.person.email %>
 </p>
 
 <p>
   <b>Project:</b>
-  <%= @thought.project %>
+  <%= link_to @thought.project.name, @thought.project %>
 </p>
 
 

@@ -2,7 +2,7 @@ class ThoughtsController < ApplicationController
   # GET /thoughts
   # GET /thoughts.xml
   def index
-    @thoughts = Thought.all
+    @thoughts = current_person.thoughts.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +13,7 @@ class ThoughtsController < ApplicationController
   # GET /thoughts/1
   # GET /thoughts/1.xml
   def show
-    @thought = Thought.find(params[:id])
+    @thought = current_person.thoughts.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,8 +24,9 @@ class ThoughtsController < ApplicationController
   # GET /thoughts/new
   # GET /thoughts/new.xml
   def new
-    @thought = Thought.new
-
+    @thought = current_person.thoughts.new
+    @thought.project = current_person.projects.find(params[:project_id]) if params[:project_id]
+      
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @thought }
@@ -34,13 +35,13 @@ class ThoughtsController < ApplicationController
 
   # GET /thoughts/1/edit
   def edit
-    @thought = Thought.find(params[:id])
+    @thought = current_person.thoughts.find(params[:id])
   end
 
   # POST /thoughts
   # POST /thoughts.xml
   def create
-    @thought = Thought.new(params[:thought])
+    @thought = current_person.thoughts.new(params[:thought])
 
     respond_to do |format|
       if @thought.save
@@ -56,7 +57,7 @@ class ThoughtsController < ApplicationController
   # PUT /thoughts/1
   # PUT /thoughts/1.xml
   def update
-    @thought = Thought.find(params[:id])
+    @thought = current_person.thoughts.find(params[:id])
 
     respond_to do |format|
       if @thought.update_attributes(params[:thought])
@@ -72,7 +73,7 @@ class ThoughtsController < ApplicationController
   # DELETE /thoughts/1
   # DELETE /thoughts/1.xml
   def destroy
-    @thought = Thought.find(params[:id])
+    @thought = current_person.thoughts.find(params[:id])
     @thought.destroy
 
     respond_to do |format|

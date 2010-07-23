@@ -8,13 +8,14 @@
 </head>
 <body>
   <% if person_signed_in? %>
+  <%= link_to 'Thoughts', thoughts_path %>
+  <%= link_to 'Projects', projects_path %>
   Signed in as <%= current_person.email %> Not you?
   <%= link_to "Sign Out", destroy_person_session_path %>
   <% else %>
   <%= link_to "Sign up", new_person_registration_path %> or <%= link_to "Sign in", new_person_session_path %>
   <% end %>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+
   <%= yield %>
 
 </body>

@@ -1,10 +1,12 @@
 Crumple::Application.routes.draw do |map|
-  resources :projects
+  resources :projects do
+    resources :thoughts
+  end
 
   resources :thoughts
 
   devise_for :people
-
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -54,7 +56,7 @@ Crumple::Application.routes.draw do |map|
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "projects#index"
+  root :to => "thoughts#new"
 
   # See how all your routes lay out with "rake routes"
 

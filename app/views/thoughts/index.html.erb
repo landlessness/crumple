@@ -13,7 +13,7 @@
 <% @thoughts.each do |thought| %>
   <tr>
     <td><%= thought.typing %></td>
-    <td><%= thought.creator %></td>
+    <td><%= thought.person.email %></td>
     <td><%= thought.project %></td>
     <td><%= link_to 'Show', thought %></td>
     <td><%= link_to 'Edit', edit_thought_path(thought) %></td>

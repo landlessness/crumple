@@ -1,7 +1,6 @@
-class CreateThoughts < ActiveRecord::Migration
+class CreateMemberships < ActiveRecord::Migration
   def self.up
-    create_table :thoughts do |t|
-      t.text :typing
+    create_table :memberships do |t|
       t.references :person
       t.references :project
 
@@ -10,6 +9,6 @@ class CreateThoughts < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :thoughts
+    drop_table :memberships
   end
 end

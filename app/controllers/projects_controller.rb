@@ -1,10 +1,9 @@
 class ProjectsController < ApplicationController
-  before_filter :authenticate_person!, :except => [:show, :index]
   
   # GET /projects
   # GET /projects.xml
   def index
-    @projects = Project.all
+    @projects = current_person.projects.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +14,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.xml
   def show
-    @project = Project.find(params[:id])
+    @project = current_person.projects.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -36,17 +35,19 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
-    @project = Project.find(params[:id])
+    @project = current_person.projects.find(params[:id])
   end
 
   # POST /projects
   # POST /projects.xml
   def create
     @project = Project.new(params[:project])
-
+    membership = current_person.memberships.new
+    membership.project = @project
+    
     respond_to do |format|
-      if @project.save
-        format.html { redirect_to(@project, :notice => 'Project was successfully created.') }
+      if @project.save && membership.save
+        format.html { redirect_to(@project, :notice => 'current_person.projects. was successfully created.') }
         format.xml  { render :xml => @project, :status => :created, :location => @project }
       else
         format.html { render :action => "new" }
@@ -58,11 +59,11 @@ class ProjectsController < ApplicationController
   # PUT /projects/1
   # PUT /projects/1.xml
   def update
-    @project = Project.find(params[:id])
+    @project = current_person.projects.find(params[:id], :readonly=>false)
 
     respond_to do |format|
       if @project.update_attributes(params[:project])
-        format.html { redirect_to(@project, :notice => 'Project was successfully updated.') }
+        format.html { redirect_to(@project, :notice => 'current_person.projects. was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -74,7 +75,7 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1
   # DELETE /projects/1.xml
   def destroy
-    @project = Project.find(params[:id])
+    @project = current_person.projects.find(params[:id])
     @project.destroy
 
     respond_to do |format|
