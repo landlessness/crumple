@@ -12,7 +12,11 @@
 
 <p>
   <b>Project:</b>
-  <%= link_to @thought.project.name, @thought.project %>
+  <% if @thought.project %>
+  <%= link_to @thought.project.name, @thought.project  %>
+  <% else %>
+  <em>none</em>
+  <% end %>
 </p>
 
 

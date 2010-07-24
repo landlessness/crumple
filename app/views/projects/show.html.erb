@@ -7,9 +7,12 @@
 <p>
   <b>Thoughts:</b>
   <%= link_to 'New thought about ' + @project.name, new_project_thought_path(@project) %>
+  <%= will_paginate @project_thoughts %>
   <ul>
-    <%= render @project.thoughts %>    
+    <%= render @project_thoughts %>    
   </ul>
+  <%= will_paginate @project_thoughts %>
+  <%= link_to 'New thought about ' + @project.name, new_project_thought_path(@project) %>
 </p>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |

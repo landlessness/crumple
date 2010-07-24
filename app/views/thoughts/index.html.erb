@@ -1,8 +1,12 @@
 <h1>Listing thoughts</h1>
 
+<%= link_to 'New Thought', new_thought_path %>
+
+<%= will_paginate @thoughts %>
+
 <table>
   <tr>
-    <th>Typing</th>
+    <th>Thought</th>
     <th>Creator</th>
     <th>Project</th>
     <th></th>
@@ -14,7 +18,11 @@
   <tr>
     <td><%= link_to thought.typing, thought %></td>
     <td><%= link_to thought.person.email, thought.person %></td>
+    <% if thought.project %>
     <td><%= link_to thought.project.name, thought.project %></td>
+    <% else %>
+    <td><em>none</em></td>
+    <% end %>
     <td><%= link_to 'Edit', edit_thought_path(thought) %></td>
     <td><%= link_to 'Destroy', thought, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
@@ -22,5 +30,7 @@
 </table>
 
 <br />
+
+<%= will_paginate @thoughts %>
 
 <%= link_to 'New Thought', new_thought_path %>

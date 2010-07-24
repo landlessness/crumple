@@ -1,5 +1,9 @@
 <h1>Listing projects</h1>
 
+<%= link_to 'New Project', new_project_path %>
+
+<%= will_paginate @projects %>
+
 <table>
   <tr>
     <th>Name</th>
@@ -18,5 +22,7 @@
 </table>
 
 <br />
+
+<%= will_paginate @projects %>
 
 <%= link_to 'New Project', new_project_path %>
