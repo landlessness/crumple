@@ -1,5 +1,5 @@
 <li>
-<%= link_to thought.typing, thought %>
+<%= link_to truncate(thought.typing), thought %>
 <%= link_to 'Edit', edit_thought_path(thought) %>
 <%= link_to 'Destroy', thought, :confirm => 'Are you sure?', :method => :delete %>
 </li>

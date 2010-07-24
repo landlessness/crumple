@@ -16,7 +16,7 @@
 
 <% @thoughts.each do |thought| %>
   <tr>
-    <td><%= link_to thought.typing, thought %></td>
+    <td><%= link_to truncate(thought.typing), thought %></td>
     <td><%= link_to thought.person.email, thought.person %></td>
     <% if thought.project %>
     <td><%= link_to thought.project.name, thought.project %></td>
