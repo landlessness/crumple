@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.xml
   def index
-    @projects = current_person.projects.paginate :per_page => 5, :page => params[:page], :order => 'updated_at DESC'
+    @projects = current_person.projects.paginate :per_page => 25, :page => params[:page], :order => 'updated_at DESC'
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +15,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1.xml
   def show
     @project = current_person.projects.find(params[:id])
-    @project_thoughts = @project.thoughts.paginate :per_page => 5, :page => params[:page], :order => 'updated_at DESC'
+    @project_thoughts = @project.thoughts.paginate :per_page => 25, :page => params[:page], :order => 'updated_at DESC'
     
     respond_to do |format|
       format.html # show.html.erb
