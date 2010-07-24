@@ -6,6 +6,7 @@ Crumple::Application.routes.draw do |map|
   resources :thoughts
 
   resources :projects do
+    resources :people
     resources :thoughts
   end
 

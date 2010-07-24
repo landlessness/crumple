@@ -15,6 +15,9 @@ class ProjectsController < ApplicationController
   # GET /projects/1.xml
   def show
     @project = current_person.projects.find(params[:id])
+    
+    # TODO order by membership date, longest members first
+    @project_people = @project.people.paginate :per_page => 25, :page => params[:page], :order => 'updated_at DESC'
     @project_thoughts = @project.thoughts.paginate :per_page => 25, :page => params[:page], :order => 'updated_at DESC'
     
     respond_to do |format|
