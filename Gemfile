@@ -31,3 +31,4 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 # end
 
 gem 'devise', '1.1.rc2'
+gem 'acts-as-taggable-on'

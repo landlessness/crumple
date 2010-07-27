@@ -18,6 +18,10 @@
   <div>
     Project: <%= collection_select(:thought, :project_id, current_person.projects.all, :id, :name, :prompt => true) %>
   </div>
+  <div class="field">
+    <%= f.label :tag_list %><br />
+    <%= f.text_field :tag_list %>
+  </div>
   <div class="actions">
     <%= f.submit 'Save' %>
   </div>
