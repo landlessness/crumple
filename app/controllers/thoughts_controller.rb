@@ -2,7 +2,12 @@ class ThoughtsController < ApplicationController
   # GET /thoughts
   # GET /thoughts.xml
   def index
-    @thoughts = current_person.thoughts.paginate :per_page => 25, :page => params[:page], :order => 'updated_at DESC'
+    @tags = params[:tags].split('+') if params[:tags]
+    if @tags
+      @thoughts = current_person.thoughts.tagged_with(@tags).paginate(:per_page => 25, :page => params[:page], :order => 'updated_at DESC')
+    else
+      @thoughts = current_person.thoughts.paginate(:per_page => 25, :page => params[:page], :order => 'updated_at DESC')
+    end
 
     respond_to do |format|
       format.html # index.html.erb

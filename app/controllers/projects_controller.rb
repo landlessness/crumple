@@ -18,7 +18,13 @@ class ProjectsController < ApplicationController
     
     # TODO order by membership date, longest members first
     @project_people = @project.people.paginate :per_page => 25, :page => params[:page], :order => 'updated_at DESC'
-    @project_thoughts = @project.thoughts.paginate :per_page => 25, :page => params[:page], :order => 'updated_at DESC'
+
+    @tags = params[:tags].split('+') if params[:tags]
+    if @tags
+      @project_thoughts = @project.thoughts.tagged_with(@tags).paginate :per_page => 25, :page => params[:page], :order => 'updated_at DESC'
+    else
+      @project_thoughts = @project.thoughts.paginate :per_page => 25, :page => params[:page], :order => 'updated_at DESC'
+    end
     
     respond_to do |format|
       format.html # show.html.erb

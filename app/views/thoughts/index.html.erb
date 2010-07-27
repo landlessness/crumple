@@ -1,4 +1,11 @@
-<h1>Listing thoughts</h1>
+<h1>
+  Listing thoughts
+  <% if @tags %>
+  for tags: 
+  <%= @tags.join(' ')  %>
+  <%= link_to 'x', thoughts_path %>
+  <% end %>
+</h1>
 <%= link_to 'New Thought', new_thought_path %>
 <%= will_paginate @thoughts %>
 

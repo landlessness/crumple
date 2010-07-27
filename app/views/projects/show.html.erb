@@ -1,9 +1,12 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
+<h1>
   <%= @project.name %>
-</p>
+  <% if @tags %>
+  with tags: 
+  <%= @tags.join(' ')  %>
+  <%= link_to 'x', @project  %>
+  <% end %>
+</h1>
 <p>
   <b>People:</b><br/>
   <%= link_to 'Add people to ' + @project.name, new_project_person_path(@project) %>

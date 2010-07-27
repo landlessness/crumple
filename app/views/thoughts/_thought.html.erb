@@ -1,6 +1,8 @@
 <tr>
   <td><%= link_to truncate(thought.typing), thought %></td>
-  <td><%= thought.tag_list %></td>
+  <td>
+  <%= links_to_tags thought.tags, @project %>
+  </td>
   <td><%= link_to thought.person.email, thought.person %></td>
   <% if thought.project %>
   <td><%= link_to thought.project.name, thought.project %></td>
@@ -10,3 +12,4 @@
   <td><%= link_to 'Edit', edit_thought_path(thought) %></td>
   <td><%= link_to 'Destroy', thought, :confirm => 'Are you sure?', :method => :delete %></td>
 </tr>
+
