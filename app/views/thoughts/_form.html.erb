@@ -1,28 +1,30 @@
 <%= form_for(@thought) do |f| %>
-  <% if @thought.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@thought.errors.count, "error") %> prohibited this thought from being saved:</h2>
+<% if @thought.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@thought.errors.count, "error") %> prohibited this thought from being saved:</h2>
 
-      <ul>
-      <% @thought.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :typing %><br />
-    <%= f.text_area :typing %>
-  </div>
-  <div>
-    Project: <%= collection_select(:thought, :project_id, current_person.projects.all, :id, :name, :prompt => true) %>
-  </div>
-  <div class="field">
-    <%= f.label :tag_list %><br />
-    <%= f.text_field :tag_list %>
-  </div>
-  <div class="actions">
-    <%= f.submit 'Save' %>
-  </div>
+  <ul>
+    <% @thought.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<br/>
+<div class="field">
+  <%= f.label :typing, 'What are you thinking?' %><br />
+  <%= f.text_area :typing %>
+</div>
+<br/>
+<div>
+  Project: <%= collection_select(:thought, :project_id, current_person.projects.all, :id, :name, :prompt => true) %>
+</div>
+<br/>
+<div class="field">
+  <%= f.label :tag_list, 'Tags (example: act3, todo, marketing)' %><br />
+  <%= f.text_field :tag_list %>
+</div>
+<div class="actions">
+  <%= f.submit 'Save' %>
+</div>
 <% end %>
