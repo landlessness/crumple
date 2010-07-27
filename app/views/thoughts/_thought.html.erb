@@ -1,5 +1,12 @@
-<li>
-<%= link_to truncate(thought.typing), thought %>
-<%= link_to 'Edit', edit_thought_path(thought) %>
-<%= link_to 'Destroy', thought, :confirm => 'Are you sure?', :method => :delete %>
-</li>
+<tr>
+  <td><%= link_to truncate(thought.typing), thought %></td>
+  <td><%= thought.tag_list %></td>
+  <td><%= link_to thought.person.email, thought.person %></td>
+  <% if thought.project %>
+  <td><%= link_to thought.project.name, thought.project %></td>
+  <% else %>
+  <td><em>none</em></td>
+  <% end %>
+  <td><%= link_to 'Edit', edit_thought_path(thought) %></td>
+  <td><%= link_to 'Destroy', thought, :confirm => 'Are you sure?', :method => :delete %></td>
+</tr>

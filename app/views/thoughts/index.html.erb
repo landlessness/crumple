@@ -1,7 +1,5 @@
 <h1>Listing thoughts</h1>
-
 <%= link_to 'New Thought', new_thought_path %>
-
 <%= will_paginate @thoughts %>
 
 <table>
@@ -15,20 +13,8 @@
     <th></th>
   </tr>
 
-<% @thoughts.each do |thought| %>
-  <tr>
-    <td><%= link_to truncate(thought.typing), thought %></td>
-    <td><%= thought.tag_list %></td>
-    <td><%= link_to thought.person.email, thought.person %></td>
-    <% if thought.project %>
-    <td><%= link_to thought.project.name, thought.project %></td>
-    <% else %>
-    <td><em>none</em></td>
-    <% end %>
-    <td><%= link_to 'Edit', edit_thought_path(thought) %></td>
-    <td><%= link_to 'Destroy', thought, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+<%= render @thoughts %>
+
 </table>
 
 <br />
