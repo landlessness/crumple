@@ -5,7 +5,7 @@
 <% end %>
 
 <p>
-  <b>Typing:</b>
+  <b>Thought:</b>
   <%= @thought.body %>
 </p>
 
@@ -14,6 +14,21 @@
   <%= @thought.tag_list %>
 </p>
 
+<p>
+  <%= form_for [@thought, @comment] do |f| %>
+  <div class="field">
+    <%= f.label :body, 'Add a comment:' %><br />
+    <%= f.text_area :body %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Save' %>
+  </div>
+  <% end %>
+  <b>Comments:</b>
+  <ul>
+    <%= render @thought.comments %>
+  </ul>  
+</p>
 <p>
   <b>Creator:</b>
   <%= link_to @thought.person.email, @thought.person %>
@@ -31,9 +46,9 @@
 
 <%= link_to 'Edit', edit_thought_path(@thought) %> |
 <% if @thought.archived? %>
-<%= link_to 'Activate', activate_thought_path(@thought) %> |
-<% else %>
-<%= link_to 'Archive', archive_thought_path(@thought) %> |
-<% end %>
-<%= link_to 'Back', thoughts_path %> |
-<%= link_to 'New thought about ' + @thought.project.name, new_project_thought_path(@thought.project) %>
+  <%= link_to 'Activate', activate_thought_path(@thought) %> |
+  <% else %>
+  <%= link_to 'Archive', archive_thought_path(@thought) %> |
+  <% end %>
+  <%= link_to 'Back', thoughts_path %> |
+  <%= link_to 'New thought about ' + @thought.project.name, new_project_thought_path(@thought.project) %>

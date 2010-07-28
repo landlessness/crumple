@@ -27,7 +27,8 @@ class ThoughtsController < ApplicationController
   # GET /thoughts/1.xml
   def show
     @thought = current_person.thoughts.find(params[:id])
-
+    @comment = @thought.comments.build
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @thought }

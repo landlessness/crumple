@@ -1,5 +1,5 @@
 Crumple::Application.routes.draw do |map|
-  devise_for :people
+
   devise_for :people, :path_names => { :sign_in => 'login', :sign_out => 'logout' }
 
   resources :people
@@ -12,6 +12,7 @@ Crumple::Application.routes.draw do |map|
     collection do
       get :archived
     end
+    resources :comments
   end
 
   resources :projects do

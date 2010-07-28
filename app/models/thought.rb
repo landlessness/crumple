@@ -1,6 +1,7 @@
 class Thought < ActiveRecord::Base  
   belongs_to :person
   belongs_to :project
+  has_many :comments
 
   acts_as_taggable
   
