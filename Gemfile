@@ -5,9 +5,9 @@ gem 'rails', '3.0.0.beta4'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem "will_paginate", "3.0.pre"
-
-gem 'sqlite3-ruby', :require => 'sqlite3'
+group :development do
+  gem 'sqlite3-ruby', :require => 'sqlite3'
+end
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -33,3 +33,4 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'devise', '1.1.rc2'
 gem 'acts-as-taggable-on'
 gem 'state_machine'
+gem "will_paginate", "3.0.pre"
