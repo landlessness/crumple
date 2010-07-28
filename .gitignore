@@ -3,3 +3,4 @@ db/*.sqlite3
 log/*.log
 tmp/**/*
 doc
+stark-dusk-49.tar.gz

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100727225353) do
+ActiveRecord::Schema.define(:version => 20100728013907) do
 
   create_table "memberships", :force => true do |t|
     t.integer  "person_id"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(:version => 20100727225353) do
   end
 
   create_table "thoughts", :force => true do |t|
-    t.text     "typing"
+    t.text     "body"
     t.integer  "person_id"
     t.integer  "project_id"
     t.datetime "created_at"

@@ -1,11 +1,11 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  typing: MyText
+  body: MyText
   person: 
   project: 
 
 two:
-  typing: MyText
+  body: MyText
   person: 
   project: 
