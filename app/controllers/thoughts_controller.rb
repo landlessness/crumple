@@ -2,12 +2,20 @@ class ThoughtsController < ApplicationController
   # GET /thoughts
   # GET /thoughts.xml
   def index
-    @tags = params[:tags].split('+') if params[:tags]
-    if @tags
-      @thoughts = current_person.thoughts.tagged_with(@tags).paginate(:per_page => 25, :page => params[:page], :order => 'updated_at DESC')
-    else
-      @thoughts = current_person.thoughts.paginate(:per_page => 25, :page => params[:page], :order => 'updated_at DESC')
+    @thoughts = current_person
+    @thoughts = @project = @thoughts.projects.find(params[:project_id]) if params[:project_id]
+    @thoughts = @thoughts.thoughts.with_state(:active)
+    @thoughts = @thoughts.tagged_with(params[:tags].split('+')) if params[:tags]
+    @thoughts = @thoughts.paginate(:per_page => 25, :page => params[:page], :order => 'updated_at DESC')
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @thoughts }
     end
+  end
+
+  def archived
+    @thoughts = current_person.thoughts.with_state(:archived).paginate(:per_page => 25, :page => params[:page], :order => 'updated_at DESC')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,6 +49,32 @@ class ThoughtsController < ApplicationController
   # GET /thoughts/1/edit
   def edit
     @thought = current_person.thoughts.find(params[:id])
+  end
+
+  def archive
+    @thought = current_person.thoughts.find(params[:id])
+    respond_to do |format|
+      if @thought.archive!
+        format.html { redirect_to(@thought, :notice => 'Thought was successfully archived.') }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @thought.errors, :status => :unprocessable_entity }
+      end
+    end      
+  end
+
+  def activate
+    @thought = current_person.thoughts.find(params[:id])
+    respond_to do |format|
+      if @thought.activate!
+        format.html { redirect_to(@thought, :notice => 'Thought was successfully activated.') }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @thought.errors, :status => :unprocessable_entity }
+      end
+    end      
   end
 
   # POST /thoughts

@@ -4,11 +4,23 @@ Crumple::Application.routes.draw do |map|
 
   resources :people
   
-  resources :thoughts
+  resources :thoughts do
+    member do
+      get :archive
+      get :activate
+    end
+    collection do
+      get :archived
+    end
+  end
 
   resources :projects do
     resources :people
-    resources :thoughts
+    resources :thoughts do
+      collection do
+        get :archived
+      end
+    end
   end
 
   # The priority is based upon order of creation:

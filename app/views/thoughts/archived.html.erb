@@ -1,0 +1,25 @@
+<h1>
+  Archived thoughts
+</h1>
+<p><%= link_to 'Active thoughts', thoughts_path %></p>
+
+<%= will_paginate @thoughts %>
+
+<table>
+  <tr>
+    <th>Thought</th>
+    <th>Tags</th>
+    <th>Creator</th>
+    <th>Project</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<%= render @thoughts %>
+
+</table>
+
+<br />
+
+<%= will_paginate @thoughts %>
