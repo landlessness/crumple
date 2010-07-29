@@ -1,7 +1,7 @@
 class Thought < ActiveRecord::Base  
   belongs_to :person
   belongs_to :project
-  has_many :comments
+  has_many :comments, :dependent => :destroy
 
   acts_as_taggable
 
