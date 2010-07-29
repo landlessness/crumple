@@ -1,0 +1,14 @@
+Start the database server using:
+
+sudo su postgres -c '/opt/local/lib/postgresql83/bin/postgres -D /opt/local/var/db/postgresql83/defaultdb'
+
+sudo su postgres -c '/opt/local/lib/postgresql83/bin/pg_ctl -D /opt/local/var/db/postgresql83/defaultdb -l logfile start'
+
+createuser --superuser ryangensel -U postgres
+
+createdb -U rails crumple_dev
+
+psql -U rails crumple_dev
+crumple_dev=# \q
+dropdb -U rails crumple_dev
+psql -U rails crumple_dev
