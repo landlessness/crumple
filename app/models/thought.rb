@@ -10,6 +10,10 @@ class Thought < ActiveRecord::Base
       transition :active => :archived
     end
 
+    event :put_in_dropbox do
+      transition :active => :dropbox
+    end
+
     event :activate do
       transition :archived => :active
     end

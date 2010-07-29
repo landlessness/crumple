@@ -1,7 +1,11 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  name: MyString
+  person_id: 1
+  name: brian
+  secret: 12344321
 
 two:
+  person_id: 
   name: MyString
+  secret: MyString

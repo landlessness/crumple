@@ -9,12 +9,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100728020523) do
+ActiveRecord::Schema.define(:version => 20100729203601) do
 
   create_table "comments", :force => true do |t|
     t.text     "body"
     t.integer  "thought_id"
     t.integer  "person_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "dropboxes", :force => true do |t|
+    t.integer  "person_id"
+    t.string   "name"
+    t.string   "secret"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
