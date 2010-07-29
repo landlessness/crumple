@@ -5,7 +5,8 @@ class ThoughtsController < ApplicationController
     @thoughts = current_person
     @thoughts = @project = @thoughts.projects.find(params[:project_id]) if params[:project_id]
     @thoughts = @thoughts.thoughts.with_state(:active)
-    @thoughts = @thoughts.tagged_with(params[:tags].split('+')) if params[:tags]
+    @tags = params[:tags].split('+') if params[:tags]
+    @thoughts = @thoughts.tagged_with(@tags) if @tags
     @thoughts = @thoughts.paginate(:per_page => 25, :page => params[:page], :order => 'updated_at DESC')
 
     respond_to do |format|

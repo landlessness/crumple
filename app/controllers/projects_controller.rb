@@ -26,7 +26,8 @@ class ProjectsController < ApplicationController
       @showing_archived_thoughts = false
       @project_thoughts = @project.thoughts.with_state(:active)
     end
-    @project_thoughts = @project_thoughts.tagged_with(params[:tags].split('+') ) if params[:tags]
+    @tags = params[:tags].split('+') if params[:tags]
+    @project_thoughts = @project_thoughts.tagged_with(@tags) if @tags
     @project_thoughts = @project_thoughts.paginate :per_page => 25, :page => params[:page], :order => 'updated_at DESC' 
     
     respond_to do |format|
