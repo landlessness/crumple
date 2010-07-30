@@ -7,21 +7,36 @@ class DropBox < ActiveRecord::Base
   end
   
   def self.new_thought(send_grid_mail)
+    Rails.logger.fatal send_grid_mail.to_yaml
+    
+    Rails.logger.fatal '1'
     t = nil
     name, secret = name_and_secret_from_email(send_grid_mail[:to])
     d = DropBox.find_by_name_and_secret(name, secret)
+    Rails.logger.fatal d.to_yaml
+    
     unless d.nil?
+      Rails.logger.fatal '2'
       project = nil
       send_grid_mail[:subject].strip!
       unless send_grid_mail[:subject].nil? || send_grid_mail[:subject].empty?
+        Rails.logger.fatal '3'
         project = d.person.projects.find_by_name(send_grid_mail[:subject])
+        Rails.logger.fatal project.to_yaml
+        
         if project.nil?
+          Rails.logger.fatal '4'
           project = Project.new(:name => send_grid_mail[:subject])
+          Rails.logger.fatal project.to_yaml
+          
           membership = d.person.memberships.build :project => project
+          Rails.logger.fatal membership.to_yaml
         end
       end
       t = d.person.thoughts.build :body => send_grid_mail[:text].strip!, :project => project
     end
+    Rails.logger.fatal '5'
+    Rails.logger.fatal t.to_yaml
     t
   end
 
