@@ -104,8 +104,8 @@ class ThoughtsController < ApplicationController
   # POST /thoughts
   # POST /thoughts.xml
   def create
-    if params[:thought][:to] && params[:thought][:from] # then treat it like a drop box thought
-      @thought = DropBox.new_thought(params[:thought])
+    if params[:to] && params[:from] # then treat it like a drop box thought
+      @thought = DropBox.new_thought(params)
     else
       @thought = current_person.thoughts.new(params[:thought])
     end
