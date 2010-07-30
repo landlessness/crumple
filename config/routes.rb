@@ -3,6 +3,7 @@ Crumple::Application.routes.draw do |map|
   devise_for :people, :path_names => { :sign_in => 'login', :sign_out => 'logout' }
 
   resources :people
+  resources :drop_boxes
   
   resources :thoughts do
     member do
