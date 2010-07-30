@@ -10,9 +10,9 @@ Crumple::Application.routes.draw do |map|
       get :activate
       get :accept
     end
-    collection do
+    collection  do
       get :archived
-      get :dropbox
+      get :drop_box
     end
     resources :comments
   end

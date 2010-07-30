@@ -14,12 +14,12 @@ class Thought < ActiveRecord::Base
       transition :archived => :active
     end
 
-    event :put_in_dropbox do
-      transition :active => :dropbox
+    event :put_in_drop_box do
+      transition :active => :drop_box
     end
 
     event :accept do
-      transition :dropbox => :active
+      transition :drop_box => :active
     end
   end
 

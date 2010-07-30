@@ -10,7 +10,7 @@
   <% if person_signed_in? %>
   <%= link_to 'Home', root_path %>
   <%= link_to 'Thoughts', thoughts_path %>
-  <%= link_to_dropbox %>
+  <%= link_to_drop_box %>
   <%= link_to 'Projects', projects_path %>
   <%= link_to current_person.email, current_person %>
   <%= link_to "Sign Out", destroy_person_session_path %>

@@ -10,7 +10,7 @@
   <td><em>none</em></td>
   <% end %>
   <td>
-    <% if thought.dropbox? %>
+    <% if thought.drop_box? %>
     <%= link_to 'Accept', accept_thought_path(thought) %>
     <% else %>
     <%= link_to 'Edit', edit_thought_path(thought) %>

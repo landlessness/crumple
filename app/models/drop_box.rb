@@ -1,10 +1,10 @@
-class Dropbox < ActiveRecord::Base
+class DropBox < ActiveRecord::Base
 
   belongs_to :person
 
   def self.process_email(mail)
     name, secret = mail.to.first.split('@').first.split('+')
-    d = Dropbox.find_by_name_and_secret(name, secret)
+    d = DropBox.find_by_name_and_secret(name, secret)
     body = ''
     if mail.parts.empty?
       body = mail.body.to_s.strip
@@ -25,7 +25,7 @@ class Dropbox < ActiveRecord::Base
       end
     end
     t = d.person.thoughts.create! :body => body, :project => project
-    t.put_in_dropbox
+    t.put_in_drop_box
     raise "thought, #{t.body}, was not created for person, #{d.person.email}. errors: #{t.errors.full_messages.to_s}" if t.nil?
     t
   end

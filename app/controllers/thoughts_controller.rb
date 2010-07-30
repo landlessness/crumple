@@ -24,8 +24,8 @@ class ThoughtsController < ApplicationController
     end
   end
 
-  def dropbox
-    @thoughts = current_person.thoughts.with_state(:dropbox).paginate(:per_page => 25, :page => params[:page], :order => 'updated_at DESC')
+  def drop_box
+    @thoughts = current_person.thoughts.with_state(:drop_box).paginate(:per_page => 25, :page => params[:page], :order => 'updated_at DESC')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -79,7 +79,7 @@ class ThoughtsController < ApplicationController
     @thought = current_person.thoughts.find(params[:id])
     respond_to do |format|
       if @thought.accept!
-        format.html { redirect_to(@thought, :notice => 'Thought was accepted from the dropbox.') }
+        format.html { redirect_to(@thought, :notice => 'Thought was accepted from the drop box.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
