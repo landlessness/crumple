@@ -11,7 +11,7 @@
 
 <p>
   <b>Tags:</b>
-  <%= @thought.tag_list %>
+  <%= links_to_tags @thought.tags, @thought.project %>
 </p>
 
 <p>
