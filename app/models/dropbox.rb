@@ -29,5 +29,9 @@ class Dropbox < ActiveRecord::Base
     raise "thought, #{t.body}, was not created for person, #{d.person.email}. errors: #{t.errors.full_messages.to_s}" if t.nil?
     t
   end
+  
+  def email
+    self.name + '+' + self.secret + '@crumpleit.com'
+  end
 
 end
