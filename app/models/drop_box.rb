@@ -1,6 +1,31 @@
 class DropBox < ActiveRecord::Base
 
   belongs_to :person
+  
+  def self.name_and_secret_from_email(email)
+    email.split('@').first.split('+')
+  end
+  
+  def self.new_thought(send_grid_mail)
+    t = nil
+    name, secret = name_and_secret_from_email(send_grid_mail[:to])
+    d = DropBox.find_by_name_and_secret(name, secret)
+    unless d.nil?
+      project = nil
+      unless send_grid_mail[:subject].strip!.nil? || send_grid_mail[:subject].empty?
+        # ilike it postgres for case insensitive like
+        project = d.person.projects.where('name ilike ?', send_grid_mail[:subject])
+        if project.nil?
+          project = Project.new(:name => send_grid_mail[:subject])
+          membership = d.person.memberships.new
+          membership.project = @project
+        end
+      end
+      t = d.person.thoughts.create! :body => send_grid_mail[:text].strip!, :project => project
+      t.put_in_drop_box
+    end
+    t
+  end
 
   def self.process_email(mail)
     name, secret = mail.to.first.split('@').first.split('+')
@@ -31,7 +56,7 @@ class DropBox < ActiveRecord::Base
   end
   
   def email
-    self.name + '+' + self.secret + '@drop_box.crumpleit.com'
+    self.name + '+' + self.secret + '@crumpleit.com'
   end
 
 end

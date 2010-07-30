@@ -104,8 +104,11 @@ class ThoughtsController < ApplicationController
   # POST /thoughts
   # POST /thoughts.xml
   def create
-    @thought = current_person.thoughts.new(params[:thought])
-
+    if params[:thought][:to] && params[:thought][:from] # then treat it like a drop box thought
+      @thought = DropBox.new_thought(params[:thought])
+    else
+      @thought = current_person.thoughts.new(params[:thought])
+    end
     respond_to do |format|
       if @thought.save
         format.html { redirect_to(@thought, :notice => 'Thought was successfully created.') }
@@ -114,7 +117,7 @@ class ThoughtsController < ApplicationController
         format.html { render :action => "new" }
         format.xml  { render :xml => @thought.errors, :status => :unprocessable_entity }
       end
-    end
+    end    
   end
 
   # PUT /thoughts/1
