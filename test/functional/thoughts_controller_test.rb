@@ -35,8 +35,11 @@ class ThoughtsControllerTest < ActionController::TestCase
     assert_difference('Thought.count') do
       post :create, @send_grid_mail
     end
+    thought = assigns(:thought)
+
+    assert_equal 'drop_box', thought.state
     
-    assert_redirected_to thought_path(assigns(:thought))
+    assert_redirected_to thought_path(thought)
   end
 
   test "should show thought" do

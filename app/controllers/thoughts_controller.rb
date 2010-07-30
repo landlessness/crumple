@@ -104,13 +104,18 @@ class ThoughtsController < ApplicationController
   # POST /thoughts
   # POST /thoughts.xml
   def create
-    if params[:to] && params[:from] # then treat it like a drop box thought
+    
+    if drop_box_request = (params[:to] && params[:from]) # then treat it like a drop box thought
       @thought = DropBox.new_thought(params)
     else
       @thought = current_person.thoughts.new(params[:thought])
     end
     respond_to do |format|
       if @thought.save
+        # don't like this here, it should be in model
+        # but, state_machine always saves upon transition
+        @thought.put_in_drop_box if drop_box_request
+        
         format.html { redirect_to(@thought, :notice => 'Thought was successfully created.') }
         format.xml  { render :xml => @thought, :status => :created, :location => @thought }
       else

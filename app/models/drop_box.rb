@@ -21,7 +21,6 @@ class DropBox < ActiveRecord::Base
         end
       end
       t = d.person.thoughts.build :body => send_grid_mail[:text].strip!, :project => project
-      # t.put_in_drop_box
     end
     t
   end

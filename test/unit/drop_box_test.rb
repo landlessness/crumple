@@ -32,8 +32,7 @@ class DropBoxTest < ActiveSupport::TestCase
     assert_equal project, thought.project
     assert_equal @send_grid_mail[:subject], thought.project.name
     assert @send_grid_mail[:text].include?(thought.body)
-    assert :drop_box, thought.state
-    assert thought.new_record?
+    assert thought.new_record?, 'asserting that the thought is a new record'
     assert !thought.project.new_record?
   end
   
