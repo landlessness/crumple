@@ -1,0 +1,24 @@
+<h1>
+  Dropbox
+</h1>
+
+<%= will_paginate @thoughts %>
+
+<table>
+  <tr>
+    <th>Thought</th>
+    <th>Tags</th>
+    <th>Creator</th>
+    <th>Project</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<%= render @thoughts %>
+
+</table>
+
+<br />
+
+<%= will_paginate @thoughts %>

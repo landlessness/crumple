@@ -9,7 +9,13 @@
   <% else %>
   <td><em>none</em></td>
   <% end %>
-  <td><%= link_to 'Edit', edit_thought_path(thought) %></td>
+  <td>
+    <% if thought.dropbox? %>
+    <%= link_to 'Accept', accept_thought_path(thought) %>
+    <% else %>
+    <%= link_to 'Edit', edit_thought_path(thought) %>
+    <% end %>
+  </td>
   <td>
   <% if thought.archived? %>
   <%= link_to 'Activate', activate_thought_path(thought) %>
