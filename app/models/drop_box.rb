@@ -12,17 +12,16 @@ class DropBox < ActiveRecord::Base
     d = DropBox.find_by_name_and_secret(name, secret)
     unless d.nil?
       project = nil
-      unless send_grid_mail[:subject].strip!.nil? || send_grid_mail[:subject].empty?
-        # ilike it postgres for case insensitive like
-        project = d.person.projects.where('name ilike ?', send_grid_mail[:subject])
+      send_grid_mail[:subject].strip!
+      unless send_grid_mail[:subject].nil? || send_grid_mail[:subject].empty?
+        project = d.person.projects.find_by_name(send_grid_mail[:subject])
         if project.nil?
           project = Project.new(:name => send_grid_mail[:subject])
-          membership = d.person.memberships.new
-          membership.project = @project
+          membership = d.person.memberships.build :project => project
         end
       end
-      t = d.person.thoughts.create! :body => send_grid_mail[:text].strip!, :project => project
-      t.put_in_drop_box
+      t = d.person.thoughts.build :body => send_grid_mail[:text].strip!, :project => project
+      # t.put_in_drop_box
     end
     t
   end
