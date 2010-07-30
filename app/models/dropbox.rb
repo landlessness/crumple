@@ -31,7 +31,7 @@ class DropBox < ActiveRecord::Base
   end
   
   def email
-    self.name + '+' + self.secret + '@crumpleit.com'
+    self.name + '+' + self.secret + '@drop_box.crumpleit.com'
   end
 
 end
