@@ -29,8 +29,6 @@ Crumple::Application.routes.draw do |map|
     end
   end
   
-  match 'stylesheets/:filename.css' => 'stylesheets#fake_out_heroku'
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
