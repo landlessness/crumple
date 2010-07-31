@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <% if @thought.archived? %>
-<h3><%= @thought.state %> <%= link_to 'active', activate_thought_path(@thought) %></h3>
+<h3><%= @thought.state %> <%= link_to 'activate', activate_thought_path(@thought) %></h3>
 <% end %>
 
 <p>
