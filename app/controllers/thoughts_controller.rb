@@ -105,24 +105,17 @@ class ThoughtsController < ApplicationController
   end
 
   def create_from_sendgrid    
-    log_headers
     @thought = DropBox.new_thought(params)
     respond_to do |format|
-      Rails.logger.fatal "format.class: #{format.class}"
-      Rails.logger.fatal "format.public_methods: #{format.public_methods}"
       
       if @thought.save
         # don't like this here, it should be in model
         # but, state_machine always saves upon transition
         @thought.put_in_drop_box
-        Rails.logger.fatal 'before format.xml for sendgrid thought was saved.'
         format.all  do
-          Rails.logger.fatal 'in format.xml for sendgrid thought was saved.'
           render :text => 'OK', :status => :ok 
          end
-         Rails.logger.fatal 'after format.xml for sendgrid thought was saved.'
       else
-        Rails.logger.fatal 'after format.xml for sendgrid thought was NOT saved.'
         format.all  { render :text => 'Internal Server Error', :status => :internal_server_error }
       end
     end
