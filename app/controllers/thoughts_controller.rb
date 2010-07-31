@@ -112,8 +112,14 @@ class ThoughtsController < ApplicationController
         # don't like this here, it should be in model
         # but, state_machine always saves upon transition
         @thought.put_in_drop_box
-        format.xml  { render :text => 'OK', :status => :ok }
+        Rails.logger.fatal 'before format.xml for sendgrid thought was saved.'
+        format.xml  do
+          Rails.logger.fatal 'in format.xml for sendgrid thought was saved.'
+          render :text => 'OK', :status => :ok 
+         end
+         Rails.logger.fatal 'after format.xml for sendgrid thought was saved.'
       else
+        Rails.logger.fatal 'after format.xml for sendgrid thought was NOT saved.'
         format.xml  { render :text => 'Internal Server Error', :status => :internal_server_error }
       end
     end
