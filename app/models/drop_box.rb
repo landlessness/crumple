@@ -18,8 +18,8 @@ class DropBox < ActiveRecord::Base
     unless d.nil?
       Rails.logger.fatal '2'
       project = nil
-      send_grid_mail[:subject].strip!
       unless send_grid_mail[:subject].nil? || send_grid_mail[:subject].empty?
+        send_grid_mail[:subject].strip!
         Rails.logger.fatal '3'
         project = d.person.projects.find_by_name(send_grid_mail[:subject])
         Rails.logger.fatal project.to_yaml

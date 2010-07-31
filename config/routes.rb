@@ -4,6 +4,9 @@ Crumple::Application.routes.draw do |map|
 
   resources :people
   
+  # must come before the resources :thoughts line
+  match 'thoughts.send_grid' => 'thoughts#create_from_sendgrid'
+  
   resources :thoughts do
     member do
       get :archive
@@ -16,7 +19,7 @@ Crumple::Application.routes.draw do |map|
     end
     resources :comments
   end
-
+  
   resources :projects do
     resources :people
     resources :thoughts do

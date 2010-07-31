@@ -1,4 +1,6 @@
 class ThoughtsController < ApplicationController
+  skip_filter :authenticate_person!, :only => :create_from_sendgrid
+  
   # GET /thoughts
   # GET /thoughts.xml
   def index
@@ -101,21 +103,26 @@ class ThoughtsController < ApplicationController
     end      
   end
 
+  def create_from_sendgrid
+    @thought = DropBox.new_thought(params)
+    respond_to do |format|
+      if @thought.save
+      #   # don't like this here, it should be in model
+      #   # but, state_machine always saves upon transition
+        @thought.put_in_drop_box
+        format.send_grid  { head :ok }
+      else
+        format.send_grid { head :internal_server_error}
+      end
+    end
+  end
+
   # POST /thoughts
   # POST /thoughts.xml
   def create
-    
-    if drop_box_request = (params[:to] && params[:from]) # then treat it like a drop box thought
-      @thought = DropBox.new_thought(params)
-    else
-      @thought = current_person.thoughts.new(params[:thought])
-    end
+    @thought = current_person.thoughts.new(params[:thought])
     respond_to do |format|
       if @thought.save
-        # don't like this here, it should be in model
-        # but, state_machine always saves upon transition
-        @thought.put_in_drop_box if drop_box_request
-        
         format.html { redirect_to(@thought, :notice => 'Thought was successfully created.') }
         format.xml  { render :xml => @thought, :status => :created, :location => @thought }
       else
