@@ -6,13 +6,14 @@
   <%= link_to 'x', thoughts_path %>
   <% end %>
 </h1>
+<p>
+  <b>Tags:</b><br/>
+<%= crumple_tag_cloud @tags_for_cloud, @project %>
+</p>
+<p>
+  <b>Thoughts:</b><br/>
 <%= link_to 'New Thought', new_thought_path %>
 <%= link_to 'Archived Thoughts', archived_thoughts_path %>
-
-<br/>
-<br/>
-<%= crumple_tag_cloud @tags_for_cloud, @project %>
-
 <%= will_paginate @thoughts %>
 
 <table>
@@ -35,3 +36,4 @@
 <%= will_paginate @thoughts %>
 
 <%= link_to 'New Thought', new_thought_path %>
+</p>
