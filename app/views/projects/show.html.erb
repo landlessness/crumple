@@ -26,6 +26,12 @@
   <% else %>
   <%= link_to 'Archived thoughts', project_path(@project, :archived_thoughts => 1) %>
   <% end %>
+  
+  <br/>
+  <br/>
+  <%= crumple_tag_cloud @tags_for_cloud, @project %>
+
+
   <%= will_paginate @project_thoughts %>
   <table>
     <tr>

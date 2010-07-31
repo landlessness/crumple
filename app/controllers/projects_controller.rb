@@ -28,6 +28,7 @@ class ProjectsController < ApplicationController
     end
     @tags = params[:tags].split('+') if params[:tags]
     @project_thoughts = @project_thoughts.tagged_with(@tags) if @tags
+    @tags_for_cloud = @project_thoughts.tag_counts_on(:tags)
     @project_thoughts = @project_thoughts.paginate :per_page => 25, :page => params[:page], :order => 'updated_at DESC' 
     
     respond_to do |format|

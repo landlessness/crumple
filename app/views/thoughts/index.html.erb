@@ -8,6 +8,11 @@
 </h1>
 <%= link_to 'New Thought', new_thought_path %>
 <%= link_to 'Archived Thoughts', archived_thoughts_path %>
+
+<br/>
+<br/>
+<%= crumple_tag_cloud @tags_for_cloud, @project %>
+
 <%= will_paginate @thoughts %>
 
 <table>
