@@ -1,5 +1,6 @@
 class ThoughtsController < ApplicationController
   skip_filter :authenticate_person!, :only => :create_from_sendgrid
+  skip_before_filter :verify_authenticity_token, :only => :create_from_sendgrid
   
   # GET /thoughts
   # GET /thoughts.xml
