@@ -33,7 +33,7 @@ class ThoughtsControllerTest < ActionController::TestCase
     
     assert @send_grid_mail[:to] && @send_grid_mail[:from]
     assert_difference('Thought.count') do
-      post :create_from_sendgrid, @send_grid_mail, :format => :xml
+      post :create_from_sendgrid, @send_grid_mail.merge(:format => 'xml')
     end
     thought = assigns(:thought)
     assert_equal 'this is another test.', thought.body

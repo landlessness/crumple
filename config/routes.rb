@@ -5,7 +5,7 @@ Crumple::Application.routes.draw do |map|
   resources :people
   
   # must come before the resources :thoughts line
-  match '/thoughts' => 'thoughts#create_from_sendgrid', :constraints => { :user_agent => /SendGrid/, :method => 'post' }
+  match '/thoughts.xml' => 'thoughts#create_from_sendgrid', :constraints => { :user_agent => /SendGrid/ }
   
   resources :thoughts do
     member do

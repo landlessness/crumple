@@ -112,9 +112,9 @@ class ThoughtsController < ApplicationController
         # don't like this here, it should be in model
         # but, state_machine always saves upon transition
         @thought.put_in_drop_box
-        format.xml  { head :ok }
+        format.xml  { render :text => 'OK', :status => :ok }
       else
-        format.xml  { head :internal_server_error }
+        format.xml  { render :text => 'Internal Server Error', :status => :internal_server_error }
       end
     end
   end
