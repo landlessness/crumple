@@ -33,8 +33,7 @@ class ThoughtsControllerTest < ActionController::TestCase
     
     assert @send_grid_mail[:to] && @send_grid_mail[:from]
     assert_difference('Thought.count') do
-      @request.accept = 'send_grid'
-      post :create_from_sendgrid, @send_grid_mail
+      post :create_from_sendgrid, @send_grid_mail, :format => :xml
     end
     thought = assigns(:thought)
     assert_equal 'this is another test.', thought.body

@@ -109,12 +109,12 @@ class ThoughtsController < ApplicationController
     @thought = DropBox.new_thought(params)
     respond_to do |format|
       if @thought.save
-      #   # don't like this here, it should be in model
-      #   # but, state_machine always saves upon transition
+        # don't like this here, it should be in model
+        # but, state_machine always saves upon transition
         @thought.put_in_drop_box
-        format.send_grid  { head :ok }
+        format.xml  { head :ok }
       else
-        format.send_grid { head :internal_server_error}
+        format.xml  { head :internal_server_error }
       end
     end
   end
