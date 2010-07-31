@@ -1,4 +1,7 @@
 class Thought < ActiveRecord::Base  
+  validates_presence_of :body
+  validates_presence_of :person
+
   belongs_to :person
   belongs_to :project
   has_many :comments, :dependent => :destroy

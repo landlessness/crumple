@@ -19,7 +19,7 @@
   <%= link_to 'Add people to ' + @project.name, new_project_person_path(@project) %>
 </p>
 <p>
-  <b>Tags:</b><br/><br/>
+  <b>Tag cloud:</b><br/><br/>
 <%= crumple_tag_cloud @tags_for_cloud, @project %>
 </p>
 <p>
