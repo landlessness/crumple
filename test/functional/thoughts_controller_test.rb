@@ -33,6 +33,7 @@ class ThoughtsControllerTest < ActionController::TestCase
     
     assert @send_grid_mail[:to] && @send_grid_mail[:from]
     assert_difference('Thought.count') do
+      @request.accept = 'send_grid'
       post :create_from_sendgrid, @send_grid_mail
     end
     thought = assigns(:thought)
@@ -40,6 +41,7 @@ class ThoughtsControllerTest < ActionController::TestCase
     
     assert_equal 'drop_box', thought.state
     
+    assert_response :ok
   end
 
   test "should show thought" do

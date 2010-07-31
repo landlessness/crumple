@@ -104,7 +104,8 @@ class ThoughtsController < ApplicationController
     end      
   end
 
-  def create_from_sendgrid
+  def create_from_sendgrid    
+    log_headers
     @thought = DropBox.new_thought(params)
     respond_to do |format|
       if @thought.save

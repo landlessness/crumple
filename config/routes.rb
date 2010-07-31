@@ -5,6 +5,7 @@ Crumple::Application.routes.draw do |map|
   resources :people
   
   # must come before the resources :thoughts line
+  # try this: :conditions => { :method => :get }
   match 'thoughts.send_grid' => 'thoughts#create_from_sendgrid'
   
   resources :thoughts do
