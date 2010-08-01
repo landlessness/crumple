@@ -6,3 +6,4 @@ gem 'devise', '1.1.rc2'
 gem 'acts-as-taggable-on'
 gem 'state_machine'
 gem "will_paginate", "3.0.pre"
+gem 'hoptoad_notifier'

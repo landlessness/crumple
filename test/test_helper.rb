@@ -16,8 +16,8 @@ class ActiveSupport::TestCase
     "#{FIXTURES_PATH}/mail_samples/#{action}"
   end
 
-  def read_fixture(action)
-    IO.readlines(email_path(action))
+  def read_fixture(mail_file_name)
+    IO.readlines(email_path(mail_file_name))
   end
   
   def send_grid_mail

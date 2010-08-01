@@ -1,0 +1,1142 @@
+Delivered-To: brian@landlessness.net
+Received: by 10.231.19.68 with SMTP id z4cs116508iba;
+        Sat, 31 Jul 2010 05:12:42 -0700 (PDT)
+Received: by 10.224.3.3 with SMTP id 3mr793657qal.181.1280578360723;
+        Sat, 31 Jul 2010 05:12:40 -0700 (PDT)
+Return-Path: <info@meetup.com>
+Received: from mail6.meetup.com (mail6.meetup.com [64.90.170.36])
+        by mx.google.com with ESMTP id e13si3171578vcy.114.2010.07.31.05.12.38;
+        Sat, 31 Jul 2010 05:12:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of info@meetup.com designates 64.90.170.36 as permitted sender) client-ip=64.90.170.36;
+DomainKey-Status: good (test mode)
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of info@meetup.com designates 64.90.170.36 as permitted sender) smtp.mail=info@meetup.com; domainkeys=pass (test mode) header.From=info@meetup.com
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=meetup; d=meetup.com;
+ b=f5rb1thEN2eGaDPD6YhFCkGz+OYwYap/VyzZvBwGyI/ff/X3o1a9UlzE6kIjFtBBVNaBQ9DkWe/K
+   IXX5SpLj4EVRuKdaP9m9v7uOsry0aE6D3/ded1x4BS4mrlEBxCwAqI5EByKaAlNeF1qz1nNTIard
+   vKz/dDvdBMk1ERIEumY=;
+Received: from jobs.meetup.com (192.168.60.201) by mail6.meetup.com (PowerMTA(TM) v3.5r6) id hag9je0l1jo0 for <brian@landlessness.net>; Sat, 31 Jul 2010 08:12:38 -0400 (envelope-from <info@meetup.com>)
+Message-ID: <1202351883.1280578358277.JavaMail.meetcvs@jobs.meetup.com>
+From: Meetup <info@meetup.com>
+Sender: info@meetup.com
+To: brian@landlessness.net
+Subject: The Silicon Valley iPhone and iPad Developers' Meetup Mailing List
+ Daily Digest
+MIME-Version: 1.0
+Content-Type: text/html; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+X-MEETUP-RECIP-ID: 2751974
+X-MEETUP-TRACK: dd1
+Date: Sat, 31 Jul 2010 08:12:38 -0400
+
+<html>
+<head>
+<title>Meetup</title>
+</head>
+<body style=3D"color: #212324; font-family: Verdana, Arial, Helvetica, sans=
+-serif; font-size: 12px;">
+
+<h1 style=3D"font-size: 1.5em; font-family: tahoma, verdana, sans serif; ma=
+rgin: .5em 0 0;"><img src=3D"http://img3.meetupstatic.com/img/logo_tilt_tin=
+y.gif" style=3D"vertical-align: middle;" alt=3D"[Meetup]" />The Silicon Val=
+ley iPhone and iPad Developers' Meetup Mailing List</h1>
+<div style=3D"border-bottom: 1px solid #000; padding: 10px 0 20px;">
+<p style=3D"margin: 0 0 .5em;"><strong>Messages in this digest:</strong></p=
+>
+<ul style=3D"padding: 0; margin: 0; list-style: none;">
+<li style=3D"padding: 0; margin: 0 0 .5em 10px;">1. <a href=3D"#meetup_1">a=
+ppstore review counter after an update?</a> &mdash; From: tl_buildeng</li>
+<li style=3D"padding: 0; margin: 0 0 .5em 10px;">2. <a href=3D"#meetup_2">R=
+e: [softwaredev-92] appstore review counter after an update?</a> &mdash; Fr=
+om: Olie</li>
+<li style=3D"padding: 0; margin: 0 0 .5em 10px;">3. <a href=3D"#meetup_3">R=
+E: [softwaredev-92] appstore review counter after an update?</a> &mdash; Fr=
+om: Rick Breslin</li>
+<li style=3D"padding: 0; margin: 0 0 .5em 10px;">4. <a href=3D"#meetup_4">D=
+RM for web apps and combatting IPhone/iPad App Piracy</a> &mdash; From: Phi=
+llip Jain</li>
+<li style=3D"padding: 0; margin: 0 0 .5em 10px;">5. <a href=3D"#meetup_5">R=
+e: [softwaredev-92] appstore review counter after an update?</a> &mdash; Fr=
+om: tl_buildeng</li>
+<li style=3D"padding: 0; margin: 0 0 .5em 10px;">6. <a href=3D"#meetup_6">R=
+e: [softwaredev-92] DRM for web apps and combatting IPhone/iPad App Piracy<=
+/a> &mdash; From: Olie</li>
+<li style=3D"padding: 0; margin: 0 0 .5em 10px;">7. <a href=3D"#meetup_7">A=
+pptera is looking for iPhone/Android app developers!</a> &mdash; From: Don =
+Steul</li>
+<li style=3D"padding: 0; margin: 0 0 .5em 10px;">8. <a href=3D"#meetup_8">R=
+e: [softwaredev-92] Need help for Devanagari font on iPhone</a> &mdash; Fro=
+m: Kiran Vaka</li>
+</ul>
+</div>
+
+<table style=3D"width: 100%; border-collapse: collapse;">
+<tr>
+<td style=3D"background: #FCFAEB; padding: 10px; font-size: 12px; vertical-=
+align: top; width: 1px;">
+<a name=3D"meetup_1"></a>
+<span style=3D"font-size: 1.2em;">1.</span>
+</td>
+<td style=3D"background: #FCFAEB; padding: 10px 10px 10px 0; font-size: 12p=
+x;">
+<p style=3D"margin: 0 0 .5em; font-size: 1.2em;"><strong>Subject:</strong> =
+appstore review counter after an update?</p>
+<p style=3D"margin: 0 0 .5em;"><strong>From:</strong> tl_buildeng</p>
+<p style=3D"margin: 0 0 .5em;"><strong>Date:</strong> July 30, 2010 1:30 PM=
+</p>
+<p style=3D"margin: 0 0 .5em; font-size: .9em;"><a href=3D"mailto:tlbuilden=
+g@gmail.com?subject=3DRe%3A%20appstore%20review%20counter%20after%20an%20up=
+date%3F">Reply to sender</a> &nbsp; <a href=3D"mailto:softwaredev-92@meetup=
+.com?subject=3DRe%3A%20appstore%20review%20counter%20after%20an%20update%3F=
+">Reply to Meetup</a></p>
+</td>
+</tr>
+<tr>
+<td style=3D"border-bottom: 1px solid #bbb; font-size: 12px;">&nbsp;</td>
+<td style=3D"border-bottom: 1px solid #bbb; padding: 10px 10px 10px 0; font=
+-size: 12px;">
+<p style=3D"margin: 0 0 .5em;">Hi all,
+<br/>=A0
+<br/>Does anyone know how the appstore handles reviews after an update. For=
+ example if there are 100 reviews with a 1.0 release with SDK 3.2 and if=A0=
+I submit an
+<br/>update as 1.1 with SDK 4.0 will it drop the reviews counter back to 0?=
+ or continue with 100. If it drops the review back to 0 will this effect th=
+e ranking of the app during an app=A0search?=20
+<br/>=A0
+<br/>Thanks,
+<br/>tl
+<br/></p>
+</td>
+</tr>
+<tr>
+<td style=3D"background: #FCFAEB; padding: 10px; font-size: 12px; vertical-=
+align: top; width: 1px;">
+<a name=3D"meetup_2"></a>
+<span style=3D"font-size: 1.2em;">2.</span>
+</td>
+<td style=3D"background: #FCFAEB; padding: 10px 10px 10px 0; font-size: 12p=
+x;">
+<p style=3D"margin: 0 0 .5em; font-size: 1.2em;"><strong>Subject:</strong> =
+Re: [softwaredev-92] appstore review counter after an update?</p>
+<p style=3D"margin: 0 0 .5em;"><strong>From:</strong> Olie</p>
+<p style=3D"margin: 0 0 .5em;"><strong>Date:</strong> July 30, 2010 2:07 PM=
+</p>
+<p style=3D"margin: 0 0 .5em; font-size: .9em;"><a href=3D"mailto:meetup@pl=
+aynaked.com?subject=3DRe%3A%20Re%3A%20%5Bsoftwaredev-92%5D%20appstore%20rev=
+iew%20counter%20after%20an%20update%3F">Reply to sender</a> &nbsp; <a href=
+=3D"mailto:softwaredev-92@meetup.com?subject=3DRe%3A%20Re%3A%20%5Bsoftwared=
+ev-92%5D%20appstore%20review%20counter%20after%20an%20update%3F">Reply to M=
+eetup</a></p>
+</td>
+</tr>
+<tr>
+<td style=3D"border-bottom: 1px solid #bbb; font-size: 12px;">&nbsp;</td>
+<td style=3D"border-bottom: 1px solid #bbb; padding: 10px 10px 10px 0; font=
+-size: 12px;">
+<p style=3D"margin: 0 0 .5em;">
+<br/>On Jul 30, 2010, at 10:53 AM, tl_buildeng wrote:
+<br/>> Does anyone know how the appstore handles reviews after an update. F=
+or example if there are 100 reviews with a 1.0 release with SDK 3.2 and if =
+I submit an
+<br/>> update as 1.1 with SDK 4.0 will it drop the reviews counter back to =
+0? or continue with 100. If it drops the review back to 0 will this effect =
+the ranking of the app during an app search?
+<br/>
+<br/>
+<br/>Look at any app in iTunes.  You'll see something like this:
+<br/>
+<br/>   Reviews for current version: 0
+<br/>   Reviews for all versions: 1,783
+<br/>
+<br/>With this information, you should be able to deduce the answer.  ;)
+<br/>
+<br/></p>
+</td>
+</tr>
+<tr>
+<td style=3D"background: #FCFAEB; padding: 10px; font-size: 12px; vertical-=
+align: top; width: 1px;">
+<a name=3D"meetup_3"></a>
+<span style=3D"font-size: 1.2em;">3.</span>
+</td>
+<td style=3D"background: #FCFAEB; padding: 10px 10px 10px 0; font-size: 12p=
+x;">
+<p style=3D"margin: 0 0 .5em; font-size: 1.2em;"><strong>Subject:</strong> =
+RE: [softwaredev-92] appstore review counter after an update?</p>
+<p style=3D"margin: 0 0 .5em;"><strong>From:</strong> Rick Breslin</p>
+<p style=3D"margin: 0 0 .5em;"><strong>Date:</strong> July 30, 2010 2:11 PM=
+</p>
+<p style=3D"margin: 0 0 .5em; font-size: .9em;"><a href=3D"mailto:rickbresl=
+in@gmail.com?subject=3DRe%3A%20RE%3A%20%5Bsoftwaredev-92%5D%20appstore%20re=
+view%20counter%20after%20an%20update%3F">Reply to sender</a> &nbsp; <a href=
+=3D"mailto:softwaredev-92@meetup.com?subject=3DRe%3A%20RE%3A%20%5Bsoftwared=
+ev-92%5D%20appstore%20review%20counter%20after%20an%20update%3F">Reply to M=
+eetup</a></p>
+</td>
+</tr>
+<tr>
+<td style=3D"border-bottom: 1px solid #bbb; font-size: 12px;">&nbsp;</td>
+<td style=3D"border-bottom: 1px solid #bbb; padding: 10px 10px 10px 0; font=
+-size: 12px;">
+<p style=3D"margin: 0 0 .5em;">
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>Hi TL,
+<br/>
+<br/>&nbsp;
+<br/>
+<br/>Your app&#8217;s reviews will remain, but
+<br/>iTunes (desktop) will only display the written reviews for your latest
+<br/>(current) version.&nbsp; However, the user can click on &#8220;All Ver=
+sions&#8221;
+<br/>to see all the written reviews.&nbsp; The App Store mobile app will di=
+splay all written
+<br/>reviews across all versions in reverse chronological order.
+<br/>
+<br/>&nbsp;
+<br/>
+<br/>To the best of my knowledge, reviews do
+<br/>not contribute to the algorithm used to determine rank in the App Stor=
+e.&nbsp; I
+<br/>believe this is calculated by a 24-hour rolling average of downloads (=
+source: http://www.slideshare.net/pinchmedia/iphone-appstore-secrets-pinch-=
+media).
+<br/>
+<br/>&nbsp;
+<br/>
+<br/>Hope this helps,
+<br/>
+<br/>&nbsp;
+<br/>
+<br/>Rick
+<br/>
+<br/>&nbsp;
+<br/>
+<br/>&nbsp;
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>From:
+<br/>softwaredev-92@meetup.com [mailto:softwaredev-92@meetup.com] On Behalf=
+ Of tl_buildeng
+<br/>Sent: Friday, July 30, 2010 10:54
+<br/>AM
+<br/>To: softwaredev-92@meetup.com
+<br/>Subject: [softwaredev-92] appstore
+<br/>review counter after an update?
+<br/>
+<br/>
+<br/>
+<br/>&nbsp;
+<br/>
+<br/>
+<br/>
+<br/>Hi all,
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>&nbsp;
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>Does anyone know how the appstore handles reviews after an update. For
+<br/>example if there are 100 reviews with a 1.0 release with SDK 3.2 and i=
+f&nbsp;I
+<br/>submit an
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>update as 1.1 with SDK 4.0 will it drop the reviews counter back to 0?
+<br/>or continue with 100. If it drops the review back to 0 will this effec=
+t the
+<br/>ranking of the app during an app&nbsp;search?=20
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>&nbsp;
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>Thanks,
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>tl
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>--
+<br/>Please Note: If you hit &quot;REPLY&quot;,
+<br/>your message will be sent to everyone
+<br/>on this mailing list (softwaredev-92@meetup.com)
+<br/>This message was sent by tl_buildeng (tlbuildeng@gmail.com) from The S=
+ilicon Valley iPhone and iPad
+<br/>Developers' Meetup.
+<br/>To learn more about tl_buildeng, visit his/her member profile
+<br/>To unsubscribe or to update your mailing list settings, click here
+<br/>
+<br/>Meetup,
+<br/>PO Box 4668
+<br/>#37895 New York, New York 10163-4668
+<br/>| support@meetup.com=20
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/></p>
+</td>
+</tr>
+<tr>
+<td style=3D"background: #FCFAEB; padding: 10px; font-size: 12px; vertical-=
+align: top; width: 1px;">
+<a name=3D"meetup_4"></a>
+<span style=3D"font-size: 1.2em;">4.</span>
+</td>
+<td style=3D"background: #FCFAEB; padding: 10px 10px 10px 0; font-size: 12p=
+x;">
+<p style=3D"margin: 0 0 .5em; font-size: 1.2em;"><strong>Subject:</strong> =
+DRM for web apps and combatting IPhone/iPad App Piracy</p>
+<p style=3D"margin: 0 0 .5em;"><strong>From:</strong> Phillip Jain</p>
+<p style=3D"margin: 0 0 .5em;"><strong>Date:</strong> July 30, 2010 2:52 PM=
+</p>
+<p style=3D"margin: 0 0 .5em; font-size: .9em;"><a href=3D"mailto:phillip_j=
+ain@yahoo.com?subject=3DRe%3A%20DRM%20for%20web%20apps%20and%20combatting%2=
+0IPhone%2FiPad%20App%20Piracy">Reply to sender</a> &nbsp; <a href=3D"mailto=
+:softwaredev-92@meetup.com?subject=3DRe%3A%20DRM%20for%20web%20apps%20and%2=
+0combatting%20IPhone%2FiPad%20App%20Piracy">Reply to Meetup</a></p>
+</td>
+</tr>
+<tr>
+<td style=3D"border-bottom: 1px solid #bbb; font-size: 12px;">&nbsp;</td>
+<td style=3D"border-bottom: 1px solid #bbb; padding: 10px 10px 10px 0; font=
+-size: 12px;">
+<p style=3D"margin: 0 0 .5em;">
+<br/>
+<br/> =20
+<br/> =20
+<br/>    QUESTION&gt; Are there tested ways to secure mobile apps? Looking
+<br/>    for Objective-C etc. functions/libraries.
+<br/>   =20
+<br/>    1. Proposed home made DRM system
+<br/>    - encrypted cookies
+<br/>    - verifying purchase with a server when connection is available
+<br/>    (little data or can do over WiFi to not hurt customers' cap) -
+<br/>    similar to Win7/Office annual subscriptions...
+<br/>    Does anyone know of any lightweight app DRM or would like to
+<br/>    cooperate on that?
+<br/>   =20
+<br/>    2. Native Apps internal DRM? It seems from the&nbsp; IPhone/iPad
+<br/>    App Piracy thread that even native apps lose out in sales.=20
+<br/>    From the discussion, native apps can include a DRM in it to tighte=
+n
+<br/>    up stuff.&nbsp;&nbsp;=20
+<br/>   =20
+<br/>    3. Security for Web Mobile Apps. Apple really doesn't care
+<br/>    about web apps - but I don't think all web apps should be "free". =
+If
+<br/>    a DRM could be integrated into these next-generation HTML5 apps ..=
+.
+<br/>    there could be scope for a paid model for portable Web apps.&nbsp;
+<br/>    Especially corporations for in-house (intranet web?) apps would li=
+ke
+<br/>    some kind of security.
+<br/>   =20
+<br/>    What do you guys think?
+<br/>   =20
+<br/>    ---- Phillip Jain
+<br/>    CTO, ConsAid, Inc.
+<br/>   =20
+<br/>    PS. Since our corporate DNA is web-apps, we are skipping the nativ=
+e
+<br/>    iPhone SDK,etc. and moving on to the next-generation of HTML5 Web
+<br/>    Apps that doesn't require going through the app store or making
+<br/>    native apps. It is not the 30% that bothers, but the whole overhea=
+d
+<br/>    of training or hiring platform specific developers is a mess. This
+<br/>    is similar to the freemium model for web apps, where even if 1-2%
+<br/>    "subscribe" it pays off. While the best apps will always be Native
+<br/>    apps, it is also hard to deal with popular lifetimes of a few
+<br/>    months.=20
+<br/>   =20
+<br/>    PPS. Some people will object that is where e.g. the Sony Rootkit, =
+or
+<br/>    the whole Macrovision/Intuit fiascos etc. got started. I think it =
+is
+<br/>    different for "little companies" vs. huge recording studios. We
+<br/>    little app developers can greatly benefit from the 4%-16%-80%
+<br/>    solution. In other words 80% will copy if they can do it easily. W=
+e
+<br/>    only need a way to handle them and hopefully the 16%. While the 4%
+<br/>    (or rather 0.1%) will always hack/crack it!
+<br/>   =20
+<br/>   =20
+<br/>   =20
+<br/> =20
+<br/>
+<br/></p>
+</td>
+</tr>
+<tr>
+<td style=3D"background: #FCFAEB; padding: 10px; font-size: 12px; vertical-=
+align: top; width: 1px;">
+<a name=3D"meetup_5"></a>
+<span style=3D"font-size: 1.2em;">5.</span>
+</td>
+<td style=3D"background: #FCFAEB; padding: 10px 10px 10px 0; font-size: 12p=
+x;">
+<p style=3D"margin: 0 0 .5em; font-size: 1.2em;"><strong>Subject:</strong> =
+Re: [softwaredev-92] appstore review counter after an update?</p>
+<p style=3D"margin: 0 0 .5em;"><strong>From:</strong> tl_buildeng</p>
+<p style=3D"margin: 0 0 .5em;"><strong>Date:</strong> July 30, 2010 3:26 PM=
+</p>
+<p style=3D"margin: 0 0 .5em; font-size: .9em;"><a href=3D"mailto:tlbuilden=
+g@gmail.com?subject=3DRe%3A%20Re%3A%20%5Bsoftwaredev-92%5D%20appstore%20rev=
+iew%20counter%20after%20an%20update%3F">Reply to sender</a> &nbsp; <a href=
+=3D"mailto:softwaredev-92@meetup.com?subject=3DRe%3A%20Re%3A%20%5Bsoftwared=
+ev-92%5D%20appstore%20review%20counter%20after%20an%20update%3F">Reply to M=
+eetup</a></p>
+</td>
+</tr>
+<tr>
+<td style=3D"border-bottom: 1px solid #bbb; font-size: 12px;">&nbsp;</td>
+<td style=3D"border-bottom: 1px solid #bbb; padding: 10px 10px 10px 0; font=
+-size: 12px;">
+<p style=3D"margin: 0 0 .5em;">To be more specific guess im concerned about=
+ the ratings counter on app store mobile. On my current app version I have =
+about 3.5 stars average from 712 Ratings on the mobile store.=A0When search=
+ng by keywords i show up=A0about 14. Im concerned that after an update the =
+ratings counter for current version drops down to 0 that I wont drop off th=
+e 1st 25 search returns on mobile. I seldom use the itunes desktop and alwa=
+ys us the mobile version and I usually only look at the first 25 search ret=
+urns I=A0suspect alot of people dont hit &quot;show=A0# More&quot; unless t=
+hey already know what they are looking for.=20
+<br/>
+<br/>On Fri, Jul 30, 2010 at 11:12 AM, Rick Breslin &lt;rickbreslin@gmail.c=
+om&gt; wrote:
+<br/>
+<br/>
+<br/>
+<br/>Hi TL,
+<br/>=A0
+<br/>Your app?s reviews will remain, but iTunes (desktop) will only display=
+ the written reviews for your latest (current) version.=A0 However, the use=
+r can click on ?All Versions? to see all the written reviews.=A0 The App St=
+ore mobile app will display all written reviews across all versions in reve=
+rse chronological order.
+<br/>
+<br/>=A0
+<br/>To the best of my knowledge, reviews do not contribute to the algorith=
+m used to determine rank in the App Store.=A0 I believe this is calculated =
+by a 24-hour rolling average of downloads (source: http://www.slideshare.ne=
+t/pinchmedia/iphone-appstore-secrets-pinch-media).
+<br/>
+<br/>=A0
+<br/>Hope this helps,
+<br/>=A0
+<br/>Rick
+<br/>=A0
+<br/>=A0
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>From: softwaredev-92@meetup.com [mailto:softwaredev-92@meetup.com] On =
+Behalf Of tl_buildeng
+<br/>Sent: Friday, July 30, 2010 10:54 AM
+<br/>To: softwaredev-92@meetup.com
+<br/>Subject: [softwaredev-92] appstore review counter after an update?
+<br/>=A0
+<br/>
+<br/>Hi all,
+<br/>
+<br/>
+<br/>=A0
+<br/>
+<br/>Does anyone know how the appstore handles reviews after an update. For=
+ example if there are 100 reviews with a 1.0 release with SDK 3.2 and if=A0=
+I submit an
+<br/>
+<br/>
+<br/>update as 1.1 with SDK 4.0 will it drop the reviews counter back to 0?=
+ or continue with 100. If it drops the review back to 0 will this effect th=
+e ranking of the app during an app=A0search?=20
+<br/>
+<br/>
+<br/>=A0
+<br/>
+<br/>Thanks,
+<br/>
+<br/>tl
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>--
+<br/>Please Note: If you hit &quot;REPLY&quot;, your message will be sent t=
+o everyone on this mailing list (softwaredev-92@meetup.com)
+<br/>This message was sent by tl_buildeng (tlbuildeng@gmail.com) from The S=
+ilicon Valley iPhone and iPad Developers&#39; Meetup.
+<br/>To learn more about tl_buildeng, visit his/her member profile=20
+<br/>
+<br/>To unsubscribe or to update your mailing list settings, click here
+<br/>
+<br/>
+<br/>Meetup, PO Box 4668 #37895 New York, New York 10163-4668 | support@mee=
+tup.com=20
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>--
+<br/>Please Note: If you hit &quot;REPLY&quot;, your message will be sent t=
+o everyone on this mailing list (softwaredev-92@meetup.com)
+<br/>This message was sent by Rick Breslin (rickbreslin@gmail.com) from The=
+ Silicon Valley iPhone and iPad Developers&#39; Meetup.
+<br/>To learn more about Rick Breslin, visit his/her member profile=20
+<br/>
+<br/>To unsubscribe or to update your mailing list settings, click here
+<br/>
+<br/>
+<br/>Meetup, PO Box 4668 #37895 New York, New York 10163-4668 | support@mee=
+tup.com=20
+<br/></p>
+</td>
+</tr>
+<tr>
+<td style=3D"background: #FCFAEB; padding: 10px; font-size: 12px; vertical-=
+align: top; width: 1px;">
+<a name=3D"meetup_6"></a>
+<span style=3D"font-size: 1.2em;">6.</span>
+</td>
+<td style=3D"background: #FCFAEB; padding: 10px 10px 10px 0; font-size: 12p=
+x;">
+<p style=3D"margin: 0 0 .5em; font-size: 1.2em;"><strong>Subject:</strong> =
+Re: [softwaredev-92] DRM for web apps and combatting IPhone/iPad App Piracy=
+</p>
+<p style=3D"margin: 0 0 .5em;"><strong>From:</strong> Olie</p>
+<p style=3D"margin: 0 0 .5em;"><strong>Date:</strong> July 30, 2010 4:06 PM=
+</p>
+<p style=3D"margin: 0 0 .5em; font-size: .9em;"><a href=3D"mailto:meetup@pl=
+aynaked.com?subject=3DRe%3A%20Re%3A%20%5Bsoftwaredev-92%5D%20DRM%20for%20we=
+b%20apps%20and%20combatting%20IPhone%2FiPad%20App%20Piracy">Reply to sender=
+</a> &nbsp; <a href=3D"mailto:softwaredev-92@meetup.com?subject=3DRe%3A%20R=
+e%3A%20%5Bsoftwaredev-92%5D%20DRM%20for%20web%20apps%20and%20combatting%20I=
+Phone%2FiPad%20App%20Piracy">Reply to Meetup</a></p>
+</td>
+</tr>
+<tr>
+<td style=3D"border-bottom: 1px solid #bbb; font-size: 12px;">&nbsp;</td>
+<td style=3D"border-bottom: 1px solid #bbb; padding: 10px 10px 10px 0; font=
+-size: 12px;">
+<p style=3D"margin: 0 0 .5em;">
+<br/>On Jul 30, 2010, at 11:54 AM, Phillip Jain wrote:
+<br/>> 1. Proposed home made DRM system
+<br/>> - encrypted cookies
+<br/>> - verifying purchase with a server when connection is available (lit=
+tle data or can do over WiFi to not hurt customers' cap) - similar to Win7/=
+Office annual subscriptions...
+<br/>> Does anyone know of any lightweight app DRM or would like to coopera=
+te on that?
+<br/>
+<br/>StoreKit.
+<br/>
+<br/>One possible scenario: Release your app for free, with minimal functio=
+nality.  Make very clear in all your marketing literature that this is a $1=
+.99 (or whatever) app with a free demo and, to get the actual app functiona=
+lity, they'll have to purchase it.  Then use IAP to sell the upgrade.  Veri=
+fy the IAP purchase at startup.
+<br/>
+<br/>
+<br/>> 2. Native Apps internal DRM? It seems from the  IPhone/iPad App Pira=
+cy thread that even native apps lose out in sales.=20
+<br/>> From the discussion, native apps can include a DRM in it to tighten =
+up stuff.
+<br/>
+<br/>NOTE: if your app contains encryption, there's a HUGE number of hoops =
+to sell it in the app store.  The paperwork cost alone is huge.  Investigat=
+e this before diving in.
+<br/>
+<br/>
+<br/>> 3. Security for Web Mobile Apps. Apple really doesn't care about web=
+ apps - but I don't think all web apps should be "free". If a DRM could be =
+integrated into these next-generation HTML5 apps ... there could be scope f=
+or a paid model for portable Web apps.  Especially corporations for in-hous=
+e (intranet web?) apps would like some kind of security.
+<br/>
+<br/>Charge for a web-based account.  No account =3D no access.
+<br/>
+<br/>
+<br/>> What do you guys think?
+<br/>
+<br/>In very general terms, I think that every dollar and every hour of man=
+power spend on anti-piracy efforts is a dollar and an hour not spent making=
+ your app kick-ass.
+<br/>
+<br/>Of course, that has to be tempered with things like "grab the low-hang=
+ing fruit" and if you're really losing 99 of every 100 sales.
+<br/>
+<br/>But if someone just came running into your office with a blog article =
+about how software piracy costs the industry billions of dollars every year=
+, thank them and tell them you'll take it under advisement.
+<br/>
+<br/>"...Now get back to work; we're not paying you to read blogs!"   ;)
+<br/>
+<br/>=09---
+<br/>
+<br/>NOTE: part of the problem is that all of the schemes you proposed are =
+very easy to hack around.  You get as long as you want to make your "lock",=
+ then an army of teenaged boys gets the rest of your life to break it.  Who=
+ do you suppose wins that battle?
+<br/>
+<br/></p>
+</td>
+</tr>
+<tr>
+<td style=3D"background: #FCFAEB; padding: 10px; font-size: 12px; vertical-=
+align: top; width: 1px;">
+<a name=3D"meetup_7"></a>
+<span style=3D"font-size: 1.2em;">7.</span>
+</td>
+<td style=3D"background: #FCFAEB; padding: 10px 10px 10px 0; font-size: 12p=
+x;">
+<p style=3D"margin: 0 0 .5em; font-size: 1.2em;"><strong>Subject:</strong> =
+Apptera is looking for iPhone/Android app developers!</p>
+<p style=3D"margin: 0 0 .5em;"><strong>From:</strong> Don Steul</p>
+<p style=3D"margin: 0 0 .5em;"><strong>Date:</strong> July 30, 2010 5:52 PM=
+</p>
+<p style=3D"margin: 0 0 .5em; font-size: .9em;"><a href=3D"mailto:dsteul@ap=
+ptera.com?subject=3DRe%3A%20Apptera%20is%20looking%20for%20iPhone%2FAndroid=
+%20app%20developers%21">Reply to sender</a> &nbsp; <a href=3D"mailto:softwa=
+redev-92@meetup.com?subject=3DRe%3A%20Apptera%20is%20looking%20for%20iPhone=
+%2FAndroid%20app%20developers%21">Reply to Meetup</a></p>
+</td>
+</tr>
+<tr>
+<td style=3D"border-bottom: 1px solid #bbb; font-size: 12px;">&nbsp;</td>
+<td style=3D"border-bottom: 1px solid #bbb; padding: 10px 10px 10px 0; font=
+-size: 12px;">
+<p style=3D"margin: 0 0 .5em;">
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>Hi All,
+<br/>
+<br/>&nbsp;
+<br/>
+<br/>If you or anyone you know are
+<br/>interested in joining a hot, up-and-coming mobile ad network, please c=
+ontact Tim
+<br/>Kennedy (tkennedy@apptera.com).&nbsp;
+<br/>We are actively seeking candidates for a number of positions, includin=
+g iPhone/Android
+<br/>app developers who can help us create entertaining, interactive, and h=
+ighly
+<br/>effective voice &amp; visual ad units.&nbsp; We have a growing stable =
+of
+<br/>big-name publishers, including Fandango, AOL Moviefone, Movietickets.c=
+om,
+<br/>iCall, and Mozes, and advertisers like ABC, Universal Pictures, Focus =
+Features,
+<br/>US Navy, Verizon, and many more.&nbsp; We&#8217;ve got an experienced =
+management
+<br/>team from eBay, ESPN, Yahoo, iPass, and Genesys, great investors &#821=
+1; Alloy,
+<br/>Lightspeed, Walden, and New World &#8211; and, above all, a foosball t=
+able!&nbsp;
+<br/>Come join us.
+<br/>
+<br/>&nbsp;
+<br/>
+<br/>Looking forward to hearing
+<br/>from you.
+<br/>
+<br/>
+<br/>Don Steul
+<br/>
+<br/>VP of Products &amp;
+<br/>Operations
+<br/>
+<br/>Apptera, Inc.
+<br/>
+<br/>505 N. Mathilda Ave., Suite 110
+<br/>
+<br/>Sunnyvale, CA 94085
+<br/>
+<br/>M:415.786.6474
+<br/>
+<br/>O:408.646.4102
+<br/>
+<br/>&nbsp;
+<br/>
+<br/>Position Overview:
+<br/>
+<br/>The Mobile SDK Software
+<br/>Developer position is critical to executing and evolving Apptera&#8217=
+;s mobile
+<br/>ad network strategy.&nbsp; This position is responsible for designing,
+<br/>developing, and testing Apptera&#8217;s portfolio of multi-modal ad wi=
+dgets
+<br/>designed for smart phone and IVR applications.&nbsp; Such ad units and
+<br/>capabilities include voice ads with clickable images, multi-step mixed=
+-media
+<br/>interactive ads, application download call-to-actions, and many more.&=
+nbsp;&nbsp;
+<br/>The position requires a strong background in smart phone application
+<br/>development (for iPhone and/or Android), advanced user interface
+<br/>implementation, and SDK packaging.
+<br/>
+<br/>&nbsp;
+<br/>
+<br/>Key Responsibilities
+<br/>
+<br/>&#8226;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp; Interact
+<br/>with sales, ad operations, product management, and engineering to unde=
+rstand
+<br/>product requirements and to deliver creative designs that address them
+<br/>
+<br/>&#8226;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp; Lead
+<br/>the design, development and testing of Apptera&#8217;s mobile monetiza=
+tion SDK
+<br/>
+<br/>&#8226;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp; Build
+<br/>sample applications that illustrate the use of Apptera&#8217;s SDK
+<br/>
+<br/>&#8226;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp; Work
+<br/>with technical writers to produce SDK documentation
+<br/>
+<br/>&nbsp;
+<br/>
+<br/>Qualifications
+<br/>
+<br/>&#8226;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp; Published
+<br/>smart phone applications using the iPhone SDK, Cocoa Touch, Objective-=
+C, and or
+<br/>Android SDK/framework
+<br/>
+<br/>&#8226;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp; Software
+<br/>development experience using Java, J2EE, and Web Services
+<br/>
+<br/>&#8226;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp; Strong
+<br/>object oriented design and programming skills
+<br/>
+<br/>&#8226;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp; Interest
+<br/>and/or experience with video, audio, and graphics programming
+<br/>
+<br/>&#8226;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp; Ability
+<br/>to optimize code for size and performance
+<br/>
+<br/>&#8226;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp; Knowledge
+<br/>of object/relational persistence/IOC framework such as Hibernate/Sprin=
+g
+<br/>
+<br/>&#8226;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp; Good
+<br/>communication skills and proven ability to interact effectively with o=
+ther team
+<br/>members
+<br/>
+<br/>&#8226;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp; BS
+<br/>or MS in computer science
+<br/>
+<br/>&nbsp;
+<br/>
+<br/>Desired Experience
+<br/>
+<br/>&#8226;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp; Minimum
+<br/>of 5+ years of experience in software development; 2+ years in mobile
+<br/>applications
+<br/>
+<br/>&#8226;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp; Experience
+<br/>in developing web applications using Tomcat, WebSphere or similar web/=
+app
+<br/>servers
+<br/>
+<br/>&#8226;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp; Telephony
+<br/>(VXML) and mobile app dev experience is a plus
+<br/>
+<br/>&nbsp;
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/></p>
+</td>
+</tr>
+<tr>
+<td style=3D"background: #FCFAEB; padding: 10px; font-size: 12px; vertical-=
+align: top; width: 1px;">
+<a name=3D"meetup_8"></a>
+<span style=3D"font-size: 1.2em;">8.</span>
+</td>
+<td style=3D"background: #FCFAEB; padding: 10px 10px 10px 0; font-size: 12p=
+x;">
+<p style=3D"margin: 0 0 .5em; font-size: 1.2em;"><strong>Subject:</strong> =
+Re: [softwaredev-92] Need help for Devanagari font on iPhone</p>
+<p style=3D"margin: 0 0 .5em;"><strong>From:</strong> Kiran Vaka</p>
+<p style=3D"margin: 0 0 .5em;"><strong>Date:</strong> July 30, 2010 9:50 PM=
+</p>
+<p style=3D"margin: 0 0 .5em; font-size: .9em;"><a href=3D"mailto:kiran.vak=
+a@gmail.com?subject=3DRe%3A%20Re%3A%20%5Bsoftwaredev-92%5D%20Need%20help%20=
+for%20Devanagari%20font%20on%20iPhone">Reply to sender</a> &nbsp; <a href=
+=3D"mailto:softwaredev-92@meetup.com?subject=3DRe%3A%20Re%3A%20%5Bsoftwared=
+ev-92%5D%20Need%20help%20for%20Devanagari%20font%20on%20iPhone">Reply to Me=
+etup</a></p>
+</td>
+</tr>
+<tr>
+<td style=3D"border-bottom: 1px solid #bbb; font-size: 12px;">&nbsp;</td>
+<td style=3D"border-bottom: 1px solid #bbb; padding: 10px 10px 10px 0; font=
+-size: 12px;">
+<p style=3D"margin: 0 0 .5em;">Hi,
+<br/>Would like to mention that the issue has finally been resolved by Appl=
+e in iOS. It&#39;s been a long wait.Attached is a screenshot in one of the =
+languages rendered perfectly on the latest iPod Touch.=A0
+<br/>
+<br/>
+<br/>Regards,Kiran
+<br/>
+<br/>On Tue, Dec 8, 2009 at 1:08 AM, Kiran Vaka &lt;kiran.vaka@gmail.com&gt=
+; wrote:
+<br/>The problem is with the diacritics (signs added below or above standar=
+d characters). The support is not there at the OS level, not just for Hindi=
+, but for any of the Indic scripts.=A0
+<br/>
+<br/>Attached are wikipedia screenshots for Hindi and Telugu (two of the la=
+rgest spoken languages from that region),=A0comparing rendering results on =
+Mac (Snow Leopard) and iPhone Safari. You can observe very easily (especial=
+ly in Telugu), how the diacritics are not rendered properly for iPhone.
+<br/>
+<br/>
+<br/>
+<br/>There does exist another app for Hindi News, and this is the suggestio=
+n they give (!) :
+<br/>NOTE: Due to limitations of the iPhone, Devanagari script doesn&#39;t =
+show properly and you may have issues reading certain words. But with pract=
+ice you get used to it and it and reading becomes better.=A0
+<br/>
+<br/>
+<br/>(!?!)
+<br/>http://www.appstorehq.com/hindinews--iphone-29598/app
+<br/>
+<br/>
+<br/>
+<br/>This rendering issue has been discussed repeatedly in forums like Goog=
+le India Labs, Telugublog etc. for more than an year nowhttp://bit.ly/6eNbK=
+E
+<br/>
+<br/>
+<br/>http://bit.ly/4DfkIHI am sure many people have contacted Apple Support=
+, but that does not seem to be going anywhere.
+<br/>If there are Apple engineers in the forum, or anyone who can point me =
+to the correct people within the organization, I would like to bring this i=
+ssue directly to their notice so that subsequent firmware updates can carry=
+ a fix. I would be more than happy to stop by Cupertino and explain them th=
+e issue and why it is so important to get this resolved soon.
+<br/>
+<br/>
+<br/>I am sure Apple would certainly be interested in improving it&#39;s po=
+sition within these statistics http://bit.ly/7yiP4J
+<br/>Regards,
+<br/>
+<br/>Kiran
+<br/>
+<br/>On Mon, Dec 7, 2009 at 11:10 PM, J.J. Enser &lt;jje@mac.com&gt; wrote:
+<br/>
+<br/>
+<br/>
+<br/>I guess I don&#39;t know enough of the Hindi script to notice the diff=
+erences, but I believe you.Is the problem with letters themselves, or ligat=
+ures (links between characters) or diacritics (signs added below or above s=
+tandard characters)?
+<br/>
+<br/>
+<br/>
+<br/>Can you give an example? (a screen shot highlighting a good rendering =
+as seen on the Mac vs. a bad rendering as seen on the iPhone would make it =
+more clear.
+<br/>But the bottom line is that if Safari doesn&#39;t display Hindi text p=
+roperly, the support is probably not there - or is only partially there - a=
+t the OS level, so you may have to wait until Apple adds support for Hindi =
+before your app can actually use it. Did you ask Apple Dev Tech Support?
+<br/>
+<br/>
+<br/>
+<br/>-- jj.
+<br/>On Dec 7, 2009, at 10:54 PM, Anand Tati wrote:
+<br/>JJ,
+<br/>Thanks for your comments.
+<br/>I checked both the sites that you mentioned.As you said, Mac safari di=
+splays the font correctly, but iPhone does not display it correctly.All of =
+the connected letters are not displayed correctly. (Atleast on my iPhone).
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>Please check the title of the webpage on Mac and iPhone.
+<br/>-Anand
+<br/>On Mon, Dec 7, 2009 at 22:39, J.J. Enser &lt;jje@mac.com&gt; wrote:
+<br/>Neither the UI language setting not the Regional Format setting will a=
+ffect the correct display of Hindi text - or any other script, for that mat=
+ter.
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>I haven&#39;t tried to see if that works, but you might be able to emb=
+ed fonts within your app, and make use of them this way. With the current &=
+quot;sandbox&quot; architecture, additional fonts cannot be installed direc=
+tly in the OS.
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>There seems to be some support for Hindi text by default though. Web s=
+ites like www.bbc.co.uk/hindi or hindi.webdunia.com seem to render as well =
+on the iPhone version as they do on the Mac version of Safari. Are they bot=
+h wrong?
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>Anand, what problem exactly are you seeing?
+<br/>-- jj.
+<br/>On Dec 6, 2009, at 3:16 PM, Jimmy Giliberti wrote:
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>Do you have your iPhone set for that language in settings? (You
+<br/>can set both language and location separately in settings ? one affect=
+s
+<br/>language, the other the time/date/currency for the country)
+<br/>JimmyG=A0
+<br/>
+<br/>
+<br/>
+<br/>From: softwaredev-92@meetup.com
+<br/>[mailto:softwaredev-92@meetup.com] On Behalf Of Anand Tati
+<br/>Sent: Sunday, December 06, 2009 3:14 PM
+<br/>To: softwaredev-92@meetup.com
+<br/>Subject: [softwaredev-92] Need help for Devanagari font on iPhone
+<br/>
+<br/>
+<br/>
+<br/>=A0
+<br/>
+<br/>
+<br/>Hi,
+<br/>
+<br/>=A0
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>I am trying to display Hindi (Indian
+<br/>language) words/statements on iPhone.The words are not displaying corr=
+ectly.
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>Here is the link that matches with
+<br/>my problem.http://ifiddling.blogspot.com/2009/01/hindi-is-broken-on-ip=
+hone-as-of-22.html
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>=A0This following application has done
+<br/>good job displaying correct characters.I am not sure how they did it.
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>http://impigertech.com/blog/iphone-apps/hanuman-chalisa-sing-along-iph=
+one-application-development/
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>=A0
+<br/>
+<br/>
+<br/>I searched on for help online. But all I see
+<br/>is nobody could display correctly.Is there any font that I need to ins=
+tall on
+<br/>iPhone or any workaround for this problem?=A0
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>Could you please help me in this?=A0
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>It seems iphone does not render the words correctly=A0Or
+<br/>I may be missing something there.Do I need to install any font on iPho=
+ne to
+<br/>display the characters correctly.=A0
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>Please guide me.
+<br/>
+<br/>=A0
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>Thanks in advance.
+<br/>
+<br/>
+<br/>
+<br/>-Anand
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>--
+<br/>Please Note: If you hit &quot;REPLY&quot;, your message will
+<br/>be sent to everyone on this mailing list (softwaredev-92@meetup.com)
+<br/>This message was sent by Anand Tati (anandtati@gmail.com) from The Sil=
+icon Valley iPhone Developers&#39;
+<br/>Meetup.
+<br/>To learn more about Anand Tati, visit his/her member profile
+<br/>To unsubscribe or to update your mailing list settings, click here
+<br/>
+<br/>Meetup Inc. PO Box 4668 #37895 New
+<br/>York, New York 10163-4668 | support@meetup.com=20
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>--
+<br/>Please Note: If you hit &quot;REPLY&quot;, your message will be sent t=
+o everyone on this mailing list (softwaredev-92@meetup.com)
+<br/>This message was sent by Jimmy Giliberti (jimmyg@msn.com) from The Sil=
+icon Valley iPhone Developers&#39; Meetup.
+<br/>To learn more about Jimmy Giliberti, visit his/her member profile
+<br/>To unsubscribe or to update your mailing list settings, click here
+<br/>
+<br/>
+<br/>=09=09Meetup Inc. PO Box 4668 #37895 New York, New York 10163-4668 | s=
+upport@meetup.com
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>--
+<br/>Please Note: If you hit &quot;REPLY&quot;, your message will be sent t=
+o everyone on this mailing list (softwaredev-92@meetup.com)
+<br/>
+<br/>This message was sent by J.J. Enser (jje@mac.com) from The Silicon Val=
+ley iPhone Developers&#39; Meetup.
+<br/>To learn more about J.J. Enser, visit his/her member profile
+<br/>To unsubscribe or to update your mailing list settings, click here
+<br/>
+<br/>
+<br/>=09=09Meetup Inc. PO Box 4668 #37895 New York, New York 10163-4668 | s=
+upport@meetup.com
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/></p>
+<p style=3D"font-style: italic; color: #666; margin: 0 0 .5em;">This email =
+message originally included an attachment.</p>
+</td>
+</tr>
+</table>
+<div style=3D"background: #eee; padding: 10px; font-size: .85em; color: #66=
+6;">
+<p style=3D"margin: 0 0 .5em;">You are receiving this message because you h=
+ave selected to receive a daily digest for your The Silicon Valley iPhone a=
+nd iPad Developers' Meetup mailing list. You can visit your Meetup Group he=
+re:
+<a href=3D"http://www.meetup.com/sviphone/">http://www.meetup.com/sviphone/=
+</a></p
+<p style=3D"margin: 0 0 .5em;">To update your email settings, or unsubscrib=
+e, visit your account page: <a href=3D"http://www.meetup.com/account/comm/"=
+>http://www.meetup.com/account/comm/</a></p>
+</div>
+</body>
+</html>
