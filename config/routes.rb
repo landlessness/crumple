@@ -2,7 +2,12 @@ Crumple::Application.routes.draw do |map|
 
   devise_for :people, :path_names => { :sign_in => 'login', :sign_out => 'logout' }
 
-  resources :people
+  # to give a pretty name to the downloaded file
+  match '/people/:person_id/drop_boxes/:id/crumple.:format' => 'drop_boxes#show', :via => :get
+
+  resources :people do
+    resources :drop_boxes
+  end
   
   # must come before the resources :thoughts line
   match '/thoughts.xml' => 'thoughts#create_from_sendgrid', :constraints => { :user_agent => /SendGrid/ }, :via => :post

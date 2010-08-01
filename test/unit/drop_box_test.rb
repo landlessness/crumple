@@ -6,13 +6,12 @@ class DropBoxTest < ActiveSupport::TestCase
   end
   
   test "a drop_box with a person and a valid name is valid" do
-    assert @person.create_drop_box(:name => 'fred'), 'drop_box should create smoothly'
+    assert @person.drop_boxes.create!(:name => 'fred'), 'drop_box should create smoothly'
   end
     
   test "all drop boxes must have a valid name" do
     e = assert_raise(ActiveRecord::RecordInvalid) {  
-      d = @person.create_drop_box :name => "\"fr+e$d"
-      d.save!
+      d = @person.drop_boxes.create! :name => "\"fr+e$d"
     }
     assert_match /Validation failed: Name is invalid/, e.message
   end

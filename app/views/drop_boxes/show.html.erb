@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<p>Name: <%= @drop_box.name %></p>
+<p>Secret: <%= @drop_box.secret %></p>
+<p>Email: <%= mail_to @drop_box.email, @drop_box.email %></p>
 
-<%= link_to 'Edit', edit_drop_box_path(@drop_box) %> |
-<%= link_to 'Back', drop_boxes_path %>
+<p><%= link_to 'Download vCard', person_drop_box_vcf_path(current_person, @drop_box) %></p>
+
+<%= link_to 'Edit', edit_person_drop_box_path(current_person, @drop_box) %> |
+<%= link_to 'Back', person_drop_boxes_path(current_person) %>

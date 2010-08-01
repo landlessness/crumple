@@ -13,11 +13,12 @@ class DropBoxesController < ApplicationController
   # GET /drop_boxes/1
   # GET /drop_boxes/1.xml
   def show
-    @drop_box = DropBox.find(params[:id])
+    @drop_box = current_person.drop_boxes.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @drop_box }
+      format.xml { render :xml => @drop_box }
+      format.vcf { render :vcf => @drop_box }
     end
   end
 

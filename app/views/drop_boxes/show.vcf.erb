@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+N:;A notebook for creative thinkers;;;
+FN:Crumple
+ORG:Crumple;
+item1.EMAIL;type=INTERNET;type=pref:<%= @drop_box.email %>
+item1.X-ABLabel:drop box email
+item2.URL;type=pref:http\://crumpleit.com<%= person_drop_box_path(@drop_box.person, @drop_box) %>
+item2.X-ABLabel:drop box web
+X-ABShowAs:COMPANY
+X-ABUID:5AB71A91-428E-49A8-BD9A-35B7E3C88831\:ABPerson
+END:VCARD

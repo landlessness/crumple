@@ -7,7 +7,7 @@ class Person < ActiveRecord::Base
   has_many :thoughts
   has_many :memberships, :dependent => :destroy
   has_many :projects, :through => :memberships
-  has_one :drop_box, :dependent => :destroy
+  has_many :drop_boxes, :dependent => :destroy
   
   after_create do
     self.create_drop_box :name => self.email.split('@').first, :secret => rand(9999)
@@ -20,4 +20,8 @@ class Person < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation
+  
+  def drop_box
+    self.drop_boxes.first
+  end
 end
