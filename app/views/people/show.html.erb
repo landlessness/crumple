@@ -1,6 +1,5 @@
 <p id="notice"><%= notice %></p>
 <p><%= current_person.email %></p>
-<p><%= current_person.drop_box.email %></p>
 <p><%= link_to 'Drop Box', person_drop_box_path(current_person, current_person.drop_box) %></p>
 
 <%= link_to 'Edit', edit_person_path(current_person) %> |
