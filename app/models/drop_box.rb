@@ -9,6 +9,7 @@ class DropBox < ActiveRecord::Base
   belongs_to :person
   
   def self.name_and_secret_from_email(email)
+    email = /[^A-Z]*(([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,}))[^A-z]*/i.match(email)[1]
     email.split('@').first.split('+').map {|t| t.strip.gsub(/[^A-Z0-9]+/i, '')}
   end
   
