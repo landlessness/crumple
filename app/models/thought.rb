@@ -1,6 +1,6 @@
 class Thought < ActiveRecord::Base  
-  validates_presence_of :body
-  validates_presence_of :person
+  validates :body, :presence => true
+  validates :person, :presence => true
 
   belongs_to :person
   belongs_to :project

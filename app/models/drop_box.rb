@@ -1,9 +1,15 @@
 class DropBox < ActiveRecord::Base
+  validates :name, :presence => true, 
+                   :length => {:minimum => 2, :maximum => 254},
+                   :uniqueness => true,
+                   :format => {:with => /^([A-Z0-9]+)$/i}
+                   
+  validates :person, :presence => true
 
   belongs_to :person
   
   def self.name_and_secret_from_email(email)
-    email.split('@').first.split('+')
+    email.split('@').first.split('+').map {|t| t.strip.gsub(/[^A-Z0-9]+/i, '')}
   end
   
   def self.new_thought(send_grid_mail)
