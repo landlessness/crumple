@@ -2,26 +2,25 @@ Crumple::Application.routes.draw do |map|
 
   devise_for :people, :path_names => { :sign_in => 'login', :sign_out => 'logout' }
 
-  # to give a pretty name to the downloaded file
+  # to give a pretty name to the downloaded vCard file
   match '/people/:person_id/drop_boxes/:id/crumple.:format' => 'drop_boxes#show', :via => :get
-
-  resources :people do
-    resources :drop_boxes
-  end
   
   # must come before the resources :thoughts line
   match '/thoughts.xml' => 'thoughts#create_from_sendgrid', :constraints => { :user_agent => /SendGrid/ }, :via => :post
-  
-  resources :thoughts do
-    member do
-      get :archive
-      get :activate
-      get :accept
+
+  resources :people do
+    resources :drop_boxes
+    resources :thoughts do
+      member do
+        put :archive
+        put :activate
+        put :accept
+      end
+      collection  do
+        get :archived
+      end
+      resources :comments
     end
-    collection  do
-      get :archived
-    end
-    resources :comments
   end
   
   resources :projects do

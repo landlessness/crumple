@@ -10,19 +10,19 @@
   <% if project %>
   <%= link_to 'New thought about ' + project.name, new_project_thought_path(project) %>
   <% else %>
-  <%= link_to 'New thought', new_thought_path %>
+  <%= link_to 'New thought', new_person_thought_path(current_person) %>
   <% end %>
   <% if @showing_archived_thoughts %>
   <% if project %>
   <%= link_to 'Active thoughts', project_path(project) %>
   <% else %>
-  <%= link_to 'Active thoughts', thoughts_path %>
+  <%= link_to 'Active thoughts', person_thoughts_path(current_person) %>
   <% end %>
   <% else %>
   <% if project %>
   <%= link_to 'Archived thoughts', project_path(project, :archived_thoughts => 1) %>
   <% else %>
-  <%= link_to 'Archived thoughts', thoughts_path(:archived_thoughts => 1) %>
+  <%= link_to 'Archived thoughts', person_thoughts_path(current_person, :archived_thoughts => 1) %>
   <% end %>
   <% end %>
   <% end %>
@@ -45,6 +45,6 @@
   <% if project %>
   <%= link_to 'New thought about ' + project.name, new_project_thought_path(project) %>
   <% else %>
-  <%= link_to 'New thought', new_thought_path %>
+  <%= link_to 'New thought', new_person_thought_path(current_person) %>
   <% end %>
 </p>

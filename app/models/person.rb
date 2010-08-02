@@ -10,7 +10,7 @@ class Person < ActiveRecord::Base
   has_many :drop_boxes, :dependent => :destroy
   
   after_create do
-    self.create_drop_box :name => self.email.split('@').first, :secret => rand(9999)
+    self.drop_boxes.create :name => self.email.split('@').first, :secret => rand(9999)
   end
 
   # Include default devise modules. Others available are:

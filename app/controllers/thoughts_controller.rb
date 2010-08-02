@@ -70,7 +70,7 @@ class ThoughtsController < ApplicationController
     @thought = current_person.thoughts.find(params[:id])
     respond_to do |format|
       if @thought.archive!
-        format.html { redirect_to(@thought, :notice => 'Thought was successfully archived.') }
+        format.html { redirect_to([current_person, @thoughts], :notice => 'Thought was successfully archived.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -83,7 +83,7 @@ class ThoughtsController < ApplicationController
     @thought = current_person.thoughts.find(params[:id])
     respond_to do |format|
       if @thought.accept!
-        format.html { redirect_to(@thought, :notice => 'Thought was accepted from the drop box.') }
+        format.html { redirect_to([current_person,@thought], :notice => 'Thought was accepted from the drop box.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -96,7 +96,7 @@ class ThoughtsController < ApplicationController
     @thought = current_person.thoughts.find(params[:id])
     respond_to do |format|
       if @thought.activate!
-        format.html { redirect_to(@thought, :notice => 'Thought was successfully activated.') }
+        format.html { redirect_to([current_person,@thought], :notice => 'Thought was successfully activated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -105,7 +105,7 @@ class ThoughtsController < ApplicationController
     end      
   end
 
-  def create_from_sendgrid    
+  def create_from_sendgrid
     @thought = DropBox.new_thought(params)
     respond_to do |format|
       
@@ -113,6 +113,7 @@ class ThoughtsController < ApplicationController
         # don't like this here, it should be in model
         # but, state_machine always saves upon transition
         @thought.put_in_drop_box
+        # TODO using .all is a workaround. beed to find our which format send grid expects.
         format.all  do
           render :text => 'OK', :status => :ok 
          end
@@ -128,7 +129,7 @@ class ThoughtsController < ApplicationController
     @thought = current_person.thoughts.new(params[:thought])
     respond_to do |format|
       if @thought.save
-        format.html { redirect_to(@thought, :notice => 'Thought was successfully created.') }
+        format.html { redirect_to([current_person,@thought], :notice => 'Thought was successfully created.') }
         format.xml  { render :xml => @thought, :status => :created, :location => @thought }
       else
         format.html { render :action => "new" }
@@ -144,7 +145,7 @@ class ThoughtsController < ApplicationController
 
     respond_to do |format|
       if @thought.update_attributes(params[:thought])
-        format.html { redirect_to(@thought, :notice => 'Thought was successfully updated.') }
+        format.html { redirect_to([current_person,@thought], :notice => 'Thought was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -160,7 +161,7 @@ class ThoughtsController < ApplicationController
     @thought.destroy
 
     respond_to do |format|
-      format.html { redirect_to(thoughts_url) }
+      format.html { redirect_to(person_thoughts_url(current_person)) }
       format.xml  { head :ok }
     end
   end
