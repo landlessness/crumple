@@ -21,15 +21,15 @@ class ProjectsController < ApplicationController
 
     if params[:archived_thoughts]
       @showing_archived_thoughts = true
-      @project_thoughts = @project.thoughts.with_state(:archived)
+      @thoughts = @project.thoughts.with_state(:archived)
     else
       @showing_archived_thoughts = false
-      @project_thoughts = @project.thoughts.with_state(:active)
+      @thoughts = @project.thoughts.with_state(:active)
     end
     @tags = params[:tags].split('+') if params[:tags]
-    @project_thoughts = @project_thoughts.tagged_with(@tags) if @tags
-    @tags_for_cloud = @project_thoughts.tag_counts_on(:tags)
-    @project_thoughts = @project_thoughts.paginate :per_page => 25, :page => params[:page], :order => 'updated_at DESC' 
+    @thoughts = @thoughts.tagged_with(@tags) if @tags
+    @tags_for_cloud = @thoughts.tag_counts_on(:tags)
+    @thoughts = @thoughts.paginate :per_page => 25, :page => params[:page], :order => 'updated_at DESC' 
     
     respond_to do |format|
       format.html # show.html.erb

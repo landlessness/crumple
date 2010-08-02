@@ -20,7 +20,6 @@ Crumple::Application.routes.draw do |map|
     end
     collection  do
       get :archived
-      get :drop_box
     end
     resources :comments
   end

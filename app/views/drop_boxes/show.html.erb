@@ -8,3 +8,5 @@
 
 <%= link_to 'Edit', edit_person_drop_box_path(current_person, @drop_box) %> |
 <%= link_to 'Back', person_drop_boxes_path(current_person) %>
+
+<%= render :partial => "thoughts/thoughts", :locals => { :cloud => nil, :thoughts => @thoughts, :project => nil } %>

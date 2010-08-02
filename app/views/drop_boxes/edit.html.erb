@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @drop_box %> |
-<%= link_to 'Back', drop_boxes_path %>
+<%= link_to 'Show', [current_person, @drop_box] %> |
+<%= link_to 'Back', person_drop_boxes_path(current_person) %>

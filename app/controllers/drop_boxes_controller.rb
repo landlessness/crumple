@@ -2,7 +2,7 @@ class DropBoxesController < ApplicationController
   # GET /drop_boxes
   # GET /drop_boxes.xml
   def index
-    @drop_boxes = DropBox.all
+    @drop_boxes = current_person.drop_boxes.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,6 +14,7 @@ class DropBoxesController < ApplicationController
   # GET /drop_boxes/1.xml
   def show
     @drop_box = current_person.drop_boxes.find(params[:id])
+    @thoughts = current_person.thoughts.with_state(:drop_box).paginate(:per_page => 25, :page => params[:page], :order => 'updated_at DESC')
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,7 +26,7 @@ class DropBoxesController < ApplicationController
   # GET /drop_boxes/new
   # GET /drop_boxes/new.xml
   def new
-    @drop_box = DropBox.new
+    @drop_box = current_person.drop_boxes.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,17 +36,17 @@ class DropBoxesController < ApplicationController
 
   # GET /drop_boxes/1/edit
   def edit
-    @drop_box = DropBox.find(params[:id])
+    @drop_box = current_person.drop_boxes.find(params[:id])
   end
 
   # POST /drop_boxes
   # POST /drop_boxes.xml
   def create
-    @drop_box = DropBox.new(params[:drop_box])
+    @drop_box = current_person.drop_boxes.new(params[:drop_box])
 
     respond_to do |format|
       if @drop_box.save
-        format.html { redirect_to(@drop_box, :notice => 'Drop box was successfully created.') }
+        format.html { redirect_to([current_person, @drop_box], :notice => 'Drop box was successfully created.') }
         format.xml  { render :xml => @drop_box, :status => :created, :location => @drop_box }
       else
         format.html { render :action => "new" }
@@ -57,11 +58,11 @@ class DropBoxesController < ApplicationController
   # PUT /drop_boxes/1
   # PUT /drop_boxes/1.xml
   def update
-    @drop_box = DropBox.find(params[:id])
+    @drop_box = current_person.drop_boxes.find(params[:id])
 
     respond_to do |format|
       if @drop_box.update_attributes(params[:drop_box])
-        format.html { redirect_to(@drop_box, :notice => 'Drop box was successfully updated.') }
+        format.html { redirect_to([current_person, @drop_box], :notice => 'Drop box was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -73,11 +74,11 @@ class DropBoxesController < ApplicationController
   # DELETE /drop_boxes/1
   # DELETE /drop_boxes/1.xml
   def destroy
-    @drop_box = DropBox.find(params[:id])
+    @drop_box = current_person.drop_boxes.find(params[:id])
     @drop_box.destroy
 
     respond_to do |format|
-      format.html { redirect_to(drop_boxes_url) }
+      format.html { redirect_to(person_drop_boxes_url) }
       format.xml  { head :ok }
     end
   end

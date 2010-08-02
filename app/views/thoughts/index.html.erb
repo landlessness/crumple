@@ -6,34 +6,4 @@
   <%= link_to 'x', thoughts_path %>
   <% end %>
 </h1>
-<p>
-  <b>Tag cloud:</b><br/>
-  <%= crumple_tag_cloud @tags_for_cloud, @project %>
-</p>
-<p>
-  <b>Thoughts:</b><br/>
-  <%= link_to 'New Thought', new_thought_path %>
-  <%= link_to 'Archived Thoughts', archived_thoughts_path %>
-  <%= will_paginate @thoughts %>
-
-  <table>
-    <tr>
-      <th>Thought</th>
-      <th>Tags</th>
-      <th>Creator</th>
-      <th>Project</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-
-    <%= render @thoughts %>
-
-  </table>
-
-  <br />
-
-  <%= will_paginate @thoughts %>
-
-  <%= link_to 'New Thought', new_thought_path %>
-</p>
+<%= render :partial => "thoughts", :locals => { :cloud => @tags_for_cloud, :thoughts => @thoughts, :project => nil } %>

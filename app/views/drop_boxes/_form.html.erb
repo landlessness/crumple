@@ -1,4 +1,4 @@
-<%= form_for(@drop_box) do |f| %>
+<%= form_for([current_person, @drop_box]) do |f| %>
   <% if @drop_box.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@drop_box.errors.count, "error") %> prohibited this drop_box from being saved:</h2>
@@ -11,6 +11,14 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :secret %><br />
+    <%= f.text_field :secret %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
