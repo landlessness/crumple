@@ -2,7 +2,7 @@ require 'test_helper'
 
 class DropBoxesControllerTest < ActionController::TestCase
   setup do
-    @drop_box = drop_boxes(:one)
+    @drop_box = drop_boxes(:brians_drop_box)
   end
 
   test "should get index" do

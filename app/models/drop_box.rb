@@ -39,7 +39,7 @@ class DropBox < ActiveRecord::Base
   end
 
   def email
-    self.name + '+' + self.secret + '@crumpleit.com'
+    self.name + '+' + self.secret + '@' + Rails.application.config.top_level_domain
   end
 
 end

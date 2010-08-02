@@ -19,4 +19,5 @@ Crumple::Application.configure do
   
   # for devise authentication
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.top_level_domain = 'localhost:3000'
 end
