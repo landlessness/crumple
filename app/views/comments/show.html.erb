@@ -11,5 +11,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', comments_path %>
+<%= link_to 'Edit', edit_person_thought_comment_path(current_person, @thought, @comment) %> |
+<%= link_to 'Back', person_thought_comments_path(current_person, @thought) %>

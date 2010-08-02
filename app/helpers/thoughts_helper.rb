@@ -24,6 +24,6 @@ module ThoughtsHelper
   end
   private 
   def link_path(tag, project)
-    project ? project_path(project, :tags => tag.name ) : thoughts_path(:tags => tag.name)
+    project ? project_path(project, :tags => tag.name ) : person_thoughts_path(current_person, :tags => tag.name)
   end
 end
