@@ -30,15 +30,6 @@ class ThoughtsController < ApplicationController
     end
   end
 
-  def drop_box
-    @thoughts = current_person.thoughts.with_state(:drop_box).paginate(:per_page => 25, :page => params[:page], :order => 'updated_at DESC')
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @thoughts }
-    end
-  end
-
   # GET /thoughts/1
   # GET /thoughts/1.xml
   def show
