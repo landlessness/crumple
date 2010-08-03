@@ -21,6 +21,7 @@ class ThoughtsController < ApplicationController
 
   def archived
     @thoughts = current_person.thoughts.with_state(:archived).paginate(:per_page => 25, :page => params[:page], :order => 'updated_at DESC')
+    @showing_archived_thoughts = true
 
     respond_to do |format|
       format.html # index.html.erb

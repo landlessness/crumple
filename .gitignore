@@ -4,3 +4,4 @@ log/*.log
 tmp/**/*
 doc
 stark-dusk-49.tar.gz
+Gemfile.lock

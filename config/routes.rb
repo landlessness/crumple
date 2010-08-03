@@ -26,7 +26,7 @@ Crumple::Application.routes.draw do |map|
   resources :projects do
     resources :people
     resources :thoughts do
-      collection do
+      collection  do
         get :archived
       end
     end

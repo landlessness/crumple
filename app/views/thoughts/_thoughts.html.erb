@@ -6,20 +6,20 @@
 <% end %>
 <p>
   <b>Thoughts:</b><br/>
-  <% unless thoughts.all?(&:drop_box?) %>
-  <% if @showing_archived_thoughts %>
-  <% if project %>
-  <%= link_to 'Active thoughts', project_path(project) %>
-  <% else %>
-  <%= link_to 'Active thoughts', person_thoughts_path(current_person) %>
-  <% end %>
-  <% else %>
-  <% if project %>
-  <%= link_to 'Archived thoughts', project_path(project, :archived_thoughts => 1) %>
-  <% else %>
-  <%= link_to 'Archived thoughts', person_thoughts_path(current_person, :archived_thoughts => 1) %>
-  <% end %>
-  <% end %>
+  <% unless @drop_box %>
+    <% if @showing_archived_thoughts %>
+      <% if project %>
+      <%= link_to 'Active project thoughts', project_path(project) %>
+      <% else %>
+      <%= link_to 'Active thoughts', person_thoughts_path(current_person) %>
+      <% end %>
+    <% else %>
+      <% if project %>
+        <%= link_to 'Archived project thoughts', archived_project_thoughts_path(project) %>
+      <% else %>
+        <%= link_to 'Archived thoughts', archived_person_thoughts_path(current_person) %>
+      <% end %>
+    <% end %>
   <% end %>
 
   <%= will_paginate thoughts %>
