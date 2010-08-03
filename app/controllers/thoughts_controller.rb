@@ -70,7 +70,7 @@ class ThoughtsController < ApplicationController
     @thought = current_person.thoughts.find(params[:id])
     respond_to do |format|
       if @thought.archive!
-        format.html { redirect_to([current_person, @thoughts], :notice => 'Thought was successfully archived.') }
+        format.html { redirect_to([current_person, @thought], :notice => 'Thought was successfully archived.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

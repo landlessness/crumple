@@ -67,7 +67,7 @@ GEM
       rake (>= 0.8.3)
       thor (~> 0.13.6)
     rake (0.8.7)
-    state_machine (0.9.4)
+    state_machine (0.9.3)
     thor (0.13.8)
     treetop (1.4.8)
       polyglot (>= 0.3.1)
@@ -85,5 +85,5 @@ DEPENDENCIES
   hoptoad_notifier
   pg
   rails (= 3.0.0.beta4)
-  state_machine
+  state_machine (= 0.9.3)
   will_paginate (= 3.0.pre)

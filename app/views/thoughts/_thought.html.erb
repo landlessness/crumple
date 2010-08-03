@@ -18,9 +18,9 @@
   </td>
   <td>
   <% if thought.archived? %>
-  <%= link_to 'Activate', activate_person_thought_path(current_person, thought) %>
+  <%= link_to 'Activate', activate_person_thought_path(current_person, thought), :method => :put %>
   <% else %>
-  <%= link_to 'Archive', archive_person_thought_path(current_person, thought) %>
+  <%= link_to 'Archive', archive_person_thought_path(current_person, thought), :method => :put %>
   <% end %>
   </td>
   <td><%= link_to 'Destroy', [current_person, thought], :confirm => 'Are you sure?', :method => :delete %></td>

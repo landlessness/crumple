@@ -73,6 +73,11 @@ class ThoughtsControllerTest < ActionController::TestCase
     assert_redirected_to [@person, assigns(:thought)]
   end
 
+  test "should archive thought" do
+    put :archive, :id => @thought.to_param, :person_id => @person
+    assert_redirected_to [@person, assigns(:thought)]
+  end
+
   test "should destroy thought" do
     assert_difference('Thought.count', -1) do
       delete :destroy, :id => @thought.to_param, :person_id => @person
