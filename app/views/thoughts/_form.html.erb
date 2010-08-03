@@ -17,7 +17,7 @@
 </div>
 <br/>
 <div>
-  Project: <%= collection_select(:thought, :project_id, current_person.projects.all, :id, :name, :prompt => true) %>
+  Project: <%= collection_select(:thought, :project_id, current_person.projects.order(:name).all, :id, :name, :prompt => true) %>
 </div>
 <br/>
 <div class="field">
