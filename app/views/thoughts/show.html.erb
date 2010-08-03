@@ -6,7 +6,9 @@
 
 <p>
   <b>Thought:</b>
-  <pre><%= auto_link @thought.body %></pre>
+  <div class="thought_body">
+    <%= display_text @thought.body %>    
+  </div>
 </p>
 
 <p>

@@ -1,6 +1,8 @@
 <% if comment && comment.person %>
 <li>
-  <pre><%= comment.body %></pre>
+  <div class="comment_body">
+    <%= display_text comment.body %>    
+  </div>
   by <%= comment.person.email %> 
   <%= link_to 'Edit', edit_person_thought_comment_path(current_person, @thought, comment) %> | 
   <%= link_to 'Destroy', [current_person, @thought, comment], :confirm => 'Are you sure?', :method => :delete %>
