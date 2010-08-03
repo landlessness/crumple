@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 <p><%= current_person.email %></p>
 <p><%= link_to 'Drop Box', person_drop_box_path(current_person, current_person.drop_box) %></p>
+<p><%= link_to 'Crumple Bookmarklet', %(javascript:(function(){var t;var tags="website";try{t=((window.getSelection&&window.getSelection())||(document.getSelection&&document.getSelection())||(document.selection&&document.selection.createRange&&document.selection.createRange().text));}catch(e){t="";}b=document.title+"\\n"+location.href;if(!/^ *$/.test(t)){b=t+"\\n\\nSource: "+b;tags=tags + ' webclipping';}b=encodeURIComponent(b);open('http://#{Rails.application.config.top_level_domain}?thought[body]='+b+'&thought[tag_list]=' + tags,'Crumple','toolbar=no,width=800,height=600')})()) %></p>
 
 <%= link_to 'Edit', edit_person_path(current_person) %> |
 <%= link_to 'Back', people_path %>

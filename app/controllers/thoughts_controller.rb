@@ -45,7 +45,7 @@ class ThoughtsController < ApplicationController
   # GET /thoughts/new
   # GET /thoughts/new.xml
   def new
-    @thought = current_person.thoughts.new
+    @thought = current_person.thoughts.new params[:thought]
     @thought.project = current_person.projects.find(params[:project_id]) if params[:project_id]
       
     respond_to do |format|
