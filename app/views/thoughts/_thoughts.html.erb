@@ -7,11 +7,6 @@
 <p>
   <b>Thoughts:</b><br/>
   <% unless thoughts.all?(&:drop_box?) %>
-  <% if project %>
-  <%= link_to 'New thought about ' + project.name, new_project_thought_path(project) %>
-  <% else %>
-  <%= link_to 'New thought', new_person_thought_path(current_person) %>
-  <% end %>
   <% if @showing_archived_thoughts %>
   <% if project %>
   <%= link_to 'Active thoughts', project_path(project) %>
@@ -42,9 +37,4 @@
     <%= render thoughts %>    
   </table>
   <%= will_paginate thoughts %>
-  <% if project %>
-  <%= link_to 'New thought about ' + project.name, new_project_thought_path(project) %>
-  <% else %>
-  <%= link_to 'New thought', new_person_thought_path(current_person) %>
-  <% end %>
 </p>

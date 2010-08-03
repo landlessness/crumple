@@ -6,4 +6,6 @@
   <%= link_to 'x', thoughts_path %>
   <% end %>
 </h1>
+<%= link_to_new_thought %>
 <%= render :partial => "thoughts", :locals => { :cloud => @tags_for_cloud, :thoughts => @thoughts, :project => nil } %>
+<%= link_to_new_thought %>
