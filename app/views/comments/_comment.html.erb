@@ -2,7 +2,7 @@
 <li>
   <pre><%= comment.body %></pre>
   by <%= comment.person.email %> 
-  <%= link_to 'Edit', edit_thought_comment_path(@thought, comment) %> | 
-  <%= link_to 'Destroy', [@thought, comment], :confirm => 'Are you sure?', :method => :delete %>
+  <%= link_to 'Edit', edit_person_thought_comment_path(current_person, @thought, comment) %> | 
+  <%= link_to 'Destroy', [current_person, @thought, comment], :confirm => 'Are you sure?', :method => :delete %>
 </li>
 <% end %>
