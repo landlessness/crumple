@@ -12,7 +12,7 @@ class ThoughtTest < ActiveSupport::TestCase
     
   test "create with a given state" do
     assert t = @person.thoughts.create!(:body => 'this is a cool thought.', :state_event => :put_in_drop_box), 'thought should create smoothly'
-    assert t.drop_box?, 'should create thought in drop_box state'
+    assert t.in_drop_box?, 'should create thought in drop_box state'
   end
 
   test "all thoughts must have a body" do

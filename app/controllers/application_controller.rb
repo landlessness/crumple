@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   layout 'application'
   
   def check_drop_box
-    @drop_box_count = current_person.thoughts.with_state(:drop_box).count if person_signed_in?
+    @drop_box_count = current_person.thoughts.with_state(:in_drop_box).count if person_signed_in?
   end
   
   protected

@@ -18,11 +18,11 @@ class Thought < ActiveRecord::Base
     end
 
     event :put_in_drop_box do
-      transition :active => :drop_box
+      transition :active => :in_drop_box
     end
 
     event :accept do
-      transition :drop_box => :active
+      transition :in_drop_box => :active
     end
   end
 

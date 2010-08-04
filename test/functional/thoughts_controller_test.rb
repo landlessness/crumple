@@ -34,7 +34,7 @@ class ThoughtsControllerTest < ActionController::TestCase
     end
     t = assigns(:thought)
     assert_redirected_to [@person, t]
-    assert t.drop_box?, 'thought expected to be in drop box.'
+    assert t.in_drop_box?, 'thought expected to be in drop box.'
   end
 
   test "should create thought from email" do    
@@ -47,7 +47,7 @@ class ThoughtsControllerTest < ActionController::TestCase
     thought = assigns(:thought)
     assert_equal "this is another test.\n", thought.body
     
-    assert_equal 'drop_box', thought.state
+    assert_equal 'in_drop_box', thought.state
     
     assert_response :ok
   end
@@ -62,7 +62,7 @@ class ThoughtsControllerTest < ActionController::TestCase
     thought = assigns(:thought)
     assert_equal "\"I very rarely think in words at all. A thought comes, and I may try to express it in words afterwards,\" -Albert Einstein (Wertheimer, 1959, 213; Pais, 1982). \n\nhttp://www.psychologytoday.com/blog/imagine/201003/einstein-creative-thinking-music-and-the-intuitive-art-scientific-imagination\n", thought.body
     
-    assert_equal 'drop_box', thought.state
+    assert_equal 'in_drop_box', thought.state
     
     assert_response :ok
   end
