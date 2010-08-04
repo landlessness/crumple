@@ -103,10 +103,6 @@ class ThoughtsController < ApplicationController
     respond_to do |format|
       
       if @thought.save
-        # don't like this here, it should be in model
-        # but, state_machine always saves upon transition
-        @thought.put_in_drop_box
-        # TODO using .all is a workaround. beed to find our which format send grid expects.
         format.all  do
           render :text => 'OK', :status => :ok 
          end

@@ -1,12 +1,10 @@
 <p id="notice"><%= notice %></p>
-
-<p>Name: <%= @drop_box.name %></p>
-<p>Secret: <%= @drop_box.secret %></p>
-<p>Email: <%= mail_to @drop_box.email, @drop_box.email %></p>
-
-<p><%= link_to 'Download vCard', person_drop_box_vcf_path(current_person, @drop_box) %></p>
-
-<%= link_to 'Edit', edit_person_drop_box_path(current_person, @drop_box) %> |
-<%= link_to 'Back', person_drop_boxes_path(current_person) %>
-
 <%= render :partial => "thoughts/thoughts", :locals => { :cloud => nil, :thoughts => @thoughts, :project => nil } %>
+<h2>Helpers</h2>
+<h3>Bookmarklet</h3>
+<p><%= link_to 'Crumple Bookmarklet', %(javascript:(function(){var t;var tags='website ';try{t=((window.getSelection&&window.getSelection())||(document.getSelection&&document.getSelection())||(document.selection&&document.selection.createRange&&document.selection.createRange().text));}catch(e){t='';}b=location.href+'\\n'+document.title;if(!/^ *$/.test(t)){b=b+'\\n\\n'+t;tags=tags+'webclipping';}b=encodeURIComponent(b);open('http://#{Rails.application.config.top_level_domain}?thought[body]='+b+'&thought[tag_list]='+tags+'&thought[state_event]=put_in_drop_box','Crumple','toolbar=no,width=800,height=600')})()) %></p>
+<h3>Email</h3>
+<p><%= link_to 'Download vCard', person_drop_box_vcf_path(current_person, @drop_box) %></p>
+<p>Email: <%= mail_to @drop_box.email, @drop_box.email %> <%= link_to 'Edit', edit_person_drop_box_path(current_person, @drop_box) %></p>
+
+

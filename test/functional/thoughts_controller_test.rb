@@ -28,6 +28,15 @@ class ThoughtsControllerTest < ActionController::TestCase
     assert_redirected_to [@person, assigns(:thought)]
   end
 
+  test "should create thought in drop box" do
+    assert_difference('Thought.count') do
+      post :create, :thought => {:body => 'this is a test thought', :state_event => 'put_in_drop_box'}, :person_id => @person
+    end
+    t = assigns(:thought)
+    assert_redirected_to [@person, t]
+    assert t.drop_box?, 'thought expected to be in drop box.'
+  end
+
   test "should create thought from email" do    
     @send_grid_mail = send_grid_mail
     
