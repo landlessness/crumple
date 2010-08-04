@@ -1,0 +1,31 @@
+<h1>Listing platforms</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>App secret</th>
+    <th>Api key</th>
+    <th>App</th>
+    <th>App url</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @platforms.each do |platform| %>
+  <tr>
+    <td><%= platform.name %></td>
+    <td><%= platform.app_secret %></td>
+    <td><%= platform.api_key %></td>
+    <td><%= platform.app_id %></td>
+    <td><%= platform.app_url %></td>
+    <td><%= link_to 'Show', platform %></td>
+    <td><%= link_to 'Edit', edit_platform_path(platform) %></td>
+    <td><%= link_to 'Destroy', platform, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Platform', new_platform_path %>

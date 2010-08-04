@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @platform.name %>
+</p>
+
+<p>
+  <b>App secret:</b>
+  <%= @platform.app_secret %>
+</p>
+
+<p>
+  <b>Api key:</b>
+  <%= @platform.api_key %>
+</p>
+
+<p>
+  <b>App:</b>
+  <%= @platform.app_id %>
+</p>
+
+<p>
+  <b>App url:</b>
+  <%= @platform.app_url %>
+</p>
+
+
+<%= link_to 'Edit', edit_platform_path(@platform) %> |
+<%= link_to 'Back', platforms_path %>
