@@ -45,8 +45,10 @@ class DropBoxTest < ActiveSupport::TestCase
 
     thought = DropBox.new_thought @send_grid_mail
     assert thought.tag_list.include?('email'), 'should be tagged with "email"'
-    
-    assert_equal thought.body, @send_grid_mail[:text]
+    assert thought.tag_list.include?('foo'), 'should be tagged with "foo"'
+    assert thought.tag_list.include?('bar'), 'should be tagged with "bar"'
+        
+    assert_equal thought.body, @send_grid_mail[:text].gsub('tags: foo bar','')
     assert_not_nil thought.person
     assert_equal person, thought.person
     assert_not_nil thought.project
@@ -77,13 +79,14 @@ class DropBoxTest < ActiveSupport::TestCase
     assert_equal drop_box_secret, person.drop_box.secret
 
     assert_not_nil @send_grid_html_mail[:text]
-    assert_equal "\"I very rarely think in words at all. A thought comes, and I may try to express it in words afterwards,\" -Albert Einstein (Wertheimer, 1959, 213; Pais, 1982). \n\nhttp://www.psychologytoday.com/blog/imagine/201003/einstein-creative-thinking-music-and-the-intuitive-art-scientific-imagination", @send_grid_html_mail[:text]
     
     thought = DropBox.new_thought @send_grid_html_mail
     assert thought.tag_list.include?('email'), 'should be tagged with "email"'
+    assert thought.tag_list.include?('foo'), 'should be tagged with "foo"'
+    assert thought.tag_list.include?('bar'), 'should be tagged with "bar"'
 
     assert_not_nil thought.body
-    assert_equal thought.body, @send_grid_html_mail[:text]
+    assert_equal thought.body, @send_grid_html_mail[:text].gsub('tag: foo bar','')
     
     assert_not_nil thought.person
     assert_equal person, thought.person
@@ -118,15 +121,16 @@ class DropBoxTest < ActiveSupport::TestCase
     
     thought = DropBox.new_thought @send_grid_utf8_mail
     assert thought.tag_list.include?('email'), 'should be tagged with "email"'
+    assert thought.tag_list.include?('foo'), 'should be tagged with "foo"'
+    assert thought.tag_list.include?('bar'), 'should be tagged with "bar"'
     
     assert_not_nil thought.body
-    assert_equal thought.body, @send_grid_utf8_mail[:text]
+    assert_equal thought.body, @send_grid_utf8_mail[:text].gsub(/tags: foo bar\n/, '')
     assert_not_nil thought.person
     assert_equal person, thought.person
     assert_not_nil thought.project
     assert_equal project, thought.project
     assert_equal @send_grid_utf8_mail[:subject], thought.project.name
-    assert @send_grid_utf8_mail[:text].include?(thought.body)
     assert thought.new_record?, 'asserting that the thought is a new record'
     assert !thought.project.new_record?
   end
@@ -154,6 +158,8 @@ class DropBoxTest < ActiveSupport::TestCase
     
     thought = DropBox.new_thought @send_grid_nil_err_mail
     assert thought.tag_list.include?('email'), 'should be tagged with "email"'
+    assert !thought.tag_list.include?('foo'), 'should NOT be tagged with "foo"'
+    assert !thought.tag_list.include?('bar'), 'should NOT be tagged with "bar"'
 
     assert_not_nil thought.body
     assert_equal thought.body, @send_grid_nil_err_mail[:text]

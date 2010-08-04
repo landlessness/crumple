@@ -34,8 +34,12 @@ class DropBox < ActiveRecord::Base
         membership = d.person.memberships.build :project => project
       end
     end
+    
+    tag_list = 'email'
+    body = send_grid_mail[:text].gsub(/^[\s]*tag[s]?:(.+)?[\s]*$[\n]?/i, '')
+    tag_list += ' ' + $1 if $1
 
-    d.person.thoughts.build :body => send_grid_mail[:text], :project => project, :state_event => :put_in_drop_box, :tag_list => 'email'
+    d.person.thoughts.build :body => body, :project => project, :state_event => :put_in_drop_box, :tag_list => tag_list
   end
 
   def email
