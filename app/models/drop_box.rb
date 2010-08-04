@@ -35,7 +35,7 @@ class DropBox < ActiveRecord::Base
       end
     end
 
-    d.person.thoughts.build :body => send_grid_mail[:text], :project => project, :state_event => :put_in_drop_box
+    d.person.thoughts.build :body => send_grid_mail[:text], :project => project, :state_event => :put_in_drop_box, :tag_list => 'email'
   end
 
   def email

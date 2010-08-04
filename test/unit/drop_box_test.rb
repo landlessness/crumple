@@ -44,6 +44,8 @@ class DropBoxTest < ActiveSupport::TestCase
     assert_equal drop_box_secret, person.drop_box.secret
 
     thought = DropBox.new_thought @send_grid_mail
+    assert thought.tag_list.include?('email'), 'should be tagged with "email"'
+    
     assert_equal thought.body, @send_grid_mail[:text]
     assert_not_nil thought.person
     assert_equal person, thought.person
@@ -52,7 +54,7 @@ class DropBoxTest < ActiveSupport::TestCase
     assert_equal @send_grid_mail[:subject], thought.project.name
     assert @send_grid_mail[:text].include?(thought.body)
     assert thought.new_record?, 'asserting that the thought is a new record'
-    assert !thought.project.new_record?
+    assert !thought.project.new_record?, 'project should already exists'
   end
   
   test 'find person and create new thought via drop box with html email' do
@@ -78,7 +80,8 @@ class DropBoxTest < ActiveSupport::TestCase
     assert_equal "\"I very rarely think in words at all. A thought comes, and I may try to express it in words afterwards,\" -Albert Einstein (Wertheimer, 1959, 213; Pais, 1982). \n\nhttp://www.psychologytoday.com/blog/imagine/201003/einstein-creative-thinking-music-and-the-intuitive-art-scientific-imagination", @send_grid_html_mail[:text]
     
     thought = DropBox.new_thought @send_grid_html_mail
-    
+    assert thought.tag_list.include?('email'), 'should be tagged with "email"'
+
     assert_not_nil thought.body
     assert_equal thought.body, @send_grid_html_mail[:text]
     
@@ -114,6 +117,7 @@ class DropBoxTest < ActiveSupport::TestCase
     assert_not_nil @send_grid_utf8_mail[:text]
     
     thought = DropBox.new_thought @send_grid_utf8_mail
+    assert thought.tag_list.include?('email'), 'should be tagged with "email"'
     
     assert_not_nil thought.body
     assert_equal thought.body, @send_grid_utf8_mail[:text]
@@ -149,7 +153,8 @@ class DropBoxTest < ActiveSupport::TestCase
     assert_not_nil @send_grid_nil_err_mail[:text]
     
     thought = DropBox.new_thought @send_grid_nil_err_mail
-    
+    assert thought.tag_list.include?('email'), 'should be tagged with "email"'
+
     assert_not_nil thought.body
     assert_equal thought.body, @send_grid_nil_err_mail[:text]
     assert_not_nil thought.person
