@@ -45,7 +45,7 @@ class ThoughtsControllerTest < ActionController::TestCase
       post :create_from_sendgrid, @send_grid_mail.merge(:format => 'xml'), :person_id => @person
     end
     thought = assigns(:thought)
-    assert_equal 'this is another test.', thought.body
+    assert_equal "this is another test.\n", thought.body
     
     assert_equal 'drop_box', thought.state
     
@@ -60,7 +60,7 @@ class ThoughtsControllerTest < ActionController::TestCase
       post :create_from_sendgrid, @send_grid_html_mail.merge(:format => 'xml'), :person_id => @person
     end
     thought = assigns(:thought)
-    assert_equal "\"I very rarely think in words at all. A thought comes, and I may try to express it in words afterwards,\" -Albert Einstein (Wertheimer, 1959, 213; Pais, 1982). \n\nhttp://www.psychologytoday.com/blog/imagine/201003/einstein-creative-thinking-music-and-the-intuitive-art-scientific-imagination", thought.body
+    assert_equal "\"I very rarely think in words at all. A thought comes, and I may try to express it in words afterwards,\" -Albert Einstein (Wertheimer, 1959, 213; Pais, 1982). \n\nhttp://www.psychologytoday.com/blog/imagine/201003/einstein-creative-thinking-music-and-the-intuitive-art-scientific-imagination\n", thought.body
     
     assert_equal 'drop_box', thought.state
     
