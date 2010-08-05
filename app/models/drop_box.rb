@@ -24,7 +24,7 @@ class DropBox < ActiveRecord::Base
   
   def process_email(email)
     # concat the subject and the body of the email
-    body = email.subject + "\n\n" + email.text
+    body = (email.subject || '') + "\n\n" + (email.text || '')
     
     # find the project
     body.gsub!(/^[\s]*project:(.+)?[\s]*$[\n]?/i, '')
