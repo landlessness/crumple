@@ -28,9 +28,12 @@
   <%= link_to current_person.email, me_path %>
   <%= link_to "Sign Out", destroy_person_session_path %>
   <% else %>
+  <span style="font-size: 3em;">
+    <%= link_to 'Crumple', root_path %><sup style="font-size: 45%;">proto</sup><br/>
+    <span style="font-size: 45%;">A notebook for creative thinkers.</span>
+  </span>
   <%= link_to "Sign up", new_person_registration_path %> or <%= link_to "Sign in", new_person_session_path %>
   <% end %>
-
   <%= yield %>
 
 </body>

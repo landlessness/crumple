@@ -1,4 +1,5 @@
 class ThoughtsController < ApplicationController
+  skip_filter :authenticate_person!, :only => :new
   
   # GET /thoughts
   # GET /thoughts.xml
@@ -48,8 +49,8 @@ class ThoughtsController < ApplicationController
   # GET /thoughts/new
   # GET /thoughts/new.xml
   def new
-    @thought = current_person.thoughts.new params[:thought]
-    @thought.project = current_person.projects.find(params[:project_id]) if params[:project_id]
+    @thought = Thought.new params[:thought]
+    @thought.project = current_person.projects.find(params[:project_id]) if person_signed_in? && params[:project_id]
       
     respond_to do |format|
       format.html # new.html.erb
@@ -106,6 +107,7 @@ class ThoughtsController < ApplicationController
   def create
     @thought = current_person.thoughts.new(params[:thought])
     @thought.origin = 'website' if @thought.origin.blank?
+    
     respond_to do |format|
       if @thought.save
         format.html { redirect_to(@thought, :notice => 'Thought was successfully created.') }

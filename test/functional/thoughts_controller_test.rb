@@ -20,14 +20,25 @@ class ThoughtsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should create thought after signing in" do
+    sign_out @person
+    get :new
+    assert !@controller.person_signed_in?, 'person should NOT be signed in'
+    assert_response :success
+    post :create, :thought => {:body => 'this is me typing a thought before i have signed in.', :tag_list => 'green blue red'}
+    assert_redirected_to new_person_session_url
+    # post :controller => 'devise/sessions', :action => 'new', :person => @person
+    # assert_redirected_to new_thought_url
+    assert_equal '/thoughts/new?thought[body]=this+is+me+typing+a+thought+before+i+have+signed+in.&thought[tag_list]=green+blue+red', @controller.session[:"person_return_to"]
+  end
+
   test "should create thought" do
     assert_difference('Thought.count') do
       post :create, :thought => @thought.attributes
     end
 
     assert_redirected_to t=assigns(:thought)
-    assert_equal 'website', t.origin
-    
+    assert_equal 'website', t.origin    
   end
 
   test "should create thought from bookmarklet" do
