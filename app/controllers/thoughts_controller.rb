@@ -102,6 +102,7 @@ class ThoughtsController < ApplicationController
   # POST /thoughts.xml
   def create
     @thought = current_person.thoughts.new(params[:thought])
+    @thought.origin = 'website' if @thought.origin.blank?
     respond_to do |format|
       if @thought.save
         format.html { redirect_to([current_person,@thought], :notice => 'Thought was successfully created.') }

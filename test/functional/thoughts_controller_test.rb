@@ -25,7 +25,19 @@ class ThoughtsControllerTest < ActionController::TestCase
       post :create, :thought => @thought.attributes, :person_id => @person
     end
 
-    assert_redirected_to [@person, assigns(:thought)]
+    assert_redirected_to [@person, t=assigns(:thought)]
+    assert_equal 'website', t.origin
+    
+  end
+
+  test "should create thought from bookmarklet" do
+    assert_difference('Thought.count') do
+      post :create, :thought => @thought.attributes.merge(:origin => 'bookmarklet'), :person_id => @person
+    end
+
+    assert_redirected_to [@person, t=assigns(:thought)]
+    assert_equal 'bookmarklet', t.origin
+    
   end
 
   test "should create thought in drop box" do
@@ -35,6 +47,7 @@ class ThoughtsControllerTest < ActionController::TestCase
     t = assigns(:thought)
     assert_redirected_to [@person, t]
     assert t.in_drop_box?, 'thought expected to be in drop box.'
+    assert_equal 'website', t.origin
   end
 
   test "should show thought" do
