@@ -22,6 +22,13 @@ class DropBoxesController < ApplicationController
     end
   end
 
+  # GET /drop_box/bookmarklet.:format
+  def bookmarklet
+    respond_to do |format|
+      format.js # bookmarklet.js.erb
+    end
+  end
+
   # GET /drop_boxes/new
   # GET /drop_boxes/new.xml
   def new
