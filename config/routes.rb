@@ -10,7 +10,7 @@ Crumple::Application.routes.draw do |map|
   # 
   # to test this route: 
   # curl --data '' --header 'content-type: text/xml' -X POST --user-agent 'SendGrid 1.0' http://localhost:3000/thoughts.xml?text=hello
-  match '/thoughts.xml' => 'send_grid_emails#create', :constraints => { :user_agent => /SendGrid/i }, :via => :post
+  match '/thoughts.:format' => 'send_grid_emails#create', :constraints => { :user_agent => /SendGrid/i, :format => 'xml' }, :via => :post
 
   resources :people do
     resources :drop_boxes
