@@ -22,10 +22,10 @@
 <body>
   <% if person_signed_in? %>
   <%= link_to 'Home', root_path %>
-  <%= link_to 'Thoughts', person_thoughts_path(current_person) %>
+  <%= link_to 'Thoughts', thoughts_path %>
   <%= link_to_drop_box %>
   <%= link_to 'Projects', projects_path %>
-  <%= link_to current_person.email, current_person %>
+  <%= link_to current_person.email, me_path %>
   <%= link_to "Sign Out", destroy_person_session_path %>
   <% else %>
   <%= link_to "Sign up", new_person_registration_path %> or <%= link_to "Sign in", new_person_session_path %>

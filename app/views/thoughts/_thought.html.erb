@@ -1,5 +1,5 @@
 <tr>
-  <td><%= link_to truncate(thought.body), [current_person, thought] %></td>
+  <td><%= link_to truncate(thought.body), thought %></td>
   <td>
   <%= links_to_tags thought.tags, @project %>
   </td>
@@ -11,18 +11,18 @@
   <% end %>
   <td>
     <% if thought.in_drop_box? %>
-    <%= link_to 'Accept', accept_person_thought_path(current_person, thought) %>
+    <%= link_to 'Accept', accept_thought_path(thought) %>
     <% else %>
-    <%= link_to 'Edit', edit_person_thought_path(current_person, thought) %>
+    <%= link_to 'Edit', edit_thought_path(thought) %>
     <% end %>
   </td>
   <td>
   <% if thought.archived? %>
-  <%= link_to 'Activate', activate_person_thought_path(current_person, thought), :method => :put %>
+  <%= link_to 'Activate', activate_thought_path(thought), :method => :put %>
   <% else %>
-  <%= link_to 'Archive', archive_person_thought_path(current_person, thought), :method => :put %>
+  <%= link_to 'Archive', archive_thought_path(thought), :method => :put %>
   <% end %>
   </td>
-  <td><%= link_to 'Destroy', [current_person, thought], :confirm => 'Are you sure?', :method => :delete %></td>
+  <td><%= link_to 'Destroy', thought, :confirm => 'Are you sure?', :method => :delete %></td>
 </tr>
 

@@ -11,13 +11,13 @@
       <% if project %>
       <%= link_to 'Active project thoughts', project_path(project) %>
       <% else %>
-      <%= link_to 'Active thoughts', person_thoughts_path(current_person) %>
+      <%= link_to 'Active thoughts', thoughts_path %>
       <% end %>
     <% else %>
       <% if project %>
         <%= link_to 'Archived project thoughts', archived_project_thoughts_path(project) %>
       <% else %>
-        <%= link_to 'Archived thoughts', archived_person_thoughts_path(current_person) %>
+        <%= link_to 'Archived thoughts', archived_thoughts_path %>
       <% end %>
     <% end %>
   <% end %>

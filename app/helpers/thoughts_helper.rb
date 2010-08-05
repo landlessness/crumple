@@ -17,7 +17,7 @@ module ThoughtsHelper
      if project 
        link_to 'New thought about ' + project.name, new_project_thought_path(project)
      else 
-       link_to 'New thought', new_person_thought_path(current_person) 
+       link_to 'New thought', new_thought_path 
      end 
   end
 
@@ -31,6 +31,6 @@ module ThoughtsHelper
   end
   private 
   def link_path(tag, project)
-    project ? project_path(project, :tags => tag.name ) : person_thoughts_path(current_person, :tags => tag.name)
+    project ? project_path(project, :tags => tag.name ) : thoughts_path(:tags => tag.name)
   end
 end

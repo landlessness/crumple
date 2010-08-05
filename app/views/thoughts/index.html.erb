@@ -3,7 +3,7 @@
   <% if @tags %>
   for tags: 
   <%= @tags.join(' ')  %>
-  <%= link_to 'x', person_thoughts_path(current_person) %>
+  <%= link_to 'x', thoughts_path %>
   <% end %>
 </h1>
 <%= link_to_new_thought %>

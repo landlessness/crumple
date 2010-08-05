@@ -3,16 +3,32 @@ Crumple::Application.routes.draw do |map|
 
   devise_for :people, :path_names => { :sign_in => 'login', :sign_out => 'logout' }
 
-  # to give a pretty name to the downloaded vCard file
-  match '/people/:person_id/drop_boxes/:id/crumple.:format' => 'drop_boxes#show', :via => :get
-  
   # must come before the resources :thoughts line
   # 
   # to test this route: 
   # curl --data '' --header 'content-type: text/xml' -X POST --user-agent 'SendGrid 1.0' 'localhost:3000/thoughts.xml?to=brian%2B4444@crumpleapp.com&text=hello%0Atags%3Acurl%0Aproject%3Atest&subject=hi'
-  
-  
   match '/thoughts.:format' => 'send_grid_emails#create', :constraints => { :user_agent => /SendGrid/i, :format => 'xml' }, :via => :post
+
+  resources :comments
+
+  # to give a pretty name to the downloaded vCard file
+  match '/my_drop_box/crumple.:format' => 'drop_boxes#show', :via => :get
+  match '/my_drop_box' => 'drop_boxes#show'
+
+  match 'me' => 'people#show'
+
+  resources :drop_boxes
+  resources :thoughts do
+    member do
+      put :archive
+      put :activate
+      put :accept
+    end
+    collection  do
+      get :archived
+    end
+    resources :comments
+  end
 
   resources :people do
     resources :drop_boxes

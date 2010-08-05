@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <% if @thought.archived? %>
-<h3><%= 'Archived' %> <%= link_to 'activate', activate_person_thought_path(current_person, @thought), :method => :put %></h3>
+<h3><%= 'Archived' %> <%= link_to 'activate', activate_thought_path(@thought), :method => :put %></h3>
 <% elsif @thought.in_drop_box? %>
-<h3><%= 'In Drop Box' %> <%= link_to 'accept', accept_person_thought_path(current_person, @thought), :method => :put %></h3>
+<h3><%= 'In Drop Box' %> <%= link_to 'accept', accept_thought_path(@thought), :method => :put %></h3>
 <% end %>
 
 <p>
@@ -19,7 +19,7 @@
 </p>
 
 <p>
-  <%= form_for [current_person, @thought, @comment] do |f| %>
+  <%= form_for [@thought, @comment] do |f| %>
   <div class="field">
     <%= f.label :body, 'Add a comment:' %><br />
     <%= f.text_area :body %>
@@ -48,18 +48,17 @@
 </p>
 
 
-<%= link_to 'Edit', edit_person_thought_path(current_person, @thought) %> |
+<%= link_to 'Edit', edit_thought_path(@thought) %> |
 <% if @thought.archived? %>
-<%= link_to 'Activate', activate_person_thought_path(current_person, @thought), :method => :put %> |
+<%= link_to 'Activate', activate_thought_path(@thought), :method => :put %> |
 <% elsif @thought.in_drop_box? %>
-<%= link_to 'Accept', accept_person_thought_path(current_person, @thought), :method => :put %> |
+<%= link_to 'Accept', accept_thought_path(@thought), :method => :put %> |
 <% elsif @thought.active? %>
-<%= link_to 'Archive', archive_person_thought_path(current_person, @thought), :method => :put %> |
+<%= link_to 'Archive', archive_thought_path(@thought), :method => :put %> |
 <% end %>
-<%= link_to 'Destroy', [current_person, @thought], :confirm => 'Are you sure?', :method => :delete %> |
-<%= link_to 'Back', person_thoughts_path(current_person) %> |
+<%= link_to 'Destroy', [@thought], :confirm => 'Are you sure?', :method => :delete %> |
 <% if @thought.project %>
 <%= link_to 'New thought about ' + @thought.project.name, new_project_thought_path(@thought.project) %>
 <% else %>
-<%= link_to 'New thought', new_person_thought_path(current_person) %>
+<%= link_to 'New thought', new_thought_path %>
 <% end %>

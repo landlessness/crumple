@@ -46,7 +46,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to([current_person, @thought], :notice => 'Comment was successfully created.') }
+        format.html { redirect_to(@thought, :notice => 'Comment was successfully created.') }
         format.xml  { render :xml => @comment, :status => :created, :location => @comment }
       else
         format.html { render :action => "new" }
@@ -62,7 +62,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.update_attributes(params[:comment])
-        format.html { redirect_to([current_person, @thought], :notice => 'Comment was successfully updated.') }
+        format.html { redirect_to(@thought, :notice => 'Comment was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -78,7 +78,7 @@ class CommentsController < ApplicationController
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to([current_person,@thought], :notice => 'Comment was destroyed.') }
+      format.html { redirect_to(@thought, :notice => 'Comment was destroyed.') }
       format.xml  { head :ok }
     end
   end

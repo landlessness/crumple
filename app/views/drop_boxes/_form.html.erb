@@ -1,4 +1,4 @@
-<%= form_for([current_person, @drop_box]) do |f| %>
+<%= form_for(@drop_box) do |f| %>
   <% if @drop_box.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@drop_box.errors.count, "error") %> prohibited this drop_box from being saved:</h2>

@@ -10,44 +10,44 @@ class DropBoxesControllerTest < ActionController::TestCase
   end
 
   test "should get index" do
-    get :index, :person_id => @person
+    get :index
     assert_response :success
     assert_not_nil assigns(:drop_boxes)
   end
 
   test "should get new" do
-    get :new, :person_id => @person
+    get :new
     assert_response :success
   end
 
   test "should create drop_box" do
     assert_difference('DropBox.count') do
-      post :create, :drop_box => {:name => 'foo', :secret => 'bar'}, :person_id => @person
+      post :create, :drop_box => {:name => 'foo', :secret => 'bar'}
     end
 
-    assert_redirected_to [@person, assigns(:drop_box)]
+    assert_redirected_to my_drop_box_url
   end
 
   test "should show drop_box" do
-    get :show, :id => @drop_box.to_param, :person_id => @person
+    get :show, :id => @drop_box.to_param
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, :id => @drop_box.to_param, :person_id => @person
+    get :edit, :id => @drop_box.to_param
     assert_response :success
   end
 
   test "should update drop_box" do
-    put :update, :id => @drop_box.to_param, :drop_box => {:name => 'fuzz', :secret => 'baz'}, :person_id => @person
-    assert_redirected_to  [@person, assigns(:drop_box)]
+    put :update, :id => @drop_box.to_param, :drop_box => {:name => 'fuzz', :secret => 'baz'}
+    assert_redirected_to my_drop_box_url
   end
 
   test "should destroy drop_box" do
     assert_difference('DropBox.count', -1) do
-      delete :destroy, :id => @drop_box.to_param, :person_id => @person
+      delete :destroy, :id => @drop_box.to_param
     end
 
-    assert_redirected_to person_drop_boxes_path(@person)
+    assert_redirected_to @person
   end
 end

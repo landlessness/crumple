@@ -13,13 +13,13 @@
   <tr>
     <td><%= comment.body %></td>
     <td><%= comment.thought %></td>
-    <td><%= link_to 'Show', [current_person, @thought, comment] %></td>
-    <td><%= link_to 'Edit', edit_person_thought_comment_path(current_person, @thought, comment) %></td>
-    <td><%= link_to 'Destroy', [current_person, @thought, comment], :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', [@thought, comment] %></td>
+    <td><%= link_to 'Edit', edit_thought_comment_path(@thought, comment) %></td>
+    <td><%= link_to 'Destroy', [@thought, comment], :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Comment', new_person_thought_comment_path(current_person, @thought) %>
+<%= link_to 'New Comment', new_thought_comment_path(@thought) %>

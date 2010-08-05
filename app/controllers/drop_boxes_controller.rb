@@ -13,9 +13,8 @@ class DropBoxesController < ApplicationController
   # GET /drop_boxes/1
   # GET /drop_boxes/1.xml
   def show
-    @drop_box = current_person.drop_boxes.find(params[:id])
-    @thoughts = current_person.thoughts.with_state(:in_drop_box).paginate(:per_page => 25, :page => params[:page], :order => 'updated_at DESC')
-
+    @drop_box = current_person.drop_box
+    @thoughts = @drop_box.thoughts.paginate(:per_page => 25, :page => params[:page], :order => 'updated_at DESC')
     respond_to do |format|
       format.html # show.html.erb
       format.xml { render :xml => @drop_box }
@@ -46,7 +45,7 @@ class DropBoxesController < ApplicationController
 
     respond_to do |format|
       if @drop_box.save
-        format.html { redirect_to([current_person, @drop_box], :notice => 'Drop box was successfully created.') }
+        format.html { redirect_to(my_drop_box_path, :notice => 'Drop box was successfully created.') }
         format.xml  { render :xml => @drop_box, :status => :created, :location => @drop_box }
       else
         format.html { render :action => "new" }
@@ -62,7 +61,7 @@ class DropBoxesController < ApplicationController
 
     respond_to do |format|
       if @drop_box.update_attributes(params[:drop_box])
-        format.html { redirect_to([current_person, @drop_box], :notice => 'Drop box was successfully updated.') }
+        format.html { redirect_to(my_drop_box_path, :notice => 'Drop box was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -78,7 +77,7 @@ class DropBoxesController < ApplicationController
     @drop_box.destroy
 
     respond_to do |format|
-      format.html { redirect_to(person_drop_boxes_url) }
+      format.html { redirect_to(person_url(current_person)) }
       format.xml  { head :ok }
     end
   end

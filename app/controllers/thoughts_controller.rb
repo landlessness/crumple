@@ -18,9 +18,14 @@ class ThoughtsController < ApplicationController
   end
 
   def archived
-    @thoughts = current_person.thoughts.with_state(:archived).paginate(:per_page => 25, :page => params[:page], :order => 'updated_at DESC')
+     if params[:project_id]
+       query_scope = @project = current_person.projects.find(params[:project_id])
+     else
+       query_scope = current_person
+     end
+    @thoughts = query_scope.thoughts.with_state(:archived).paginate(:per_page => 25, :page => params[:page], :order => 'updated_at DESC')
+
     @showing_archived_thoughts = true
-    @project = current_person.projects.find(params[:project_id]) if params[:project_id]
     
     respond_to do |format|
       format.html # index.html.erb
@@ -61,7 +66,7 @@ class ThoughtsController < ApplicationController
     @thought = current_person.thoughts.find(params[:id])
     respond_to do |format|
       if @thought.archive!
-        format.html { redirect_to([current_person, @thought], :notice => 'Thought was successfully archived.') }
+        format.html { redirect_to(@thought, :notice => 'Thought was successfully archived.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -74,7 +79,7 @@ class ThoughtsController < ApplicationController
     @thought = current_person.thoughts.find(params[:id])
     respond_to do |format|
       if @thought.accept!
-        format.html { redirect_to([current_person,@thought], :notice => 'Thought was accepted from the drop box.') }
+        format.html { redirect_to(@thought, :notice => 'Thought was accepted from the drop box.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -87,7 +92,7 @@ class ThoughtsController < ApplicationController
     @thought = current_person.thoughts.find(params[:id])
     respond_to do |format|
       if @thought.activate!
-        format.html { redirect_to([current_person,@thought], :notice => 'Thought was successfully activated.') }
+        format.html { redirect_to(@thought, :notice => 'Thought was successfully activated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -103,7 +108,7 @@ class ThoughtsController < ApplicationController
     @thought.origin = 'website' if @thought.origin.blank?
     respond_to do |format|
       if @thought.save
-        format.html { redirect_to([current_person,@thought], :notice => 'Thought was successfully created.') }
+        format.html { redirect_to(@thought, :notice => 'Thought was successfully created.') }
         format.xml  { render :xml => @thought, :status => :created, :location => @thought }
       else
         format.html { render :action => "new" }
@@ -119,7 +124,7 @@ class ThoughtsController < ApplicationController
 
     respond_to do |format|
       if @thought.update_attributes(params[:thought])
-        format.html { redirect_to([current_person,@thought], :notice => 'Thought was successfully updated.') }
+        format.html { redirect_to(@thought, :notice => 'Thought was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -135,7 +140,7 @@ class ThoughtsController < ApplicationController
     @thought.destroy
 
     respond_to do |format|
-      format.html { redirect_to(person_thoughts_url(current_person)) }
+      format.html { redirect_to(thoughts_url) }
       format.xml  { head :ok }
     end
   end
