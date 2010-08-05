@@ -9,12 +9,13 @@
   <% else %>
   <td><em>none</em></td>
   <% end %>
+  <% if thought.in_drop_box? %>
   <td>
-    <% if thought.in_drop_box? %>
-    <%= link_to 'Accept', accept_thought_path(thought) %>
-    <% else %>
+    <%= link_to 'Accept', accept_thought_path(thought), :method => :put %>
+  </td>
+  <% end %>
+  <td>
     <%= link_to 'Edit', edit_thought_path(thought) %>
-    <% end %>
   </td>
   <td>
   <% if thought.archived? %>

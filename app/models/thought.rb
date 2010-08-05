@@ -11,7 +11,7 @@ class Thought < ActiveRecord::Base
 
   state_machine :initial => :active do
     event :archive do
-      transition :active => :archived
+      transition [:active, :in_drop_box] => :archived
     end
 
     event :activate do
