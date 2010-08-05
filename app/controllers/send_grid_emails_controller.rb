@@ -1,4 +1,7 @@
 class SendGridEmailsController < ApplicationController
+  skip_filter :authenticate_person!, :only => :create
+  skip_before_filter :verify_authenticity_token, :only => :create
+  
   # GET /send_grid_emails
   # GET /send_grid_emails.xml
   def index

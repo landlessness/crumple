@@ -56,6 +56,7 @@
 <% elsif @thought.active? %>
 <%= link_to 'Archive', archive_person_thought_path(current_person, @thought), :method => :put %> |
 <% end %>
+<%= link_to 'Destroy', [current_person, @thought], :confirm => 'Are you sure?', :method => :delete %> |
 <%= link_to 'Back', person_thoughts_path(current_person) %> |
 <% if @thought.project %>
 <%= link_to 'New thought about ' + @thought.project.name, new_project_thought_path(@thought.project) %>
