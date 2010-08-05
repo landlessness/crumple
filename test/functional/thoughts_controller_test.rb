@@ -25,37 +25,29 @@ class ThoughtsControllerTest < ActionController::TestCase
       post :create, :thought => @thought.attributes, :person_id => @person
     end
 
-    assert_redirected_to [@person, assigns(:thought)]
+    assert_redirected_to [@person, t=assigns(:thought)]
+    assert_equal 'website', t.origin
+    
   end
 
-  test "should create thought from email" do    
-    @send_grid_mail = send_grid_mail
-    
-    assert @send_grid_mail[:to] && @send_grid_mail[:from]
+  test "should create thought from bookmarklet" do
     assert_difference('Thought.count') do
-      post :create_from_sendgrid, @send_grid_mail.merge(:format => 'xml'), :person_id => @person
+      post :create, :thought => @thought.attributes.merge(:origin => 'bookmarklet'), :person_id => @person
     end
-    thought = assigns(:thought)
-    assert_equal 'this is another test.', thought.body
+
+    assert_redirected_to [@person, t=assigns(:thought)]
+    assert_equal 'bookmarklet', t.origin
     
-    assert_equal 'drop_box', thought.state
-    
-    assert_response :ok
   end
 
-  test "should create thought from html email" do    
-    @send_grid_html_mail = send_grid_html_mail
-    
-    assert @send_grid_html_mail[:to] && @send_grid_html_mail[:from]
+  test "should create thought in drop box" do
     assert_difference('Thought.count') do
-      post :create_from_sendgrid, @send_grid_html_mail.merge(:format => 'xml'), :person_id => @person
+      post :create, :thought => {:body => 'this is a test thought', :state_event => 'put_in_drop_box'}, :person_id => @person
     end
-    thought = assigns(:thought)
-    assert_equal "\"I very rarely think in words at all. A thought comes, and I may try to express it in words afterwards,\" -Albert Einstein (Wertheimer, 1959, 213; Pais, 1982). \n\nhttp://www.psychologytoday.com/blog/imagine/201003/einstein-creative-thinking-music-and-the-intuitive-art-scientific-imagination", thought.body
-    
-    assert_equal 'drop_box', thought.state
-    
-    assert_response :ok
+    t = assigns(:thought)
+    assert_redirected_to [@person, t]
+    assert t.in_drop_box?, 'thought expected to be in drop box.'
+    assert_equal 'website', t.origin
   end
 
   test "should show thought" do

@@ -1,11 +1,11 @@
 <% if cloud %>
 <p>
-  <b>Tag cloud:</b><br/><br/>
+  <h2>Tag Cloud</h2><br/><br/>
   <%= crumple_tag_cloud cloud, project %>
 </p>
 <% end %>
 <p>
-  <b>Thoughts:</b><br/>
+  <h2>Thoughts</h2>
   <% unless @drop_box %>
     <% if @showing_archived_thoughts %>
       <% if project %>

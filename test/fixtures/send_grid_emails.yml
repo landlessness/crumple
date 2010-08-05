@@ -1,0 +1,43 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  text: "this is a new thought\ntags: detroit hackerspace\nproject: Crumple"
+  html: "<html><body><p>this is a new thought\ntags: detroit hackerspace\nproject: Crumple</p></body></html>"
+  to: brian+4444@crumpleapp.com
+  from: brian@landlessness.net
+  subject: Detroit Hackerspaces
+  attachments: 10
+  drop_box: 1
+
+two:
+  text: MyText
+  html: MyText
+  to: brian+4444@crumpleapp.com
+  from: MyString
+  subject: MyString
+  attachments: 1
+  drop_box: 2
+
+without_subject:
+  text: "this is a new thought\ntags: detroit hackerspace\nproject: Crumple"
+  html: "<html><body><p>this is a new thought\ntags: detroit hackerspace\nproject: Crumple</p></body></html>"
+  to: brian+4444@crumpleapp.com
+  from: brian@landlessness.net
+  attachments: 10
+  drop_box: 1
+
+without_text:
+  html: "<html><body><p>this is a new thought\ntags: detroit hackerspace\nproject: Crumple</p></body></html>"
+  to: brian+4444@crumpleapp.com
+  from: brian@landlessness.net
+  subject: Detroit Hackerspaces
+  attachments: 10
+  drop_box: 1
+
+without_text_or_subject:
+  html: "<html><body><p>this is a new thought\ntags: detroit hackerspace\nproject: Crumple</p></body></html>"
+  to: brian+4444@crumpleapp.com
+  from: brian@landlessness.net
+  attachments: 10
+  drop_box: 1
+

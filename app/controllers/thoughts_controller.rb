@@ -1,6 +1,4 @@
 class ThoughtsController < ApplicationController
-  skip_filter :authenticate_person!, :only => :create_from_sendgrid
-  skip_before_filter :verify_authenticity_token, :only => :create_from_sendgrid
   
   # GET /thoughts
   # GET /thoughts.xml
@@ -98,28 +96,11 @@ class ThoughtsController < ApplicationController
     end      
   end
 
-  def create_from_sendgrid
-    @thought = DropBox.new_thought(params)
-    respond_to do |format|
-      
-      if @thought.save
-        # don't like this here, it should be in model
-        # but, state_machine always saves upon transition
-        @thought.put_in_drop_box
-        # TODO using .all is a workaround. beed to find our which format send grid expects.
-        format.all  do
-          render :text => 'OK', :status => :ok 
-         end
-      else
-        format.all  { render :text => 'Internal Server Error', :status => :internal_server_error }
-      end
-    end
-  end
-
   # POST /thoughts
   # POST /thoughts.xml
   def create
     @thought = current_person.thoughts.new(params[:thought])
+    @thought.origin = 'website' if @thought.origin.blank?
     respond_to do |format|
       if @thought.save
         format.html { redirect_to([current_person,@thought], :notice => 'Thought was successfully created.') }

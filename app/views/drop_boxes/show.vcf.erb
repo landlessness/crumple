@@ -2,7 +2,7 @@ BEGIN:VCARD
 VERSION:3.0
 N:;Crumple Drop Box;;;
 FN:Crumple
-item1.EMAIL;type=INTERNET;type=pref:<%= @drop_box.email %>
+item1.EMAIL;type=INTERNET;type=pref:<%= @drop_box.email_address %>
 item1.X-ABLabel:drop box email
 NOTE:Crumple is a notebook for creative thinkers.
 item2.URL;type=pref:http\://<%= Rails.application.config.top_level_domain%><%= person_drop_box_path(@drop_box.person, @drop_box) %>

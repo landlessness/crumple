@@ -5,6 +5,7 @@ class Thought < ActiveRecord::Base
   belongs_to :person
   belongs_to :project
   has_many :comments, :dependent => :destroy
+  has_many :send_grid_emails
 
   acts_as_taggable
 
@@ -18,11 +19,11 @@ class Thought < ActiveRecord::Base
     end
 
     event :put_in_drop_box do
-      transition :active => :drop_box
+      transition :active => :in_drop_box
     end
 
     event :accept do
-      transition :drop_box => :active
+      transition :in_drop_box => :active
     end
   end
 
