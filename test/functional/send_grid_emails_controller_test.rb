@@ -29,11 +29,11 @@ class SendGridEmailsControllerTest < ActionController::TestCase
     assert_difference('SendGridEmail.count') do
       post :create, send_grid_mail_fixture.merge(:format => 'xml')
     end
-    # thought = assigns(:thought)
-    # assert_equal "this is another test.\n", thought.body
-    # 
-    # assert_equal 'in_drop_box', thought.state
-    # 
+    thought = assigns(:send_grid_email).thought
+    assert thought.body.include?("this is another test.\n"), 'thought should create  expected text'
+    
+    assert_equal 'in_drop_box', thought.state
+    
     assert_response :ok
   end
 
@@ -45,11 +45,11 @@ class SendGridEmailsControllerTest < ActionController::TestCase
     assert_difference('SendGridEmail.count') do
       post :create, send_grid_html_mail_fixture.merge(:format => 'xml')
     end
-    # thought = assigns(:thought)
-    # assert_equal "\"I very rarely think in words at all. A thought comes, and I may try to express it in words afterwards,\" -Albert Einstein (Wertheimer, 1959, 213; Pais, 1982). \n\nhttp://www.psychologytoday.com/blog/imagine/201003/einstein-creative-thinking-music-and-the-intuitive-art-scientific-imagination\n", thought.body
-    # 
-    # assert_equal 'in_drop_box', thought.state
-    # 
+    thought = assigns(:send_grid_email).thought
+    assert thought.body.include?("\"I very rarely think in words at all. A thought comes, and I may try to express it in words afterwards,\" -Albert Einstein (Wertheimer, 1959, 213; Pais, 1982). \n\nhttp://www.psychologytoday.com/blog/imagine/201003/einstein-creative-thinking-music-and-the-intuitive-art-scientific-imagination\n"), 'thought should include expected text.'
+    
+    assert_equal 'in_drop_box', thought.state
+    
     assert_response :ok
   end
 

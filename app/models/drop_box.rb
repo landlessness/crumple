@@ -29,7 +29,7 @@ class DropBox < ActiveRecord::Base
     # find the project
     body.gsub!(/^[\s]*project:(.+)?[\s]*$[\n]?/i, '')
     project_name = $1.strip if $1    
-    project = self.person.projects.find_by_name(project_name) if project_name
+    project = self.person.projects.where('projects.name ilike ?', project_name).first if project_name
     
     # get the tags
     body.gsub!(/^[\s]*tag[s]?:(.+)?[\s]*$[\n]?/i, '')
@@ -45,33 +45,4 @@ class DropBox < ActiveRecord::Base
     email.update_attributes :thought => thought
   end
   
-  def self.new_thought(send_grid_mail)
-    project = nil
-    
-    name, secret = name_and_secret_from_email_address(send_grid_mail[:to])
-    d = DropBox.find_by_name_and_secret(name, secret)    
-    
-    if d.nil? || send_grid_mail[:text].nil?
-      return nil
-    else
-      send_grid_mail[:text].strip!
-    end
-
-    unless send_grid_mail[:subject].nil? || send_grid_mail[:subject].empty?
-      send_grid_mail[:subject].strip!
-      project = d.person.projects.find_by_name(send_grid_mail[:subject])
-      if project.nil?
-        project = Project.new(:name => send_grid_mail[:subject])
-
-        membership = d.person.memberships.build :project => project
-      end
-    end
-    
-    tag_list = 'email'
-    body = send_grid_mail[:text].gsub(/^[\s]*tag[s]?:(.+)?[\s]*$[\n]?/i, '')
-    tag_list += ' ' + $1 if $1
-
-    d.person.thoughts.build :body => body, :project => project, :state_event => :put_in_drop_box, :tag_list => tag_list
-  end
-
 end

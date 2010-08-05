@@ -40,32 +40,21 @@ class SendGridEmailsController < ApplicationController
   # POST /send_grid_emails
   # POST /send_grid_emails.xml
   def create
-    if request.user_agent.match(/SendGrid/i) 
-      # to make this method robust enough to handle changes
-      # from SendGrid we're going to remove all unknown attrs
-      known_attributes = SendGridEmail.column_names
-      params.delete_if {|k,v| !known_attributes.include?(k)}
-      p = params
-    else
-      p = params[:send_grid_email]
-    end
-    logger.info "PARAMS: " + params.to_yaml
-    logger.info "P: " + p.to_yaml
+    p = request.user_agent.match(/SendGrid/i) ? SendGridEmail.remove_unknown_attributes(params) : params[:send_grid_email]
+
     @send_grid_email = SendGridEmail.new(p)
 
     respond_to do |format|
       if @send_grid_email.save
         format.html { redirect_to(@send_grid_email, :notice => 'Send grid email was successfully created.') }
         format.all  do
-          logger.info 'in format.all good path'
           render :text => 'OK', :status => :ok 
          end
       else
         format.html { render :action => "new" }
-        format.all  { 
-          logger.info 'in format.all bad path'
+        format.all  do
           render :text => 'Internal Server Error', :status => :internal_server_error 
-        }
+        end
       end
     end
   end
