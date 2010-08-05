@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Text:</b>
+  <%= @send_grid_email.text %>
+</p>
+
+<p>
+  <b>Html:</b>
+  <%= @send_grid_email.html %>
+</p>
+
+<p>
+  <b>To:</b>
+  <%= @send_grid_email.to %>
+</p>
+
+<p>
+  <b>From:</b>
+  <%= @send_grid_email.from %>
+</p>
+
+<p>
+  <b>Subject:</b>
+  <%= @send_grid_email.subject %>
+</p>
+
+<p>
+  <b>Attachments:</b>
+  <%= @send_grid_email.attachments %>
+</p>
+
+<p>
+  <b>Drop box:</b>
+  <%= @send_grid_email.drop_box %>
+</p>
+
+
+<%= link_to 'Edit', edit_send_grid_email_path(@send_grid_email) %> |
+<%= link_to 'Back', send_grid_emails_path %>

@@ -1,0 +1,35 @@
+<h1>Listing send_grid_emails</h1>
+
+<table>
+  <tr>
+    <th>Text</th>
+    <th>Html</th>
+    <th>To</th>
+    <th>From</th>
+    <th>Subject</th>
+    <th>Attachments</th>
+    <th>Drop box</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @send_grid_emails.each do |send_grid_email| %>
+  <tr>
+    <td><%= send_grid_email.text %></td>
+    <td><%= send_grid_email.html %></td>
+    <td><%= send_grid_email.to %></td>
+    <td><%= send_grid_email.from %></td>
+    <td><%= send_grid_email.subject %></td>
+    <td><%= send_grid_email.attachments %></td>
+    <td><%= send_grid_email.drop_box %></td>
+    <td><%= link_to 'Show', send_grid_email %></td>
+    <td><%= link_to 'Edit', edit_send_grid_email_path(send_grid_email) %></td>
+    <td><%= link_to 'Destroy', send_grid_email, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Send grid email', new_send_grid_email_path %>
