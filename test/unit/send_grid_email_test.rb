@@ -25,6 +25,12 @@ class SendGridEmailTest < ActiveSupport::TestCase
     end
   end
   
+  test 'create a send grid email w/o text or subject' do
+    assert_difference('SendGridEmail.count') do    
+      m = SendGridEmail.create send_grid_emails(:without_text_or_subject).attributes
+    end
+  end
+
   test 'creating a send grid email creates a thought and puts it in the drop box' do
     m = nil
     assert_difference('SendGridEmail.count') do    

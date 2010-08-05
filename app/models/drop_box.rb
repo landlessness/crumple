@@ -24,7 +24,7 @@ class DropBox < ActiveRecord::Base
   
   def process_email(email)
     # concat the subject and the body of the email
-    body = (email.subject || '') + "\n\n" + (email.text || '')
+    body = ((email.subject || '') + "\n\n" + (email.text || '')).strip
     
     # find the project
     body.gsub!(/^[\s]*project:(.+)?[\s]*$[\n]?/i, '')
@@ -33,7 +33,7 @@ class DropBox < ActiveRecord::Base
     
     # get the tags
     body.gsub!(/^[\s]*tag[s]?:(.+)?[\s]*$[\n]?/i, '')
-    tag_list = $1 if $1
+    tag_list = $1.strip if $1
     
     # create the thought
     thought = self.person.thoughts.create :origin => 'email', :body => body, :tag_list => tag_list, :project => project

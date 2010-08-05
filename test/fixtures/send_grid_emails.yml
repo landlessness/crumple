@@ -33,3 +33,11 @@ without_text:
   subject: Detroit Hackerspaces
   attachments: 10
   drop_box: 1
+
+without_text_or_subject:
+  html: "<html><body><p>this is a new thought\ntags: detroit hackerspace\nproject: Crumple</p></body></html>"
+  to: brian+4444@crumpleapp.com
+  from: brian@landlessness.net
+  attachments: 10
+  drop_box: 1
+
