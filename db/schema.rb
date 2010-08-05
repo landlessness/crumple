@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100730080646) do
+ActiveRecord::Schema.define(:version => 20100805000449) do
 
   create_table "comments", :force => true do |t|
     t.text     "body"
@@ -53,11 +53,37 @@ ActiveRecord::Schema.define(:version => 20100730080646) do
   add_index "people", ["email"], :name => "index_people_on_email", :unique => true
   add_index "people", ["reset_password_token"], :name => "index_people_on_reset_password_token", :unique => true
 
+  create_table "platforms", :force => true do |t|
+    t.string   "name"
+    t.string   "app_secret"
+    t.string   "api_key"
+    t.string   "app_id"
+    t.string   "app_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "projects", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "description"
+  end
+
+  create_table "send_grid_emails", :force => true do |t|
+    t.text     "text"
+    t.text     "html"
+    t.text     "headers"
+    t.string   "to"
+    t.string   "from"
+    t.string   "subject"
+    t.string   "dkim"
+    t.integer  "attachments"
+    t.integer  "drop_box_id"
+    t.integer  "thought_id"
+    t.boolean  "assigned_drop_box"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "taggings", :force => true do |t|
@@ -84,6 +110,7 @@ ActiveRecord::Schema.define(:version => 20100730080646) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "state",      :default => "active"
+    t.string   "origin"
   end
 
 end

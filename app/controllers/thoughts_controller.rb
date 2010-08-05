@@ -98,20 +98,6 @@ class ThoughtsController < ApplicationController
     end      
   end
 
-  def create_from_sendgrid
-    @thought = DropBox.new_thought(params)
-    respond_to do |format|
-      
-      if @thought.save
-        format.all  do
-          render :text => 'OK', :status => :ok 
-         end
-      else
-        format.all  { render :text => 'Internal Server Error', :status => :internal_server_error }
-      end
-    end
-  end
-
   # POST /thoughts
   # POST /thoughts.xml
   def create

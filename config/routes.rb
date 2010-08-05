@@ -1,4 +1,5 @@
 Crumple::Application.routes.draw do |map|
+  resources :send_grid_emails
 
   devise_for :people, :path_names => { :sign_in => 'login', :sign_out => 'logout' }
 
@@ -6,7 +7,7 @@ Crumple::Application.routes.draw do |map|
   match '/people/:person_id/drop_boxes/:id/crumple.:format' => 'drop_boxes#show', :via => :get
   
   # must come before the resources :thoughts line
-  match '/thoughts.xml' => 'thoughts#create_from_sendgrid', :constraints => { :user_agent => /SendGrid/ }, :via => :post
+  match '/thoughts.xml' => 'send_grid_emails#create', :constraints => { :user_agent => /SendGrid/i }, :via => :post
 
   resources :people do
     resources :drop_boxes

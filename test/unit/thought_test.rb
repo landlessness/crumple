@@ -29,17 +29,4 @@ class ThoughtTest < ActiveSupport::TestCase
     assert_match /Validation failed: Person can't be blank/, e.message
   end
 
-  test "that a long thought will save" do
-    text = long_thought_text
-    expected_text_size = 38000
-    assert text.size > expected_text_size, "text size was actually #{text.size}, not #{expected_text_size}"
-    assert thought = @person.thoughts.create!(:body => text), 'thought should have been created'
-    assert_equal text, thought.body
-  end
-  
-  private 
-  
-  def long_thought_text
-    read_fixture('long.mail').join
-  end
 end
