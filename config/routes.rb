@@ -27,23 +27,13 @@ Crumple::Application.routes.draw do |map|
     end
     collection  do
       get :archived
+      get :visualize
     end
     resources :comments
   end
 
   resources :people do
     resources :drop_boxes
-    resources :thoughts do
-      member do
-        put :archive
-        put :activate
-        put :accept
-      end
-      collection  do
-        get :archived
-      end
-      resources :comments
-    end
   end
   
   resources :projects do

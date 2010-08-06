@@ -1,6 +1,42 @@
 module ThoughtsHelper
   include ActsAsTaggableOn::TagsHelper
+
+  def viz_data(person, thoughts)
+    nodes = viz_nodes(person, thoughts)
+    links = viz_links(person)
+    js_data = "{nodes:["
+    nodes.each do |n|
+      js_data += %(\n{nodeValue:"#{n.viz_node_value}", group:#{n.viz_group}})
+      js_data += n == nodes.last ? '' : ','
+    end
+    js_data += "],\nlinks:["
+    links.each do |l|
+      js_data += %(\n{source:#{nodes.index(l.tag)}, target:#{nodes.index(l.taggable)}})
+      js_data += l == links.last ? '' : ','
+    end
+    js_data += "\n]};"
+    js_data.html_safe
+  end
   
+  def viz_nodes(person, thoughts)
+    nodes = []
+    person.owned_tags.each do |t|
+      nodes << t
+    end
+    thoughts.each do |t|
+      nodes << t
+    end
+    nodes
+  end
+
+  def viz_links(person)
+    links = []
+    person.owned_taggings.each do |t|
+      links << t
+    end
+    links
+  end
+
   def truncate(text,length=313,append='...(more)')
     text.size > length ? (text[0,length-1] + append) : text
   end
@@ -34,3 +70,4 @@ module ThoughtsHelper
     project ? project_path(project, :tags => tag.name ) : thoughts_path(:tags => tag.name)
   end
 end
+

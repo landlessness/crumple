@@ -1,6 +1,14 @@
 class ThoughtsController < ApplicationController
   skip_filter :authenticate_person!, :only => :new
   
+  def visualize
+    @thoughts = current_person.thoughts.with_state(:active)
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @thoughts }
+    end    
+  end
+  
   # GET /thoughts
   # GET /thoughts.xml
   def index
@@ -110,6 +118,7 @@ class ThoughtsController < ApplicationController
     
     respond_to do |format|
       if @thought.save
+        current_person.tag @thought, :with => @thought.tag_list, :on => :tags
         format.html { redirect_to(@thought, :notice => 'Thought was successfully created.') }
         format.xml  { render :xml => @thought, :status => :created, :location => @thought }
       else
@@ -126,6 +135,8 @@ class ThoughtsController < ApplicationController
 
     respond_to do |format|
       if @thought.update_attributes(params[:thought])
+        current_person.tag @thought, :with => @thought.tag_list, :on => :tags
+        
         format.html { redirect_to(@thought, :notice => 'Thought was successfully updated.') }
         format.xml  { head :ok }
       else

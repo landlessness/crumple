@@ -1,4 +1,6 @@
 class Person < ActiveRecord::Base
+  acts_as_tagger
+  
   validates :email, :presence => true, 
                     :length => {:minimum => 3, :maximum => 254},
                     :uniqueness => true,

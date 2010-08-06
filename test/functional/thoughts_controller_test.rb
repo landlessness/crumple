@@ -41,6 +41,21 @@ class ThoughtsControllerTest < ActionController::TestCase
     assert_equal 'website', t.origin    
   end
 
+  test "should create thought, tags and tag ownership" do
+    
+    tags = %w(blue brown black).sort
+    
+    assert @person.owned_tags.empty?, 'person should not own any tags at the beginning'
+    
+    assert_difference('Thought.count') do
+      post :create, :thought => @thought.attributes.merge(:tag_list => tags.join(' '))
+    end
+    
+    assert_equal tags, @person.owned_tags.map(&:name).sort
+
+    assert_redirected_to t=assigns(:thought)
+  end
+
   test "should create thought from bookmarklet" do
     assert_difference('Thought.count') do
       post :create, :thought => @thought.attributes.merge(:origin => 'bookmarklet')
@@ -74,6 +89,19 @@ class ThoughtsControllerTest < ActionController::TestCase
   test "should update thought" do
     put :update, :id => @thought.to_param, :thought => @thought.attributes
     assert_redirected_to assigns(:thought)
+  end
+  
+  test "should update thought with new tag and tag ownership" do
+    
+    tags = %w(blue brown black).sort
+    
+    assert @person.owned_tags.empty?, 'person should not own any tags at the beginning'
+    
+    put :update, :id => @thought.to_param, :thought => @thought.attributes.merge(:tag_list => tags.join(' '))
+    
+    assert_equal tags, @person.owned_tags.map(&:name).sort
+
+    assert_redirected_to t=assigns(:thought)
   end
 
   test "should archive thought" do

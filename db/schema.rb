@@ -53,16 +53,6 @@ ActiveRecord::Schema.define(:version => 20100805000449) do
   add_index "people", ["email"], :name => "index_people_on_email", :unique => true
   add_index "people", ["reset_password_token"], :name => "index_people_on_reset_password_token", :unique => true
 
-  create_table "platforms", :force => true do |t|
-    t.string   "name"
-    t.string   "app_secret"
-    t.string   "api_key"
-    t.string   "app_id"
-    t.string   "app_url"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "projects", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"

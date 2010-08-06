@@ -29,4 +29,14 @@ class ThoughtTest < ActiveSupport::TestCase
     assert_match /Validation failed: Person can't be blank/, e.message
   end
 
+  test "tags are assigned to thoughts and have owners" do
+    
+    tags = %w(blue green orange)
+    
+    assert @person.owned_tags.empty?, 'person should not own any tags at the beginning'
+    t = @person.thoughts.create :body => 'this is a thought with tags'
+    @person.tag(t, :with => tags.join(' '), :on => :tags)
+    
+    assert_equal tags, @person.owned_tags.map(&:name)
+  end
 end

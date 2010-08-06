@@ -1,4 +1,5 @@
 class Thought < ActiveRecord::Base  
+  include ActsAsVisualizable
   validates :body, :presence => true
   validates :person, :presence => true
 
@@ -27,4 +28,8 @@ class Thought < ActiveRecord::Base
     end
   end
 
+  def viz_group
+    2
+  end
 end
+
