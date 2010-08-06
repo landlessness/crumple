@@ -12,12 +12,17 @@
     <%= display_text @thought.body %>    
   </div>
 </p>
-
+<p>
+  <b>Timing:</b>
+  <p>
+    last updated <%=l @thought.updated_at, :format => :short %> (<%= time_ago_in_words @thought.updated_at %> ago)<br/>
+    created <%=l @thought.created_at, :format => :short %> (<%= time_ago_in_words @thought.created_at %> ago)
+  </p>
+</p>
 <p>
   <b>Tags:</b>
   <%= links_to_tags @thought.tags, @thought.project %>
 </p>
-
 <p>
   <%= form_for [@thought, @comment] do |f| %>
   <div class="field">
