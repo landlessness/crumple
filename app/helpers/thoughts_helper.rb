@@ -11,6 +11,7 @@ module ThoughtsHelper
     end
     js_data += "],\nlinks:["
     links.each do |l|
+      next if l.taggable.nil?
       js_data += %(\n{source:#{nodes.index(l.tag)}, target:#{nodes.index(l.taggable)}})
       js_data += l == links.last ? '' : ','
     end
