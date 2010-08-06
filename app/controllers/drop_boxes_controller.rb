@@ -1,4 +1,6 @@
 class DropBoxesController < ApplicationController
+  skip_filter :authenticate_person!, :only => :bookmarklet
+  
   # GET /drop_boxes
   # GET /drop_boxes.xml
   def index

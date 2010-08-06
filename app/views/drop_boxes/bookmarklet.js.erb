@@ -7,4 +7,4 @@ try {
 b=location.href+"\n"+document.title;
 if (!/^ *$/.test(t)) {b=b+"\n\n"+t;}
 b=encodeURIComponent(b);
-open('http://<%= Rails.application.config.top_level_domain %>?thought[body]='+b+'&thought[state_event]=put_in_drop_box&thought[origin]=bookmarklet','Crumple','toolbar=no,width=800,height=600')
+w = open('http://<%= Rails.application.config.top_level_domain %>?thought[body]='+b+'&thought[state_event]=put_in_drop_box&thought[origin]=bookmarklet','Crumple','toolbar=no,width=800,height=600');
