@@ -2,7 +2,7 @@
 <%= render :partial => "thoughts/thoughts", :locals => { :cloud => nil, :thoughts => @thoughts, :project => nil } %>
 <h2>Helpers</h2>
 <h3>Bookmarklet</h3>
-<p><%= link_to 'Crumple Bookmarklet', %(javascript:(function(){_my_script=document.createElement('SCRIPT');  _my_script.type='text/javascript';_my_script.src='http://#{Rails.application.config.top_level_domain}/drop_box/bookmarklet.js?';document.getElementsByTagName('head')[0].appendChild(_my_script);})();) %></p>
+<p><%= link_to 'Crumple Bookmarklet', %(javascript:(function(){_my_script=document.createElement('SCRIPT');  _my_script.type='text/javascript';_my_script.src='http://#{Rails.application.config.top_level_domain}/drop_box/bookmarklet.js?x='+Math.floor(Math.random()*9999);document.getElementsByTagName('head')[0].appendChild(_my_script);})();) %></p>
 <h3>Email</h3>
 <p><%= link_to 'Download vCard', drop_box_vcf_path %></p>
 <p>Email: <%= mail_to @drop_box.email_address, @drop_box.email_address %> <%= link_to 'Edit', edit_drop_box_path(@drop_box) %></p>
