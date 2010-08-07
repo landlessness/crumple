@@ -8,7 +8,7 @@ module ThoughtsHelper
     
     js_data = "{nodes:["
     nodes.each do |n|
-      js_data += %(\n{nodeValue:"#{n.viz_node_value}", nodeName:"#{truncate(escape_javascript(n.viz_node_name), 20, '...')}", group:#{viz_group(n,projects)}})
+      js_data += %(\n{nodeValue:"#{n.viz_node_value}", nodeName:"#{escape_javascript(n.viz_node_name)}", group:#{viz_group(n,projects)}})
       js_data += n == nodes.last ? '' : ','
     end
     js_data += "],\nlinks:["
