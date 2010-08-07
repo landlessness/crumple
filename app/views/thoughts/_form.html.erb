@@ -18,12 +18,12 @@
 <br/>
 <% if person_signed_in? %>
 <div>
-  Project: <%= collection_select(:thought, :project_id, current_person.projects.order('upper(name)').all, :id, :name, :prompt => true) %>
+  Project:<br/> <%= collection_select(:thought, :project_id, current_person.projects.order('upper(name)').all, :id, :name, :prompt => true) %>
 </div>
 <br/>
 <% end %>
 <div class="field">
-  <%= f.label :tag_list, 'Tags (example: act3 todo marketing)' %><br />
+  <%= f.label :tag_list, 'Tags:' %><br />
   <%= f.text_field :tag_list %>
 </div>
 <div class="actions">
