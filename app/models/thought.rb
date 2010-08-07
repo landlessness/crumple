@@ -28,5 +28,9 @@ class Thought < ActiveRecord::Base
     end
   end
 
+  def viz_node_name
+    self.body
+  end
+
 end
 

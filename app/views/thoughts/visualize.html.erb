@@ -15,20 +15,23 @@ var vis = new pv.Panel()
 .event("mousedown", pv.Behavior.pan())
 .event("mousewheel", pv.Behavior.zoom());
 
-var force = vis.add(pv.Layout.Force)
+var network = vis.add(pv.Layout.Force)
 .nodes(thoughts.nodes)
 .links(thoughts.links);
 
-force.link.add(pv.Line);
+network.link.add(pv.Line);
 
-force.node.add(pv.Dot)
+network.node.add(pv.Dot)
 .size(function(d) (d.linkDegree + 4) * Math.pow(this.scale, -1.5))
+.shape(function(d) d.group == 0 ? "diamond" : "circle")
 .fillStyle(function(d) d.fix ? "brown" : colors(d.group))
 .strokeStyle(function() this.fillStyle().darker())
 .lineWidth(1)
 .title(function(d) d.nodeName)
 .event("mousedown", pv.Behavior.drag())
-.event("drag", force);
+.event("drag", network);
+
+network.label.add(pv.Label);
 
 vis.render();
 
