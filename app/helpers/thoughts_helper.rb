@@ -1,14 +1,15 @@
 module ThoughtsHelper
   include ActsAsTaggableOn::TagsHelper
 
-  def viz_data(person, thoughts)
+  def viz_data(person, thoughts, render_html=true)
     nodes = viz_nodes(person, thoughts)
     links = viz_links(person)
     projects = person.projects
     
     js_data = "{nodes:["
     nodes.each do |n|
-      js_data += %(\n{nodeValue:"#{escape_javascript(n.viz_node_value)}", nodeName:"#{escape_javascript(n.viz_node_name)}", group:#{viz_group(n,projects)}})
+      node_name = render_html ? n.viz_html_node_name : n.viz_node_name
+      js_data += %(\n{nodeValue:"#{escape_javascript(n.viz_node_value)}", nodeName:"#{escape_javascript(node_name)}", group:#{viz_group(n,projects)}})
       js_data += n == nodes.last ? '' : ','
     end
     js_data += "],\nlinks:["

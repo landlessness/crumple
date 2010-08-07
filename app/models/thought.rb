@@ -27,8 +27,11 @@ class Thought < ActiveRecord::Base
     end
   end
 
-  def viz_node_name
+  def viz_html_node_name
     (project.nil? ? '' : "<strong>#{self.project.name}</strong><br/>") + self.body
+  end
+  def viz_node_name
+    (project.nil? ? '' : "#{self.project.name}: ") + self.body
   end
   def viz_node_value
     self.class.name + '_' + self.id.to_s

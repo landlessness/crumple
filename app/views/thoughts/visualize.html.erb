@@ -1,21 +1,55 @@
 <h2>Thoughts visualization</h2>
-
+<p>
+  Style: 
+  <%= link_to 'Arc', visualize_thoughts_path(:style => 'Arc') %> | 
+  <%= link_to 'Force', visualize_thoughts_path(:style => 'Force') %> | 
+  <%= link_to 'Matrix', visualize_thoughts_path(:style => 'Matrix') %>
+</p>
+<p>
 <script type="text/javascript+protovis">
 
+<% if @style == 'Matrix'  %>
+var thoughts = <%= viz_data(current_person, @thoughts, false) %>
+
+var color = pv.Colors.category19().by(function(d) d.group);
+
+var vis = new pv.Panel()
+    .width(693)
+    .height(693)
+    .top(90)
+    .left(90);
+
+var layout = vis.add(pv.Layout.Matrix)
+    .nodes(thoughts.nodes)
+    .links(thoughts.links)
+    .sort(function(a, b) b.group - a.group);
+
+layout.link.add(pv.Bar)
+    .fillStyle(function(l) l.linkValue
+        ? ((l.targetNode.group == l.sourceNode.group)
+        ? color(l.sourceNode) : "#555") : "#eee")
+    .antialias(false)
+    .lineWidth(1);
+
+layout.label.add(pv.Label)
+    .textStyle(color);
+
+vis.render();
+
+<% else  %>
 var thoughts = <%= viz_data(current_person, @thoughts) %>
 
 // var w = document.body.clientWidth, h = document.body.clientHeight, colors = pv.Colors.category19();
 var w = 900, h = 500, colors = pv.Colors.category19();
 
 var vis = new pv.Panel()
-
 .width(w)
 .height(h)
 .fillStyle("white")
 .event("mousedown", pv.Behavior.pan())
 .event("mousewheel", pv.Behavior.zoom());
 
-var network = vis.add(pv.Layout.Force)
+var network = vis.add(pv.Layout.<%= @style %>)
 .nodes(thoughts.nodes)
 .links(thoughts.links);
 
@@ -39,7 +73,10 @@ network.node.add(pv.Dot)
 })
 .event("drag", network);
 
+<% end %>
+
 vis.render();
 
 </script>
+</p>
 
