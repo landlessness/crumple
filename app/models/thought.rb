@@ -28,8 +28,5 @@ class Thought < ActiveRecord::Base
     end
   end
 
-  def viz_group
-    2
-  end
 end
 

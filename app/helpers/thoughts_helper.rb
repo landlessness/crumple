@@ -4,9 +4,11 @@ module ThoughtsHelper
   def viz_data(person, thoughts)
     nodes = viz_nodes(person, thoughts)
     links = viz_links(person)
+    projects = person.projects
+    
     js_data = "{nodes:["
     nodes.each do |n|
-      js_data += %(\n{nodeValue:"#{n.viz_node_value}", group:#{n.viz_group}})
+      js_data += %(\n{nodeValue:"#{n.viz_node_value}", group:#{viz_group(n,projects)}})
       js_data += n == nodes.last ? '' : ','
     end
     js_data += "],\nlinks:["
@@ -19,6 +21,14 @@ module ThoughtsHelper
     end
     js_data += "\n]};"
     js_data.html_safe
+  end
+
+  def viz_group(node,projects)
+    if node.class == ActsAsTaggableOn::Tag
+      0
+    elsif node.class == Thought
+      node.project.nil? ? 1 : projects.index(node.project) + 2
+    end
   end
   
   def viz_nodes(person, thoughts)
