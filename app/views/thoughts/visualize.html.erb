@@ -22,6 +22,7 @@ var network = vis.add(pv.Layout.Force)
 network.link.add(pv.Line);
 
 network.node.add(pv.Dot)
+.cursor("pointer")
 .size(function(d) (d.linkDegree + 4) * Math.pow(this.scale, -1.5))
 .shape(function(d) d.group == 0 ? "diamond" : "circle")
 .fillStyle(function(d) d.fix ? "brown" : colors(d.group))
@@ -30,6 +31,12 @@ network.node.add(pv.Dot)
 .text(function(d) d.nodeName)
 .event("mouseover", pv.Behavior.tipsy({gravity: 's', fade: false, html: true}))
 .event("mousedown", pv.Behavior.drag())
+.event("click", function(d) {
+  var base_url = "http://<%= Rails.application.config.top_level_domain %>/thoughts"
+  var model_id = d.nodeValue.split("_");
+  if (model_id[0] == '<%= Thought.name %>') {self.location = base_url + "/" + model_id[1]}
+  else if (model_id[0] == '<%= ActsAsTaggableOn::Tag.name %>') {self.location = base_url + "?tags=" + model_id[1]}
+})
 .event("drag", network);
 
 vis.render();

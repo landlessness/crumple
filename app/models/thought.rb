@@ -1,5 +1,4 @@
 class Thought < ActiveRecord::Base  
-  include ActsAsVisualizable
   validates :body, :presence => true
   validates :person, :presence => true
 
@@ -31,6 +30,8 @@ class Thought < ActiveRecord::Base
   def viz_node_name
     (project.nil? ? '' : "<strong>#{self.project.name}</strong><br/>") + self.body
   end
-
+  def viz_node_value
+    self.class.name + '_' + self.id.to_s
+  end
 end
 
