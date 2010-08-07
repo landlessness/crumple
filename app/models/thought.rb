@@ -29,7 +29,7 @@ class Thought < ActiveRecord::Base
   end
 
   def viz_node_name
-    self.body
+    (project.nil? ? '' : "<strong>#{self.project.name}</strong><br/>") + self.body
   end
 
 end

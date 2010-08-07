@@ -3,9 +3,12 @@
 <head>
   <title>Crumple: A notebook for creative thinkers</title>
   <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag 'jquery-1.4.2.min.js', 'jquery.rails.js', 'protovis-r3.2.js' %>
+  <%= javascript_include_tag 'jquery-1.4.2.min.js', 'jquery.rails.js', 'protovis-r3.2.js', 'jquery.tipsy', 'protovis.tipsy' %>
   <%= csrf_meta_tag %>
   <script type="text/javascript">
+  $(function() {
+    $('a[rel=tipsy]').tipsy({fade: true, gravity: 'n'});
+  });
 
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-5885415-2']);
