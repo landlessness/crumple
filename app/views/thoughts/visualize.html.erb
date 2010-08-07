@@ -29,7 +29,7 @@ network.node.add(pv.Dot)
 .strokeStyle(function() this.fillStyle().darker())
 .lineWidth(1)
 .text(function(d) d.nodeName)
-.event("mouseover", pv.Behavior.tipsy({gravity: 's', fade: false, html: true}))
+.event("mouseover", pv.Behavior.tipsy({gravity: $.fn.tipsy.autoNS, fade: false, html: true}))
 .event("mousedown", pv.Behavior.drag())
 .event("click", function(d) {
   var base_url = "http://<%= Rails.application.config.top_level_domain %>/thoughts"
