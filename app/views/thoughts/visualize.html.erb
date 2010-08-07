@@ -51,6 +51,11 @@ var vis = new pv.Panel()
 
 var network = vis.add(pv.Layout.<%= @style %>)
 .nodes(thoughts.nodes)
+<% if @style == 'Arc' %>
+.sort(function(a, b) a.group == b.group
+        ? b.linkDegree - a.linkDegree
+        : b.group - a.group)
+<% end %>
 .links(thoughts.links);
 
 network.link.add(pv.Line);
