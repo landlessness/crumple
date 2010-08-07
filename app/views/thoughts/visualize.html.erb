@@ -27,6 +27,7 @@ network.node.add(pv.Dot)
 .fillStyle(function(d) d.fix ? "brown" : colors(d.group))
 .strokeStyle(function() this.fillStyle().darker())
 .lineWidth(1)
+.text(function(d) d.nodeName)
 .event("mouseover", pv.Behavior.tipsy({gravity: 's', fade: false, html: true}))
 .event("mousedown", pv.Behavior.drag())
 .event("drag", network);
