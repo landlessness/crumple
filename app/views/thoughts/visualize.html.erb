@@ -8,6 +8,7 @@
 <div id="viz_container">
 <script type="text/javascript+protovis">
 
+<% @style ||= 'Force' %>
 <% if @style == 'Matrix'  %>
 var thoughts = <%= viz_data(current_person, @thoughts, false) %>
 

@@ -3,7 +3,7 @@ class ThoughtsController < ApplicationController
   
   def visualize
     @thoughts = current_person.thoughts.with_state(:active)
-    @style = params[:style] || 'Force'
+    @style = params[:style]
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @thoughts }
