@@ -8,7 +8,7 @@ class Thought < ActiveRecord::Base
   has_many :send_grid_emails
   
   has_many :taggings, :dependent => :destroy
-  has_many :tags, :through => :taggings
+  has_many :tags, :through => :taggings, :uniq => true
 
   def tags_list=(tags_string)
     return unless tags_string
