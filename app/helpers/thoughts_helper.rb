@@ -1,22 +1,20 @@
 module ThoughtsHelper
   def viz_data(person, thoughts, project, tags, taggings, render_html=true)
-    nodes = viz_nodes(thoughts, tags)
-    links = viz_links(taggings)
+    nodes = tags + thoughts
+    links = taggings
     projects = person.projects
     
     js_data = "{nodes:["
     nodes.each do |n|
-      node_name = render_html ? n.first.viz_html_node_name : n.first.viz_node_name
-      js_data += %(\n{nodeValue:"#{escape_javascript(n.first.viz_node_value)}", nodeName:"#{escape_javascript(node_name)}", group:#{viz_group(n.first,projects,project)}})
-      js_data += n.first == nodes.last ? '' : ','
+      node_name = render_html ? n.viz_html_node_name : n.viz_node_name
+      js_data += %(\n{nodeValue:"#{escape_javascript(n.viz_node_value)}", nodeName:"#{escape_javascript(node_name)}", group:#{viz_group(n,projects,project)}})
+      js_data += n == nodes.last ? '' : ','
     end
     js_data += "],\nlinks:["
     links.each do |l|
-      source = nodes.select{|n| n.first.class==Tag && n.first.id==l.tag.id}
-      target = nodes.select{|n| n.first.class==Thought && n.first.id==l.thought.id}
-      next if source.empty? || target.empty?
-      source = source.first.last
-      target = target.first.last
+      source = nodes.index(l.tag)
+      target = nodes.index(l.thought)
+      next if source.nil? || target.nil?
       js_data += %(\n{source:#{source}, target:#{target}})
       js_data += l == links.last ? '' : ','
     end
@@ -36,22 +34,6 @@ module ThoughtsHelper
     end
   end
   
-  def viz_nodes(thoughts, tags)
-    nodes = []
-    (tags+thoughts).each_with_index do |t,i|
-      nodes << [t,i]
-    end
-    nodes
-  end
-
-  def viz_links(taggings)
-    links = []
-    taggings.each do |t|
-      links << t
-    end
-    links
-  end
-
   def truncate(text,length=313,append='...(more)')
     text.size > length ? (text[0,length-1] + append) : text
   end
