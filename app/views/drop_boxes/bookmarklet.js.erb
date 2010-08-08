@@ -1,10 +1,31 @@
-var t;
-try {
-  t = ((window.getSelection && window.getSelection()) || (document.getSelection && document.getSelection()) || (document.selection && document.selection.createRange && document.selection.createRange().text));
-} catch(e) {
-  t='';
-}
-b=location.href+"\n"+document.title;
-if (!/^ *$/.test(t)) {b=b+"\n\n"+t;}
-b=encodeURIComponent(b);
-w = open('http://<%= Rails.application.config.top_level_domain %>?thought[body]='+b+'&thought[state_event]=put_in_drop_box&thought[origin]=bookmarklet','Crumple','toolbar=no,width=800,height=600');
+/*
+* jQuery Bookmarklet - version 1.0
+* Originally written by: Brett Barros
+* With modifications by: Paul Irish
+*
+* If you use this script, please link back to the source
+*
+* Copyright (c) 2010 Latent Motion (http://latentmotion.com/how-to-create-a-jquery-bookmarklet/)
+* Released under the Creative Commons Attribution 3.0 Unported License,
+* as defined here: http://creativecommons.org/licenses/by/3.0/
+*
+*/
+
+window.bookmarklet = function(opts){fullFunc(opts)};
+
+// These are the styles, scripts and callbacks we include in our bookmarklet:
+window.bookmarklet({
+
+  css : ['http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.3/themes/smoothness/jquery-ui.css'],
+  js  : ['http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.3/jquery-ui.min.js'],    
+  ready : function(){
+
+    if ($('#crumple_dialog').length==0) {
+      $('<div id="crumple_dialog" title="Crumple dialog"><p>Hello World.</p></div>').appendTo('body');
+      $('#crumple_dialog').dialog({ autoOpen: false });
+    };
+    $('#crumple_dialog').dialog('open');
+  }
+})
+
+function fullFunc(a){function d(b){if(b.length===0){a.ready();return false}$.getScript(b[0],function(){d(b.slice(1))})}function e(b){$.each(b,function(c,f){$("<link>").attr({href:f,rel:"stylesheet"}).appendTo("head")})}a.jqpath=a.jqpath||"http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js";(function(b){var c=document.createElement("script");c.type="text/javascript";c.src=b;c.onload=function(){e(a.css);d(a.js)};document.body.appendChild(c)})(a.jqpath)};

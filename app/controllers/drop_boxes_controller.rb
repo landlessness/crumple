@@ -1,5 +1,6 @@
 class DropBoxesController < ApplicationController
   skip_filter :authenticate_person!, :only => :bookmarklet
+  skip_filter :check_drop_box, :only => :bookmarklet
   
   # GET /drop_boxes
   # GET /drop_boxes.xml
@@ -27,7 +28,7 @@ class DropBoxesController < ApplicationController
   # GET /drop_box/bookmarklet.:format
   def bookmarklet
     respond_to do |format|
-      format.js # bookmarklet.js.erb
+      format.js {render :layout => false}
     end
   end
 
