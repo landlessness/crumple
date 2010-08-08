@@ -14,7 +14,7 @@ module ThoughtsHelper
     links.each do |l|
       source = nodes.select{|n| n.first.class==Tag && n.first.id==l.tag.id}
       target = nodes.select{|n| n.first.class==Thought && n.first.id==l.thought.id}
-      next if source.nil? || target.nil?
+      next if source.empty? || target.empty?
       source = source.first.last
       target = target.first.last
       js_data += %(\n{source:#{source}, target:#{target}})
