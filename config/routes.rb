@@ -1,4 +1,8 @@
 Crumple::Application.routes.draw do |map|
+  resources :taggings
+
+  resources :tags
+
   resources :send_grid_emails
 
   devise_for :people, :path_names => { :sign_in => 'login', :sign_out => 'logout' }

@@ -40,7 +40,7 @@ class CommentsControllerTest < ActionController::TestCase
   end
 
   test "should update comment" do
-    put :update, :id => @comment.to_param, :comment => @comment.attributes, :thought_id => @thought
+    put :update, :id => @comment.to_param, :comment => {:body => 'a revised comment'}, :thought_id => @thought
     assert_redirected_to @thought
   end
 

@@ -21,7 +21,9 @@
 </p>
 <p>
   <b>Tags:</b>
-  <%= links_to_tags @thought.tags, @thought.project %>
+  <% @thought.tags.each do |t| %>
+  <%= link_to t.name, t %>
+  <% end %>
 </p>
 <p>
   <%= form_for [@thought, @comment] do |f| %>

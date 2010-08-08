@@ -25,11 +25,11 @@ class ThoughtsControllerTest < ActionController::TestCase
     get :new
     assert !@controller.person_signed_in?, 'person should NOT be signed in'
     assert_response :success
-    post :create, :thought => {:body => 'this is me typing a thought before i have signed in.', :tag_list => 'green blue red'}
+    post :create, :thought => {:body => 'this is me typing a thought before i have signed in.', :tags_list => 'green blue red'}
     assert_redirected_to new_person_session_url
     # post :controller => 'devise/sessions', :action => 'new', :person => @person
     # assert_redirected_to new_thought_url
-    assert_equal '/thoughts/new?thought[body]=this+is+me+typing+a+thought+before+i+have+signed+in.&thought[tag_list]=green+blue+red', @controller.session[:"person_return_to"]
+    assert_equal '/thoughts/new?thought[body]=this+is+me+typing+a+thought+before+i+have+signed+in.&thought[tags_list]=green+blue+red', @controller.session[:"person_return_to"]
   end
 
   test "should create thought" do
@@ -38,20 +38,20 @@ class ThoughtsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to t=assigns(:thought)
-    assert_equal 'website', t.origin    
+    assert_equal Rails.application.config.top_level_domain, t.origin    
   end
 
   test "should create thought, tags and tag ownership" do
     
     tags = %w(blue brown black).sort
     
-    assert @person.owned_tags.empty?, 'person should not own any tags at the beginning'
+    assert @person.tags.empty?, 'person should not own any tags at the beginning'
     
     assert_difference('Thought.count') do
-      post :create, :thought => @thought.attributes.merge(:tag_list => tags.join(' '))
+      post :create, :thought => @thought.attributes.merge(:tags_list => tags.join(' '))
     end
     
-    assert_equal tags, @person.owned_tags.map(&:name).sort
+    assert_equal tags, @person.tags.map(&:name).sort
 
     assert_redirected_to t=assigns(:thought)
   end
@@ -73,7 +73,7 @@ class ThoughtsControllerTest < ActionController::TestCase
     t = assigns(:thought)
     assert_redirected_to t
     assert t.in_drop_box?, 'thought expected to be in drop box.'
-    assert_equal 'website', t.origin
+    assert_equal Rails.application.config.top_level_domain, t.origin
   end
 
   test "should show thought" do
@@ -95,11 +95,11 @@ class ThoughtsControllerTest < ActionController::TestCase
     
     tags = %w(blue brown black).sort
     
-    assert @person.owned_tags.empty?, 'person should not own any tags at the beginning'
+    assert @person.tags.empty?, 'person should not own any tags at the beginning'
     
-    put :update, :id => @thought.to_param, :thought => @thought.attributes.merge(:tag_list => tags.join(' '))
+    put :update, :id => @thought.to_param, :thought => @thought.attributes.merge(:tags_list => tags.join(' '))
     
-    assert_equal tags, @person.owned_tags.map(&:name).sort
+    assert_equal tags, @person.tags.map(&:name).sort
 
     assert_redirected_to t=assigns(:thought)
   end

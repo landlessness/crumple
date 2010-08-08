@@ -9,14 +9,14 @@
 </h1>
 <p><%= @project.description %></p>
 <p>
-  <b>People:</b><br/>
-  <%= link_to 'Add people to ' + @project.name, new_project_person_path(@project) %>
-  <%= will_paginate @project_people %>
+  <b>Members:</b><br/>
+  <%= link_to 'Add member to ' + @project.name, new_project_person_path(@project) %>
+  <%= will_paginate @members %>
   <ul>
-    <%= render @project_people %>    
+    <%= render @members %>    
   </ul>
-  <%= will_paginate @project_people %>
-  <%= link_to 'Add people to ' + @project.name, new_project_person_path(@project) %>
+  <%= will_paginate @members %>
+  <%= link_to 'Add members to ' + @project.name, new_project_person_path(@project) %>
 </p>
 <%= link_to_new_thought(@project) %>
 <%= render :partial => "thoughts/thoughts", :locals => { :cloud => @tags_for_cloud, :thoughts => @thoughts, :project => @project } %>

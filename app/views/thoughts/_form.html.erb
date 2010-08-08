@@ -15,6 +15,10 @@
   <%= f.label :body, 'What are you thinking?' %><br />
   <%= f.text_area :body %>
 </div>
+<div>
+  <%= f.label :tags_list, 'Tags' %>
+  <%= f.text_field :tags_list %><br/>
+</div>
 <br/>
 <% if person_signed_in? %>
 <div>
@@ -22,10 +26,6 @@
 </div>
 <br/>
 <% end %>
-<div class="field">
-  <%= f.label :tag_list, 'Tags:' %><br />
-  <%= f.text_field :tag_list %>
-</div>
 <div class="actions">
   <%= f.hidden_field :state_event %>
   <%= f.hidden_field :origin %>

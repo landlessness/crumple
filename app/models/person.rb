@@ -1,5 +1,4 @@
 class Person < ActiveRecord::Base
-  acts_as_tagger
   
   validates :email, :presence => true, 
                     :length => {:minimum => 3, :maximum => 254},
@@ -10,11 +9,14 @@ class Person < ActiveRecord::Base
   has_many :memberships, :dependent => :destroy
   has_many :projects, :through => :memberships
   has_many :drop_boxes, :dependent => :destroy
+
+  has_many :taggings, :dependent => :destroy
+  has_many :tags, :through => :taggings, :uniq => true
   
   after_create do
     self.drop_boxes.create :name => self.email.split('@').first, :secret => rand(9999)
   end
-
+  
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable and :timeoutable
   devise :database_authenticatable, :registerable,

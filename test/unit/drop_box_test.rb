@@ -6,7 +6,7 @@ class DropBoxTest < ActiveSupport::TestCase
   end
   
   test "a drop_box with a person and a valid name is valid" do
-    assert @person.drop_boxes.create!(:name => 'fred'), 'drop_box should create smoothly'
+    assert @person.drop_boxes.create!(:name => 'fred', :secret => 3414 ), 'drop_box should create smoothly'
   end
     
   test "all drop boxes must have a valid name" do

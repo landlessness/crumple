@@ -1,5 +1,4 @@
 module ThoughtsHelper
-  include ActsAsTaggableOn::TagsHelper
 
   def viz_data(person, thoughts, render_html=true)
     nodes = viz_nodes(person, thoughts)
@@ -15,7 +14,7 @@ module ThoughtsHelper
     js_data += "],\nlinks:["
     links.each do |l|
       source = nodes.index(l.tag)
-      target = nodes.index(l.taggable)
+      target = nodes.index(l.thought)
       next if source.nil? || target.nil?
       js_data += %(\n{source:#{source}, target:#{target}})
       js_data += l == links.last ? '' : ','
@@ -25,7 +24,7 @@ module ThoughtsHelper
   end
 
   def viz_group(node,projects)
-    if node.class == ActsAsTaggableOn::Tag
+    if node.class == Tag
       0
     elsif node.class == Thought
       node.project.nil? ? 1 : projects.index(node.project) + 2
@@ -34,7 +33,7 @@ module ThoughtsHelper
   
   def viz_nodes(person, thoughts)
     nodes = []
-    person.owned_tags.each do |t|
+    person.tags.each do |t|
       nodes << t
     end
     thoughts.each do |t|
@@ -45,7 +44,7 @@ module ThoughtsHelper
 
   def viz_links(person)
     links = []
-    person.owned_taggings.each do |t|
+    person.taggings.each do |t|
       links << t
     end
     links

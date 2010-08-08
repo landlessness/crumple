@@ -6,3 +6,4 @@ gem 'devise', '1.1.rc2'
 gem 'state_machine', '0.9.3'
 gem "will_paginate", "3.0.pre"
 gem 'hoptoad_notifier'
+gem 'nifty-generators'

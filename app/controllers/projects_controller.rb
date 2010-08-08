@@ -17,7 +17,7 @@ class ProjectsController < ApplicationController
     @project = current_person.projects.find(params[:id])
     
     # TODO order by membership date, longest members first
-    @project_people = @project.people.paginate :per_page => 25, :page => params[:page], :order => 'updated_at DESC'
+    @members = @project.members.paginate :per_page => 25, :page => params[:page], :order => 'updated_at DESC'
 
     if params[:archived_thoughts]
       @showing_archived_thoughts = true
@@ -26,9 +26,6 @@ class ProjectsController < ApplicationController
       @showing_archived_thoughts = false
       @thoughts = @project.thoughts.with_state(:active)
     end
-    @tags = params[:tags].split('+') if params[:tags]
-    @thoughts = @thoughts.tagged_with(@tags) if @tags
-    @tags_for_cloud = @thoughts.tag_counts_on(:tags).order('tags.name')
     @thoughts = @thoughts.paginate :per_page => 25, :page => params[:page], :order => 'updated_at DESC' 
     
     respond_to do |format|

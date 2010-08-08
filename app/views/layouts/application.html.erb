@@ -1,43 +1,48 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Crumple: A notebook for creative thinkers</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag 'jquery-1.4.2.min.js', 'jquery.rails.js', 'protovis-r3.2.js', 'jquery.tipsy', 'protovis.tipsy' %>
-  <%= csrf_meta_tag %>
-  <script type="text/javascript">
-  $(function() {
-    $('a[rel=tipsy]').tipsy({fade: true, gravity: 'n'});
-  });
+  <head>
+    <title><%= yield(:title) || 'Crumple: A notebook for creative thinkers' %></title>
+    <%= stylesheet_link_tag :all %>
+    <%= javascript_include_tag 'jquery-1.4.2.min.js', 'jquery.rails.js', 'protovis-r3.2.js', 'jquery.tipsy', 'protovis.tipsy' %>
+    <%= csrf_meta_tag %>
+    <%= yield(:head) %>
+    <script type="text/javascript">
 
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-5885415-2']);
-    _gaq.push(['_trackPageview']);
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-5885415-2']);
+      _gaq.push(['_trackPageview']);
 
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
 
-  </script>
-</head>
-<body>
-  <% if person_signed_in? %>
-  <%= link_to 'Home', root_path %>
-  <%= link_to 'Thoughts', thoughts_path %>
-  <%= link_to_drop_box %>
-  <%= link_to 'Projects', projects_path %>
-  <%= link_to current_person.email, me_path %>
-  <%= link_to "Sign Out", destroy_person_session_path %>
-  <% else %>
-  <span style="font-size: 3em;">
-    <%= link_to 'Crumple', root_path %><sup style="font-size: 45%;">proto</sup><br/>
-    <span style="font-size: 45%;">A notebook for creative thinkers.</span>
-  </span>
-  <%= link_to "Sign up", new_person_registration_path %> or <%= link_to "Sign in", new_person_session_path %>
-  <% end %>
-  <%= yield %>
-
-</body>
+    </script>
+  </head>
+  <body>
+    <div id="container">
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <% end %>
+      <%= content_tag :h1, yield(:title) if show_title? %>
+      <% if person_signed_in? %>
+      <%= link_to 'Home', root_path %>
+      <%= link_to 'Thoughts', thoughts_path %>
+      <%= link_to 'Projects', projects_path %>
+      <%= link_to 'Tags', tags_path %>
+      <%= link_to_drop_box %>
+      |
+      <%= link_to current_person.email, me_path %>
+      <%= link_to "Sign Out", destroy_person_session_path %>
+      <% else %>
+      <span style="font-size: 3em;">
+        <%= link_to 'Crumple', root_path %><sup style="font-size: 45%;">proto</sup><br/>
+        <span style="font-size: 45%;">A notebook for creative thinkers.</span>
+      </span>
+      <%= link_to "Sign up", new_person_registration_path %> or <%= link_to "Sign in", new_person_session_path %>
+      <% end %>
+      <%= yield %>
+    </div>
+  </body>
 </html>

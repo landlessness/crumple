@@ -1,10 +1,11 @@
 class DropBox < ActiveRecord::Base
   validates :name, :presence => true, 
-                   :length => {:minimum => 2, :maximum => 254},
-                   :uniqueness => true,
-                   :format => {:with => /^([A-Z0-9]+)$/i}
-                   
+                    :length => {:minimum => 2, :maximum => 254},
+                    :uniqueness => true,
+                    :format => {:with => /^([A-Z0-9]+)$/i}                   
   validates :person, :presence => true
+  validates :secret, :presence => true,
+                    :length => {:minimum => 3, :maximum => 254}
 
   belongs_to :person
   has_many :send_grid_emails
@@ -37,10 +38,10 @@ class DropBox < ActiveRecord::Base
     
     # get the tags
     body.gsub!(/^[\s]*tag[s]?:(.+)?[\s]*$[\n]?/i, '')
-    tag_list = $1.strip if $1
+    tags_list = $1.strip if $1
     
     # create the thought
-    thought = self.person.thoughts.create :origin => 'email', :body => body, :tag_list => tag_list, :project => project
+    thought = self.person.thoughts.create :origin => 'email', :body => body, :tags_list => tags_list, :project => project
     
     # put it in the drop dox
     thought.put_in_drop_box

@@ -42,7 +42,7 @@ class SendGridEmailTest < ActiveSupport::TestCase
     assert !m.thought.body.include?('tags: detroit hackerspace'), 'thought should NOT include the original tags'
     assert !m.thought.body.include?('project: Crumple'), 'thought should NOT include the project'
     assert m.thought.in_drop_box?, 'thought should be created and in drop box.'
-    assert m.thought.tag_list.include?('hackerspace'), 'should include tag "hackerspace"'
+    assert m.thought.tags_list.include?('hackerspace'), 'should include tag "hackerspace"'
     assert_equal 'Crumple', m.thought.project.name
   end
   
@@ -63,8 +63,8 @@ class SendGridEmailTest < ActiveSupport::TestCase
 
     email = SendGridEmail.create email_params
     thought = email.thought
-    assert thought.tag_list.include?('foo'), 'should be tagged with "foo"'
-    assert thought.tag_list.include?('bar'), 'should be tagged with "bar"'
+    assert thought.tags_list.include?('foo'), 'should be tagged with "foo"'
+    assert thought.tags_list.include?('bar'), 'should be tagged with "bar"'
         
     assert_not_nil thought.person
     assert_equal person, thought.person

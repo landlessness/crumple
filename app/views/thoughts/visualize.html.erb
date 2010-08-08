@@ -1,11 +1,11 @@
 <h2>Thoughts visualization</h2>
 <p>
   Style: 
-  <%= link_to 'Arc', visualize_thoughts_path(:style => 'Arc') %> | 
-  <%= link_to 'Force', visualize_thoughts_path(:style => 'Force') %> | 
-  <%= link_to 'Matrix', visualize_thoughts_path(:style => 'Matrix') %>
+  <%= link_to_unless_current 'Arc', visualize_thoughts_path(:style => 'Arc') %> | 
+  <%= link_to_unless_current 'Force', visualize_thoughts_path(:style => 'Force') %> | 
+  <%= link_to_unless_current 'Matrix', visualize_thoughts_path(:style => 'Matrix') %>
 </p>
-<p>
+<div id="viz_container">
 <script type="text/javascript+protovis">
 
 <% if @style == 'Matrix'  %>
@@ -40,7 +40,7 @@ vis.render();
 var thoughts = <%= viz_data(current_person, @thoughts) %>
 
 // var w = document.body.clientWidth, h = document.body.clientHeight, colors = pv.Colors.category19();
-var w = 900, h = 500, colors = pv.Colors.category19();
+var w = 1084, h = 625, colors = pv.Colors.category19();
 
 var vis = new pv.Panel()
 .width(w)
@@ -61,20 +61,20 @@ var network = vis.add(pv.Layout.<%= @style %>)
 network.link.add(pv.Line);
 
 network.node.add(pv.Dot)
-.cursor("pointer")
-.size(function(d) (d.linkDegree + 4) * Math.pow(this.scale, -1.5))
+.cursor('pointer')
+.size(function(d) (d.linkDegree + 20) * Math.pow(this.scale, -1.5))
 .shape(function(d) d.group == 0 ? "diamond" : "circle")
 .fillStyle(function(d) d.fix ? "brown" : colors(d.group))
 .strokeStyle(function() this.fillStyle().darker())
 .lineWidth(1)
 .text(function(d) d.nodeName)
-.event("mouseover", pv.Behavior.tipsy({gravity: $.fn.tipsy.autoNS, fade: false, html: true}))
-.event("mousedown", pv.Behavior.drag())
+.event("mouseover", pv.Behavior.tipsy({offset: 5, gravity: 's', fade: false, html: true}))
+// .event("mousedown", pv.Behavior.drag())
 .event("click", function(d) {
-  var base_url = "http://<%= Rails.application.config.top_level_domain %>/thoughts"
+  var base_url = "http://<%= Rails.application.config.top_level_domain %>"
   var model_id = d.nodeValue.split("_");
-  if (model_id[0] == '<%= Thought.name %>') {self.location = base_url + "/" + model_id[1]}
-  else if (model_id[0] == '<%= ActsAsTaggableOn::Tag.name %>') {self.location = base_url + "?tags=" + model_id[1]}
+  if (model_id[0] == '<%= Thought.name %>') {self.location = base_url + "/thoughts/" + model_id[1]}
+  else if (model_id[0] == '<%= Tag.name %>') {self.location = base_url + "/tags/" + model_id[1]}
 })
 .event("drag", network);
 
@@ -83,5 +83,5 @@ network.node.add(pv.Dot)
 vis.render();
 
 </script>
-</p>
 
+</div>

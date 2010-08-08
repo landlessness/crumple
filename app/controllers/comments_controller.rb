@@ -59,7 +59,6 @@ class CommentsController < ApplicationController
   # PUT /comments/1.xml
   def update
     @comment = @thought.comments.find(params[:id])
-
     respond_to do |format|
       if @comment.update_attributes(params[:comment])
         format.html { redirect_to(@thought, :notice => 'Comment was successfully updated.') }
