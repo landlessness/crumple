@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.xml
   def index
-    @projects = current_person.projects.order('upper(name)').paginate :per_page => 25, :page => params[:page]
+    @projects = current_person.projects.order('upper(name)').paginate(:per_page => 25, :page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
