@@ -5,21 +5,26 @@ class ThoughtsController < ApplicationController
   # GET /thoughts.xml
   def index
     @project = current_person.projects.find(params[:project_id]) if params[:project_id] 
-    if params[:tag_id]
-      @tag = current_person.tags.find(params[:tag_id]) 
-      @tags = [@tag]
-    end
+    @tag = current_person.tags.find(params[:tag_id]) if params[:tag_id]
     @state = (params[:state] || 'active').to_sym
     @viz_style = params[:viz_style]
     
     if @project && @tag
+      @tags = [@tag]
       @thoughts = @tag.thoughts.where(:project_id=>@project)
+      @taggings = @tag.taggings.joins(:thought).where(:thoughts=>{:project_id=>@project})
     elsif @tag
+      @tags = [@tag]
       @thoughts = @tag.thoughts.where(:person_id=>current_person)
+      @taggings = @tag.taggings.where(:person_id=>current_person)
     elsif @project
+      @tags = @project.tags
       @thoughts = @project.thoughts
+      @taggings = @project.taggings
     else
+      @tags = current_person.tags
       @thoughts = current_person.thoughts
+      @taggings = current_person.taggings
     end
     
     @thoughts = @thoughts.with_state(@state).paginate(:per_page => 25, :page => params[:page], :order => 'updated_at DESC')

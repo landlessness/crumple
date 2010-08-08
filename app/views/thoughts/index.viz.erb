@@ -10,7 +10,7 @@
 
 <% @viz_style ||= 'Force' %>
 <% if @viz_style == 'Matrix'  %>
-var thoughts = <%= viz_data(current_person, @thoughts, false) %>
+var thoughts = <%= viz_data(current_person, @thoughts, @project, @tags, @taggings, false) %>
 
 var color = pv.Colors.category19().by(function(d) d.group);
 
@@ -38,7 +38,7 @@ layout.label.add(pv.Label)
 vis.render();
 
 <% else  %>
-var thoughts = <%= viz_data(current_person, @thoughts) %>
+var thoughts = <%= viz_data(current_person, @thoughts, @project, @tags, @taggings) %>
 
 // var w = document.body.clientWidth, h = document.body.clientHeight, colors = pv.Colors.category19();
 var w = 1084, h = 625, colors = pv.Colors.category19();

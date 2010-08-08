@@ -1,14 +1,13 @@
 module ThoughtsHelper
-
-  def viz_data(person, thoughts, render_html=true)
-    nodes = viz_nodes(person, thoughts)
-    links = viz_links(person)
+  def viz_data(person, thoughts, project, tags, taggings, render_html=true)
+    nodes = viz_nodes(thoughts, tags)
+    links = viz_links(taggings)
     projects = person.projects
     
     js_data = "{nodes:["
     nodes.each do |n|
       node_name = render_html ? n.viz_html_node_name : n.viz_node_name
-      js_data += %(\n{nodeValue:"#{escape_javascript(n.viz_node_value)}", nodeName:"#{escape_javascript(node_name)}", group:#{viz_group(n,projects)}})
+      js_data += %(\n{nodeValue:"#{escape_javascript(n.viz_node_value)}", nodeName:"#{escape_javascript(node_name)}", group:#{viz_group(n,projects,project)}})
       js_data += n == nodes.last ? '' : ','
     end
     js_data += "],\nlinks:["
@@ -23,17 +22,21 @@ module ThoughtsHelper
     js_data.html_safe
   end
 
-  def viz_group(node,projects)
+  def viz_group(node,projects,project)
     if node.class == Tag
       0
     elsif node.class == Thought
-      node.project.nil? ? 1 : projects.index(node.project) + 2
+      if project
+        1
+      else
+        node.project.nil? ? 1 : projects.index(node.project) + 2
+      end
     end
   end
   
-  def viz_nodes(person, thoughts)
+  def viz_nodes(thoughts, tags)
     nodes = []
-    person.tags.each do |t|
+    tags.each do |t|
       nodes << t
     end
     thoughts.each do |t|
@@ -42,9 +45,9 @@ module ThoughtsHelper
     nodes
   end
 
-  def viz_links(person)
+  def viz_links(taggings)
     links = []
-    person.taggings.each do |t|
+    taggings.each do |t|
       links << t
     end
     links
