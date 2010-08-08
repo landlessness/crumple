@@ -27,10 +27,12 @@ class ThoughtsController < ApplicationController
       @taggings = current_person.taggings_with_state(@state)
     end
     
-    @thoughts = @thoughts.with_state(@state).paginate(:per_page => 25, :page => params[:page], :order => 'updated_at DESC')
+    @thoughts = @thoughts.with_state(@state)
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html do # index.html.erb
+        @thoughts = @thoughts.paginate(:per_page => 25, :page => params[:page], :order => 'updated_at DESC')
+      end
       format.xml  { render :xml => @thoughts }
       
       # have to explicitly list the layout instead of just :layout => true
