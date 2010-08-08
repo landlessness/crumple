@@ -1,28 +1,22 @@
-<% if cloud %>
-<p>
-  <h2>Tag Cloud</h2>
-  <%= crumple_tag_cloud cloud, project %>
-</p>
-<% end %>
 <p>
   <h2>Thoughts</h2>
   <% unless @drop_box %>
     <% if @showing_archived_thoughts %>
-      <% if project %>
-      <%= link_to 'Active project thoughts', project_path(project) %>
+      <% if @project %>
+      <%= link_to 'Active project thoughts', project_path(@project) %>
       <% else %>
       <%= link_to 'Active thoughts', thoughts_path %>
       <% end %>
     <% else %>
-      <% if project %>
-        <%= link_to 'Archived project thoughts', archived_project_thoughts_path(project) %>
+      <% if @project %>
+        <%= link_to 'Archived project thoughts', project_thoughts_path(@project, :state => 'archived') %>
       <% else %>
-        <%= link_to 'Archived thoughts', archived_thoughts_path %>
+        <%= link_to 'Archived thoughts', thoughts_path(:state => 'archived') %>
       <% end %>
     <% end %>
   <% end %>
 
-  <%= will_paginate thoughts %>
+  <%= will_paginate @thoughts %>
   <table>
     <tr>
       <th>Thought</th>
@@ -35,7 +29,7 @@
       <th></th>
     </tr>
 
-    <%= render thoughts %>    
+    <%= render @thoughts %>    
   </table>
-  <%= will_paginate thoughts %>
+  <%= will_paginate @thoughts %>
 </p>

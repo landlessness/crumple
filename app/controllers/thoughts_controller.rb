@@ -1,42 +1,36 @@
 class ThoughtsController < ApplicationController
   skip_filter :authenticate_person!, :only => :new
   
-  def visualize
-    @thoughts = current_person.thoughts.with_state(:active)
-    @style = params[:style]
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @thoughts }
-    end    
-  end
-  
   # GET /thoughts
   # GET /thoughts.xml
   def index
-    @thoughts = current_person
-    @thoughts = @project = @thoughts.projects.find(params[:project_id]) if params[:project_id]
-    @thoughts = @thoughts.thoughts.with_state(:active)
-    @thoughts = @thoughts.paginate(:per_page => 25, :page => params[:page], :order => 'updated_at DESC')
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @thoughts }
+    @project = current_person.projects.find(params[:project_id]) if params[:project_id] 
+    if params[:tag_id]
+      @tag = current_person.tags.find(params[:tag_id]) 
+      @tags = [@tag]
     end
-  end
-
-  def archived
-     if params[:project_id]
-       query_scope = @project = current_person.projects.find(params[:project_id])
-     else
-       query_scope = current_person
-     end
-    @thoughts = query_scope.thoughts.with_state(:archived).paginate(:per_page => 25, :page => params[:page], :order => 'updated_at DESC')
-
-    @showing_archived_thoughts = true
+    @state = (params[:state] || 'active').to_sym
+    @viz_style = params[:viz_style]
     
+    if @project && @tag
+      @thoughts = @tag.thoughts.where(:project_id=>@project)
+    elsif @tag
+      @thoughts = @tag.thoughts.where(:person_id=>current_person)
+    elsif @project
+      @thoughts = @project.thoughts
+    else
+      @thoughts = current_person.thoughts
+    end
+    
+    @thoughts = @thoughts.with_state(@state).paginate(:per_page => 25, :page => params[:page], :order => 'updated_at DESC')
+
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @thoughts }
+      
+      # have to explicitly list the layout instead of just :layout => true
+      # because Rails looks for application.viz.erb in the layout dir
+      format.viz  { render :layout => 'application.html.erb'} 
     end
   end
 

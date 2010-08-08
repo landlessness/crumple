@@ -1,15 +1,15 @@
 <h2>Thoughts visualization</h2>
 <p>
   Style: 
-  <%= link_to_unless_current 'Arc', visualize_thoughts_path(:style => 'Arc') %> | 
-  <%= link_to_unless_current 'Force', visualize_thoughts_path(:style => 'Force') %> | 
-  <%= link_to_unless_current 'Matrix', visualize_thoughts_path(:style => 'Matrix') %>
+  <%= link_to_unless_current 'Arc', thoughts_path(:viz_style => 'Arc', :format => 'viz') %> | 
+  <%= link_to_unless_current 'Force', thoughts_path(:viz_style => 'Force', :format => 'viz') %> | 
+  <%= link_to_unless_current 'Matrix', thoughts_path(:viz_style => 'Matrix', :format => 'viz') %>
 </p>
 <div id="viz_container">
 <script type="text/javascript+protovis">
 
-<% @style ||= 'Force' %>
-<% if @style == 'Matrix'  %>
+<% @viz_style ||= 'Force' %>
+<% if @viz_style == 'Matrix'  %>
 var thoughts = <%= viz_data(current_person, @thoughts, false) %>
 
 var color = pv.Colors.category19().by(function(d) d.group);
@@ -50,9 +50,9 @@ var vis = new pv.Panel()
 .event("mousedown", pv.Behavior.pan())
 .event("mousewheel", pv.Behavior.zoom());
 
-var network = vis.add(pv.Layout.<%= @style %>)
+var network = vis.add(pv.Layout.<%= @viz_style %>)
 .nodes(thoughts.nodes)
-<% if @style == 'Arc' %>
+<% if @viz_style == 'Arc' %>
 .sort(function(a, b) a.group == b.group
         ? b.linkDegree - a.linkDegree
         : b.group - a.group)

@@ -74,13 +74,13 @@ module ThoughtsHelper
     link_to tag.name, link_path(tag, project), :class => css_class
   end
   def links_to_tags(tags, project)
-    tags.map do |tag| 
+    tags.map do |tag|
       link_to tag.name, link_path(tag, project)
     end.join(' ').html_safe
   end
   private 
   def link_path(tag, project)
-    project ? project_path(project, :tags => tag.name ) : thoughts_path(:tags => tag.name)
+    project ? project_tag_thoughts_path(project, tag) : tag_thoughts_path(tag)
   end
 end
 

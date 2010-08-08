@@ -1,9 +1,9 @@
 <tr>
   <td><%= link_to truncate(thought.body), thought %></td>
   <td>
-<%=l thought.updated_at, :format => :short %> (<%= time_ago_in_words thought.updated_at %> ago)  </td>
+  <%=l thought.updated_at, :format => :short %> (<%= time_ago_in_words thought.updated_at %> ago)  </td>
   <td>
-  <%= links_to_tags thought.tags, @project %>
+    <%= links_to_tags thought.tags, @project %>
   </td>
   <td><%= link_to thought.person.email, thought.person %></td>
   <% if thought.project %>
@@ -20,11 +20,11 @@
     <%= link_to 'Edit', edit_thought_path(thought) %>
   </td>
   <td>
-  <% if thought.archived? %>
-  <%= link_to 'Activate', activate_thought_path(thought), :method => :put %>
-  <% else %>
-  <%= link_to 'Archive', archive_thought_path(thought), :method => :put %>
-  <% end %>
+    <% if thought.archived? %>
+    <%= link_to 'Activate', activate_thought_path(thought), :method => :put %>
+    <% else %>
+    <%= link_to 'Archive', archive_thought_path(thought), :method => :put %>
+    <% end %>
   </td>
   <td><%= link_to 'Destroy', thought, :confirm => 'Are you sure?', :method => :delete %></td>
 </tr>

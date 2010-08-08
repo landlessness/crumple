@@ -1,7 +1,11 @@
 Crumple::Application.routes.draw do |map|
+
+  resources :comments
   resources :taggings
 
-  resources :tags
+  resources :tags do
+    resources :thoughts
+  end
 
   resources :send_grid_emails
 
@@ -14,11 +18,10 @@ Crumple::Application.routes.draw do |map|
   match '/thoughts.:format' => 'send_grid_emails#create', :constraints => { :user_agent => /SendGrid/i, :format => 'xml' }, :via => :post
   match '/drop_box/bookmarklet.:format' => 'drop_boxes#bookmarklet'
 
-  resources :comments
 
   # to give a pretty name to the downloaded vCard file
-  match '/my_drop_box/crumple.:format' => 'drop_boxes#show', :via => :get
   match '/my_drop_box' => 'drop_boxes#show'
+  match '/my_drop_box/crumple.:format' => 'drop_boxes#show', :via => :get
 
   match 'me' => 'people#show'
 
@@ -29,10 +32,6 @@ Crumple::Application.routes.draw do |map|
       put :activate
       put :accept
     end
-    collection  do
-      get :archived
-      get :visualize
-    end
     resources :comments
   end
 
@@ -41,12 +40,11 @@ Crumple::Application.routes.draw do |map|
   end
   
   resources :projects do
-    resources :people
-    resources :thoughts do
-      collection  do
-        get :archived
-      end
+    resources :tags do
+      resources :thoughts
     end
+    resources :people
+    resources :thoughts 
   end
   
   # The priority is based upon order of creation:
