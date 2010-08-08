@@ -1,10 +1,5 @@
 <h1>
   Thoughts
-  <% if @tags %>
-  for tags: 
-  <%= @tags.map(&:name).join(' ')  %>
-  <%= link_to 'x', thoughts_path %>
-  <% end %>
 </h1>
 <%= link_to_new_thought %>
 <%= link_to 'Visualize thoughts', thoughts_path(:viz_style => 'Force', :format => 'viz') %>

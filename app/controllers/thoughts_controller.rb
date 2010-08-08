@@ -6,25 +6,25 @@ class ThoughtsController < ApplicationController
   def index
     @project = current_person.projects.find(params[:project_id]) if params[:project_id] 
     @tag = current_person.tags.find(params[:tag_id]) if params[:tag_id]
-    @state = (params[:state] || 'active').to_sym
+    @state = (params[:state] || :active).to_sym
     @viz_style = params[:viz_style]
     
     if @project && @tag
       @tags = [@tag]
       @thoughts = @tag.thoughts.where(:project_id=>@project)
-      @taggings = @tag.taggings.joins(:thought).where(:thoughts=>{:project_id=>@project})
+      @taggings = @tag.taggings.joins(:thought).where(:thoughts=>{:project_id=>@project, :state=>@state.to_s})
     elsif @tag
       @tags = [@tag]
       @thoughts = @tag.thoughts.where(:person_id=>current_person)
       @taggings = @tag.taggings.where(:person_id=>current_person)
     elsif @project
-      @tags = @project.tags
+      @tags = @project.tags(@state)
       @thoughts = @project.thoughts
-      @taggings = @project.taggings
+      @taggings = @project.taggings(@state)
     else
-      @tags = current_person.tags
+      @tags = current_person.tags_with_state(@state)
       @thoughts = current_person.thoughts
-      @taggings = current_person.taggings
+      @taggings = current_person.taggings_with_state(@state)
     end
     
     @thoughts = @thoughts.with_state(@state).paginate(:per_page => 25, :page => params[:page], :order => 'updated_at DESC')
