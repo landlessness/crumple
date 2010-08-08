@@ -2,7 +2,7 @@
   Thoughts
   <% if @tags %>
   for tags: 
-  <%= @tags.join(' ')  %>
+  <%= @tags.map(&:name).join(' ')  %>
   <%= link_to 'x', thoughts_path %>
   <% end %>
 </h1>
