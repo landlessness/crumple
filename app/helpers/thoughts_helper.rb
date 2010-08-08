@@ -12,9 +12,11 @@ module ThoughtsHelper
     end
     js_data += "],\nlinks:["
     links.each do |l|
-      source = nodes.select{|n| n.first.class==Tag && n.first.id==l.tag.id}.first.last
-      target = nodes.select{|n| n.first.class==Thought && n.first.id==l.thought.id}.first.last
+      source = nodes.select{|n| n.first.class==Tag && n.first.id==l.tag.id}
+      target = nodes.select{|n| n.first.class==Thought && n.first.id==l.thought.id}
       next if source.nil? || target.nil?
+      source = source.first.last
+      target = target.first.last
       js_data += %(\n{source:#{source}, target:#{target}})
       js_data += l == links.last ? '' : ','
     end
