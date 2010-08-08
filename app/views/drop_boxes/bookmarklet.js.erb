@@ -21,10 +21,12 @@ window.bookmarklet({
   ready : function(){
 
     if ($('#crumple_dialog').length==0) {
-      $('<div id="crumple_dialog" title="Crumple dialog"><p>Hello World.</p></div>').appendTo('body');
-      $('#crumple_dialog').dialog({ autoOpen: false });
+      $('<div id="crumple_dialog"><p>Hello World.</p></div>').appendTo('body');
     };
+    $('#crumple_dialog').dialog({title: '', autoOpen: false, position: 'top', width: '99%', draggable: false, resizable: false, show: 'blind', hide: 'blind' });
+    $( "#crumple_dialog").bind( "dialogopen", function(event, ui){setTimeout(function(){$( "#crumple_dialog").dialog('close');}, 5 * 1000);});
     $('#crumple_dialog').dialog('open');
+        
   }
 })
 
