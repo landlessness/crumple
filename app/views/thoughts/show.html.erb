@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <% if @thought.archived? %>
 <h3><%= 'Archived' %> <%= link_to 'activate', activate_thought_path(@thought), :method => :put %></h3>
 <% elsif @thought.in_drop_box? %>

@@ -22,9 +22,6 @@
   </head>
   <body>
     <div id="container">
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
-      <% end %>
       <%= content_tag :h1, yield(:title) if show_title? %>
       <% if person_signed_in? %>
       <%= link_to 'Home', root_path %>
@@ -41,6 +38,9 @@
         <span style="font-size: 45%;">A notebook for creative thinkers.</span>
       </span>
       <%= link_to "Sign up", new_person_registration_path %> or <%= link_to "Sign in", new_person_session_path %>
+      <% end %>
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
       <% end %>
       <%= yield %>
     </div>

@@ -40,8 +40,8 @@ vis.render();
 <% else  %>
 var thoughts = <%= viz_data(current_person, @thoughts, @project, @tags, @taggings) %>
 
-// var w = document.body.clientWidth, h = document.body.clientHeight, colors = pv.Colors.category19();
-var w = 1084, h = 625, colors = pv.Colors.category19();
+var w = $('#viz_container').width(), h = $('#viz_container').height(), colors = pv.Colors.category19();
+// var w = 1084, h = 625, colors = pv.Colors.category19();
 
 var vis = new pv.Panel()
 .width(w)

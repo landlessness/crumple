@@ -58,7 +58,6 @@ class ThoughtsController < ApplicationController
   def new
     @thought = Thought.new params[:thought]
     @thought.project = current_person.projects.find(params[:project_id]) if person_signed_in? && params[:project_id]
-    4.times { @thought.tags.build }
       
     respond_to do |format|
       format.html # new.html.erb

@@ -12,6 +12,10 @@ class Thought < ActiveRecord::Base
 
   def tags_list=(tags_string)
     return unless tags_string
+    
+    # this is to assist with the thoughts#new before signing in
+    @tags_list_string = tags_string
+    
     # TODO this is ugly code. clean it up.
     taggings_to_create = tags_array = (tags_string||'').split(Tag.delimiter)
 
@@ -30,7 +34,11 @@ class Thought < ActiveRecord::Base
   end
   
   def tags_list
-    tags.empty? ? '' : self.tags.map(&:name).join(Tag.delimiter)
+    tags.empty? ? tags_list_string : self.tags.map(&:name).join(Tag.delimiter)
+  end
+
+  def tags_list_string
+    @tags_list_string || ''
   end
 
   state_machine :initial => :active do

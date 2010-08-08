@@ -12,9 +12,10 @@
 <% end %>
 <br/>
 <div class="field">
-  <%= f.label :body, 'What are you thinking?' %><br />
+  <%= f.label :body, 'What am I thinking?' %><br />
   <%= f.text_area :body %>
 </div>
+<% logger.info '@thought.tags_list: ' + @thought.tags_list %>
 <div>
   <%= f.label :tags_list, 'Tags' %>
   <%= f.text_field :tags_list %><br/>
