@@ -10,10 +10,9 @@
   </ul>
 </div>
 <% end %>
-<br/>
 <div class="field">
-  <%= f.label :body, 'What am I thinking?' %><br />
-  <%= f.text_area :body %>
+  <div><%= f.label :body, t('thoughts.new.form.prompt') %></div>
+  <div id="thought_body_wrapper"><%= f.text_area :body, :size => 'x' %></div>
 </div>
 <div>
   <%= f.label :tags_list, 'Tags' %>

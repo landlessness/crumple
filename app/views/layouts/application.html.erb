@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= yield(:title) || 'Crumple: A notebook for creative thinkers' %></title>
+  <title><%= yield(:title) || Rails.application.config.product_name %></title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag 'jquery-1.4.2.min.js', 'jquery.rails.js', 'protovis-r3.2.js', 'jquery.tipsy', 'protovis.tipsy' %>
   <%= csrf_meta_tag %>
@@ -22,28 +22,34 @@
   </head>
   <body>
     <div id="container">
-      <%= content_tag :h1, yield(:title) if show_title? %>
-      <% if person_signed_in? %>
-      <%= link_to 'Home', root_path %>
-      <%= link_to 'Thoughts', thoughts_path %>
-      <%= link_to 'Projects', projects_path %>
-      <%= link_to 'Tags', tags_path %>
-      <%= link_to_drop_box %>
-      |
-      <%= link_to 'Settings', me_path %>
-      <%= link_to "Sign Out", destroy_person_session_path %>
-      <% else %>
-      <div id="home_marketing_container">
-        <span id="product_name"><%= link_to Rails.application.config.product_name, root_path %></span>
-        <span id="product_version"><%= Rails.application.config.product_version %></span>
-        <span id="sign_in_sign_up"><%= link_to "Sign up", new_person_registration_path %> or <%= link_to "Sign in", new_person_session_path %></span>
-        <div id="product_tag_line"><%= Rails.application.config.product_tag_line %></div>
+      <div id="header">
+        <%= content_tag :h1, yield(:title) if show_title? %>
+        <% if person_signed_in? %>
+        <%= link_to 'Home', root_path %>
+        <%= link_to 'Thoughts', thoughts_path %>
+        <%= link_to 'Projects', projects_path %>
+        <%= link_to 'Tags', tags_path %>
+        <%= link_to_drop_box %>
+        |
+        <%= link_to 'Settings', me_path %>
+        <%= link_to "Sign Out", destroy_person_session_path %>
+        <% else %>
+        <div id="home_marketing_container">
+          <span id="product_name"><%= link_to Rails.application.config.product_name, root_path %></span>
+          <span id="product_version"><%= Rails.application.config.product_version %></span>
+          <span id="sign_in_sign_up"><%= link_to "Sign up", new_person_registration_path %> or <%= link_to "Sign in", new_person_session_path %></span>
+          <div id="product_tag_line"><%= Rails.application.config.product_tag_line %></div>
+        </div>
+        <% end %>
       </div>
-      <% end %>
       <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, :id => "flash_#{name}" %>
       <% end %>
-      <%= yield %>
+      <div id="content">
+        <%= yield %>        
+      </div>
+      <div id="footer">
+      </div>
     </div>
   </body>
   </html>

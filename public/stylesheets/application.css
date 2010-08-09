@@ -1,7 +1,14 @@
 body {
-  background-color: #000000;
+  background-color: #000;
   font-family: Verdana, Helvetica, Arial;
   font-size: 14px;
+  margin: 0;
+  padding:0;
+  border:0;
+}
+
+div {
+  margin: 5px 0px;
 }
 
 a img {
@@ -23,6 +30,7 @@ a {
 }
 #home_marketing_container #product_tag_line {
   font-size: 115%;
+  margin: 0;
 }
 #home_marketing_container #product_version {
   font-size:75%; 
@@ -31,13 +39,29 @@ a {
 #home_marketing_container #sign_in_sign_up {
   margin-left: 20px;
 }
+#new_thought #thought_body_wrapper #thought_body {
+  height: 8em;
+  font-size: 2em;
+  padding: 10px;
+  width: 100%;
+}
+#new_thought #thought_body_wrapper {
+  padding-right: 20px; 
+  /* the value of padding-right here needs */
+  /* to match the value of container padding */
+}
+#header {
+  margin-bottom: 20px;
+}
+
+#content {
+}
+
 #container {
-  width: 75%;
-  margin: 0 auto;
   background-color: #FFF;
-  padding: 20px 40px;
+  padding: 20px;
   border: solid 1px black;
-  margin-top: 20px;
+  margin: 20px 10px;
 }
 
 #flash_notice, #flash_error, #flash_alert {
