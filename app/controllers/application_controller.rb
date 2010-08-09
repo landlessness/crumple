@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_filter :authenticate_person!
   before_filter :check_drop_box
+  helper :layout
   
   protect_from_forgery
   layout 'application'

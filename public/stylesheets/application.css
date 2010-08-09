@@ -1,14 +1,14 @@
 body {
   background-color: #000;
   font-family: Verdana, Helvetica, Arial;
-  font-size: 14px;
+  font-size: 1em;
   margin: 0;
   padding:0;
   border:0;
 }
 
 div {
-  margin: 5px 0px;
+  margin: 0.5em 0;
 }
 
 a img {
@@ -37,21 +37,21 @@ a {
   vertical-align:top;
 }
 #home_marketing_container #sign_in_sign_up {
-  margin-left: 20px;
+  margin-left: 2%;
 }
 #new_thought #thought_body_wrapper #thought_body {
   height: 8em;
   font-size: 2em;
-  padding: 10px;
+  padding: 1%;
   width: 100%;
 }
 #new_thought #thought_body_wrapper {
-  padding-right: 20px; 
+  padding-right: 2%; 
   /* the value of padding-right here needs */
   /* to match the value of container padding */
 }
 #header {
-  margin-bottom: 20px;
+  margin-bottom: 2%;
 }
 
 #content {
@@ -59,14 +59,14 @@ a {
 
 #container {
   background-color: #FFF;
-  padding: 20px;
+  padding: 0.5% 2%;
   border: solid 1px black;
-  margin: 20px 10px;
+  margin: 1%;
 }
 
 #flash_notice, #flash_error, #flash_alert {
-  padding: 5px 8px;
-  margin: 10px 0;
+  padding: 0.5%;
+  margin: 1% 0;
 }
 
 #flash_notice {
@@ -83,37 +83,32 @@ a {
   border: 1px solid #000000;
   padding: 0;
   width: 100%;
-  height: 600px;
+  height: 40em;
 }
 
-.fieldWithErrors {
+.field_with_errors {
   display: inline;
 }
 
 .error_messages {
-  width: 400px;
+  width: 30em;
   border: 2px solid #CF0000;
-  padding: 0px;
-  padding-bottom: 12px;
-  margin-bottom: 20px;
+  padding: 0;
+  margin-bottom: 1em;
   background-color: #f0f0f0;
-  font-size: 12px;
+  font-size: 0.9em;
 }
 
 .error_messages h2 {
   text-align: left;
   font-weight: bold;
-  padding: 5px 10px;
-  font-size: 12px;
+  font-size: 0.9em;
   margin: 0;
   background-color: #c00;
   color: #fff;
-}
-
-.error_messages p {
-  margin: 8px 10px;
+  padding: 0.5em;
 }
 
 .error_messages ul {
-  margin: 0;
+  margin: 1em;
 }
