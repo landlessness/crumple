@@ -6,11 +6,11 @@ body {
   padding:0;
   border:0;
 }
-
-div {
-  margin: 0.5em 0;
+p {
+  margin: 1% 0;
+  padding: 0;
+  border:0;
 }
-
 a img {
   border: none;
 }
@@ -38,6 +38,13 @@ a {
 }
 #home_marketing_container #sign_in_sign_up {
   margin-left: 2%;
+}
+#container #content #thought_body {
+  width: 100%;  
+  margin-bottom: 2%;
+}
+.thought-controls {
+  margin: 0 0 3% 0;
 }
 #new_thought #thought_body_wrapper #thought_body {
   height: 8em;

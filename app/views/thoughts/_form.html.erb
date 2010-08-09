@@ -1,34 +1,40 @@
-<%= javascript 'resize_font' %>
-<%= form_for(@thought) do |f| %>
-<% if @thought.errors.any? %>
-<div id="error_explanation">
-  <h2><%= pluralize(@thought.errors.count, "error") %> prohibited this thought from being saved:</h2>
+<%= javascript ['jquery.resize-font'] %>
+<%= javascript ['jquery.autogrow-textarea'] %>
 
-  <ul>
-    <% @thought.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-    <% end %>
-  </ul>
-</div>
-<% end %>
-<div class="field">
-  <div><%= f.label :body, t('thoughts.new.form.prompt') %></div>
-  <div id="thought_body_wrapper"><%= f.text_area :body, :size => 'x' %></div>
-</div>
-<div>
-  <%= f.label :tags_list, 'Tags' %>
-  <%= f.text_field :tags_list %><br/>
-</div>
-<br/>
-<% if person_signed_in? %>
-<div>
-  Project:<br/> <%= collection_select(:thought, :project_id, current_person.projects.order('upper(name)').all, :id, :name, :prompt => true) %>
-</div>
-<br/>
-<% end %>
-<div class="actions">
-  <%= f.hidden_field :state_event %>
-  <%= f.hidden_field :origin %>
-  <%= f.submit 'Save' %>
-</div>
-<% end %>
+<script type="text/javascript">
+$(function() {
+  $('.resize-textarea').autogrow();
+});
+</script>
+<%= form_for(@thought) do |f| %>
+  <% if @thought.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@thought.errors.count, "error") %> prohibited this thought from being saved:</h2>
+
+    <ul>
+      <% @thought.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <div class="field">
+    <div id="thought_body_wrapper"><%= f.text_area :body, :size => 'x', :class => 'resize-font resize-textarea' %></div>
+  </div>
+  <div>
+    <%= f.label :tags_list, 'Tags' %>
+    <%= f.text_field :tags_list %><br/>
+  </div>
+  <br/>
+  <% if person_signed_in? %>
+  <div>
+    Project:<br/> <%= collection_select(:thought, :project_id, current_person.projects.order('upper(name)').all, :id, :name, :prompt => true) %>
+  </div>
+  <br/>
+  <% end %>
+  <div class="actions">
+    <%= f.hidden_field :state_event %>
+    <%= f.hidden_field :origin %>
+    <%= f.submit 'Save' %>
+  </div>
+  <% end %>
