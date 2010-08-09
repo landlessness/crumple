@@ -7,7 +7,7 @@ body {
   border:0;
 }
 p {
-  margin: 1% 0;
+  margin: 1em 0;
   padding: 0;
   border:0;
 }
@@ -52,10 +52,16 @@ a {
   padding: 1%;
   width: 100%;
 }
-#new_thought #thought_body_wrapper {
+#thought_body_wrapper {
   padding-right: 2%; 
   /* the value of padding-right here needs */
   /* to match the value of container padding */
+}
+#container {
+  background-color: #FFF;
+  padding: 0.5% 2%;
+  border: solid 1px black;
+  margin: 1%;
 }
 #header {
   margin-bottom: 2%;
@@ -63,14 +69,6 @@ a {
 
 #content {
 }
-
-#container {
-  background-color: #FFF;
-  padding: 0.5% 2%;
-  border: solid 1px black;
-  margin: 1%;
-}
-
 #flash_notice, #flash_error, #flash_alert {
   padding: 0.5%;
   margin: 1% 0;

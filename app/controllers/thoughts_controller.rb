@@ -58,7 +58,6 @@ class ThoughtsController < ApplicationController
   def new
     @thought = Thought.new params[:thought]
     @thought.project = current_person.projects.find(params[:project_id]) if person_signed_in? && params[:project_id]
-      
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @thought }
@@ -117,7 +116,7 @@ class ThoughtsController < ApplicationController
     
     respond_to do |format|
       if @thought.save
-        format.html { redirect_to(@thought, :notice => 'Thought was successfully created.') }
+        format.html { redirect_to @thought }
         format.xml  { render :xml => @thought, :status => :created, :location => @thought }
       else
         format.html { render :action => "new" }
@@ -133,7 +132,7 @@ class ThoughtsController < ApplicationController
 
     respond_to do |format|
       if @thought.update_attributes(params[:thought])
-        format.html { redirect_to(@thought, :notice => 'Thought was successfully updated.') }
+        format.html { redirect_to @thought }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
