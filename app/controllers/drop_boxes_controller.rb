@@ -1,7 +1,4 @@
 class DropBoxesController < ApplicationController
-  skip_filter :authenticate_person!, :only => :bookmarklet
-  skip_filter :check_drop_box, :only => :bookmarklet
-  
   # GET /drop_boxes
   # GET /drop_boxes.xml
   def index
@@ -22,13 +19,6 @@ class DropBoxesController < ApplicationController
       format.html # show.html.erb
       format.xml { render :xml => @drop_box }
       format.vcf { render :vcf => @drop_box }
-    end
-  end
-
-  # GET /drop_box/bookmarklet.:format
-  def bookmarklet
-    respond_to do |format|
-      format.js {render :layout => false}
     end
   end
 
