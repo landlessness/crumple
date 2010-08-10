@@ -1,3 +1,5 @@
+// from: http://github.com/jaz303/jquery-grab-bag
+
 (function($) {
 
     /*
@@ -37,7 +39,7 @@
                                     .replace(/ {2,}/g, function(space) { return times('&nbsp;', space.length -1) + ' ' });
                 
                 shadow.html(val);
-                $(this).css('height', Math.max(shadow.height() + 150, minHeight));
+                $(this).css('height', Math.max(shadow.height() + 50, minHeight));
             
             }
             
