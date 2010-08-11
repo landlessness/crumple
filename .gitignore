@@ -1,6 +1,7 @@
 .bundle
 db/*.sqlite3
 log/*.log
+log/*.log.lck
 tmp/**/*
 doc
 stark-dusk-49.tar.gz
