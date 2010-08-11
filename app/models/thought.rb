@@ -1,4 +1,11 @@
 class Thought < ActiveRecord::Base  
+  # how to setup, index & search with sunspot
+  # this is working on production, but not dev
+  # Sunspot.setup(Thought) {text :body}
+  # Sunspot.index(Thought.all)
+  # s = Sunspot.search(Thought) {keywords 'crumple', :fields => [:body]}
+  # s.results
+  
   validates :body, :presence => true
   validates :person, :presence => true
 
@@ -69,4 +76,3 @@ class Thought < ActiveRecord::Base
     self.class.name + '_' + self.id.to_s
   end
 end
-

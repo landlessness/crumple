@@ -4,5 +4,6 @@ log/*.log
 log/*.log.lck
 tmp/**/*
 doc
+solr
 stark-dusk-49.tar.gz
 Gemfile.lock

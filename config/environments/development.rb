@@ -20,5 +20,5 @@ Crumple::Application.configure do
   # for devise authentication
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   config.top_level_domain = 'localhost:3000'
-  Sunspot.config.solr.url = 'http://localhost:8982/solr'
+  Sunspot.config.solr.url = 'http://localhost:8983/solr'
 end
