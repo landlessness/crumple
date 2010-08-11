@@ -1,5 +1,5 @@
 <tr>
-  <td><%= link_to truncate(thought.body), thought %></td>
+  <td><%= link_to truncate(thought.body, 313), thought %></td>
   <td>
   <%=l thought.updated_at, :format => :short %> (<%= time_ago_in_words thought.updated_at %> ago)  </td>
   <td>
