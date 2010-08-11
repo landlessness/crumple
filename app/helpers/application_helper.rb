@@ -6,7 +6,9 @@ module ApplicationHelper
   end
   
   def display_text(text)
-    auto_link(simple_format(h(text))).html_safe
+    auto_link(simple_format(h(text)), :html => {:class => 'auto-link'}) do |text|
+      truncate(text, 55)
+    end.html_safe
   end
   
 end

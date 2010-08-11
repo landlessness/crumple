@@ -34,10 +34,6 @@ module ThoughtsHelper
     end
   end
   
-  def truncate(text,length=313,append='...(more)')
-    text.size > length ? (text[0,length-1] + append) : text
-  end
-
   def crumple_tag_cloud(tags_for_cloud, project)
     cloud = ''
     tag_cloud(tags_for_cloud, %w(css1 css2 css3 css4)) do |tag, css_class|
