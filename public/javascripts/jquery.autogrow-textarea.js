@@ -10,6 +10,7 @@
         this.filter('textarea').each(function() {
             
             var $this       = $(this),
+                textarea    = this,
                 minHeight   = $this.height(),
                 lineHeight  = $this.css('lineHeight');
             
@@ -42,8 +43,16 @@
                 $(this).css('height', Math.max(shadow.height() + 50, minHeight));
             
             }
+
+            var update_window = function() {
+              lineHeight  = $this.css('lineHeight');
+              shadow.width($this.width());
+              shadow.css('fontSize',$this.css('fontSize'));
+              update.apply(textarea);
+            }
             
             $(this).change(update).keyup(update).keydown(update);
+            $(window).resize(update_window);
             
             update.apply(this);
             
