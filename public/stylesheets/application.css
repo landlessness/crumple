@@ -24,13 +24,17 @@ a {
   height: 0;
   overflow: hidden;
 }
-
+#home_marketing_container #product_logo {
+  float: left;
+  font-size: 250%;
+  margin: 8px 15px 0px 0px;
+}
 #home_marketing_container #product_name {
   font-size: 250%;
 }
 #home_marketing_container #product_tag_line {
   font-size: 115%;
-  margin: 0;
+  margin-top: -3px;
 }
 #home_marketing_container #product_version {
   font-size:75%; 

@@ -39,10 +39,13 @@
         <%= link_to "Sign Out", destroy_person_session_path %>
         <% else %>
         <div id="home_marketing_container">
-          <span id="product_name"><%= link_to Rails.application.config.product_name, root_path %></span>
-          <span id="product_version"><%= Rails.application.config.product_version %></span>
-          <span id="sign_in_sign_up"><%= link_to "Sign up", new_person_registration_path %> or <%= link_to "Sign in", new_person_session_path %></span>
-          <div id="product_tag_line"><%= Rails.application.config.product_tag_line %></div>
+          <span id="product_logo"><%= link_to (image_tag('logo57.png')), root_path %></span>
+          <span>
+            <span id="product_name"><%= link_to Rails.application.config.product_name, root_path %></span>
+            <span id="product_version"><%= Rails.application.config.product_version %></span>
+            <span id="sign_in_sign_up"><%= link_to "Sign up", new_person_registration_path %> or <%= link_to "Sign in", new_person_session_path %></span>
+            <div id="product_tag_line"><%= Rails.application.config.product_tag_line %></div>            
+          </span>
         </div>
         <% end %>
       </div>
