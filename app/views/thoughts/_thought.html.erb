@@ -1,9 +1,9 @@
 <tr>
   <td class="thought-body thought-body-listing">
     <a href="<%= thought_path(thought) %>">  
-      <span>
+      <div>
         <%= truncate(simpler_format(h(thought.body)), 313).html_safe %>      
-      </span>
+      </div>
     </a>
   </td>
   <td>

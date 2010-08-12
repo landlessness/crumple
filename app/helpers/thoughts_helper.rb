@@ -60,7 +60,7 @@ module ThoughtsHelper
   end
   def simpler_format(text)
     text = text.to_s.dup
-    text.gsub!(/\r\n?/, "\n")                    # \r\n and \r -> \n
+    text.gsub!(/\r\n?/, "\n")
     text.gsub!(/\n/, '\1<br />')
     text
   end
