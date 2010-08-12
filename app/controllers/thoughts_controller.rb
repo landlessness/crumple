@@ -4,40 +4,55 @@ class ThoughtsController < ApplicationController
   # GET /thoughts
   # GET /thoughts.xml
   def index
-    @project = current_person.projects.find(params[:project_id]) if params[:project_id] 
-    @tag = current_person.tags.find(params[:tag_id]) if params[:tag_id]
-    @state = (params[:state] || :active).to_sym
-    @viz_style = params[:viz_style]
-    
-    if @project && @tag
-      @tags = [@tag]
-      @thoughts = @tag.thoughts.where(:project_id=>@project)
-      @taggings = @tag.taggings.joins(:thought).where(:thoughts=>{:project_id=>@project, :state=>@state.to_s})
-    elsif @tag
-      @tags = [@tag]
-      @thoughts = @tag.thoughts.where(:person_id=>current_person)
-      @taggings = @tag.taggings.where(:person_id=>current_person)
-    elsif @project
-      @tags = @project.tags(@state)
-      @thoughts = @project.thoughts
-      @taggings = @project.taggings(@state)
-    else
-      @tags = current_person.tags_with_state(@state)
-      @thoughts = current_person.thoughts
-      @taggings = current_person.taggings_with_state(@state)
-    end
-    
-    @thoughts = @thoughts.with_state(@state)
+    if @query = q = params[:q]
+      @thoughts = Sunspot.search(Thought) do
+        keywords q
+        with :person_id, current_person.id
+      end.results
+      respond_to do |format|
+        format.html # index.html.erb
+        format.xml  { render :xml => @thoughts }
 
-    respond_to do |format|
-      format.html do # index.html.erb
-        @thoughts = @thoughts.paginate(:per_page => 25, :page => params[:page], :order => 'updated_at DESC')
+        # have to explicitly list the layout instead of just :layout => true
+        # because Rails looks for application.viz.erb in the layout dir
+        format.viz  { render :layout => 'application.html.erb'} 
       end
-      format.xml  { render :xml => @thoughts }
-      
-      # have to explicitly list the layout instead of just :layout => true
-      # because Rails looks for application.viz.erb in the layout dir
-      format.viz  { render :layout => 'application.html.erb'} 
+    else
+      @project = current_person.projects.find(params[:project_id]) if params[:project_id] 
+      @tag = current_person.tags.find(params[:tag_id]) if params[:tag_id]
+      @state = (params[:state] || :active).to_sym
+      @viz_style = params[:viz_style]
+
+
+      if @project && @tag
+        @tags = [@tag]
+        @thoughts = @tag.thoughts.where(:project_id=>@project)
+        @taggings = @tag.taggings.joins(:thought).where(:thoughts=>{:project_id=>@project, :state=>@state.to_s})
+      elsif @tag
+        @tags = [@tag]
+        @thoughts = @tag.thoughts.where(:person_id=>current_person)
+        @taggings = @tag.taggings.where(:person_id=>current_person)
+      elsif @project
+        @tags = @project.tags(@state)
+        @thoughts = @project.thoughts
+        @taggings = @project.taggings(@state)
+      else
+        @tags = current_person.tags_with_state(@state)
+        @thoughts = current_person.thoughts
+        @taggings = current_person.taggings_with_state(@state)
+      end
+
+      @thoughts = @thoughts.with_state(@state)
+      respond_to do |format|
+        format.html do # index.html.erb
+          @thoughts = @thoughts.paginate(:per_page => 25, :page => params[:page], :order => 'updated_at DESC')
+        end
+        format.xml  { render :xml => @thoughts }
+
+        # have to explicitly list the layout instead of just :layout => true
+        # because Rails looks for application.viz.erb in the layout dir
+        format.viz  { render :layout => 'application.html.erb'} 
+      end
     end
   end
 

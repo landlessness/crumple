@@ -1,21 +1,29 @@
 <p>
   <h2>Thoughts</h2>
   <% unless @drop_box %>
-    <% if @showing_archived_thoughts %>
-      <% if @project %>
-      <%= link_to 'Active project thoughts', project_path(@project) %>
-      <% else %>
-      <%= link_to 'Active thoughts', thoughts_path %>
-      <% end %>
-    <% else %>
-      <% if @project %>
-        <%= link_to 'Archived project thoughts', project_thoughts_path(@project, :state => 'archived') %>
-      <% else %>
-        <%= link_to 'Archived thoughts', thoughts_path(:state => 'archived') %>
-      <% end %>
-    <% end %>
+  <% if @showing_archived_thoughts %>
+   <% if @project %>
+   <%= link_to 'Active project thoughts', project_path(@project) %>
+   <% else %>
+   <%= link_to 'Active thoughts', thoughts_path %>
+   <% end %>
+  <% else %>
+   <% if @project %>
+   <%= link_to 'Archived project thoughts', project_thoughts_path(@project, :state => 'archived') %>
+   <% else %>
+   <%= link_to 'Archived thoughts', thoughts_path(:state => 'archived') %>
+   <% end %>
   <% end %>
 
+  <%= form_tag(thoughts_path, :method => :get) do %>
+  <span>
+    <%= text_field_tag :q, @query %>
+    <%= submit_tag 'Search' %>
+  </span>
+  <% end %>
+
+  <% end %>
+  
   <%= will_paginate @thoughts %>
   <table>
     <tr>

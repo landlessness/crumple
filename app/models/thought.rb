@@ -1,10 +1,17 @@
 class Thought < ActiveRecord::Base  
   # how to setup, index & search with sunspot
   # this is working on production, but not dev
-  # Sunspot.setup(Thought) {text :body}
+  Sunspot.setup(Thought) do
+    text :body
+    integer :person_id
+  end
+
   # Sunspot.index(Thought.all)
-  # s = Sunspot.search(Thought) {keywords 'crumple', :fields => [:body]}
-  # s.results
+  # r = Sunspot.search(Thought) {keywords 'crumple', :fields => [:body]}.results
+  
+  def after_save
+    Sunspot.index!([self])
+  end
   
   validates :body, :presence => true
   validates :person, :presence => true
