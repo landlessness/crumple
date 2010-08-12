@@ -24,10 +24,16 @@ a {
   height: 0;
   overflow: hidden;
 }
+#home_marketing_container  #product_name a:hover {
+  text-decoration: underline;
+}
+#home_marketing_container  #product_name a {
+  text-decoration: none;
+}
 #home_marketing_container #product_logo {
   float: left;
   font-size: 250%;
-  margin: 8px 15px 0px 0px;
+  margin: 9px 12px 0px 0px;
 }
 #home_marketing_container #product_name {
   font-size: 250%;
@@ -41,7 +47,7 @@ a {
   vertical-align:top;
 }
 #home_marketing_container #sign_in_sign_up {
-  margin-left: 2%;
+  margin-left: 7%;
 }
 .thought-controls {
   margin: 0 0 3% 0;
