@@ -1,6 +1,6 @@
 <tr>
   <td class="thought-body thought-body-listing">
-    <%= link_to truncate(thought.body, 313), thought %>  
+    <%= link_to truncate(simple_format(h(thought.body)), 313).html_safe, thought %>  
   </td>
   <td>
   <%=l thought.updated_at, :format => :short %> (<%= time_ago_in_words thought.updated_at %> ago)  </td>
