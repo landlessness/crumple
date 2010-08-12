@@ -1,5 +1,6 @@
 body {
   background-color: #000;
+  color: #fff;
   font-family: Verdana, Helvetica, Arial;
   font-size: 1em;
   margin: 0;
@@ -7,7 +8,7 @@ body {
   border:0;
 }
 p {
-  margin: 1em 0;
+  margin: 0 0 0.5em 0;
   padding: 0;
   border:0;
 }
@@ -16,9 +17,8 @@ a img {
 }
 
 a {
-  color: #000000;
+  color: #fff;
 }
-
 .clear {
   clear: both;
   height: 0;
@@ -42,27 +42,57 @@ a {
 .thought-controls {
   margin: 0 0 3% 0;
 }
-#thought_body {
-  width: 100%;  
+.thought-body-listing {
+  padding: 1em;
+  font-size: 1.5em;
+}
+#thoughts_index a:link {
+  text-decoration: none;
+}
+#thoughts_index a:visited {
+  text-decoration: none;
+}
+#thoughts_index a:active {
+  text-decoration: none;
+}
+#thoughts_index a:hover {
+  text-decoration: underline;
+}
+.thought-body {
+  font-family: "Times New Roman",Georgia,Serif;
+  background-color: #fff;
+  color: #000;
+}
+.thought-body a {
+  color: #000;
+}
+#thought_show a {
+  text-decoration: underline;
 }
 #container #content #thought_body {
   margin-bottom: 2%;
 }
 #new_thought #thought_body_wrapper #thought_body {
-  font-family: Verdana, Helvetica, Arial;
-  font-size: 2em;
   height: 10em;
-  padding: 1%;
   overflow: hidden;
 }
 #thought_body_wrapper {
-  padding-right: 2%; 
+  padding-right: 1%; 
   /* the value of padding-right here needs */
   /* to match the value of container padding */
 }
+#thought_body {
+  /* width and padding need to add to 100% */
+  width: 98%;  
+  padding: 1%;
+}
+#comment_body {
+  height: 3em;
+  width: 25%;
+  margin-top: 0.5em;
+}
 #container {
-  background-color: #FFF;
-  padding: 0.5% 2%;
+  padding: 0.5% 1%;
   border: solid 1px black;
   margin: 1%;
 }

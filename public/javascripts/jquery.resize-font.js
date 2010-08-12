@@ -6,7 +6,7 @@ $(document).ready(function(){
 });
 
 function resize() {
-  var sizeCoefficient = 0.7;
+  var sizeCoefficient = 1.0;
   var newFontSize = Math.floor(sizeCoefficient * (0.0394 * $('.resize-font').width() + 0.2489))
   $('.resize-font').css('font-size', newFontSize)
 }

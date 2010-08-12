@@ -4,9 +4,10 @@
 <% elsif @thought.in_drop_box? %>
 <h3><%= 'In Drop Box' %> <%= link_to 'accept', accept_thought_path(@thought), :method => :put %></h3>
 <% end %>
-
-<div id="thought_body" class="thought_body resize-font">
-  <%= display_text @thought.body %>
+<div id="thoughts_show">
+  <div id="thought_body" class="thought-body resize-font">
+    <%= display_text @thought.body %>
+  </div>  
 </div>
 <div class="thought-controls">
 <%= link_to 'Edit', edit_thought_path(@thought) %> |

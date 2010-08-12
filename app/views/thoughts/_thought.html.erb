@@ -1,5 +1,7 @@
 <tr>
-  <td><%= link_to truncate(thought.body, 313), thought %></td>
+  <td class="thought-body thought-body-listing">
+    <%= link_to truncate(thought.body, 313), thought %>  
+  </td>
   <td>
   <%=l thought.updated_at, :format => :short %> (<%= time_ago_in_words thought.updated_at %> ago)  </td>
   <td>
