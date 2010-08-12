@@ -9,7 +9,7 @@ class Thought < ActiveRecord::Base
   # Sunspot.index(Thought.all)
   # r = Sunspot.search(Thought) {keywords 'crumple', :fields => [:body]}.results
   
-  def after_save
+  def self.after_save
     Sunspot.index!([self])
   end
   
