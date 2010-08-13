@@ -25,38 +25,70 @@
     </script>
   </head>
   <body>
-    <div id="container">
-      <div id="header">
-        <%= content_tag :h1, yield(:title) if show_title? %>
-        <% if person_signed_in? %>
-        <%= link_to 'Home', root_path %>
-        <%= link_to 'Thoughts', thoughts_path %>
-        <%= link_to 'Projects', projects_path %>
-        <span> | </span>
-        <%= link_to_drop_box %>
-        <span> | </span>
-        <%= link_to 'Settings', me_path %>
-        <%= link_to "Sign Out", destroy_person_session_path %>
-        <% else %>
-        <div id="home_marketing_container">
-          <span id="product_logo"><%= link_to (image_tag('logo57.png')), root_path %></span>
-          <span>
-            <span id="product_name"><%= link_to Rails.application.config.product_name, root_path %></span>
-            <span id="product_version"><%= Rails.application.config.product_version %></span>
-            <span id="sign_in_sign_up"><%= link_to "Sign up", new_person_registration_path %> or <%= link_to "Sign in", new_person_session_path %></span>
-            <div id="product_tag_line"><%= Rails.application.config.product_tag_line %></div>            
-          </span>
+    <div id="wrap">
+      <div id="main">
+        <div id="container">
+          <div id="header">
+            <%= content_tag :h1, yield(:title) if show_title? %>
+            <% if person_signed_in? %>
+            <div id="top-nav">
+              <span class="align-left">
+                <%= link_to 'Home', root_path, :class => home_nav_class %>
+                <%= link_to 'Thoughts', thoughts_path, :class => 'lil-space-left' + thoughts_nav_class %>
+                <%= link_to 'Projects', projects_path, :class => 'lil-space-left' + projects_nav_class %>
+                <%= link_to_drop_box %>
+              </span>
+              <span class="align-right">          
+                <%= link_to 'Settings', me_path, :class => 'lil-space-left' %>
+                <%= link_to "Sign Out", destroy_person_session_path, :class => 'lil-space-left' %>
+              </span> 
+              <div class="clear"></div>
+            </div>
+            <% else %>
+            <div id="home_marketing_container" class="align-left">
+              <span id="product_logo"><%= link_to (image_tag('logo57.png')), root_path %></span>
+              <span>
+                <span id="product_name"><%= link_to Rails.application.config.product_name, root_path %></span>
+                <span id="product_version"><%= Rails.application.config.product_version %></span>
+                <div id="product_tag_line"><%= Rails.application.config.product_tag_line %></div>            
+              </span>
+            </div>
+            <div id="sign_in_sign_up" class="align-right">
+              <%= link_to "Sign up", new_person_registration_path %> or <%= link_to "Sign in", new_person_session_path %>
+            </div>
+            <div class="clear"></div>
+            <% end %>
+          </div>
+          <div id="flash-container">
+            <% flash.each do |name, msg| %>
+            <%= content_tag :div, msg, :id => "flash_#{name}" %>
+            <% end %>            
+          </div>
+          <div id="content">
+            <%= yield %>        
+          </div>
         </div>
-        <% end %>
-      </div>
-      <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, :id => "flash_#{name}" %>
-      <% end %>
-      <div id="content">
-        <%= yield %>        
-      </div>
-      <div id="footer">
       </div>
     </div>
-  </body>
-  </html>
+    <!--[if !IE 7]>
+    <style type="text/css">
+    #wrap {display:table;height:100%}
+    </style>
+    <![endif]-->
+    <div id="footer">
+      <div class="align-left">
+        <%= link_to 'Creative Commons Attribution-ShareAlike 3.0 Unported License.', 'http://creativecommons.org/licenses/by-sa/3.0/', :rel => 'license'%>
+      </div>
+      <div class="align-right">
+        <%= link_to 'About Crumple', '#' %>
+        <%= link_to 'Contact', '#' %>
+        <%= link_to 'Privacy', '#' %>
+        <%= link_to 'Legal', '#' %>
+        <%= link_to 'Twitter', 'http://twitter.com/crumpleapp' %>
+        <%= link_to 'Facebook', 'http://www.facebook.com/pages/Crumple/39742612684' %>          
+      </div>
+      <div class="clear"></div>
+    </div> 
+  </div>
+</body>
+</html>

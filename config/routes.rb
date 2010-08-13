@@ -18,8 +18,8 @@ Crumple::Application.routes.draw do |map|
   match '/thoughts.:format' => 'send_grid_emails#create', :constraints => { :user_agent => /SendGrid/i, :format => 'xml' }, :via => :post
 
   # to give a pretty name to the downloaded vCard file
-  match '/my_drop_box' => 'drop_boxes#show'
-  match '/my_drop_box/crumple.:format' => 'drop_boxes#show', :via => :get
+  match '/drop_box' => 'drop_boxes#show', :as => 'my_drop_box'
+  match '/drop_box/crumple.:format' => 'drop_boxes#show', :via => :get
 
   match 'me' => 'people#show'
 

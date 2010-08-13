@@ -1,14 +1,43 @@
+/* for sticky footers -- begin */
+html, body {height: 100%;}
+
+#wrap {
+  min-height: 100%;
+}
+
+#main {
+  overflow:auto;
+  padding-bottom: 3em;
+}  /* must be same height as the footer */
+
+#footer {
+  position: relative;
+  margin-top: -3em; /* negative value of footer height */
+  height: 3em;
+  clear:both;
+} 
+
+/*Opera Fix*/
+body:before {
+  content:"";
+  height:100%;
+  float:left;
+  width:0;
+  margin-top:-32767px;/
+}
+/* for sticky footers -- end */
+
+
 body {
   background-color: #000;
-  color: #fff;
+  color: #aaa;
   font-family: Verdana, Helvetica, Arial;
-  font-size: 1em;
   margin: 0;
   padding:0;
   border:0;
 }
 p {
-  margin: 0 0 0.5em 0;
+  margin: 0;
   padding: 0;
   border:0;
 }
@@ -16,8 +45,22 @@ a img {
   border: none;
 }
 
-a {
+a:link {
+  text-decoration: none;
+}
+a:visited {
+  text-decoration: none;
+}
+a:active {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
   color: #fff;
+}
+
+a {
+  color: #aaa;
 }
 .clear {
   clear: both;
@@ -28,6 +71,7 @@ a {
   text-decoration: underline;
 }
 #home_marketing_container  #product_name a {
+  color: #fff;
   text-decoration: none;
 }
 #home_marketing_container #product_logo {
@@ -80,21 +124,21 @@ a {
   text-decoration: underline;
 }
 #container #content #thought_body {
-  margin-bottom: 2%;
 }
 #new_thought #thought_body_wrapper #thought_body {
   height: 10em;
   overflow: hidden;
 }
 #thought_body_wrapper {
-  padding-right: 1%; 
-  /* the value of padding-right here needs */
-  /* to match the value of container padding */
 }
 #thought_body {
   /* width and padding need to add to 100% */
-  width: 98%;  
-  padding: 1%;
+  width: 96%;  
+  padding: 2%;
+  margin: 1% 0;
+}
+#thought_tags_list {
+  width: 25em;
 }
 #comment_body {
   height: 3em;
@@ -107,9 +151,8 @@ a {
   margin: 1%;
 }
 #header {
-  margin-bottom: 2%;
+  margin: 1% 0;
 }
-
 #content {
 }
 #flash_notice, #flash_error, #flash_alert {
@@ -156,7 +199,59 @@ a {
   color: #fff;
   padding: 0.5em;
 }
-
 .error_messages ul {
   margin: 1em;
+}
+.align-left {
+  float: left;
+}
+.align-right {
+  float: right;
+}
+.lil-space-left {
+  margin-left: 1em;
+}
+.lil-space-right {
+  margin-right: 1em;
+}
+#footer .align-right a {
+  margin-left: 1em;
+}
+#footer .align-left a {
+  margin-right: 1em;
+}
+#footer a:link {
+  text-decoration: none;
+}
+#footer a:visited {
+  text-decoration: none;
+}
+#footer a:active {
+  text-decoration: none;
+}
+#footer a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+#footer a {
+  color: #555;
+}
+#footer {
+  font-size: 0.75em;
+  color: #555;
+  padding: 0 2%;
+} 
+#top-nav a {
+  text-transform: uppercase;
+  font-size: 0.8em;
+}
+.current-nav {
+  color: #fff;
+}
+.actions a {
+  font-size: 0.75em;
+  text-decoration: underline;
+}
+.super-subtle {
+  font-size: 0.25em;
 }
