@@ -27,10 +27,9 @@ body:before {
 }
 /* for sticky footers -- end */
 
-
 body {
   background-color: #000;
-  color: #aaa;
+  color: #999;
   font-family: Verdana, Helvetica, Arial;
   margin: 0;
   padding:0;
@@ -60,7 +59,7 @@ a:hover {
 }
 
 a {
-  color: #aaa;
+  color: #999;
 }
 .clear {
   clear: both;
@@ -80,6 +79,7 @@ a {
   margin: 9px 12px 0px 0px;
 }
 #home_marketing_container #product_name {
+  text-transform: capitalize;
   font-size: 250%;
 }
 #home_marketing_container #product_tag_line {
@@ -89,9 +89,6 @@ a {
 #home_marketing_container #product_version {
   font-size:75%; 
   vertical-align:top;
-}
-#home_marketing_container #sign_in_sign_up {
-  margin-left: 7%;
 }
 .thought-controls {
   margin: 0 0 3% 0;
@@ -132,9 +129,9 @@ a {
 #thought_body_wrapper {
 }
 #thought_body {
-  /* width and padding need to add to 100% */
-  width: 96%;  
-  padding: 2%;
+  /* width and 2 x padding need to add to 100% */
+  width: 98%;  
+  padding: 1%;
   margin: 1% 0;
 }
 #thought_tags_list {
@@ -235,13 +232,17 @@ a {
 }
 #footer a {
   color: #555;
+  text-transform: capitalize;
 }
 #footer {
   font-size: 0.75em;
   color: #555;
   padding: 0 2%;
 } 
-#top-nav a {
+#home_marketing_container #sign_in_sign_up {
+  margin-left: 7%;
+}
+#top-nav a, #sign_in_sign_up a {
   text-transform: uppercase;
   font-size: 0.8em;
 }
@@ -255,4 +256,5 @@ a {
 .optional {
   font-size: 0.25em;  
   margin-top: -2px;
+  color: #555;
 }

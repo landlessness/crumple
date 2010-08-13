@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= Rails.application.config.product_name %> | <%= Rails.application.config.product_tag_line %></title>
+  <title><%= t(:product_name).capitalize %></title>
   
   <link rel="shortcut icon" href="/favicon.ico" type='image/x-icon' />
   <link rel="icon" href="/favicon.ico" type='image/x-icon' />
@@ -23,6 +23,10 @@
     })();
 
     </script>
+    <!-- iPhone stuff -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="apple-touch-icon" href="/images/logo114.png" />    
   </head>
   <body>
     <div id="wrap">
@@ -33,14 +37,14 @@
             <% if person_signed_in? %>
             <div id="top-nav">
               <span class="align-left">
-                <%= link_to 'Home', root_path, :class => home_nav_class %>
-                <%= link_to 'Thoughts', thoughts_path, :class => 'lil-space-left' + thoughts_nav_class %>
-                <%= link_to 'Projects', projects_path, :class => 'lil-space-left' + projects_nav_class %>
+                <%= link_to t(:home), root_path, :class => home_nav_class %>
+                <%= link_to t(:thought).pluralize, thoughts_path, :class => 'lil-space-left' + thoughts_nav_class %>
+                <%= link_to t(:project).pluralize, projects_path, :class => 'lil-space-left' + projects_nav_class %>
                 <%= link_to_drop_box %>
               </span>
               <span class="align-right">          
-                <%= link_to 'Settings', me_path, :class => 'lil-space-left' %>
-                <%= link_to "Sign Out", destroy_person_session_path, :class => 'lil-space-left' %>
+                <%= link_to t(:settings), me_path, :class => 'lil-space-left' %>
+                <%= link_to t(:sign_out), destroy_person_session_path, :class => 'lil-space-left' %>
               </span> 
               <div class="clear"></div>
             </div>
@@ -48,13 +52,14 @@
             <div id="home_marketing_container" class="align-left">
               <span id="product_logo"><%= link_to (image_tag('logo57.png')), root_path %></span>
               <span>
-                <span id="product_name"><%= link_to Rails.application.config.product_name, root_path %></span>
-                <span id="product_version"><%= Rails.application.config.product_version %></span>
-                <div id="product_tag_line"><%= Rails.application.config.product_tag_line %></div>            
+                <span id="product_name"><%= link_to t(:product_name), root_path %></span>
+                <span id="product_version"><%= t(:product_version) %></span>
+                <div id="product_tag_line"><%= t(:product_tag_line) %></div>            
               </span>
             </div>
             <div id="sign_in_sign_up" class="align-right">
-              <%= link_to "Sign up", new_person_registration_path %> or <%= link_to "Sign in", new_person_session_path %>
+              <%= link_to t(:sign_up), new_person_registration_path %>
+              <%= link_to t(:sign_in), new_person_session_path, :class => 'lil-space-left' %>
             </div>
             <div class="clear"></div>
             <% end %>
@@ -77,13 +82,13 @@
     <![endif]-->
     <div id="footer">
       <div class="align-left">
-        <%= link_to 'Creative Commons Attribution-ShareAlike 3.0 Unported License.', 'http://creativecommons.org/licenses/by-sa/3.0/', :rel => 'license'%>
+        <%= link_to t(:creative_commons_license), 'http://creativecommons.org/licenses/by-sa/3.0/', :rel => 'license'%>
       </div>
       <div class="align-right">
-        <%= link_to 'About Crumple', '#' %>
-        <%= link_to 'Contact', '#' %>
-        <%= link_to 'Privacy', '#' %>
-        <%= link_to 'Legal', '#' %>
+        <%= link_to t(:about) + ' ' + Rails.application.config.product_name.capitalize, '#' %>
+        <%= link_to t(:contact), '#' %>
+        <%= link_to t(:privacy), '#' %>
+        <%= link_to t(:legal), '#' %>
         <%= link_to 'Twitter', 'http://twitter.com/crumpleapp' %>
         <%= link_to 'Facebook', 'http://www.facebook.com/pages/Crumple/39742612684' %>          
       </div>

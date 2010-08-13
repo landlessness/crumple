@@ -2,7 +2,24 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  thoughts:
-    new:
-      form:
-        prompt: What am I thinking?
+  product_name: crumple
+  product_tag_line: a notebook
+  product_version: proto
+  cancel: cancel
+  save: save
+  thought: thought
+  tag: tag
+  project: project
+  optional: optional
+  home: home
+  drop_box: drop box
+  settings: settings
+  sign_out: sign out
+  sign_in: sign in
+  sign_out: sign out
+  sign_up: sign up
+  about: about
+  contact: contact
+  privacy: privacy
+  legal: legal
+  creative_commons_license: Creative Commons Attribution-ShareAlike 3.0 Unported License

@@ -24,14 +24,14 @@ $(function() {
 <div id="new_thought_controls">  
   <div class="align-left">
     <div  class="align-left">
-      <%= f.label :tags_list, 'Tags:' %>
+      <%= f.label :tags_list, t(:tag).pluralize.capitalize + ':' %>
       <%= f.text_field :tags_list %>
-      <span class="optional align-left">optional</span>
+      <span class="optional align-left"><%= t(:optional) %></span>
     </div>
     <% if person_signed_in? %>
     <div class="align-left">
-      <span>Project: <%= collection_select(:thought, :project_id, current_person.projects.order('upper(name)').all, :id, :name, :prompt => true) %></span>
-      <span class="optional align-left">optional</span>
+      <span><%= t(:project).capitalize %>: <%= collection_select(:thought, :project_id, current_person.projects.order('upper(name)').all, :id, :name, :prompt => true) %></span>
+      <span class="optional align-left"><%= t(:optional) %></span>
     </div>    
     <div class="clear"></div>
     <% end %>
@@ -39,8 +39,8 @@ $(function() {
   <div class="align-right actions">
     <%= f.hidden_field :state_event %>
     <%= f.hidden_field :origin %>
-    <%= link_to 'Cancel', :back, :class => 'lil-space-right' if person_signed_in? %>
-    <%= f.submit 'Save thought' %>
+    <%= link_to t(:cancel), :back, :class => 'lil-space-right' if person_signed_in? %>
+    <%= f.submit (t(:save) + ' ' + t(:thought)).titleize %>
   </div>
   <div class="clear"></div>
 </div>  
