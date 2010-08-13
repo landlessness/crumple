@@ -26,12 +26,12 @@ $(function() {
     <div  class="align-left">
       <%= f.label :tags_list, 'Tags:' %>
       <%= f.text_field :tags_list %>
-      <span class="super-subtle align-left">optional</span>
+      <span class="optional align-left">optional</span>
     </div>
     <% if person_signed_in? %>
     <div class="align-left">
       <span>Project: <%= collection_select(:thought, :project_id, current_person.projects.order('upper(name)').all, :id, :name, :prompt => true) %></span>
-      <span class="super-subtle align-left">optional</span>
+      <span class="optional align-left">optional</span>
     </div>    
     <div class="clear"></div>
     <% end %>

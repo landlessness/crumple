@@ -252,6 +252,7 @@ a {
   font-size: 0.75em;
   text-decoration: underline;
 }
-.super-subtle {
-  font-size: 0.25em;
+.optional {
+  font-size: 0.25em;  
+  margin-top: -2px;
 }
