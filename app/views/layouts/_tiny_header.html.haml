@@ -1,0 +1,4 @@
+#header
+  = content_tag :h1, yield(:title) if show_title?
+  #top-nav
+    = link_to t(:home), root_path, :class => home_nav_class
