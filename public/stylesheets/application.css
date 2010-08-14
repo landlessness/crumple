@@ -261,6 +261,18 @@ a {
 .space-bottom {
   margin-bottom: 2em;
 }
+.big-space-left {
+  margin-left: 4em;
+}
+.big-space-right {
+  margin-right: 4em;
+}
+.big-space-top {
+  margin-top: 4em;
+}
+.big-space-bottom {
+  margin-bottom: 4em;
+}
 .current-nav {
   color: #fff;
 }

@@ -6,6 +6,9 @@
       #main
         #container
           = render 'layouts/header'
+          #flash-container
+            - flash.each do |name, msg|
+              = content_tag :div, msg, :id => "flash_#{name}"
           #content
             = yield
     = render 'layouts/footer'
