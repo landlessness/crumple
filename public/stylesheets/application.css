@@ -112,11 +112,11 @@ a {
 }
 #home_marketing_container #product_name {
   text-transform: capitalize;
-  font-size: 2.5em;
+  font-size: 2.7em;
 }
 #home_marketing_container #product_tag_line {  
   font-size: 0.9em;
-  margin-top: 3px;
+  margin-top: -1px;
 }
 #home_marketing_container #product_version {
   font-size:0.6em; 
