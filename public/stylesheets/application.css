@@ -248,10 +248,9 @@ a {
 #footer {
   font-size: 0.75em;
   color: #555;
-  padding: 0 2%;
+  padding: 0 1%;
 } 
-#home_marketing_container #sign_in_sign_up {
-  margin-left: 7%;
+#header #sign_in_sign_up {
 }
 #top-nav a, #sign_in_sign_up a {
   text-transform: uppercase;

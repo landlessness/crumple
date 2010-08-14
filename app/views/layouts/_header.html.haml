@@ -1,0 +1,24 @@
+#header
+  = content_tag :h1, yield(:title) if show_title?
+  - if person_signed_in?
+    #top-nav
+      .align-left
+        = link_to t(:home), root_path, :class => home_nav_class
+        = link_to t(:thought).pluralize, thoughts_path, :class => 'lil-space-left' + thoughts_nav_class
+        = link_to t(:project).pluralize, projects_path, :class => 'lil-space-left' + projects_nav_class
+        = link_to_drop_box
+      .align-right
+        = link_to t(:settings), me_path, :class => 'lil-space-left'
+        = link_to t(:sign_out), destroy_person_session_path, :class => 'lil-space-left'
+      .clear
+  - else
+    .align-left#home_marketing_container
+      %span#product_logo= link_to (image_tag('logo57.png')), root_path
+      %span
+        %span#product_name= link_to t(:product_name), root_path
+        %span#product_version= t :product_version
+        #product_tag_line= t :product_tag_line
+    .align-right#sign_in_sign_up
+      = link_to t(:sign_up), new_person_registration_path
+      = link_to t(:sign_in), new_person_session_path, :class => 'lil-space-left'
+    .clear
