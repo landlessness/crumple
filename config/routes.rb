@@ -1,5 +1,9 @@
 Crumple::Application.routes.draw do |map|
 
+  map.resources :pages,
+    :controller => 'pages',
+    :only       => [:show]
+
   resources :comments
   resources :taggings
 
