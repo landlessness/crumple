@@ -91,7 +91,6 @@ a:hover {
   text-decoration: underline;
   color: #fff;
 }
-
 a {
   color: #999;
 }
@@ -109,20 +108,28 @@ a {
 }
 #home_marketing_container #product_logo {
   float: left;
-  font-size: 250%;
   margin-right: 12px;
 }
 #home_marketing_container #product_name {
   text-transform: capitalize;
-  font-size: 250%;
+  font-size: 2em;
 }
 #home_marketing_container #product_tag_line {
-  font-size: 115%;
+  font-size: 0.8em;
   margin-top: -3px;
 }
 #home_marketing_container #product_version {
-  font-size:75%; 
+  font-size:0.6em; 
   vertical-align:top;
+}
+#header #sign_in_sign_up {
+  height: 57px;
+  line-height: 57px;
+}
+#top-nav a, #sign_in_sign_up a {
+  text-transform: uppercase;
+}
+#signed_out_top_nav {
 }
 .thought-body-listing {
   padding: 1em;
@@ -162,6 +169,10 @@ a {
 }
 #thought_tags_list {
   width: 25em;
+  margin-left: 6px;
+}
+#thought_project_id {
+  margin-left: 6px;  
 }
 #comment_body {
   height: 3em;
@@ -250,11 +261,6 @@ a {
 .space-bottom {
   margin-bottom: 2em;
 }
-#header #sign_in_sign_up {
-}
-#top-nav a, #sign_in_sign_up a {
-  text-transform: uppercase;
-}
 .current-nav {
   color: #fff;
 }
@@ -263,7 +269,7 @@ a {
   text-decoration: underline;
 }
 .optional {
-  font-size: 0.5em;  
+  font-size: 0.6em;  
   margin-top: -2px;
   color: #555;
 }
