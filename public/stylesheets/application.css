@@ -28,6 +28,7 @@ body:before {
 /* for sticky footers -- end */
 
 body {
+  font-size: 0.8em;
   background-color: #000;
   color: #999;
   font-family: Verdana, Helvetica, Arial;
@@ -90,9 +91,6 @@ a {
   font-size:75%; 
   vertical-align:top;
 }
-.thought-controls {
-  margin: 0 0 3% 0;
-}
 .thought-body-listing {
   padding: 1em;
   font-size: 1.5em;
@@ -117,22 +115,17 @@ a {
 .thought-body a {
   color: #000;
 }
-#thought_show a {
-  text-decoration: underline;
-}
 #container #content #thought_body {
 }
 #new_thought #thought_body_wrapper #thought_body {
-  height: 10em;
+  height: 12em;
+  width: 98%;
   overflow: hidden;
-}
-#thought_body_wrapper {
 }
 #thought_body {
   /* width and 2 x padding need to add to 100% */
-  width: 98%;  
   padding: 1%;
-  margin: 1% 0;
+  margin: 0;
 }
 #thought_tags_list {
   width: 25em;
@@ -143,12 +136,12 @@ a {
   margin-top: 0.5em;
 }
 #container {
-  padding: 0.5% 1%;
+  padding: 0;
   border: solid 1px black;
-  margin: 1%;
+  margin: 0 1%;
 }
 #header {
-  margin: 1% 0;
+  margin: 2% 0;
 }
 #content {
 }
@@ -211,6 +204,24 @@ a {
 .lil-space-right {
   margin-right: 1em;
 }
+.lil-space-top {
+  margin-top: 1em;
+}
+.lil-space-bottom {
+  margin-bottom: 1em;
+}
+.space-left {
+  margin-left: 2em;
+}
+.space-right {
+  margin-right: 2em;
+}
+.space-top {
+  margin-top: 2em;
+}
+.space-bottom {
+  margin-bottom: 2em;
+}
 #footer .align-right a {
   margin-left: 1em;
 }
@@ -244,7 +255,6 @@ a {
 }
 #top-nav a, #sign_in_sign_up a {
   text-transform: uppercase;
-  font-size: 0.8em;
 }
 .current-nav {
   color: #fff;
@@ -254,7 +264,13 @@ a {
   text-decoration: underline;
 }
 .optional {
-  font-size: 0.25em;  
+  font-size: 0.5em;  
   margin-top: -2px;
   color: #555;
+}
+.half {
+  width: 50%;
+}
+#thoughts_show_metadata {
+  margin: 1% 0 0 0;
 }

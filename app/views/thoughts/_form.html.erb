@@ -18,20 +18,23 @@ $(function() {
 </div>
 <% end %>
 <div class="field">
-  <div id="thought_body_wrapper"><%= f.text_area :body, :rows => 7, :class => 'resize-font resize-textarea thought-body' %></div>
+  <div id="thought_body_wrapper"><%= f.text_area :body, :class => 'resize-font resize-textarea thought-body' %></div>
 </div>
-
-<div id="new_thought_controls">  
+<div class="lil-space-top">  
   <div class="align-left">
     <div  class="align-left">
-      <%= f.label :tags_list, t(:tag).pluralize.capitalize + ':' %>
-      <%= f.text_field :tags_list %>
-      <span class="optional align-left"><%= t(:optional) %></span>
+      <div>
+        <%= f.label :tags_list, t(:tag).pluralize.capitalize + ':' %>
+        <%= f.text_field :tags_list %>        
+      </div>
+      <div class="optional align-left"><%= t(:optional) %></div>
     </div>
     <% if person_signed_in? %>
-    <div class="align-left">
-      <span><%= t(:project).capitalize %>: <%= collection_select(:thought, :project_id, current_person.projects.order('upper(name)').all, :id, :name, :prompt => true) %></span>
-      <span class="optional align-left"><%= t(:optional) %></span>
+    <div class="align-left space-left">
+      <div>
+      <%= t(:project).capitalize %>: <%= collection_select(:thought, :project_id, current_person.projects.order('upper(name)').all, :id, :name, :prompt => true) %>
+      </div>
+      <div class="optional align-left"><%= t(:optional) %></div>
     </div>    
     <div class="clear"></div>
     <% end %>
