@@ -6,3 +6,5 @@ Crumple::Application.initialize!
 
 Crumple::Application.configure do
 end
+
+Haml::Template.options[:format] = :html5

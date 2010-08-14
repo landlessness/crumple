@@ -8,3 +8,4 @@ gem "will_paginate", "3.0.pre"
 gem 'hoptoad_notifier'
 gem 'sunspot', :require => 'sunspot'
 gem 'nifty-generators'
+gem 'haml'

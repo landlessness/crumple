@@ -1,0 +1,24 @@
+= javascript ['jquery.resize-font','jquery.autogrow-textarea','jquery.focus-textarea']
+%script{:type => "text/javascript"} $(function() {$('.resize-textarea').autogrow();});
+- form_for @thought do |f|
+  = f.text_area :body, :class => 'resize-font resize-textarea thought-body'
+  .lil-space-top
+    .align-left
+      .align-left
+        %div
+          = f.label :tags_list, t(:tag).pluralize.capitalize + ':'
+          = f.text_field :tags_list
+        .optional.align-left= t :optional
+      - if person_signed_in?
+        .align-left.space-left
+          %div
+            = t(:project).capitalize + ':'
+            = collection_select :thought, :project_id, current_person.projects.order('upper(name)').all, :id, :name, :prompt => true
+          .optional.align-left= t :optional
+      .clear
+    .align-right.actions
+      = f.hidden_field :state_event
+      = f.hidden_field :origin
+      = link_to t(:cancel), :back, :class => 'lil-space-right' if person_signed_in?
+      = f.submit (t(:save) + ' ' + t(:thought)).titleize
+    .clear

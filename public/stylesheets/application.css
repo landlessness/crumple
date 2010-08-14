@@ -117,7 +117,7 @@ a {
 }
 #container #content #thought_body {
 }
-#new_thought #thought_body_wrapper #thought_body {
+#new_thought #thought_body {
   height: 12em;
   width: 98%;
   overflow: hidden;
