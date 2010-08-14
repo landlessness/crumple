@@ -77,7 +77,7 @@ a {
 #home_marketing_container #product_logo {
   float: left;
   font-size: 250%;
-  margin: 3px 12px 0px 0px;
+  margin-right: 12px;
 }
 #home_marketing_container #product_name {
   text-transform: capitalize;
