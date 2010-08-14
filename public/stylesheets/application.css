@@ -27,6 +27,39 @@ body:before {
 }
 /* for sticky footers -- end */
 
+#footer .align-right a {
+  margin-left: 1em;
+}
+#footer .align-left a {
+  margin-right: 1em;
+}
+#footer a:link {
+  text-decoration: none;
+}
+#footer a:visited {
+  text-decoration: none;
+}
+#footer a:active {
+  text-decoration: none;
+}
+#footer a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+#footer a {
+  color: #555;
+  text-transform: capitalize;
+}
+#container {
+  padding: 0;
+  border: solid 1px black;
+  margin: 0 5%; /* container margin and footer padding should match*/
+} 
+#footer {
+  font-size: 0.75em;
+  color: #555;
+  padding: 0 5%; /* container margin and footer padding should match*/
+} 
 body {
   font-size: 0.8em;
   background-color: #000;
@@ -135,13 +168,8 @@ a {
   width: 25%;
   margin-top: 0.5em;
 }
-#container {
-  padding: 0;
-  border: solid 1px black;
-  margin: 0 4%;
-}
 #header {
-  margin: 2% 0;
+  margin: 3% 0;
 }
 #content {
 }
@@ -222,34 +250,6 @@ a {
 .space-bottom {
   margin-bottom: 2em;
 }
-#footer .align-right a {
-  margin-left: 1em;
-}
-#footer .align-left a {
-  margin-right: 1em;
-}
-#footer a:link {
-  text-decoration: none;
-}
-#footer a:visited {
-  text-decoration: none;
-}
-#footer a:active {
-  text-decoration: none;
-}
-#footer a:hover {
-  color: #fff;
-  text-decoration: underline;
-}
-#footer a {
-  color: #555;
-  text-transform: capitalize;
-}
-#footer {
-  font-size: 0.75em;
-  color: #555;
-  padding: 0 4%;
-} 
 #header #sign_in_sign_up {
 }
 #top-nav a, #sign_in_sign_up a {
