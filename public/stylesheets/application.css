@@ -305,3 +305,6 @@ body:before {
 .people-content {
   font-family: "Times New Roman", Georgia, Serif;
   color: #fff; }
+
+.people-content a {
+  color: #fff; }

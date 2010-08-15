@@ -7,7 +7,7 @@
     In Drop Box
     = link_to('accept', accept_thought_path(@thought), :method => :put, :class => 'action')
   #thought_body.thought-body.resize-font.people-content= display_text @thought.body
-  #thought-controls.lil-space-top
+  #thought-controls.space-top
     .align-left
       = link_to 'Edit', edit_thought_path(@thought), :class=>'action'
       = link_to 'Focus', focus_thought_path(@thought), :class=>'action lil-space-left'
