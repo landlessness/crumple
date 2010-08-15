@@ -1,0 +1,37 @@
+%p
+  Project:
+  - if @thought.project
+    = link_to @thought.project.name, @thought.project
+  - else
+    %em none
+.thought-controls
+  = link_to 'Edit', edit_thought_path(@thought)
+  - if @thought.archived?
+    = link_to 'Activate', activate_thought_path(@thought), :method => :put
+  -elsif @thought.in_drop_box?
+    = link_to 'Accept', accept_thought_path(@thought), :method => :put
+  -elsif @thought.active?
+    = link_to 'Archive', archive_thought_path(@thought), :method => :put
+  = link_to 'Destroy', [@thought], :confirm => 'Are you sure?', :method => :delete
+  - if @thought.project
+    = link_to 'New thought about ' + @thought.project.name, new_project_thought_path(@thought.project)
+  - else
+    = link_to 'New thought', new_thought_path
+%p
+  Timing:
+  %p
+    last updated
+    = l(@thought.updated_at, :format => :short)
+    (
+    = time_ago_in_words @thought.updated_at
+    ago)
+  %p
+    created
+    = l(@thought.created_at, :format => :short)
+    (
+    = time_ago_in_words @thought.created_at
+    ago)
+%p
+  Tags:
+  - @thought.tags.each do |t|
+    = link_to t.name, t

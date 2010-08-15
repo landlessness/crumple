@@ -1,0 +1,14 @@
+= javascript ['jquery.resize-font']
+#thoughts_show
+  - if @thought.archived?
+    %h3= 'Archived ' + link_to('activate', activate_thought_path(@thought), :method => :put)
+  - elsif  @thought.in_drop_box?
+    %h3= 'In Drop Box ' + link_to('accept', accept_thought_path(@thought), :method => :put)
+  #thought_body.thought-body.resize-font= display_text @thought.body
+#thoughts_show_metadata
+  .align-left.half
+    = render 'comments'
+  .align-right.half
+    = render 'meta_data'
+  .clear
+</div>
