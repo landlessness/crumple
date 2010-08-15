@@ -1,15 +1,17 @@
 %div
-  Project:
+  Project
   - if @thought.project
-    = link_to @thought.project.name, @thought.project
+    %span= link_to @thought.project.name, @thought.project, :class => 'clickable-object'
+    %div= link_to 'New thought about ' + @thought.project.name, new_project_thought_path(@thought.project), :class=>'subtle-action'
   - else
     %em none
-%div
-  Tags:
+    = link_to 'New thought', new_thought_path, :class=>'subtle-action lil-space-left'
+.space-top
+  Tags
   - @thought.tags.each do |t|
-    = link_to t.name, t, :class=>'action'
-%div
-  Timing:
+    = link_to t.name, t, :class=>'clickable-object'
+.space-top
+  Timing
   %div
     last updated
     = l(@thought.updated_at, :format => :short)

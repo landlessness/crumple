@@ -6,10 +6,20 @@ body {
   font-size: 0.8em;
   background-color: #000;
   color: #999;
-  font-family: Verdana, Helvetica, Arial;
+  font-family: Verdana, Helvetica, Arial, sans-serif;
   margin: 0;
   padding: 0;
   border: 0; }
+
+input[type="text"], textarea {
+  font-family: "Times New Roman", Georgia, Serif; }
+
+input[type="text"] {
+  font-size: 1em;
+  width: 15em; }
+
+select {
+  font-size: 1em; }
 
 p {
   margin: 0;
@@ -101,7 +111,18 @@ a {
 
 a.action {
   font-size: 0.8em;
-  text-decoration: underline; }
+  text-decoration: underline;
+  text-transform: uppercase; }
+
+a.subtle-action {
+  font-size: 0.6em;
+  text-decoration: underline;
+  text-transform: lowercase; }
+
+a.clickable-object {
+  font-size: 1.2em;
+  color: white;
+  font-family: "Times New Roman", Georgia, Serif; }
 
 .clear {
   clear: both;
@@ -220,15 +241,11 @@ body:before {
   margin: 0;
   width: 98%;
   overflow: hidden;
-  font-family: "Times New Roman",Georgia,Serif;
   background-color: white;
   color: #000; }
 
 .thought-body a {
   color: #000; }
-
-#thought_tags_list {
-  width: 25em; }
 
 #comment_body {
   height: 3em;
@@ -284,9 +301,6 @@ body:before {
 
 .optional {
   margin-top: -2px; }
-
-#thoughts_show_metadata {
-  margin: 1% 0 0 0; }
 
 #about {
   margin: 5% 0px; }

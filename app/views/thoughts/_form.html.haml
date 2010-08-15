@@ -19,6 +19,6 @@
     .align-right.actions
       = f.hidden_field :state_event
       = f.hidden_field :origin
-      = link_to t(:cancel).capitalize, :back, :class => 'lil-space-right action' if person_signed_in?
-      = f.submit t(:save).capitalize
+      = f.submit t(:save).capitalize, :class => 'lil-space-right'
+      = link_to t(:cancel), :back, :class => 'subtle-action' if person_signed_in?
     .clear

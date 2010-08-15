@@ -1,14 +1,27 @@
 $white: #fff;
+$system-font: Verdana, Helvetica, Arial, sans-serif;
+$people-font: "Times New Roman",Georgia,Serif;
+
 /* basic classes */
 html, body {height: 100%;}
 body {
   font-size: 0.8em;
   background-color: #000;
   color: #999;
-  font-family: Verdana, Helvetica, Arial;
+  font-family: $system-font;
   margin: 0;
   padding:0;
   border:0;
+}
+input[type="text"], textarea {
+  font-family: $people-font;
+}
+input[type="text"] {
+  font-size: 1em;
+  width: 15em;
+}
+select {
+  font-size: 1em;
 }
 p {
   margin: 0;
@@ -102,6 +115,17 @@ a {
 a.action {
   font-size: 0.8em;
   text-decoration: underline;
+  text-transform: uppercase;
+}
+a.subtle-action {
+  font-size: 0.6em;
+  text-decoration: underline;
+  text-transform: lowercase;
+}
+a.clickable-object {
+  font-size: 1.2em;
+  color: $white;
+  font-family: $people-font;
 }
 .clear {
   clear: both;
@@ -225,7 +249,6 @@ body:before {
   margin: 0;
   width: 98%;
   overflow: hidden;
-  font-family: "Times New Roman",Georgia,Serif;
   background-color: $white;
   color: #000;
 }
@@ -233,9 +256,6 @@ body:before {
   color: #000;
 }
 #container #content #thought_body {
-}
-#thought_tags_list {
-  width: 25em;
 }
 #comment_body {
   height: 3em;
