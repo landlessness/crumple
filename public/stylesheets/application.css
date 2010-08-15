@@ -237,12 +237,9 @@ body:before {
 
 .thought-body {
   /* width and 2 x padding need to add to 100% */
-  padding: 1%;
   margin: 0;
-  width: 98%;
-  overflow: hidden;
-  background-color: white;
-  color: #000; }
+  width: 100%;
+  overflow: hidden; }
 
 .thought-body a {
   color: #000; }
@@ -306,4 +303,5 @@ body:before {
   margin: 5% 0px; }
 
 .people-content {
-  font-family: "Times New Roman", Georgia, Serif; }
+  font-family: "Times New Roman", Georgia, Serif;
+  color: #fff; }

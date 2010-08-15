@@ -245,17 +245,12 @@ body:before {
 }
 .thought-body {
   /* width and 2 x padding need to add to 100% */
-  padding: 1%;
   margin: 0;
-  width: 98%;
+  width: 100%;
   overflow: hidden;
-  background-color: $white;
-  color: #000;
 }
 .thought-body a {
   color: #000;
-}
-#container #content #thought_body {
 }
 #comment_body {
   height: 3em;
@@ -323,7 +318,7 @@ body:before {
 #about {
   margin: 5% 0px;
 }
-
 .people-content {
   font-family: $people-font;
+  color: #fff;
 }
