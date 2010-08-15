@@ -4,8 +4,8 @@ html, body {
 
 body {
   font-size: 0.8em;
-  background-color: #000;
-  color: #999;
+  background-color: black;
+  color: #aaaaaa;
   font-family: Verdana, Helvetica, Arial, sans-serif;
   margin: 0;
   padding: 0;
@@ -43,7 +43,7 @@ a:hover {
   color: white; }
 
 a {
-  color: #999; }
+  color: #aaaaaa; }
 
 .align-left {
   float: left; }
@@ -103,11 +103,11 @@ a {
 
 .prompt {
   font-size: 1em;
-  color: #999; }
+  color: #aaaaaa; }
 
 .subtle-prompt {
   font-size: 0.6em;
-  color: #555; }
+  color: #555555; }
 
 a.action {
   font-size: 0.8em;
@@ -168,7 +168,7 @@ body:before {
   text-decoration: underline; }
 
 #footer a {
-  color: #555;
+  color: #555555;
   text-transform: capitalize; }
 
 #container {
@@ -179,7 +179,7 @@ body:before {
 
 #footer {
   font-size: 0.75em;
-  color: #555;
+  color: #555555;
   padding: 0 5%;
   /* container margin and footer padding should match*/ }
 
@@ -242,7 +242,7 @@ body:before {
   overflow: hidden; }
 
 .thought-body a {
-  color: #000; }
+  color: black; }
 
 #comment_body {
   height: 3em;
@@ -304,7 +304,7 @@ body:before {
 
 .people-content {
   font-family: "Times New Roman", Georgia, Serif;
-  color: #fff; }
+  color: white; }
 
 .people-content a {
-  color: #fff; }
+  color: white; }

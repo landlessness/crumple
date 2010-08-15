@@ -1,4 +1,7 @@
 $white: #fff;
+$gray: #aaa;
+$subtle-gray: #555;
+$black: #000;
 $system-font: Verdana, Helvetica, Arial, sans-serif;
 $people-font: "Times New Roman",Georgia,Serif;
 
@@ -6,8 +9,8 @@ $people-font: "Times New Roman",Georgia,Serif;
 html, body {height: 100%;}
 body {
   font-size: 0.8em;
-  background-color: #000;
-  color: #999;
+  background-color: $black;
+  color: $gray;
   font-family: $system-font;
   margin: 0;
   padding:0;
@@ -46,7 +49,7 @@ a:hover {
   color: $white;
 }
 a {
-  color: #999;
+  color: $gray;
 }
 .align-left {
   float: left;
@@ -106,11 +109,11 @@ a {
 }
 .prompt {
   font-size: 1em;
-  color: #999;
+  color: $gray;
 }
 .subtle-prompt {
   font-size: 0.6em;
-  color: #555;
+  color: $subtle-gray;
 }
 a.action {
   font-size: 0.8em;
@@ -175,7 +178,7 @@ body:before {
   text-decoration: underline;
 }
 #footer a {
-  color: #555;
+  color: $subtle-gray;
   text-transform: capitalize;
 }
 #container {
@@ -185,7 +188,7 @@ body:before {
 } 
 #footer {
   font-size: 0.75em;
-  color: #555;
+  color: $subtle-gray;
   padding: 0 5%; /* container margin and footer padding should match*/
 } 
 
@@ -250,7 +253,7 @@ body:before {
   overflow: hidden;
 }
 .thought-body a {
-  color: #000;
+  color: $black;
 }
 #comment_body {
   height: 3em;
@@ -320,8 +323,8 @@ body:before {
 }
 .people-content {
   font-family: $people-font;
-  color: #fff;
+  color: $white;
 }
 .people-content a {
-  color: #fff;
+  color: $white;
 }
