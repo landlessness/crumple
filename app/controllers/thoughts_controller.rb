@@ -68,6 +68,17 @@ class ThoughtsController < ApplicationController
     end
   end
 
+  # GET /thoughts/1/focus
+  # GET /thoughts/1/focus.xml
+  def focus
+    @thought = current_person.thoughts.find(params[:id])
+    
+    respond_to do |format|
+      format.html { render :layout => 'focus'} # show.html.erb
+      format.xml  { render :xml => @thought }
+    end
+  end
+
   # GET /thoughts/new
   # GET /thoughts/new.xml
   def new

@@ -1,7 +1,8 @@
 $(document).ready(function(){
   $('.auto-link').each(function(index) {
-    $(this).attr('title',wordwrap($(this).attr('href'),35,null,true));
-    $(this).tipsy({gravity: 's'});
+    // $(this).attr('title',wordwrap($(this).attr('href'),55 ,'<br/>',true));
+    $(this).attr('title',$(this).attr('href'));
+    $(this).tipsy({gravity: 's',fade: false, html: true});
   });
 });
 

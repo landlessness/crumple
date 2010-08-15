@@ -33,6 +33,7 @@ Crumple::Application.routes.draw do |map|
       put :archive
       put :activate
       put :accept
+      get :focus
     end
     resources :comments
   end

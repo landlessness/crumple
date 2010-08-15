@@ -1,9 +1,0 @@
-<% if comment && comment.person %>
-<li>
-  <div class="comment_body">
-    <%= display_text comment.body %>    
-  </div>
-  <%= link_to 'Edit', edit_thought_comment_path(@thought, comment) %> | 
-  <%= link_to 'Destroy', [@thought, comment], :confirm => 'Are you sure?', :method => :delete %>
-</li>
-<% end %>

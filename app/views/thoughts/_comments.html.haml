@@ -1,6 +1,5 @@
-Comments:
-%ul
-  = render @thought.comments
+Comments
+= render @thought.comments
 - form_for [@thought, @comment] do |f|
   .field
     %div= f.label :body, 'Add a comment:'

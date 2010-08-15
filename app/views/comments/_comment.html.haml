@@ -1,0 +1,5 @@
+- if comment && comment.person
+  .comment_body
+    = display_text(comment.body)
+  = link_to 'Edit', edit_thought_comment_path(@thought, comment), :class=>'action'
+  = link_to 'Destroy', [@thought, comment], :confirm => 'Are you sure?', :method => :delete, :class=>'action'
