@@ -1,7 +1,8 @@
 = javascript ['jquery.resize-font','jquery.autogrow-textarea','jquery.focus-textarea']
 %script{:type => "text/javascript"} $(function() {$('.resize-textarea').autogrow();});
 - form_for @thought do |f|
-  = f.text_area :body, :class => 'resize-font resize-textarea thought-body'
+  .thought-body-container
+    = f.text_area :body, :class => 'resize-font resize-textarea thought-body'
   .lil-space-top
     .align-left
       .align-left
@@ -19,6 +20,6 @@
     .align-right.actions
       = f.hidden_field :state_event
       = f.hidden_field :origin
-      = f.submit t(:save).capitalize, :class => 'lil-space-right'
-      = link_to t(:cancel), :back, :class => 'subtle-action' if person_signed_in?
+      = f.submit t(:save).capitalize
+      = link_to t(:cancel), :back, :class => 'subtle-action lil-space-left' if person_signed_in?
     .clear

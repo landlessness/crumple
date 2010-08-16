@@ -16,6 +16,9 @@ body {
   padding:0;
   border:0;
 }
+textarea {
+  border: 0;
+}
 input[type="text"], textarea {
   font-family: $people-font;
 }
@@ -135,7 +138,7 @@ a.clickable-object {
   height: 0;
   overflow: hidden;
 }
-/* for sticky footers -- begin */
+/* begin -- for sticky footers -- begin */
 $footer-height: 3em;
 
 #wrap {
@@ -162,7 +165,7 @@ body:before {
   width:0;
   margin-top:-32767px;
 }
-/* for sticky footers -- end */
+/* end -- for sticky footers -- end */
 
 #footer a:link {
   text-decoration: none;
@@ -183,7 +186,6 @@ body:before {
 }
 #container {
   padding: 0;
-  border: solid 1px black;
   margin: 0 5%; /* container margin and footer padding should match*/
 } 
 #footer {
@@ -215,6 +217,9 @@ body:before {
   font-size:0.6em; 
   vertical-align:top;
 }
+#header {
+  margin: 3% 0;
+}
 #header #sign_in_sign_up {
   height: 57px;
   line-height: 57px;
@@ -222,7 +227,8 @@ body:before {
 #top-nav a, #sign_in_sign_up a {
   text-transform: uppercase;
 }
-#signed_out_top_nav {
+#about {
+  margin: 5% 0px;
 }
 .thought-body-listing {
   padding: 1em;
@@ -241,29 +247,21 @@ body:before {
   text-decoration: underline;
 }
 .new_thought .thought-body {
-  height: 12em;  
+  height: 12em;
 }
 .edit_thought .thought-body {
   height: 0;  
 }
 .thought-body {
   /* width and 2 x padding need to add to 100% */
-  margin: 0;
   width: 100%;
   overflow: hidden;
 }
 .thought-body a {
   color: $black;
 }
-#comment_body {
-  height: 3em;
-  width: 25%;
-  margin-top: 0.5em;
-}
-#header {
-  margin: 3% 0;
-}
-#content {
+.thought-body-container {
+  padding-right:3px;  
 }
 #flash_notice, #flash_error, #flash_alert {
   padding: 0.5%;
@@ -317,9 +315,6 @@ body:before {
 }
 .optional {
   margin-top: -2px;
-}
-#about {
-  margin: 5% 0px;
 }
 .people-content {
   font-family: $people-font;
