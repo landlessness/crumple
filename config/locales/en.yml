@@ -33,7 +33,7 @@ en:
   destroy: delete
   edit: edit
   focus: focus
-  comments: comments
+  comment: comment
   add_a_comment: add a comment
   new_thought: new thought
   new_thought_about: new thought about
