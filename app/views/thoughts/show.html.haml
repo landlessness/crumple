@@ -1,24 +1,24 @@
 = javascript ['jquery.resize-font']
 #thoughts_show
   - if @thought.archived?
-    'Archived '
-    = link_to('activate', activate_thought_path(@thought), :method => :put, :class => 'action')
+    = t :archived
+    = link_to(t(:activate), activate_thought_path(@thought), :method => :put, :class => 'action')
   - elsif  @thought.in_drop_box?
-    In Drop Box
-    = link_to('accept', accept_thought_path(@thought), :method => :put, :class => 'action')
+    = t :in_drop_box
+    = link_to(t(:accept), accept_thought_path(@thought), :method => :put, :class => 'action')
   #thought_body.thought-body.resize-font.people-content= display_text @thought.body
   #thought-controls.space-top
     .align-left
-      = link_to 'Edit', edit_thought_path(@thought), :class=>'action'
-      = link_to 'Focus', focus_thought_path(@thought), :class=>'action lil-space-left'
+      = link_to t(:edit), edit_thought_path(@thought), :class=>'action'
+      = link_to t(:focus), focus_thought_path(@thought), :class=>'action lil-space-left'
     .align-right
       - if @thought.archived?
-        = link_to 'Activate', activate_thought_path(@thought), :method => :put, :class=>'action lil-space-right'
+        = link_to t(:activate), activate_thought_path(@thought), :method => :put, :class=>'action lil-space-right'
       -elsif @thought.in_drop_box?
-        = link_to 'Accept', accept_thought_path(@thought), :method => :put, :class=>'action lil-space-right'
+        = link_to t(:accept), accept_thought_path(@thought), :method => :put, :class=>'action lil-space-right'
       -elsif @thought.active?
-        = link_to 'Archive', archive_thought_path(@thought), :method => :put, :class=>'action lil-space-right'
-      = link_to 'Destroy', [@thought], :confirm => 'Are you sure?', :method => :delete, :class=>'action'
+        = link_to t(:archive), archive_thought_path(@thought), :method => :put, :class=>'action lil-space-right'
+      = link_to t(:delete), [@thought], :confirm => t(:r_u_sure).capitalize, :method => :delete, :class=>'action'
     .clear
 .big-space-top
   .align-left.half

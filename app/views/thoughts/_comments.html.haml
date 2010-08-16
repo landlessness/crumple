@@ -1,8 +1,8 @@
-Comments
+= t(:comments)
 = render @thought.comments
 - form_for [@thought, @comment] do |f|
   .field
-    %div= f.label :body, 'Add a comment:'
+    %div= f.label :body, t(:add_a_comment)
     %div= f.text_area :body
   .actions
-    = f.submit 'Save'
+    = f.submit t(:save).capitalize
