@@ -6,6 +6,7 @@ $red-alert: #7D0101;
 $system-font: Verdana, Helvetica, Arial, sans-serif;
 $people-font: "Times New Roman",Georgia,Serif;
 $container-horizontal-margin: 5%;
+$footer-height: 15em;
 
 /* basic classes */
 html, body {height: 100%;}
@@ -30,6 +31,9 @@ input[type="text"], textarea {
 input[type="text"] {
   font-size: 1em;
   width: 15em;
+}
+input[type="submit"] {
+  text-transform: capitalize;
 }
 select {
   font-size: 1em;
@@ -101,7 +105,7 @@ a.link {
   margin-bottom: 5em;
 }
 .half {
-  width: 50%;
+  width: 45%;
 }
 .full {
   width: 100%;
@@ -117,23 +121,26 @@ a.link {
 .prompt {
   font-size: 1em;
   color: $gray;
+  text-transform: capitalize;
 }
 .subtle-prompt {
-  font-size: 0.6em;
+  font-size: 0.7em;
   color: $subtle-gray;
+  text-transform: capitalize;
 }
 a.action {
-  font-size: 0.8em;
+  font-size: 1em;
   text-decoration: underline;
   text-transform: uppercase;
+  color: $gray;
 }
 a.subtle-action {
-  font-size: 0.6em;
+  font-size: 0.7em;
   text-decoration: underline;
+  color: $subtle-gray;
   text-transform: lowercase;
 }
 a.clickable-object {
-  font-size: 1.2em;
   color: $white;
   font-family: $people-font;
 }
@@ -143,8 +150,6 @@ a.clickable-object {
   overflow: hidden;
 }
 /* begin -- for sticky footers -- begin */
-$footer-height: 3em;
-
 #wrap {
   min-height: 100%;
 }
@@ -163,7 +168,9 @@ $footer-height: 3em;
   height: $footer-height;
   clear:both;
 } 
-
+#footer_container {
+  padding-top: 12em;
+}
 /*Opera Fix*/
 body:before {
   content:"";
@@ -251,18 +258,29 @@ body:before {
   height: 12em;
 }
 .new_comment .body {
-  height: 5em;
+  height: 1em;
+}
+#thoughts_show {
+  margin-top: 5em;
 }
 .edit_thought .body {
   height: 0;  
 }
 .body-container {
-  padding-right:3px;  
+  padding-right: 3px;
 }
 .body {
   /* width and 2 x padding need to add to 100% */
   width: 100%;
   overflow: hidden;
+}
+form .body-container {
+  padding-right: 0;
+}
+form .body {
+  width: 98%;
+  padding: 1%;
+  border: solid 1px $white; /* this border is to help align the grid, it's a hack */
 }
 .body a {
   color: $black;
@@ -323,4 +341,10 @@ a.current-nav, #footer a.current-nav {
 }
 .people-content a {
   color: $white;
+}
+$border-space: 6em;
+.subtle-border-top {
+  border-top: 1px dotted $subtle-gray;
+  margin-top: $border-space;
+  padding-top: $border-space;
 }

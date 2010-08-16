@@ -8,19 +8,19 @@
     .align-left
       .align-left
         %div
-          = f.label :tags_list, t(:tag).pluralize.capitalize, :class => 'prompt'
+          = f.label :tags_list, t(:tag).pluralize, :class => 'prompt'
           %span.lil-space-left= f.text_field :tags_list
-        .optional.align-left.subtle-prompt= t(:optional).capitalize
+        .optional.align-left.subtle-prompt= t(:optional)
       - if person_signed_in?
         .align-left.big-space-left
           %div
-            %span.prompt= t(:project).capitalize
+            %span.prompt= t(:project)
             %span.lil-space-left= collection_select :thought, :project_id, current_person.projects.order('upper(name)').all, :id, :name, :prompt => true
-          .optional.align-left.subtle-prompt= t(:optional).capitalize
+          .optional.align-left.subtle-prompt= t(:optional)
       .clear
     .align-right.actions
       = f.hidden_field :state_event
       = f.hidden_field :origin
-      = f.submit t(:save).capitalize
+      = f.submit t(:save)
       = link_to t(:cancel), :back, :class => 'subtle-action lil-space-left' if person_signed_in?
     .clear

@@ -24,6 +24,9 @@ input[type="text"] {
   font-size: 1em;
   width: 15em; }
 
+input[type="submit"] {
+  text-transform: capitalize; }
+
 select {
   font-size: 1em; }
 
@@ -93,7 +96,7 @@ a.link {
   margin-bottom: 5em; }
 
 .half {
-  width: 50%; }
+  width: 45%; }
 
 .full {
   width: 100%; }
@@ -108,24 +111,27 @@ a.link {
 
 .prompt {
   font-size: 1em;
-  color: #aaaaaa; }
+  color: #aaaaaa;
+  text-transform: capitalize; }
 
 .subtle-prompt {
-  font-size: 0.6em;
-  color: #555555; }
+  font-size: 0.7em;
+  color: #555555;
+  text-transform: capitalize; }
 
 a.action {
-  font-size: 0.8em;
+  font-size: 1em;
   text-decoration: underline;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  color: #aaaaaa; }
 
 a.subtle-action {
-  font-size: 0.6em;
+  font-size: 0.7em;
   text-decoration: underline;
+  color: #555555;
   text-transform: lowercase; }
 
 a.clickable-object {
-  font-size: 1.2em;
   color: white;
   font-family: "Times New Roman", Georgia, Serif; }
 
@@ -140,7 +146,7 @@ a.clickable-object {
 
 #main {
   overflow: auto;
-  padding-bottom: 3em; }
+  padding-bottom: 15em; }
 
 /* must be same height as the footer */
 #footer {
@@ -149,10 +155,13 @@ a.clickable-object {
   padding: 0 5%;
   /* container margin and footer padding should match*/
   position: relative;
-  margin-top: -3em;
+  margin-top: -15em;
   /* negative value of footer height */
-  height: 3em;
+  height: 15em;
   clear: both; }
+
+#footer_container {
+  padding-top: 12em; }
 
 /*Opera Fix*/
 body:before {
@@ -241,7 +250,10 @@ body:before {
   height: 12em; }
 
 .new_comment .body {
-  height: 5em; }
+  height: 1em; }
+
+#thoughts_show {
+  margin-top: 5em; }
 
 .edit_thought .body {
   height: 0; }
@@ -253,6 +265,15 @@ body:before {
   /* width and 2 x padding need to add to 100% */
   width: 100%;
   overflow: hidden; }
+
+form .body-container {
+  padding-right: 0; }
+
+form .body {
+  width: 98%;
+  padding: 1%;
+  border: solid 1px white;
+  /* this border is to help align the grid, it's a hack */ }
 
 .body a {
   color: black; }
@@ -310,3 +331,8 @@ a.current-nav, #footer a.current-nav {
 
 .people-content a {
   color: white; }
+
+.subtle-border-top {
+  border-top: 1px dotted #555555;
+  margin-top: 6em;
+  padding-top: 6em; }
