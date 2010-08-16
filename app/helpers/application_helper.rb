@@ -15,6 +15,24 @@ module ApplicationHelper
   def about_nav_class
     about_nav? ? ' current-nav ' : ''    
   end
+  def legal_nav?
+    controller_name == 'pages' && @page_name == 'legal'
+  end
+  def legal_nav_class
+    legal_nav? ? ' current-nav ' : ''    
+  end
+  def privacy_nav?
+    controller_name == 'pages' && @page_name == 'privacy'
+  end
+  def privacy_nav_class
+    privacy_nav? ? ' current-nav ' : ''    
+  end
+  def contact_nav?
+    controller_name == 'pages' && @page_name == 'contact'
+  end
+  def contact_nav_class
+    contact_nav? ? ' current-nav ' : ''    
+  end
   def projects_nav?
     controller_name == 'projects'
   end
