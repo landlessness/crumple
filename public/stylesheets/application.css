@@ -341,6 +341,6 @@ a.current-nav, #footer a.current-nav {
   color: white; }
 
 .subtle-border-top {
-  border-top: 1px dotted #555555;
+  border-top: 1px dashed #555555;
   margin-top: 6em;
   padding-top: 6em; }

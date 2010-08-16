@@ -355,7 +355,7 @@ a.current-nav, #footer a.current-nav {
 }
 $border-space: 6em;
 .subtle-border-top {
-  border-top: 1px dotted $subtle-gray;
+  border-top: 1px dashed $subtle-gray;
   margin-top: $border-space;
   padding-top: $border-space;
 }
