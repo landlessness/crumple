@@ -40,7 +40,7 @@
                                     .replace(/ {2,}/g, function(space) { return times('&nbsp;', space.length -1) + ' ' });
                 
                 shadow.html(val);
-                $(this).css('height', Math.max(shadow.height() + 3 * parseInt(shadow.css('fontSize').replace(/px/,'')), minHeight));
+                $(this).css('height', Math.max(shadow.height() + 2 * parseInt(shadow.css('fontSize').replace(/px/,'')), minHeight));
             
             }
 

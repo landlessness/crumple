@@ -1,8 +1,9 @@
 = javascript ['jquery.resize-font','jquery.autogrow-textarea','jquery.focus-textarea']
-%script{:type => "text/javascript"} $(function() {$('.resize-textarea').autogrow();});
+:javascript
+  $(function() {$('.resize-textarea').autogrow();});
 - form_for @thought do |f|
-  .thought-body-container
-    = f.text_area :body, :class => 'resize-font resize-textarea thought-body'
+  .body-container
+    = f.text_area :body, :class => 'resize-font resize-textarea body'
   .lil-space-top
     .align-left
       .align-left

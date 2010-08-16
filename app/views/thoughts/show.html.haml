@@ -7,7 +7,7 @@
     = t :in_drop_box
     = link_to(t(:accept), accept_thought_path(@thought), :method => :put, :class => 'action')
   #thought_body.thought-body.resize-font.people-content= display_text @thought.body
-  #thought-controls.space-top
+  #thought_controls.space-top
     .align-left
       = link_to t(:edit), edit_thought_path(@thought), :class=>'action'
       = link_to t(:focus), focus_thought_path(@thought), :class=>'action lil-space-left'

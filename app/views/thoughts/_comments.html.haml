@@ -1,8 +1,12 @@
-= t(:comments)
-= render @thought.comments
+= javascript ['jquery.resize-font','jquery.autogrow-textarea']
+:javascript
+  $(function() {$('.resize-textarea').autogrow();});
 - form_for [@thought, @comment] do |f|
   .field
     %div= f.label :body, t(:add_a_comment)
-    %div= f.text_area :body
+    .body-container
+      = f.text_area :body, :class => 'resize-font resize-textarea body'
   .actions
     = f.submit t(:save).capitalize
+= t(:comments)
+= render @thought.comments

@@ -237,22 +237,25 @@ body:before {
 .thought-body-listing a:hover {
   text-decoration: underline; }
 
-.new_thought .thought-body {
+.new_thought .body {
   height: 12em; }
 
-.edit_thought .thought-body {
+.new_comment .body {
+  height: 5em; }
+
+.edit_thought .body {
   height: 0; }
 
-.thought-body {
+.body-container {
+  padding-right: 3px; }
+
+.body {
   /* width and 2 x padding need to add to 100% */
   width: 100%;
   overflow: hidden; }
 
-.thought-body a {
+.body a {
   color: black; }
-
-.thought-body-container {
-  padding-right: 3px; }
 
 #flash_notice, #flash_error, #flash_alert {
   padding: 0.75em;
