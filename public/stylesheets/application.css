@@ -48,6 +48,10 @@ a:hover {
 a {
   color: #aaaaaa; }
 
+a.link {
+  text-decoration: underline;
+  color: white; }
+
 .align-left {
   float: left; }
 
@@ -142,6 +146,10 @@ a.clickable-object {
 
 /* must be same height as the footer */
 #footer {
+  font-size: 0.75em;
+  color: #555555;
+  padding: 0 5%;
+  /* container margin and footer padding should match*/
   position: relative;
   margin-top: -3em;
   /* negative value of footer height */
@@ -177,12 +185,6 @@ body:before {
 #container {
   padding: 0;
   margin: 0 5%;
-  /* container margin and footer padding should match*/ }
-
-#footer {
-  font-size: 0.75em;
-  color: #555555;
-  padding: 0 5%;
   /* container margin and footer padding should match*/ }
 
 #home_marketing_container #product_name a:hover {
@@ -295,7 +297,7 @@ body:before {
 .error_messages ul {
   margin: 1em; }
 
-.current-nav {
+a.current-nav, #footer a.current-nav {
   color: white; }
 
 .optional {

@@ -9,6 +9,12 @@ module ApplicationHelper
       truncate(text, 55)
     end.html_safe
   end
+  def about_nav?
+    controller_name == 'pages' && @page_name == 'about'
+  end
+  def about_nav_class
+    about_nav? ? ' current-nav ' : ''    
+  end
   def projects_nav?
     controller_name == 'projects'
   end

@@ -4,6 +4,7 @@ $subtle-gray: #555;
 $black: #000;
 $system-font: Verdana, Helvetica, Arial, sans-serif;
 $people-font: "Times New Roman",Georgia,Serif;
+$container-horizontal-margin: 5%;
 
 /* basic classes */
 html, body {height: 100%;}
@@ -53,6 +54,10 @@ a:hover {
 }
 a {
   color: $gray;
+}
+a.link {
+  text-decoration: underline;
+  color: $white;  
 }
 .align-left {
   float: left;
@@ -151,6 +156,9 @@ $footer-height: 3em;
 }  /* must be same height as the footer */
 
 #footer {
+  font-size: 0.75em;
+  color: $subtle-gray;
+  padding: 0 $container-horizontal-margin; /* container margin and footer padding should match*/
   position: relative;
   margin-top: -$footer-height; /* negative value of footer height */
   height: $footer-height;
@@ -186,14 +194,8 @@ body:before {
 }
 #container {
   padding: 0;
-  margin: 0 5%; /* container margin and footer padding should match*/
+  margin: 0 $container-horizontal-margin; /* container margin and footer padding should match*/
 } 
-#footer {
-  font-size: 0.75em;
-  color: $subtle-gray;
-  padding: 0 5%; /* container margin and footer padding should match*/
-} 
-
 #home_marketing_container  #product_name a:hover {
   text-decoration: underline;
 }
@@ -310,7 +312,7 @@ body:before {
 .error_messages ul {
   margin: 1em;
 }
-.current-nav {
+a.current-nav, #footer a.current-nav {
   color: $white;
 }
 .optional {
