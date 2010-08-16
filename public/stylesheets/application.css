@@ -341,6 +341,16 @@ a.current-nav, #footer a.current-nav {
   color: white; }
 
 .subtle-border-top {
-  border-top: 1px dashed #555555;
+  border-top: 1px dashed #555555; }
+
+.big-border-spacing {
   margin-top: 6em;
   padding-top: 6em; }
+
+.border-spacing {
+  margin-top: 3em;
+  padding-top: 3em; }
+
+.lil-border-spacing {
+  margin-top: 1em;
+  padding-top: 1em; }

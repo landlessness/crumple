@@ -1,22 +1,22 @@
 .prompt= t(:tag).pluralize
 .body.people-content.resize-font
-  - @thought.tags.each do |t|
+  - thought.tags.each do |t|
     = link_to t.name, t, :class=>'clickable-object lil-space-right link'
 .prompt.space-top= t(:project)
-- if @thought.project
-  .body.people-content.resize-font= link_to @thought.project.name, @thought.project, :class => 'clickable-object link'
-  %div= link_to (t(:new_thought_about) + ' ' + @thought.project.name + '&hellip;').html_safe, new_project_thought_path(@thought.project), :class=>'subtle-action'
+- if thought.project
+  .body.people-content.resize-font= link_to thought.project.name, thought.project, :class => 'clickable-object link'
+  %div= link_to (t(:new_thought_about) + ' ' + thought.project.name + '&hellip;').html_safe, new_project_thought_path(thought.project), :class=>'subtle-action'
 - else
   %span
     %em none
 .space-top
   .subtle-prompt last updated
-  = l(@thought.updated_at, :format => :short)
-  %span.lil-space-left= time_ago_in_words @thought.updated_at
+  = l(thought.updated_at, :format => :short)
+  %span.lil-space-left= time_ago_in_words thought.updated_at
   ago
 .space-top
   .subtle-prompt created
-  = l(@thought.created_at, :format => :short)
+  = l(thought.created_at, :format => :short)
   %span.lil-space-left
-    = time_ago_in_words @thought.created_at
+    = time_ago_in_words thought.created_at
     ago

@@ -1,4 +1,6 @@
 Crumple::Application.routes.draw do |map|
+  resources :foos
+
 
   map.resources :pages,
     :controller => 'pages',

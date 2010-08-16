@@ -10,20 +10,10 @@
     = link_to(t(:accept), accept_thought_path(@thought), :method => :put, :class => 'action')
   .body.resize-font.people-content= display_text @thought.body
   #thought_controls.big-space-top
-    .align-right
-      = link_to t(:edit), edit_thought_path(@thought), :class=>'action lil-space-right'
-      = link_to t(:focus), focus_thought_path(@thought), :class=>'action lil-space-right'
-      - if @thought.archived?
-        = link_to t(:activate), activate_thought_path(@thought), :method => :put, :class=>'action lil-space-right'
-      -elsif @thought.in_drop_box?
-        = link_to t(:accept), accept_thought_path(@thought), :method => :put, :class=>'action lil-space-right'
-      -elsif @thought.active?
-        = link_to t(:archive), archive_thought_path(@thought), :method => :put, :class=>'action lil-space-right'
-      = link_to t(:delete), [@thought], :confirm => t(:r_u_sure).capitalize, :method => :delete, :class=>'action'
-    .clear
-.subtle-border-top
+    = render 'thought_controls', :thought => @thought
+.subtle-border-top.big-border-spacing
   .align-left.half
-    = render 'comments'
+    = render 'comments', :thought => @thought
   .align-right.half
-    = render 'meta_data'
+    = render 'meta_data', :thought => @thought
   .clear

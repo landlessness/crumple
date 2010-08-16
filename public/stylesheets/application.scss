@@ -353,9 +353,20 @@ a.current-nav, #footer a.current-nav {
 .people-content a {
   color: $white;
 }
-$border-space: 6em;
 .subtle-border-top {
   border-top: 1px dashed $subtle-gray;
-  margin-top: $border-space;
-  padding-top: $border-space;
 }
+.big-border-spacing {
+  margin-top: 6em;
+  padding-top: 6em;
+}
+.border-spacing {
+  margin-top: 3em;
+  padding-top: 3em;
+}
+.lil-border-spacing {
+  margin-top: 1em;
+  padding-top: 1em;
+}
+
+
