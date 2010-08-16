@@ -3,7 +3,7 @@
   .align-left
     %span= link_to t(:edit), edit_thought_comment_path(@thought, comment), :class=>'subtle-action'
     %span.lil-space-left= link_to t(:delete), [@thought, comment], :confirm => t(:r_u_sure), :method => :delete, :class=>'subtle-action'
-  .align-right
+  .align-right.lil-size
     = time_ago_in_words comment.created_at
     ago
   .clear

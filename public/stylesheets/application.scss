@@ -7,11 +7,22 @@ $system-font: Verdana, Helvetica, Arial, sans-serif;
 $people-font: "Times New Roman",Georgia,Serif;
 $container-horizontal-margin: 5%;
 $footer-height: 15em;
+$big-size: 1em;
+$norm-size: 8em;
+$lil-size: 0.6em;
 
+.big-size {
+  font-size: $big-size;
+}
+.norm-size {
+  font-size: $norm-size;
+}
+.lil-size {
+  font-size: $lil-size;
+}
 /* basic classes */
 html, body {height: 100%;}
 body {
-  font-size: 0.8em;
   background-color: $black;
   color: $gray;
   font-family: $system-font;
@@ -119,7 +130,7 @@ a.link {
   text-align: center 
 }
 .prompt {
-  font-size: 1em;
+  font-size: 0.8em;
   color: $gray;
   text-transform: capitalize;
 }
@@ -129,13 +140,13 @@ a.link {
   text-transform: capitalize;
 }
 a.action {
-  font-size: 1em;
+  font-size: 0.8em;
   text-decoration: underline;
   text-transform: uppercase;
   color: $gray;
 }
 a.subtle-action {
-  font-size: 0.7em;
+  font-size: $lil-size;
   text-decoration: underline;
   color: $subtle-gray;
   text-transform: lowercase;
