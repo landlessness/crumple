@@ -23,6 +23,9 @@ textarea {
 input[type="text"], textarea {
   font-family: $people-font;
 }
+.person_new input[type="text"] {
+  font-family: $system-font;
+}
 input[type="text"] {
   font-size: 1em;
   width: 15em;

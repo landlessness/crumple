@@ -17,6 +17,9 @@ textarea {
 input[type="text"], textarea {
   font-family: "Times New Roman", Georgia, Serif; }
 
+.person_new input[type="text"] {
+  font-family: Verdana, Helvetica, Arial, sans-serif; }
+
 input[type="text"] {
   font-size: 1em;
   width: 15em; }
