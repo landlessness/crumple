@@ -54,7 +54,7 @@ class ProjectsController < ApplicationController
   # POST /projects.xml
   def create
     @project = Project.new(params[:project])
-    membership = current_person.memberships.new
+    membership = current_person.memberships.build
     membership.project = @project
     
     respond_to do |format|
