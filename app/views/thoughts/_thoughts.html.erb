@@ -25,19 +25,6 @@
   <% end %>
   
   <%= will_paginate @thoughts %>
-  <table id="thoughts_index">
-    <tr>
-      <th>Thought</th>
-      <th>Last Updated</th>
-      <th>Tags</th>
-      <th>Creator</th>
-      <th>Project</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-
-    <%= render @thoughts %>    
-  </table>
+  <%= render @thoughts %>    
   <%= will_paginate @thoughts %>
 </p>

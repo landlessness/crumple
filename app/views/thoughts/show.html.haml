@@ -9,7 +9,7 @@
     = t :in_drop_box
     = link_to(t(:accept), accept_thought_path(@thought), :method => :put, :class => 'action')
   .body.resize-font.people-content= display_text @thought.body
-  #thought_controls.big-space-top
+  #thought_controls.big-space-top.action
     = render 'thought_controls', :thought => @thought
 .subtle-border-top.big-border-spacing
   .align-left.half

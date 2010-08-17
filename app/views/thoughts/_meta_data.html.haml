@@ -7,16 +7,19 @@
   .body.people-content.resize-font= link_to thought.project.name, thought.project, :class => 'clickable-object link'
   %div= link_to (t(:new_thought_about) + ' ' + thought.project.name + '&hellip;').html_safe, new_project_thought_path(thought.project), :class=>'subtle-action'
 - else
-  %span
+  .lil-size
     %em none
 .space-top
   .subtle-prompt last updated
-  = l(thought.updated_at, :format => :short)
-  %span.lil-space-left= time_ago_in_words thought.updated_at
-  ago
+  .lil-size
+    = l(thought.updated_at, :format => :short)
+    %span.lil-space-left
+      = time_ago_in_words thought.updated_at
+      ago
 .space-top
   .subtle-prompt created
-  = l(thought.created_at, :format => :short)
-  %span.lil-space-left
-    = time_ago_in_words thought.created_at
-    ago
+  .lil-size
+    = l(thought.created_at, :format => :short)
+    %span.lil-space-left
+      = time_ago_in_words thought.created_at
+      ago

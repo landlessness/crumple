@@ -2,7 +2,7 @@
   font-size: 1em; }
 
 .norm-size {
-  font-size: 8em; }
+  font-size: 0.8em; }
 
 .lil-size {
   font-size: 0.6em; }
@@ -28,7 +28,7 @@ input[type="text"], textarea {
 .person_new input[type="text"] {
   font-family: Verdana, Helvetica, Arial, sans-serif; }
 
-input[type="text"] {
+input[type="text"], input[type="password"] {
   font-size: 1em;
   width: 15em; }
 
@@ -127,13 +127,13 @@ a.link {
   color: #555555;
   text-transform: capitalize; }
 
-a.action {
+a.action, .action a {
   font-size: 0.8em;
   text-decoration: underline;
   text-transform: uppercase;
   color: #aaaaaa; }
 
-a.subtle-action {
+a.subtle-action, .subtle-action a {
   font-size: 0.6em;
   text-decoration: underline;
   color: #555555;

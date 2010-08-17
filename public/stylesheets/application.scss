@@ -8,7 +8,7 @@ $people-font: "Times New Roman",Georgia,Serif;
 $container-horizontal-margin: 5%;
 $footer-height: 15em;
 $big-size: 1em;
-$norm-size: 8em;
+$norm-size: 0.8em;
 $lil-size: 0.6em;
 
 .big-size {
@@ -39,7 +39,7 @@ input[type="text"], textarea {
 .person_new input[type="text"] {
   font-family: $system-font;
 }
-input[type="text"] {
+input[type="text"],input[type="password"] {
   font-size: 1em;
   width: 15em;
 }
@@ -139,13 +139,13 @@ a.link {
   color: $subtle-gray;
   text-transform: capitalize;
 }
-a.action {
-  font-size: 0.8em;
+a.action, .action a {
+  font-size: $norm-size;
   text-decoration: underline;
   text-transform: uppercase;
   color: $gray;
 }
-a.subtle-action {
+a.subtle-action, .subtle-action a {
   font-size: $lil-size;
   text-decoration: underline;
   color: $subtle-gray;
