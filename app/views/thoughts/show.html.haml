@@ -11,9 +11,9 @@
   .body.resize-font.people-content= display_text @thought.body
   #thought_controls.big-space-top.action
     = render 'thought_controls', :thought => @thought
-.subtle-border-top.big-border-spacing
-  .align-left.half
+.subtle-border-top.big-norm-border-spacing
+  .align-left.two-thirds
     = render 'comments', :thought => @thought
-  .align-right.half
+  .align-right.one-third
     = render 'meta_data', :thought => @thought
   .clear

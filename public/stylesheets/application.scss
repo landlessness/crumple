@@ -48,6 +48,7 @@ input[type="submit"] {
 }
 select {
   font-size: 1em;
+  min-width: 10em;
 }
 a img {
   border: none;
@@ -117,6 +118,12 @@ a.link {
 }
 .half {
   width: 45%;
+}
+.one-third {
+  width: 30%;
+}
+.two-thirds {
+  width: 60%;
 }
 .full {
   width: 100%;
@@ -360,7 +367,7 @@ a.current-nav, #footer a.current-nav {
   margin-top: 6em;
   padding-top: 6em;
 }
-.border-spacing {
+.norm-border-spacing {
   margin-top: 3em;
   padding-top: 3em;
 }
@@ -368,5 +375,8 @@ a.current-nav, #footer a.current-nav {
   margin-top: 1em;
   padding-top: 1em;
 }
-
+.big-norm-border-spacing {
+  margin-top: 6em;
+  padding-top: 3em;  
+}
 

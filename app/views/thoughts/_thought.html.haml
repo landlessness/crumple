@@ -1,7 +1,7 @@
-.subtle-border-top.border-spacing
-  .align-left.half
+.subtle-border-top.norm-border-spacing
+  .align-left.two-thirds
     .body.resize-font.people-content= link_to(truncate(simpler_format(h(thought.body)), 313).html_safe, thought)
     .space-top.subtle-action= render 'thoughts/thought_controls', :thought => thought
-  .align-right.half
+  .align-right.one-third
     = render 'thoughts/meta_data', :thought => thought
   .clear
