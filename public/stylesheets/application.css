@@ -39,6 +39,9 @@ select {
   font-size: 1em;
   min-width: 10em; }
 
+img, a img {
+  vertical-align: middle; }
+
 a img {
   border: none; }
 
@@ -67,6 +70,9 @@ a.link {
 
 .align-right {
   float: right; }
+
+.three-px-left {
+  margin-left: 3px; }
 
 .lil-space-left {
   margin-left: 1em; }
@@ -161,7 +167,7 @@ a.clickable-object {
 
 #main {
   overflow: auto;
-  padding-bottom: 15em; }
+  padding-bottom: 16em; }
 
 /* must be same height as the footer */
 #footer {
@@ -170,13 +176,17 @@ a.clickable-object {
   padding: 0 5%;
   /* container margin and footer padding should match*/
   position: relative;
-  margin-top: -15em;
+  margin-top: -16em;
   /* negative value of footer height */
-  height: 15em;
+  height: 16em;
   clear: both; }
 
 #footer_container {
   padding-top: 12em; }
+
+.valign32 {
+  height: 32px;
+  line-height: 32px; }
 
 /*Opera Fix*/
 body:before {

@@ -6,7 +6,7 @@ $red-alert: #7D0101;
 $system-font: Verdana, Helvetica, Arial, sans-serif;
 $people-font: "Times New Roman",Georgia,Serif;
 $container-horizontal-margin: 5%;
-$footer-height: 15em;
+$footer-height: 16em;
 $big-size: 1em;
 $norm-size: 0.8em;
 $lil-size: 0.6em;
@@ -50,10 +50,12 @@ select {
   font-size: 1em;
   min-width: 10em;
 }
+img, a img {
+  vertical-align:middle;
+}
 a img {
   border: none;
 }
-
 a:link {
   text-decoration: none;
 }
@@ -79,6 +81,9 @@ a.link {
 }
 .align-right {
   float: right;
+}
+.three-px-left {
+  margin-left: 3px;
 }
 .lil-space-left {
   margin-left: 1em;
@@ -188,6 +193,10 @@ a.clickable-object {
 } 
 #footer_container {
   padding-top: 12em;
+}
+.valign32 {
+  height: 32px;
+  line-height: 32px;  
 }
 /*Opera Fix*/
 body:before {

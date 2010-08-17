@@ -6,9 +6,12 @@
 
 #footer
   #footer_container
-    .align-left
-      = link_to t(:creative_commons_license), 'http://creativecommons.org/licenses/by-sa/3.0/', :rel => 'license'
-    .align-right
+    .align-left.valign32
+      - if person_signed_in?
+        = link_to (image_tag('logo32.png')), root_path
+        = link_to t(:product_name), root_path, :class => 'three-px-left'
+      = link_to t(:creative_commons_license), 'http://creativecommons.org/licenses/by-sa/3.0/', :rel => 'license', :class => 'lil-space-left'
+    .align-right.valign32
       = link_to t(:about), page_path('about'), :class => about_nav_class
       = link_to t(:contact), page_path('contact'), :class => 'lil-space-left' + contact_nav_class
       = link_to t(:privacy), page_path('privacy'), :class => 'lil-space-left' + privacy_nav_class
