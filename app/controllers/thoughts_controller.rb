@@ -15,7 +15,7 @@ class ThoughtsController < ApplicationController
 
         # have to explicitly list the layout instead of just :layout => true
         # because Rails looks for application.viz.erb in the layout dir
-        format.viz  { render :layout => 'application.html.erb'} 
+        format.viz  { render :layout => 'application'} 
       end
     else
       @project = current_person.projects.find(params[:project_id]) if params[:project_id] 
