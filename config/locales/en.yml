@@ -8,11 +8,13 @@ en:
   cancel: cancel
   save: save
   thought: thought
+  new_thought: new_thought
   tag: tag
   project: project
   optional: optional
   home: home
   drop_box: drop box
+  my_drop_box: my drop box
   settings: settings
   sign_out: sign out
   sign_in: sign in
@@ -49,3 +51,4 @@ en:
   suggestion: suggestion
   state: state
   see_all: see all
+  close: close

@@ -3,7 +3,7 @@
 <h2>Helpers</h2>
 <h3>Bookmarklet</h3>
 <p>
-<%= link_to 'Crumple Bookmarklet', %(javascript:(function(){e =''+(window.getSelection?window.getSelection():document.getSelection?document.getSelection():document.selection.createRange().text);if(e)e=""+e+"";open('http://#{Rails.application.config.top_level_domain}/?thought[body]='+encodeURIComponent(location.href+'\\n\\n')+encodeURIComponent(document.title+'\\n\\n')+encodeURIComponent(e)+'&thought[state_event]=put_in_drop_box&thought[origin]=bookmarklet','Crumple','toolbar=no,width=800,height=600')})()) %>
+<%= link_to 'Crumple Bookmarklet', %(javascript:(function(){e =''+(window.getSelection?window.getSelection():document.getSelection?document.getSelection():document.selection.createRange().text);if(e)e="\\n\\n"+e+"";open('http://#{Rails.application.config.top_level_domain}/thoughts/bookmarklet_new?thought[body]='+encodeURIComponent(location.href+'\\n\\n')+encodeURIComponent(document.title)+encodeURIComponent(e)+'&thought[state_event]=put_in_drop_box&thought[origin]=bookmarklet','Crumple','toolbar=no,width=400,height=400')})()) %>
 </p>
 <h3>Email</h3>
 <p><%= link_to 'Download vCard', drop_box_vcf_path %></p>

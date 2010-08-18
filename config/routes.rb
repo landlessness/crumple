@@ -33,12 +33,14 @@ Crumple::Application.routes.draw do |map|
   resources :thoughts do
     collection do
       get :auto_new
+      get :bookmarklet_new
     end
     member do
       put :archive
       put :activate
       put :accept
       get :focus
+      get :bookmarklet_confirmation
     end
     resources :comments
   end

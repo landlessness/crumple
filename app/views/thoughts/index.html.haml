@@ -4,7 +4,7 @@
     %table
       %tbody
         %tr
-          %td= text_field_tag :q, @query, :class => 'auto-focus'
+          %td= text_field_tag :q, @query, :class => ''
           %td#q_submit= submit_tag t(:search)
   - if @query
     .three-px-left.system-content
@@ -26,7 +26,7 @@
   .space-top
 .clear
 - if @thoughts.size > 0
-  .lil-space-top= render 'thoughts' 
+  .space-top= render 'thoughts' 
 - else
   .space-top= t(:empty_search_message).capitalize + '.'
   .space-top= t(:suggestion).pluralize.capitalize + ':'

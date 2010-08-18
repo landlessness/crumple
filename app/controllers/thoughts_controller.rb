@@ -105,7 +105,32 @@ class ThoughtsController < ApplicationController
   end
 
   def auto_new
-    create
+    @thought = create_thought(params)
+    
+    respond_to do |format|
+      if @thought.save
+        format.html { redirect_to @thought }
+      else
+        format.html { render :action => "new" }
+      end
+    end    
+  end
+  
+  def bookmarklet_confirmation
+    @thought = current_person.thoughts.find(params[:id])
+    render :layout => 'simple'
+  end
+
+  def bookmarklet_new
+    @thought = create_thought(params)
+    
+    respond_to do |format|
+      if @thought.save
+        format.html { redirect_to bookmarklet_confirmation_thought_path(@thought) }
+      else
+        format.html { render :action => "new" }
+      end
+    end    
   end
 
   # GET /thoughts/1/edit
@@ -155,8 +180,7 @@ class ThoughtsController < ApplicationController
   # POST /thoughts
   # POST /thoughts.xml
   def create
-    @thought = current_person.thoughts.new(params[:thought])
-    @thought.origin = Rails.application.config.top_level_domain if @thought.origin.blank?
+    @thought = create_thought(params)
     
     respond_to do |format|
       if @thought.save
@@ -196,4 +220,12 @@ class ThoughtsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  protected
+  
+  def create_thought(params)
+    @thought = current_person.thoughts.new(params[:thought])
+    @thought.origin = Rails.application.config.top_level_domain if @thought.origin.blank?    
+    @thought
+  end
+  
 end
