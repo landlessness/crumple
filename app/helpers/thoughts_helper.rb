@@ -44,9 +44,9 @@ module ThoughtsHelper
 
   def link_to_new_thought(project=nil)
      if project 
-       link_to 'New thought about ' + project.name, new_project_thought_path(project)
+       link_to t(:new_thought_about) + ' ' + project.name, new_project_thought_path(project)
      else 
-       link_to 'New thought', new_thought_path 
+       link_to t(:new_thought), new_thought_path 
      end 
   end
 

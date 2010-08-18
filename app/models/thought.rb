@@ -4,6 +4,7 @@ class Thought < ActiveRecord::Base
   Sunspot.setup(Thought) do
     text :body
     integer :person_id
+    date :updated_at
   end
 
   # Sunspot.index(Thought.all)

@@ -4,11 +4,25 @@ class ThoughtsController < ApplicationController
   # GET /thoughts
   # GET /thoughts.xml
   def index
+    thoughts_per_page = 10
     if @query = q = params[:q]
-      @thoughts = Sunspot.search(Thought) do
-        keywords q
-        with :person_id, current_person.id
-      end.results
+      start_query = Time.now
+      if q.blank?
+        @thoughts = []
+        @thoughts = @thoughts.paginate
+      else
+        page_number = params[:page] || 1
+        search = Sunspot.search(Thought) do |query|
+          query.paginate :page => page_number, :per_page => thoughts_per_page
+          query.keywords q
+          query.with :person_id, current_person.id
+          query.order_by :updated_at, :desc
+        end
+        @thoughts = search.results
+        @search_total = search.total
+      end
+      stop_query = Time.now
+      @query_time = stop_query - start_query
       respond_to do |format|
         format.html # index.html.erb
         format.xml  { render :xml => @thoughts }
@@ -45,7 +59,7 @@ class ThoughtsController < ApplicationController
       @thoughts = @thoughts.with_state(@state)
       respond_to do |format|
         format.html do # index.html.erb
-          @thoughts = @thoughts.paginate(:per_page => 25, :page => params[:page], :order => 'updated_at DESC')
+          @thoughts = @thoughts.paginate(:per_page => thoughts_per_page, :page => params[:page], :order => 'updated_at DESC')
         end
         format.xml  { render :xml => @thoughts }
 

@@ -1,7 +1,35 @@
-= javascript ['jquery.resize-font','jquery.autogrow-textarea']
-:javascript
-  $(function() {$('.resize-textarea').autogrow();});
-= link_to_new_thought 
-= link_to 'Visualize thoughts', thoughts_path(:viz_style => 'Force', :format => 'viz') 
-= render 'thoughts' 
-= link_to_new_thought 
+= javascript ['jquery.auto-focus']
+.align-left.two-thirds
+  - form_tag(thoughts_path, :method => :get) do
+    %table
+      %tbody
+        %tr
+          %td= text_field_tag :q, @query, :class => 'auto-focus'
+          %td#q_submit= submit_tag t(:search)
+  - if @query
+    .three-px-left.system-content
+      = @search_total
+      = %(results (#{format("%.2f",@query_time)} seconds))
+.align-right.one-third
+  %span.subtle-action= link_to_new_thought 
+  - unless @drop_box
+    - if @showing_archived_thoughts
+      - if @project
+        %span.subtle-action.lil-space-left= link_to 'Active project thoughts', project_path(@project)
+      - else
+        %span.subtle-action.lil-space-left= link_to 'Active thoughts', thoughts_path
+    - else
+      - if @project
+        %span.subtle-action.lil-space-left= link_to t(:archives), project_thoughts_path(@project, :state => 'archived')
+      - else
+        %span.subtle-action.lil-space-left= link_to t(:archives), thoughts_path(:state => 'archived')
+  .space-top
+.clear
+- if @thoughts.size > 0
+  .lil-space-top= render 'thoughts' 
+- else
+  .space-top= t(:empty_search_message).capitalize + '.'
+  .space-top= t(:suggestion).pluralize.capitalize + ':'
+  %ul
+    %li= t(:try_different_keywords)
+    %li= ('or ' + link_to(t(:see_all) + ' ' + t(:thought).pluralize, thoughts_path, :class => 'link')).html_safe

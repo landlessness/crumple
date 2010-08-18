@@ -47,7 +47,7 @@ module ApplicationHelper
      home_nav? ? ' current-nav ' : ''
   end
   def thoughts_nav?
-    controller_name == 'thoughts' && !home_nav?
+    (controller_name == 'thoughts' || controller_name == 'comments') && !home_nav?
   end
   def thoughts_nav_class
     thoughts_nav? ? ' current-nav ' : ''

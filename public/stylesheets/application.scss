@@ -20,10 +20,19 @@ $lil-size: 0.6em;
 .norm-size {
   font-size: $norm-size;
 }
-.lil-size {
+.system-content, .lil-size {
   font-size: $lil-size;
 }
+.system-content-alert {
+  color: $red-alert;
+}
 /* basic classes */
+td,th,tr,table {
+  width: 100%;
+  padding:0;
+  margin:0;
+  border:0;
+}
 html, body {height: 100%;}
 body {
   background-color: $black;
@@ -85,6 +94,9 @@ a.link {
 .align-right {
   float: right;
 }
+.five-px-left {
+  margin-left: 5px;
+}
 .three-px-left {
   margin-left: 3px;
 }
@@ -93,6 +105,12 @@ a.link {
 }
 .lil-space-left {
   margin-left: 1em;
+}
+.super-lil-space-left {
+  margin-left: 0.5em;
+}
+.super-lil-space-right {
+  margin-right: 0.5em;
 }
 .lil-space-right {
   margin-right: 1em;
@@ -157,11 +175,14 @@ a.link {
   color: $subtle-gray;
   text-transform: capitalize;
 }
-a.action, .action a {
+@mixin action-links {
   font-size: $norm-size;
   text-decoration: underline;
   text-transform: uppercase;
   color: $gray;
+}
+a.action, .action a {
+  @include action-links;
 }
 a.subtle-action, .subtle-action a {
   font-size: $lil-size;
@@ -198,7 +219,7 @@ a.clickable-object {
   clear:both;
 } 
 #footer_container {
-  padding-top: 12em;
+  padding-top: 11em;
 }
 .valign32 {
   height: 32px;
@@ -259,7 +280,7 @@ body:before {
   vertical-align:top;
 }
 #header {
-  margin: 3% 0;
+  margin: 6% 0;
 }
 #header #sign_in_sign_up {
   height: 57px;
@@ -306,6 +327,9 @@ body:before {
   /* width and 2 x padding need to add to 100% */
   width: 100%;
   overflow: hidden;
+}
+form {
+  display: inline;
 }
 form .body-container {
   padding-right: 0;
@@ -393,6 +417,9 @@ $lil-padding: 1em;
   padding-bottom: $lil-padding;
   padding-top: $lil-padding;
 }
+.lil-padding-left {
+  padding-left: $lil-padding;
+}
 .big-norm-padding {
   padding-top: $big-padding;
   padding-bottom: $norm-padding;
@@ -428,4 +455,37 @@ $lil-padding: 1em;
 .none-big-padding {
   padding-top: 0;
   padding-bottom: $big-padding;
+}
+.none-lil-padding {
+  padding-top: 0;
+  padding-bottom: $lil-padding;
+}
+.dotted-border-left {
+  border-left: 1px dotted $subtle-gray;
+}
+.disabled {
+  visibility: hidden;
+}
+.pagination a, .pagination em {
+  margin: 0 0.5em;
+}
+.pagination a {
+  @include action-links;
+}
+a.previous_page {
+  margin-right: 1em;
+}
+a.next_page {
+  margin-left: 1em;
+}
+.pagination em {
+  font-size: $norm-size;
+  font-style: normal;
+  color: $white;
+}
+#q {
+  width: 100%;
+}
+#q_submit {
+  padding-left: 1.5em;
 }

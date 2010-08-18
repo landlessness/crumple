@@ -7,10 +7,19 @@
 .norm-size {
   font-size: 0.8em; }
 
-.lil-size {
+.system-content, .lil-size {
   font-size: 0.6em; }
 
+.system-content-alert {
+  color: #7d0101; }
+
 /* basic classes */
+td, th, tr, table {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border: 0; }
+
 html, body {
   height: 100%; }
 
@@ -74,6 +83,9 @@ a.link {
 .align-right {
   float: right; }
 
+.five-px-left {
+  margin-left: 5px; }
+
 .three-px-left {
   margin-left: 3px; }
 
@@ -82,6 +94,12 @@ a.link {
 
 .lil-space-left {
   margin-left: 1em; }
+
+.super-lil-space-left {
+  margin-left: 0.5em; }
+
+.super-lil-space-right {
+  margin-right: 0.5em; }
 
 .lil-space-right {
   margin-right: 1em; }
@@ -188,7 +206,7 @@ a.clickable-object {
   clear: both; }
 
 #footer_container {
-  padding-top: 12em; }
+  padding-top: 11em; }
 
 .valign32 {
   height: 32px;
@@ -249,7 +267,7 @@ body:before {
   vertical-align: top; }
 
 #header {
-  margin: 3% 0; }
+  margin: 6% 0; }
 
 #header #sign_in_sign_up {
   height: 57px;
@@ -296,6 +314,9 @@ body:before {
   /* width and 2 x padding need to add to 100% */
   width: 100%;
   overflow: hidden; }
+
+form {
+  display: inline; }
 
 form .body-container {
   padding-right: 0; }
@@ -378,6 +399,9 @@ a.current-nav, #footer a.current-nav {
   padding-bottom: 1em;
   padding-top: 1em; }
 
+.lil-padding-left {
+  padding-left: 1em; }
+
 .big-norm-padding {
   padding-top: 6em;
   padding-bottom: 3em; }
@@ -413,3 +437,39 @@ a.current-nav, #footer a.current-nav {
 .none-big-padding {
   padding-top: 0;
   padding-bottom: 6em; }
+
+.none-lil-padding {
+  padding-top: 0;
+  padding-bottom: 1em; }
+
+.dotted-border-left {
+  border-left: 1px dotted #555555; }
+
+.disabled {
+  visibility: hidden; }
+
+.pagination a, .pagination em {
+  margin: 0 0.5em; }
+
+.pagination a {
+  font-size: 0.8em;
+  text-decoration: underline;
+  text-transform: uppercase;
+  color: #aaaaaa; }
+
+a.previous_page {
+  margin-right: 1em; }
+
+a.next_page {
+  margin-left: 1em; }
+
+.pagination em {
+  font-size: 0.8em;
+  font-style: normal;
+  color: white; }
+
+#q {
+  width: 100%; }
+
+#q_submit {
+  padding-left: 1.5em; }

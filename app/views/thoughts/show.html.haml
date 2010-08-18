@@ -2,15 +2,13 @@
 :javascript
   $(function() {$('.resize-textarea').autogrow();});
 #thoughts_show.none-big-padding
-  - if @thought.archived?
-    = t :archived
-    = link_to(t(:activate), activate_thought_path(@thought), :method => :put, :class => 'action')
-  - elsif  @thought.in_drop_box?
+  - if  @thought.in_drop_box?
     = t :in_drop_box
     = link_to(t(:accept), accept_thought_path(@thought), :method => :put, :class => 'action')
   .body.resize-font.people-content= display_text @thought.body
-  #thought_controls.big-space-top.action
+  .align-right.one-third.subtle-action.big-space-top
     = render 'thought_controls', :thought => @thought
+  .clear
 .subtle-border-top.norm-none-padding
   .align-left.two-thirds
     = render 'comments', :thought => @thought

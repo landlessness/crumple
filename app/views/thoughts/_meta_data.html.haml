@@ -1,32 +1,39 @@
-.prompt= t(:tag).pluralize
+- if !thought.active?
+  .subtle-prompt= t(:state)
+  .lil-space-bottom
+    .system-content-alert= t(thought.state.to_sym)
+.subtle-prompt= t(:tag).pluralize
 - if thought.tags.empty?
   .lil-size
     %em= t(:none)
 - else
   .body.people-content.resize-font
     - thought.tags.each do |t|
-      = link_to t.name, t, :class=>'clickable-object lil-space-right link'
-.prompt.space-top= t(:project)
+      = link_to t.name, t, :class=>'clickable-object super-lil-space-right link'
+.subtle-prompt.lil-space-top= t(:project)
 - if thought.project
   .body.people-content.resize-font= link_to thought.project.name, thought.project, :class => 'clickable-object link'
-  %div= link_to (t(:new_thought_about) + ' ' + thought.project.name + '&hellip;').html_safe, new_project_thought_path(thought.project), :class=>'subtle-action'
 - else
   .lil-size
     %em= t(:none)
 - if defined?(include_comments_count) && include_comments_count
-  .space-top.prompt= t(:comment).pluralize
-  .three-px-top.norm-size.people-content= link_to pluralize(thought.comments.count,t(:comment)), thought_path(thought, :anchor => 'comments'), :class=>'link'
-.space-top
+  .lil-space-top.subtle-prompt= t(:comment).pluralize
+  - if thought.comments.count > 0
+    .three-px-top.norm-size.people-content= link_to pluralize(thought.comments.count,t(:comment)), thought_path(thought, :anchor => 'comments'), :class=>'link'
+  - else
+    .lil-size
+      %em= t(:none)
+.lil-space-top
   .subtle-prompt last updated
   .lil-size
     = l(thought.updated_at, :format => :short)
-    %span.lil-space-left
+    %div
       = time_ago_in_words thought.updated_at
       ago
-.space-top
+.lil-space-top
   .subtle-prompt created
   .lil-size
     = l(thought.created_at, :format => :short)
-    %span.lil-space-left
+    %div
       = time_ago_in_words thought.created_at
       ago

@@ -40,3 +40,12 @@ en:
   back: back
   permalink: permalink
   none: none
+  search: search
+  next: next
+  previous: previous
+  archives: archives
+  empty_search_message: your search did not match any thoughts
+  try_different_keywords: try different keywords
+  suggestion: suggestion
+  state: state
+  see_all: see all
