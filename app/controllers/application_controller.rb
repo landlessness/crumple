@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
       p = request.path_parameters.symbolize_keys
       if p[:controller] == 'thoughts' && p[:action] == 'create'
         scope = Devise::Mapping.find_scope!(Person)
-        session[:"#{scope}_return_to"] = new_thought_path(:thought => params[:thought])
+        session[:"#{scope}_return_to"] = auto_new_thoughts_path(:thought => params[:thought])
       end
     end    
     super

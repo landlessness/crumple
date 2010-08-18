@@ -90,6 +90,10 @@ class ThoughtsController < ApplicationController
     end
   end
 
+  def auto_new
+    create
+  end
+
   # GET /thoughts/1/edit
   def edit
     @thought = current_person.thoughts.find(params[:id])

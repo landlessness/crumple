@@ -31,6 +31,9 @@ Crumple::Application.routes.draw do |map|
 
   resources :drop_boxes
   resources :thoughts do
+    collection do
+      get :auto_new
+    end
     member do
       put :archive
       put :activate
