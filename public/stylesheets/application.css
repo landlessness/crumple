@@ -360,18 +360,50 @@ a.current-nav, #footer a.current-nav {
 .subtle-border-top {
   border-top: 1px dashed #555555; }
 
-.big-border-spacing {
-  margin-top: 6em;
+.big-padding {
+  padding-top: 6em;
   padding-top: 6em; }
 
-.norm-border-spacing {
-  margin-top: 3em;
+.norm-padding {
+  padding-bottom: 3em;
   padding-top: 3em; }
 
-.lil-border-spacing {
-  margin-top: 1em;
+.lil-padding {
+  padding-bottom: 1em;
   padding-top: 1em; }
 
-.big-norm-border-spacing {
-  margin-top: 6em;
-  padding-top: 3em; }
+.big-norm-padding {
+  padding-top: 6em;
+  padding-bottom: 3em; }
+
+.lil-norm-padding {
+  padding-top: 1em;
+  padding-bottom: 3em; }
+
+.norm-lil-padding {
+  padding-top: 3em;
+  padding-bottom: 1em; }
+
+.norm-big-padding {
+  padding-top: 3em;
+  padding-bottom: 6em; }
+
+.big-lil-padding {
+  padding-top: 6em;
+  padding-bottom: 1em; }
+
+.lil-big-padding {
+  padding-top: 1em;
+  padding-bottom: 6em; }
+
+.norm-none-padding {
+  padding-top: 3em;
+  padding-bottom: 0; }
+
+.none-norm-padding {
+  padding-top: 0;
+  padding-bottom: 3em; }
+
+.none-big-padding {
+  padding-top: 0;
+  padding-bottom: 6em; }

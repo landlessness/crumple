@@ -1,7 +1,7 @@
 = javascript ['jquery.resize-font','jquery.autogrow-textarea']
 :javascript
   $(function() {$('.resize-textarea').autogrow();});
-#thoughts_show
+#thoughts_show.none-big-padding
   - if @thought.archived?
     = t :archived
     = link_to(t(:activate), activate_thought_path(@thought), :method => :put, :class => 'action')
@@ -11,7 +11,7 @@
   .body.resize-font.people-content= display_text @thought.body
   #thought_controls.big-space-top.action
     = render 'thought_controls', :thought => @thought
-.subtle-border-top.big-norm-border-spacing
+.subtle-border-top.norm-none-padding
   .align-left.two-thirds
     = render 'comments', :thought => @thought
   .align-right.one-third

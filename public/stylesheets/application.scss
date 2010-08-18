@@ -372,20 +372,54 @@ a.current-nav, #footer a.current-nav {
 .subtle-border-top {
   border-top: 1px dashed $subtle-gray;
 }
-.big-border-spacing {
-  margin-top: 6em;
-  padding-top: 6em;
+$big-padding: 6em;
+$norm-padding: 3em;
+$lil-padding: 1em;
+.big-padding {
+  padding-top: $big-padding;
+  padding-top: $big-padding;
 }
-.norm-border-spacing {
-  margin-top: 3em;
-  padding-top: 3em;
+.norm-padding {
+  padding-bottom: $norm-padding;
+  padding-top: $norm-padding;
 }
-.lil-border-spacing {
-  margin-top: 1em;
-  padding-top: 1em;
+.lil-padding {
+  padding-bottom: $lil-padding;
+  padding-top: $lil-padding;
 }
-.big-norm-border-spacing {
-  margin-top: 6em;
-  padding-top: 3em;  
+.big-norm-padding {
+  padding-top: $big-padding;
+  padding-bottom: $norm-padding;
 }
-
+.lil-norm-padding {
+  padding-top: $lil-padding;  
+  padding-bottom: $norm-padding;
+}
+.norm-lil-padding {
+  padding-top: $norm-padding;  
+  padding-bottom: $lil-padding;
+}
+.norm-big-padding {
+  padding-top: $norm-padding;  
+  padding-bottom: $big-padding;
+}
+.big-lil-padding {
+  padding-top: $big-padding;  
+  padding-bottom: $lil-padding;
+}
+.lil-big-padding {
+  padding-top: $lil-padding;
+  padding-bottom: $big-padding;
+}
+.norm-none-padding {
+  padding-top: $norm-padding;
+  padding-bottom: 0;
+}
+.none-norm-padding {
+  padding-top: 0;
+  padding-bottom: $norm-padding;
+}
+.none-big-padding {
+  padding-top: 0;
+  padding-bottom: $big-padding;
+}
