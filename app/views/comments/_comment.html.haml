@@ -1,8 +1,11 @@
 - if comment && comment.person
-  .body.resize-font.people-content.space-top= display_text(comment.body)
+  .body.resize-font.people-content.space-top
+    %a{:name => comment_a_name(comment)}
+    = display_text(comment.body)
   .align-left
     %span= link_to t(:edit), edit_thought_comment_path(@thought, comment), :class=>'subtle-action'
     %span.lil-space-left= link_to t(:delete), [@thought, comment], :confirm => t(:r_u_sure), :method => :delete, :class=>'subtle-action'
+    %span.lil-space-left= link_to t(:permalink), thought_path(@thought, :anchor => comment_a_name(comment)), :class=>'subtle-action'
   .align-right.lil-size
     = time_ago_in_words comment.created_at
     ago

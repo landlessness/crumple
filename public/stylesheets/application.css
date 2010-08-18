@@ -1,3 +1,6 @@
+.white {
+  color: white; }
+
 .big-size {
   font-size: 1em; }
 
@@ -45,9 +48,6 @@ img, a img {
 a img {
   border: none; }
 
-a:link {
-  text-decoration: none; }
-
 a:visited {
   text-decoration: none; }
 
@@ -61,6 +61,9 @@ a:hover {
 a {
   color: #aaaaaa; }
 
+a:link {
+  text-decoration: none; }
+
 a.link {
   text-decoration: underline;
   color: white; }
@@ -73,6 +76,9 @@ a.link {
 
 .three-px-left {
   margin-left: 3px; }
+
+.three-px-top {
+  margin-top: 3px; }
 
 .lil-space-left {
   margin-left: 1em; }

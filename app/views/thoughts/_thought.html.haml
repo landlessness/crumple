@@ -3,5 +3,5 @@
     .body.resize-font.people-content= link_to(truncate(simpler_format(h(thought.body)), 313).html_safe, thought)
     .space-top.subtle-action= render 'thoughts/thought_controls', :thought => thought
   .align-right.one-third
-    = render 'thoughts/meta_data', :thought => thought
+    = render 'thoughts/meta_data', :thought => thought, :include_comments_count => true
   .clear
