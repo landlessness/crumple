@@ -10,6 +10,9 @@ $footer-height: 16em;
 $big-size: 1em;
 $norm-size: 0.8em;
 $lil-size: 0.6em;
+$big-padding: 6%;
+$norm-padding: 3%;
+$lil-padding: 1%;
 
 .white {
   color: $white;
@@ -134,16 +137,16 @@ a.link {
   margin-bottom: 2em;
 }
 .big-space-left {
-  margin-left: 5em;
+  margin-left: $big-padding;
 }
 .big-space-right {
-  margin-right: 5em;
+  margin-right: $big-padding;
 }
 .big-space-top {
-  margin-top: 5em;
+  margin-top: $big-padding;
 }
 .big-space-bottom {
-  margin-bottom: 5em;
+  margin-bottom: $big-padding;
 }
 .half {
   width: 45%;
@@ -315,7 +318,6 @@ body:before {
   height: 1em;
 }
 #thoughts_show {
-  margin-top: 5em;
 }
 .edit_thought .body {
   height: 0;  
@@ -402,9 +404,6 @@ a.current-nav, #footer a.current-nav {
 .subtle-border-top {
   border-top: 1px dashed $subtle-gray;
 }
-$big-padding: 6em;
-$norm-padding: 3em;
-$lil-padding: 1em;
 .big-padding {
   padding-top: $big-padding;
   padding-top: $big-padding;

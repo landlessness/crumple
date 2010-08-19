@@ -1,7 +1,8 @@
 - if !thought.active?
   .subtle-prompt= t(:state)
   .lil-space-bottom
-    .system-content-alert= t(thought.state.to_sym)
+    - if thought.state
+      .system-content-alert= t(thought.state.to_sym) 
 .subtle-prompt= t(:tag).pluralize
 - if thought.tags.empty?
   .lil-size
