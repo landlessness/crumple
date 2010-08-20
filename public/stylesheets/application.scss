@@ -8,11 +8,14 @@ $people-font: "Times New Roman",Georgia,Serif;
 $container-horizontal-margin: 5%;
 $footer-height: 16em;
 $big-size: 1em;
-$norm-size: 0.8em;
-$lil-size: 0.6em;
+$norm-size: 0.9em;
+$lil-size: 0.8em;
+$sub-lil-size: 0.7em;
 $big-padding: 6em;
 $norm-padding: 3em;
 $lil-padding: 1em;
+$ipad-list-main-size: 23px;
+$ipad-list-meta-size: 16px;  /* this is also the min size in the jquery script*/
 
 .white {
   color: $white;
@@ -22,6 +25,12 @@ $lil-padding: 1em;
 }
 .norm-size {
   font-size: $norm-size;
+}
+.lil-size {
+  font-size: $lil-size;
+}
+.sub-lil-size {
+  font-size: $sub-lil-size;
 }
 .system-content, .lil-size {
   font-size: $lil-size;
@@ -55,14 +64,14 @@ input[type="text"], textarea {
   font-family: $system-font;
 }
 input[type="text"],input[type="password"] {
-  font-size: 1em;
+  font-size: $big-size;
   width: 15em;
 }
 input[type="submit"] {
   text-transform: capitalize;
 }
 select {
-  font-size: 1em;
+  font-size: $big-size;
   min-width: 10em;
 }
 img, a img {
@@ -109,10 +118,10 @@ a.link {
 .lil-space-left {
   margin-left: 1em;
 }
-.super-lil-space-left {
+.sub-lil-space-left {
   margin-left: 0.5em;
 }
-.super-lil-space-right {
+.sub-lil-space-right {
   margin-right: 0.5em;
 }
 .lil-space-right {
@@ -160,6 +169,12 @@ a.link {
 .two-thirds {
   width: 60%;
 }
+.one-fourth {
+  width: 22.5%;
+}
+.three-fourths {
+  width: 67.5%;
+}
 .full {
   width: 100%;
 }
@@ -172,12 +187,12 @@ a.link {
   text-align: center 
 }
 .prompt {
-  font-size: 0.8em;
+  font-size: $norm-size;
   color: $gray;
   text-transform: capitalize;
 }
 .subtle-prompt {
-  font-size: 0.7em;
+  font-size: $lil-size;
   color: $subtle-gray;
   text-transform: capitalize;
 }
@@ -216,7 +231,7 @@ a.clickable-object {
 }  /* must be same height as the footer */
 
 #footer {
-  font-size: 0.75em;
+  font-size: $lil-size;
   color: $subtle-gray;
   padding: 0 $container-horizontal-margin; /* container margin and footer padding should match*/
   position: relative;
@@ -298,26 +313,8 @@ body:before {
 #about {
   margin: 5% 0px;
 }
-.thought-body-listing {
-  padding: 1em;
-  font-size: 1.5em;
-}
-.thought-body-listing a:link {
-  text-decoration: none;
-}
-.thought-body-listing a:visited {
-  text-decoration: none;
-}
-.thought-body-listing a:active {
-  text-decoration: none;
-}
-.thought-body-listing a:hover {
-  text-decoration: underline;
-}
 .new_comment .body {
   height: 1em;
-}
-#thoughts_show {
 }
 .new_thought .body {
   height: 8em;
@@ -328,6 +325,12 @@ body:before {
 .edit_thought .body, .new_thought .body, .edit_comment .body, .new_comment .body {
   line-height: normal;
   letter-spacing: normal;
+}
+.list_thoughts_main .body {
+  font-size: $ipad-list-main-size;
+}
+.list_thoughts_meta .body {
+  font-size: $ipad-list-meta-size;
 }
 .body-container {
   padding-right: 3px;
@@ -382,13 +385,13 @@ form .body {
   padding: 0;
   margin-bottom: 1em;
   background-color: #f0f0f0;
-  font-size: 0.9em;
+  font-size: $norm-size;
 }
 
 .error_messages h2 {
   text-align: left;
   font-weight: bold;
-  font-size: 0.9em;
+  font-size: $norm-size;
   margin: 0;
   background-color: #c00;
   color: $white;

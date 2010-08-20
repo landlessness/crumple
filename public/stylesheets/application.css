@@ -1,3 +1,4 @@
+/* this is also the min size in the jquery script*/
 .white {
   color: white; }
 
@@ -5,10 +6,16 @@
   font-size: 1em; }
 
 .norm-size {
+  font-size: 0.9em; }
+
+.lil-size {
   font-size: 0.8em; }
 
+.sub-lil-size {
+  font-size: 0.7em; }
+
 .system-content, .lil-size {
-  font-size: 0.6em; }
+  font-size: 0.8em; }
 
 .system-content-alert {
   color: white; }
@@ -95,10 +102,10 @@ a.link {
 .lil-space-left {
   margin-left: 1em; }
 
-.super-lil-space-left {
+.sub-lil-space-left {
   margin-left: 0.5em; }
 
-.super-lil-space-right {
+.sub-lil-space-right {
   margin-right: 0.5em; }
 
 .lil-space-right {
@@ -146,6 +153,12 @@ a.link {
 .two-thirds {
   width: 60%; }
 
+.one-fourth {
+  width: 22.5%; }
+
+.three-fourths {
+  width: 67.5%; }
+
 .full {
   width: 100%; }
 
@@ -158,23 +171,23 @@ a.link {
   text-align: center; }
 
 .prompt {
-  font-size: 0.8em;
+  font-size: 0.9em;
   color: #aaaaaa;
   text-transform: capitalize; }
 
 .subtle-prompt {
-  font-size: 0.7em;
+  font-size: 0.8em;
   color: #555555;
   text-transform: capitalize; }
 
 a.action, .action a {
-  font-size: 0.8em;
+  font-size: 0.9em;
   text-decoration: underline;
   text-transform: uppercase;
   color: #aaaaaa; }
 
 a.subtle-action, .subtle-action a {
-  font-size: 0.6em;
+  font-size: 0.8em;
   text-decoration: underline;
   color: #555555;
   text-transform: lowercase; }
@@ -198,7 +211,7 @@ a.clickable-object {
 
 /* must be same height as the footer */
 #footer {
-  font-size: 0.75em;
+  font-size: 0.8em;
   color: #555555;
   padding: 0 5%;
   /* container margin and footer padding should match*/
@@ -282,22 +295,6 @@ body:before {
 #about {
   margin: 5% 0px; }
 
-.thought-body-listing {
-  padding: 1em;
-  font-size: 1.5em; }
-
-.thought-body-listing a:link {
-  text-decoration: none; }
-
-.thought-body-listing a:visited {
-  text-decoration: none; }
-
-.thought-body-listing a:active {
-  text-decoration: none; }
-
-.thought-body-listing a:hover {
-  text-decoration: underline; }
-
 .new_comment .body {
   height: 1em; }
 
@@ -310,6 +307,12 @@ body:before {
 .edit_thought .body, .new_thought .body, .edit_comment .body, .new_comment .body {
   line-height: normal;
   letter-spacing: normal; }
+
+.list_thoughts_main .body {
+  font-size: 23px; }
+
+.list_thoughts_meta .body {
+  font-size: 16px; }
 
 .body-container {
   padding-right: 3px; }
@@ -458,7 +461,7 @@ a.current-nav, #footer a.current-nav {
   margin: 0 0.5em; }
 
 .pagination a {
-  font-size: 0.8em;
+  font-size: 0.9em;
   text-decoration: underline;
   text-transform: uppercase;
   color: #aaaaaa; }
@@ -470,7 +473,7 @@ a.next_page {
   margin-left: 1em; }
 
 .pagination em {
-  font-size: 0.8em;
+  font-size: 0.9em;
   font-style: normal;
   color: white; }
 

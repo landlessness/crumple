@@ -1,10 +1,7 @@
-= javascript ['jquery.resize-font','jquery.autogrow-textarea']
-:javascript
-  $(function() {$('.resize-textarea').autogrow();});
 .subtle-border-top.lil-big-padding
-  .align-left.two-thirds
+  .align-left.three-fourths.list_thoughts_main
     .body.resize-font.people-content= link_to(truncate(simpler_format(h(thought.body)), 313).html_safe, thought)
     .space-top.subtle-action= render 'thoughts/thought_controls', :thought => thought
-  .align-right.one-third
+  .align-right.one-fourth.list_thoughts_meta
     = render 'thoughts/meta_data', :thought => thought, :include_comments_count => true
   .clear

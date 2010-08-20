@@ -1,4 +1,6 @@
-= javascript ['jquery.auto-focus']
+= javascript ['jquery.resize-font','jquery.autogrow-textarea']
+:javascript
+  $(function() {$('.resize-textarea').autogrow();});
 .align-left.two-thirds
   - form_tag(thoughts_path, :method => :get) do
     %table
