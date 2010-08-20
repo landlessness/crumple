@@ -20,7 +20,7 @@
 - if defined?(include_comments_count) && include_comments_count
   .lil-space-top.subtle-prompt= t(:comment).pluralize
   - if thought.comments.count > 0
-    .three-px-top.norm-size.people-content= link_to pluralize(thought.comments.count,t(:comment)), thought_path(thought, :anchor => 'comments'), :class=>'link'
+    .three-px-top.norm-size= link_to pluralize(thought.comments.count,t(:comment)), thought_path(thought, :anchor => 'comments'), :class=>'link gray'
   - else
     .lil-size
       %em= t(:none)

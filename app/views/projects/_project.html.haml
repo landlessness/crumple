@@ -1,6 +1,7 @@
 .subtle-border-top.lil-big-padding
   .align-left.three-fourths.list_thoughts_main
-    .body.resize-font.people-content= link_to project.name, project
+    .body.resize-font.people-content= link_to project.name, project, :class => 'link'
+    .body.resize-font.people-content= link_to project.description, project, :class => 'gray'
     .space-top.subtle-action= render 'projects/project_controls', :project => project
   .align-right.one-fourth.list_thoughts_meta
     = render 'projects/meta_data', :project => project, :include_thoughts_count => true, :include_people_count => true

@@ -18,9 +18,6 @@ $lil-padding: 1em;
 $ipad-list-main-size: 23px;
 $ipad-list-meta-size: 16px;  /* this is also the min size in the jquery script*/
 
-.white {
-  color: $white;
-}
 .big-size {
   font-size: $big-size;
 }
@@ -130,6 +127,9 @@ a.link {
 }
 .lil-space-top {
   margin-top: 1em;
+}
+.sub-lil-space-top {
+  margin-top: 0.5em;
 }
 .lil-space-bottom {
   margin-bottom: 1em;
@@ -503,4 +503,16 @@ a.next_page {
 }
 #q_submit {
   padding-left: 1.5em;
+}
+.white {
+  color: $white;
+}
+.gray {
+  color: $gray;
+}
+a.gray {
+  color: $gray;
+}
+a:hover.gray {
+  text-decoration: underline;
 }
