@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.xml
   def index
-    @projects = current_person.projects.order('upper(name)').paginate(:per_page => 25, :page => params[:page])
+    @projects = current_person.projects.order('upper(name)').paginate(:per_page => 10, :page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -17,7 +17,7 @@ class ProjectsController < ApplicationController
     @project = current_person.projects.find(params[:id])
     
     # TODO order by membership date, longest members first
-    @members = @project.members.paginate :per_page => 25, :page => params[:page], :order => 'updated_at DESC'
+    @members = @project.members.paginate :per_page => 10, :page => params[:page], :order => 'updated_at DESC'
 
     if params[:archived_thoughts]
       @showing_archived_thoughts = true
@@ -26,7 +26,7 @@ class ProjectsController < ApplicationController
       @showing_archived_thoughts = false
       @thoughts = @project.thoughts.with_state(:active)
     end
-    @thoughts = @thoughts.paginate :per_page => 25, :page => params[:page], :order => 'updated_at DESC' 
+    @thoughts = @thoughts.paginate :per_page => 10, :page => params[:page], :order => 'updated_at DESC' 
     
     respond_to do |format|
       format.html # show.html.erb
