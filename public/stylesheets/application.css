@@ -119,6 +119,9 @@ a.link {
 .space-top {
   margin-top: 2em; }
 
+.negative-space-top {
+  margin-top: -2em; }
+
 .space-bottom {
   margin-bottom: 2em; }
 
