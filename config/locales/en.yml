@@ -8,7 +8,8 @@ en:
   cancel: cancel
   save: save
   thought: thought
-  new_thought: new_thought
+  new_thought: new thought
+  new_project: new project
   tag: tag
   project: project
   optional: optional
@@ -53,3 +54,4 @@ en:
   see_all: see all
   close: close
   result: result
+  person: person

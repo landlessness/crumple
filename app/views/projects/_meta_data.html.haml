@@ -1,0 +1,28 @@
+- if defined?(include_thoughts_count) && include_thoughts_count
+  .lil-space-top.subtle-prompt= t(:thought).pluralize
+  - if project.thoughts.count > 0
+    .three-px-top.norm-size.people-content= link_to pluralize(project.thoughts.count,t(:thought)), project, :class=>'link'
+  - else
+    .lil-size
+      %em= t(:none)
+- if defined?(include_people_count) && include_people_count
+  .lil-space-top.subtle-prompt= t(:person).pluralize
+  - if project.members.count > 0
+    .three-px-top.norm-size.people-content= link_to pluralize(project.members.count,t(:person)), project, :class=>'link'
+  - else
+    .lil-size
+      %em= t(:none)
+.lil-space-top
+  .subtle-prompt last updated
+  .lil-size
+    = l(project.updated_at, :format => :short)
+    %div
+      = time_ago_in_words project.updated_at
+      ago
+.lil-space-top
+  .subtle-prompt created
+  .lil-size
+    = l(project.created_at, :format => :short)
+    %div
+      = time_ago_in_words project.created_at
+      ago
