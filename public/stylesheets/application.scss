@@ -7,6 +7,7 @@ $system-font: Verdana, Helvetica, Arial, sans-serif;
 $people-font: "Times New Roman",Georgia,Serif;
 $container-horizontal-margin: 5%;
 $footer-height: 16em;
+$super-big-size: 1.1em;
 $big-size: 1em;
 $norm-size: 0.9em;
 $lil-size: 0.8em;
@@ -306,6 +307,9 @@ body:before {
 #header #sign_in_sign_up {
   height: 57px;
   line-height: 57px;
+}
+#top-nav {
+  font-size: $super-big-size;
 }
 #top-nav a, #sign_in_sign_up a {
   text-transform: uppercase;

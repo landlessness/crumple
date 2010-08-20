@@ -1,7 +1,7 @@
 = javascript ['jquery.resize-font','jquery.autogrow-textarea']
 :javascript
   $(function() {$('.resize-textarea').autogrow();});
-.align-left.two-thirds
+.align-left.three-fourths
   - form_tag(thoughts_path, :method => :get) do
     %table
       %tbody
@@ -12,19 +12,20 @@
     .three-px-left.system-content
       = @search_total
       = %(results (#{format("%.2f",@query_time)} seconds))
-.align-right.one-third
-  %span.subtle-action= link_to_new_thought 
-  - unless @drop_box
-    - if @showing_archived_thoughts
-      - if @project
-        %span.subtle-action.lil-space-left= link_to 'Active project thoughts', project_path(@project)
+.align-right.one-fourth
+  .align-right
+    %span.subtle-action= link_to_new_thought 
+    - unless @drop_box
+      - if @showing_archived_thoughts
+        - if @project
+          %span.subtle-action.lil-space-left= link_to 'Active project thoughts', project_path(@project)
+        - else
+          %span.subtle-action.lil-space-left= link_to 'Active thoughts', thoughts_path
       - else
-        %span.subtle-action.lil-space-left= link_to 'Active thoughts', thoughts_path
-    - else
-      - if @project
-        %span.subtle-action.lil-space-left= link_to t(:archives), project_thoughts_path(@project, :state => 'archived')
-      - else
-        %span.subtle-action.lil-space-left= link_to t(:archives), thoughts_path(:state => 'archived')
+        - if @project
+          %span.subtle-action.lil-space-left= link_to t(:archives), project_thoughts_path(@project, :state => 'archived')
+        - else
+          %span.subtle-action.lil-space-left= link_to t(:archives), thoughts_path(:state => 'archived')
   .space-top
 .clear
 - if @thoughts.size > 0

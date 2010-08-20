@@ -289,6 +289,9 @@ body:before {
   height: 57px;
   line-height: 57px; }
 
+#top-nav {
+  font-size: 1.1em; }
+
 #top-nav a, #sign_in_sign_up a {
   text-transform: uppercase; }
 
