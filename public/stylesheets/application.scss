@@ -311,24 +311,28 @@ body:before {
 .thought-body-listing a:hover {
   text-decoration: underline;
 }
-.new_thought .body {
-  height: 8em;
-}
 .new_comment .body {
   height: 1em;
 }
 #thoughts_show {
 }
+.new_thought .body {
+  height: 8em;
+}
 .edit_thought .body {
   height: 0;  
+}
+.edit_thought .body, .new_thought .body, .edit_comment .body, .new_comment .body {
+  line-height: normal;
+  letter-spacing: normal;
 }
 .body-container {
   padding-right: 3px;
 }
 .body {
   /* width and 2 x padding need to add to 100% */
-  line-height: 1.5em;
-  letter-spacing: 0.03em;
+  line-height: 1.4em;
+  letter-spacing: 0.04em;
   width: 100%;
   overflow: hidden;
 }
