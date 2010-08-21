@@ -5,5 +5,4 @@
 .clear
 .space-top.system-content.subtle-gray
   = page_entries_info @projects, :entry_name => t(:project)
-  = '(' + pluralize(format("%.2f", @query_time), t(:second)) + ')'
 .sub-lil-space-top= render 'projects'

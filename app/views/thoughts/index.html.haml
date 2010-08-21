@@ -28,7 +28,8 @@
   
 .space-top.sub-lil-space-bottom.system-content.subtle-gray
   = page_entries_info @thoughts, :entry_name => t(:thought)
-  = '(' + pluralize(format("%.2f", @query_time), t(:second)) + ')'
+  - if @query
+    = '(' + pluralize(format("%.2f", @query_time), t(:second)) + ')'
 - if @thoughts.size > 0
   = render 'thoughts' 
 - else
