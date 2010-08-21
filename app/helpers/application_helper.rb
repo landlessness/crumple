@@ -69,7 +69,7 @@ module ApplicationHelper
       else;   "#{collection.size} #{entry_name.pluralize}"
       end
     else
-      %{%d&nbsp;-&nbsp;%d of #{entry_name.pluralize} %d} % [
+      %{%d&nbsp;-&nbsp;%d of %d #{entry_name.pluralize}} % [
         collection.offset + 1,
         collection.offset + collection.length,
         collection.total_entries
