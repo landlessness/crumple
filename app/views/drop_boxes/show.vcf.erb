@@ -4,7 +4,7 @@ N:;Crumple Drop Box;;;
 FN:Crumple
 item1.EMAIL;type=INTERNET;type=pref:<%= @drop_box.email_address %>
 item1.X-ABLabel:drop box email
-NOTE:Crumple is a notebook for creative thinkers.
+NOTE:<%= t(:product_name).capitalize %> <%= t(:is) %> <%= t(:product_tag_line)%>.
 item2.URL;type=pref:http\://<%= Rails.application.config.top_level_domain%><%= my_drop_box_path %>
 item2.X-ABLabel:drop box web
 PHOTO;BASE64:
