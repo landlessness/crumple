@@ -9,26 +9,26 @@
           %td= text_field_tag :q, @query, :class => ''
           %td#q_submit= submit_tag t(:search)
 .clear
-.lil-space-top
-  .align-left.sub-lil-space-bottom.system-content.subtle-gray
+.lil-space-top.sub-lil-space-bottom
+  .align-left.system-content.subtle-gray
     = page_entries_info @thoughts, :entry_name => t(:thought)
     - if @query
       = '(' + pluralize(format("%.2f", @query_time), t(:second)) + ')'
   .align-right
-    %span.subtle-action= link_to_new_thought 
     - unless @drop_box
       - if @showing_archived_thoughts
         - if @project
-          %span.subtle-action.lil-space-left= link_to 'Active project thoughts', project_path(@project)
+          %span.subtle-action= link_to 'Active project thoughts', project_path(@project)
         - else
-          %span.subtle-action.lil-space-left= link_to 'Active thoughts', thoughts_path
+          %span.subtle-action= link_to 'Active thoughts', thoughts_path
       - else
         - if @project
-          %span.subtle-action.lil-space-left= link_to t(:archives), project_thoughts_path(@project, :state => 'archived')
+          %span.subtle-action= link_to t(:archives), project_thoughts_path(@project, :state => 'archived')
         - else
-          %span.subtle-action.lil-space-left= link_to t(:archives), thoughts_path(:state => 'archived')
+          %span.subtle-action= link_to t(:archives), thoughts_path(:state => 'archived')
+    %span.subtle-action.lil-space-left= link_to_new_thought 
   .clear
-.sub-lil-space-top
+%div
   - if @thoughts.size > 0
     = render 'thoughts' 
   - else
