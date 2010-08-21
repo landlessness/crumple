@@ -2,11 +2,13 @@
   .body.resize-font.people-content.space-top
     %a{:name => comment_a_name(comment)}
     = display_text(comment.body)
-  .align-left
-    %span= link_to t(:edit), edit_thought_comment_path(@thought, comment), :class=>'subtle-action'
-    %span.lil-space-left= link_to t(:delete), [@thought, comment], :confirm => t(:r_u_sure), :method => :delete, :class=>'subtle-action'
-    %span.lil-space-left= link_to t(:permalink), [@thought, comment], :class=>'subtle-action'
-  .align-right.lil-size
-    = time_ago_in_words comment.created_at
-    ago
-  .clear
+  .sub-lil-space-top
+    .align-left
+      %span= link_to t(:edit), edit_thought_comment_path(@thought, comment), :class=>'subtle-action'
+      %span.lil-space-left= link_to t(:delete), [@thought, comment], :confirm => t(:r_u_sure), :method => :delete, :class=>'subtle-action'
+      %span.lil-space-left= link_to t(:permalink), [@thought, comment], :class=>'subtle-action'
+    .align-right
+      %span.lil-size
+        = time_ago_in_words comment.created_at
+        ago
+    .clear
