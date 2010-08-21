@@ -1,8 +1,8 @@
 = javascript ['jquery.resize-font']
-.align-right.one-fourth
+.space-top
+  .align-left.system-content.subtle-gray
+    %span= page_entries_info @projects, :entry_name => t(:project)
   .align-right
     %span.subtle-action= link_to(t(:new_project), new_project_path)
-.clear
-.space-top.system-content.subtle-gray
-  = page_entries_info @projects, :entry_name => t(:project)
+  .clear
 .sub-lil-space-top= render 'projects'
