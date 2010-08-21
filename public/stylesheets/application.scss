@@ -217,7 +217,11 @@ a.subtle-action, .subtle-action a {
   color: $subtle-gray;
   text-transform: lowercase;
 }
+a:hover.clickable-object {
+  text-decoration: underline;
+}
 a.clickable-object {
+  text-decoration: none;
   color: $white;
   font-family: $people-font;
 }
