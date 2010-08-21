@@ -1,12 +1,12 @@
 BEGIN:VCARD
 VERSION:3.0
-N:;Crumple Drop Box;;;
-FN:Crumple
+N:;<%= t(:product_name).capitalize %> <%= t(:drop_box).titleize %>;;;
+FN:<%= t(:product_name).capitalize %>
 item1.EMAIL;type=INTERNET;type=pref:<%= @drop_box.email_address %>
-item1.X-ABLabel:drop box email
+item1.X-ABLabel:<%= t(:drop_box) %> <%= t(:email) %>
 NOTE:<%= t(:product_name).capitalize %> <%= t(:is) %> <%= t(:product_tag_line)%>.
 item2.URL;type=pref:http\://<%= Rails.application.config.top_level_domain%><%= my_drop_box_path %>
-item2.X-ABLabel:drop box web
+item2.X-ABLabel:<%= t(:drop_box) %> <%= t(:web) %>
 PHOTO;BASE64:
   /9j/4AAQSkZJRgABAQAAAQABAAD/4QBARXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAA
   AqACAAQAAAABAAAA2qADAAQAAAABAAAA2gAAAAD/2wBDAAIBAQIBAQICAQICAgICAwUDAwMDAwYE
