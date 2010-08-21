@@ -16,7 +16,7 @@
 - else
   .body.people-content.resize-font
     - thought.tags.each do |t|
-      = link_to t.name, t, :class=>'clickable-object super-lil-space-right link'
+      = link_to t.name, tag_thoughts_path(t), :class=>'clickable-object super-lil-space-right link'
 - if defined?(include_comments_count) && include_comments_count
   .lil-space-top.subtle-prompt= t(:comment).pluralize
   - if thought.comments.count > 0
