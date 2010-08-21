@@ -186,8 +186,11 @@ a.link {
 a.action, .action a {
   font-size: 0.9em;
   text-decoration: underline;
-  text-transform: uppercase;
+  text-transform: capitalize;
   color: #aaaaaa; }
+
+a:hover.action, .action a:hover, a:hover.subtle-action, .subtle-action a:hover {
+  color: white; }
 
 a.subtle-action, .subtle-action a {
   font-size: 0.8em;
@@ -473,7 +476,7 @@ a.current-nav, #footer a.current-nav {
 .pagination a {
   font-size: 0.9em;
   text-decoration: underline;
-  text-transform: uppercase;
+  text-transform: capitalize;
   color: #aaaaaa; }
 
 a.previous_page {

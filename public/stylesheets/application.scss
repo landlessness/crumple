@@ -205,11 +205,14 @@ a.link {
 @mixin action-links {
   font-size: $norm-size;
   text-decoration: underline;
-  text-transform: uppercase;
+  text-transform: capitalize;
   color: $gray;
 }
 a.action, .action a {
   @include action-links;
+}
+a:hover.action, .action a:hover, a:hover.subtle-action, .subtle-action a:hover {
+  color: $white;
 }
 a.subtle-action, .subtle-action a {
   font-size: $lil-size;
