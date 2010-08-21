@@ -515,7 +515,3 @@ a.auto-link {
   display: block;
   padding: 1em;
   border: 1px solid black; }
-
-.list-thought-hover {
-  cursor: pointer;
-  border: 1px solid #555555; }
