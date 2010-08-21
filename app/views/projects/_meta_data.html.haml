@@ -1,14 +1,15 @@
 - if defined?(include_thoughts_count) && include_thoughts_count
   .lil-space-top.subtle-prompt= t(:thought).pluralize
   - if project.thoughts.count > 0
-    .three-px-top.norm-size= link_to pluralize(project.thoughts.count,t(:thought)), project, :class=>'link gray'
+    .three-px-top.norm-size= link_to pluralize(project.thoughts.with_state(:active).count,t(:thought)), project, :class=>'link gray'
     .lil-size.subtle-action.sub-lil-space-top
-      %div
-        = link_to project.thoughts.with_state(:active).count.to_s + ' ' + t(:active), project_thoughts_path(project, :state => :active.to_s )
       %div
         = link_to project.thoughts.with_state(:archived).count.to_s + ' ' + t(:archived), project_thoughts_path(project, :state => :archived.to_s )
       %div
         = link_to project.thoughts.with_state(:in_drop_box).count.to_s + ' ' + t(:in_drop_box), project_thoughts_path(project, :state => :in_drop_box.to_s )
+      %div
+        .sub-lil-space-top.system-content.subtle-gray= project.thoughts.count.to_s + ' ' + t(:total)
+        
   - else
     .lil-size
       %em= t(:none)
