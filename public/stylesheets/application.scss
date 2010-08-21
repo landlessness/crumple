@@ -7,13 +7,17 @@ $system-font: Verdana, Helvetica, Arial, sans-serif;
 $people-font: "Times New Roman",Georgia,Serif;
 $container-horizontal-margin: 5%;
 $footer-height: 16em;
-$super-big-size: 1.1em;
-$big-size: 1em;
-$norm-size: 0.9em;
-$lil-size: 0.8em;
-$sub-lil-size: 0.7em;
-$big-padding: 6em;
-$norm-padding: 3em;
+
+$sub-lil-size: 0.5em;
+$lil-size: $sub-lil-size + 0.1em;
+$norm-size: $sub-lil-size + 0.2em;
+$big-size: $sub-lil-size + 0.3em;
+$super-big-size: $sub-lil-size + 0.4em;
+
+$big-space: 6em;
+$big-padding: $big-space;
+$norm-space: 3em;
+$norm-padding: $norm-space;
 $lil-space: 1em;
 $lil-padding: $lil-space;
 $sub-lil-padding: 0.5em;
@@ -314,7 +318,7 @@ body:before {
   vertical-align:top;
 }
 #header {
-  margin: 6% 0;
+  margin: $norm-space 0;
 }
 #header #sign_in_sign_up {
   height: 57px;

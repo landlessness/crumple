@@ -1,18 +1,18 @@
 /* this is also the min size in the jquery script*/
 .big-size {
-  font-size: 1em; }
+  font-size: 0.8em; }
 
 .norm-size {
-  font-size: 0.9em; }
-
-.lil-size {
-  font-size: 0.8em; }
-
-.sub-lil-size {
   font-size: 0.7em; }
 
+.lil-size {
+  font-size: 0.6em; }
+
+.sub-lil-size {
+  font-size: 0.5em; }
+
 .system-content, .lil-size {
-  font-size: 0.8em; }
+  font-size: 0.6em; }
 
 .system-content-alert {
   color: white; }
@@ -45,14 +45,14 @@ input[type="text"], textarea {
   font-family: Verdana, Helvetica, Arial, sans-serif; }
 
 input[type="text"], input[type="password"] {
-  font-size: 1em;
+  font-size: 0.8em;
   width: 15em; }
 
 input[type="submit"] {
   text-transform: capitalize; }
 
 select {
-  font-size: 1em;
+  font-size: 0.8em;
   min-width: 10em; }
 
 img, a img {
@@ -174,17 +174,17 @@ a.link {
   text-align: center; }
 
 .prompt {
-  font-size: 0.9em;
+  font-size: 0.7em;
   color: #aaaaaa;
   text-transform: capitalize; }
 
 .subtle-prompt {
-  font-size: 0.8em;
+  font-size: 0.6em;
   color: #555555;
   text-transform: capitalize; }
 
 a.action, .action a {
-  font-size: 0.9em;
+  font-size: 0.7em;
   text-decoration: underline;
   text-transform: capitalize;
   color: #aaaaaa; }
@@ -193,7 +193,7 @@ a:hover.action, .action a:hover, a:hover.subtle-action, .subtle-action a:hover {
   color: white; }
 
 a.subtle-action, .subtle-action a {
-  font-size: 0.8em;
+  font-size: 0.6em;
   text-decoration: underline;
   color: #555555;
   text-transform: capitalize; }
@@ -221,7 +221,7 @@ a.clickable-object {
 
 /* must be same height as the footer */
 #footer {
-  font-size: 0.8em;
+  font-size: 0.6em;
   color: #555555;
   padding: 0 5%;
   /* container margin and footer padding should match*/
@@ -293,14 +293,14 @@ body:before {
   vertical-align: top; }
 
 #header {
-  margin: 6% 0; }
+  margin: 3em 0; }
 
 #header #sign_in_sign_up {
   height: 57px;
   line-height: 57px; }
 
 #top-nav {
-  font-size: 1.1em; }
+  font-size: 0.9em; }
 
 #top-nav a, #sign_in_sign_up a {
   text-transform: uppercase; }
@@ -379,12 +379,12 @@ form .body {
   padding: 0;
   margin-bottom: 1em;
   background-color: #f0f0f0;
-  font-size: 0.9em; }
+  font-size: 0.7em; }
 
 .error_messages h2 {
   text-align: left;
   font-weight: bold;
-  font-size: 0.9em;
+  font-size: 0.7em;
   margin: 0;
   background-color: #c00;
   color: white;
@@ -474,7 +474,7 @@ a.current-nav, #footer a.current-nav {
   margin: 0 0.5em; }
 
 .pagination a {
-  font-size: 0.9em;
+  font-size: 0.7em;
   text-decoration: underline;
   text-transform: capitalize;
   color: #aaaaaa; }
@@ -486,7 +486,7 @@ a.next_page {
   margin-left: 1em; }
 
 .pagination em {
-  font-size: 0.9em;
+  font-size: 0.7em;
   font-style: normal;
   color: white; }
 
