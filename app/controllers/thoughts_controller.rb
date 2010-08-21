@@ -4,16 +4,15 @@ class ThoughtsController < ApplicationController
   # GET /thoughts
   # GET /thoughts.xml
   def index
-    thoughts_per_page = 10
     if @query = q = params[:q]
       start_query = Time.now
       if q.blank?
         @thoughts = []
-        @thoughts = @thoughts.paginate
+        @thoughts = @thoughts.paginate :per_page => Thought.per_page
       else
         page_number = params[:page] || 1
         search = Sunspot.search(Thought) do |query|
-          query.paginate :page => page_number, :per_page => thoughts_per_page
+          query.paginate :page => page_number, :per_page => Thought.per_page
           query.keywords q
           query.with :person_id, current_person.id
           query.order_by :updated_at, :desc
@@ -32,6 +31,8 @@ class ThoughtsController < ApplicationController
         format.viz  { render :layout => 'application'} 
       end
     else
+      start_query = Time.now
+      
       @project = current_person.projects.find(params[:project_id]) if params[:project_id] 
       @tag = current_person.tags.find(params[:tag_id]) if params[:tag_id]
       @state = (params[:state] || :active).to_sym
@@ -59,7 +60,9 @@ class ThoughtsController < ApplicationController
       @thoughts = @thoughts.with_state(@state)
       respond_to do |format|
         format.html do # index.html.erb
-          @thoughts = @thoughts.paginate(:per_page => thoughts_per_page, :page => params[:page], :order => 'updated_at DESC')
+          @thoughts = @thoughts.paginate(:per_page => Thought.per_page, :page => params[:page], :order => 'updated_at DESC')
+          stop_query = Time.now
+          @query_time = stop_query - start_query
         end
         format.xml  { render :xml => @thoughts }
 

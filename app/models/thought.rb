@@ -1,4 +1,6 @@
 class Thought < ActiveRecord::Base  
+  cattr_reader :per_page
+  @@per_page = 10
   # how to setup, index & search with sunspot
   # this is working on production, but not dev
   Sunspot.setup(Thought) do

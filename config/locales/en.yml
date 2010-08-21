@@ -54,5 +54,10 @@ en:
   state: state
   see_all: see all
   close: close
-  result: result
   person: person
+  result: result
+  second: second # a time indicator like hour, minute, second
+  of: of
+  none_found: none found
+  found: found
+  all: all

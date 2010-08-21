@@ -8,10 +8,6 @@
         %tr
           %td= text_field_tag :q, @query, :class => ''
           %td#q_submit= submit_tag t(:search)
-  - if @query
-    .three-px-left.system-content
-      = @search_total
-      = %(results (#{format("%.2f",@query_time)} seconds))
 .align-right.one-fourth
   .align-right
     %span.subtle-action= link_to_new_thought 
@@ -28,9 +24,15 @@
           %span.subtle-action.lil-space-left= link_to t(:archives), thoughts_path(:state => 'archived')
   .space-top
 .clear
+.system-content
+  
+.space-top.sub-lil-space-bottom.system-content.subtle-gray
+  = page_entries_info @thoughts, :entry_name => t(:thought)
+  = '(' + pluralize(format("%.2f", @query_time), t(:second)) + ')'
 - if @thoughts.size > 0
-  .space-top= render 'thoughts' 
+  = render 'thoughts' 
 - else
+  .subtle-border-top.none-padding
   .space-top= t(:empty_search_message).capitalize + '.'
   .space-top= t(:suggestion).pluralize.capitalize + ':'
   %ul

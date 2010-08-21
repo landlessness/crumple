@@ -134,6 +134,9 @@ a.link {
 .lil-space-bottom {
   margin-bottom: 1em;
 }
+.sub-lil-space-bottom {
+  margin-bottom: 0.5em;  
+}
 .space-left {
   margin-left: 2em;
 }
@@ -509,6 +512,9 @@ a.next_page {
 }
 .gray {
   color: $gray;
+}
+.subtle-gray {
+  color: $subtle-gray;  
 }
 a.gray {
   color: $gray;

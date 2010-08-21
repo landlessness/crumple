@@ -58,5 +58,22 @@ module ApplicationHelper
   def drop_box_nav_class
     drop_box_nav? ? ' current-nav ' : ''
   end
-  
+  def page_entries_info(collection, options = {})
+    entry_name = options[:entry_name] ||
+      (collection.empty?? 'entry' : collection.first.class.name.underscore.sub('_', ' '))
+    
+    if collection.total_pages < 2
+      case collection.size
+      when 0; "#{t(:none_found)}"
+      when 1; "1 #{entry_name}"
+      else;   "#{collection.size} #{entry_name.pluralize}"
+      end
+    else
+      %{%d&nbsp;-&nbsp;%d of #{entry_name.pluralize} %d} % [
+        collection.offset + 1,
+        collection.offset + collection.length,
+        collection.total_entries
+      ]
+    end.html_safe
+  end  
 end
