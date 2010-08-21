@@ -3,7 +3,13 @@
   .lil-space-bottom
     - if thought.state
       .system-content-alert= t(thought.state.to_sym) 
-.subtle-prompt= t(:tag).pluralize
+.subtle-prompt= t(:project)
+- if thought.project
+  .body.people-content.resize-font= link_to thought.project.name, thought.project, :class => 'clickable-object link'
+- else
+  .lil-size
+    %em= t(:none)
+.subtle-prompt.lil-space-top= t(:tag).pluralize
 - if thought.tags.empty?
   .lil-size
     %em= t(:none)
@@ -11,12 +17,6 @@
   .body.people-content.resize-font
     - thought.tags.each do |t|
       = link_to t.name, t, :class=>'clickable-object super-lil-space-right link'
-.subtle-prompt.lil-space-top= t(:project)
-- if thought.project
-  .body.people-content.resize-font= link_to thought.project.name, thought.project, :class => 'clickable-object link'
-- else
-  .lil-size
-    %em= t(:none)
 - if defined?(include_comments_count) && include_comments_count
   .lil-space-top.subtle-prompt= t(:comment).pluralize
   - if thought.comments.count > 0
