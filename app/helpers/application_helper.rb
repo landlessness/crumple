@@ -63,11 +63,7 @@ module ApplicationHelper
       (collection.empty?? 'entry' : collection.first.class.name.underscore.sub('_', ' '))
     
     if collection.total_pages < 2
-      case collection.size
-      when 0; "#{t(:none_found)}"
-      when 1; "1 #{entry_name}"
-      else;   "#{collection.size} #{entry_name.pluralize}"
-      end
+      pluralize collection.size, entry_name
     else
       %{%d&nbsp;-&nbsp;%d of %d #{entry_name.pluralize}} % [
         collection.offset + 1,
