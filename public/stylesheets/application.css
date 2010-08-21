@@ -1,4 +1,12 @@
 /* this is also the min size in the jquery script*/
+.list-thought {
+  border: 1px solid black;
+  padding: 1em; }
+
+.list-thought-hover {
+  cursor: pointer;
+  border: 1px solid #555555; }
+
 .big-size {
   font-size: 1em; }
 

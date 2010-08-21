@@ -1,6 +1,9 @@
 $white: #fff;
+$super-gray: #d1d1d1;
 $gray: #aaa;
 $subtle-gray: #555;
+$super-subtle-gray: #272727;
+$off-black: #141414;
 $black: #000;
 $red-alert: #7D0101;
 $system-font: Verdana, Helvetica, Arial, sans-serif;
@@ -14,10 +17,20 @@ $lil-size: 0.8em;
 $sub-lil-size: 0.7em;
 $big-padding: 6em;
 $norm-padding: 3em;
-$lil-padding: 1em;
+$lil-space: 1em;
+$lil-padding: $lil-space;
+$sub-lil-padding: 0.5em;
 $ipad-list-main-size: 23px;
 $ipad-list-meta-size: 16px;  /* this is also the min size in the jquery script*/
 
+.list-thought {
+  border: 1px solid $black;
+  padding: $lil-padding;
+}
+.list-thought-hover {
+  cursor: pointer;
+  border: 1px solid $subtle-gray;
+}
 .big-size {
   font-size: $big-size;
 }
@@ -114,7 +127,7 @@ a.link {
   margin-top: 3px;
 }
 .lil-space-left {
-  margin-left: 1em;
+  margin-left: $lil-space;
 }
 .sub-lil-space-left {
   margin-left: 0.5em;
@@ -123,16 +136,16 @@ a.link {
   margin-right: 0.5em;
 }
 .lil-space-right {
-  margin-right: 1em;
+  margin-right: $lil-space;
 }
 .lil-space-top {
-  margin-top: 1em;
+  margin-top: $lil-space;
 }
 .sub-lil-space-top {
   margin-top: 0.5em;
 }
 .lil-space-bottom {
-  margin-bottom: 1em;
+  margin-bottom: $lil-space;
 }
 .sub-lil-space-bottom {
   margin-bottom: 0.5em;  
