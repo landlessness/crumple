@@ -1,9 +1,6 @@
 $white: #fff;
-$super-gray: #d1d1d1;
 $gray: #aaa;
 $subtle-gray: #555;
-$super-subtle-gray: #272727;
-$off-black: #141414;
 $black: #000;
 $red-alert: #7D0101;
 $system-font: Verdana, Helvetica, Arial, sans-serif;
@@ -23,14 +20,6 @@ $sub-lil-padding: 0.5em;
 $ipad-list-main-size: 23px;
 $ipad-list-meta-size: 16px;  /* this is also the min size in the jquery script*/
 
-.list-thought {
-  border: 1px solid $black;
-  padding: $lil-padding;
-}
-.list-thought-hover {
-  cursor: pointer;
-  border: 1px solid $subtle-gray;
-}
 .big-size {
   font-size: $big-size;
 }
@@ -537,4 +526,13 @@ a:hover.gray {
 }
 a.auto-link {
   text-decoration: underline;
+}
+.list-thought a:hover  {
+  text-decoration: none;
+  border: 1px solid $subtle-gray;
+}
+.list-thought a  {
+  display: block;
+  padding: $lil-padding;
+  border: 1px solid $black;
 }
