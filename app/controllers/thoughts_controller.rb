@@ -16,7 +16,6 @@ class ThoughtsController < ApplicationController
         search = Sunspot.search(Thought) do |query|
           query.paginate :page => page_number, :per_page => Thought.per_page
           query.keywords q
-          query.order_by :updated_at, :desc
           query.with :state, @state.to_s
           query.with :person_id, current_person.id
         end

@@ -7,7 +7,8 @@ class Thought < ActiveRecord::Base
   # how to setup, index & search with sunspot
   # this is working on production, but not dev
   Sunspot.setup(Thought) do
-    text :body, :tags_list, :project_name
+    text :body, :boost => 2.0
+    text :tags_list, :project_name
     integer :person_id
     date :updated_at
     string :state
