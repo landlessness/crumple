@@ -1,4 +1,7 @@
 class Thought < ActiveRecord::Base  
+  after_save :add_to_search
+  after_destroy :remove_from_search
+  
   cattr_reader :per_page
   @@per_page = 10
   # how to setup, index & search with sunspot
@@ -11,11 +14,7 @@ class Thought < ActiveRecord::Base
 
   # Sunspot.index(Thought.all)
   # r = Sunspot.search(Thought) {keywords 'crumple', :fields => [:body]}.results
-  
-  def self.after_save
-    Sunspot.index!([self])
-  end
-  
+    
   validates :body, :presence => true
   validates :person, :presence => true
 
@@ -85,4 +84,13 @@ class Thought < ActiveRecord::Base
   def viz_node_value
     self.class.name + '_' + self.id.to_s
   end
+  protected 
+  def add_to_search
+    logger.info "\nadding self to search: " + self.body + "\n"
+    Sunspot.index!([self])
+  end  
+  def remove_from_search
+    logger.info "\nremoving self from search: " + self.body + "\n"
+    Sunspot.remove!([self])
+  end  
 end
