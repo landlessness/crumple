@@ -46,5 +46,6 @@ Crumple::Application.configure do
   
   # call this using Rails.application.config.top_level_domain
   config.top_level_domain = 'crumpleapp.com'
+  config.action_mailer.default_url_options = { :host => config.top_level_domain }
   Sunspot.config.solr.url = ENV['WEBSOLR_URL']
 end

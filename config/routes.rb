@@ -1,6 +1,9 @@
 Crumple::Application.routes.draw do |map|
+  devise_for :people
+
   resources :foos
 
+  devise_for :people, :path_names => { :sign_in => 'login', :sign_out => 'logout' }
 
   map.resources :pages,
     :controller => 'pages',
@@ -14,8 +17,6 @@ Crumple::Application.routes.draw do |map|
   end
 
   resources :send_grid_emails
-
-  devise_for :people, :path_names => { :sign_in => 'login', :sign_out => 'logout' }
 
   # must come before the resources :thoughts line
   # 
