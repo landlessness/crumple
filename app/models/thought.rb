@@ -10,6 +10,7 @@ class Thought < ActiveRecord::Base
     text :body
     integer :person_id
     date :updated_at
+    string :state
   end
 
   # Sunspot.index(Thought.all)

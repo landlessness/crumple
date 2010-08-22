@@ -5,6 +5,7 @@
       %tbody
         %tr
           %td= text_field_tag :q, @query, :class => ''
+          = hidden_field_tag :state, @state 
           %td#q_submit= submit_tag t(:search)
 .clear
 .lil-space-top.sub-lil-space-bottom
@@ -21,9 +22,9 @@
           %span.subtle-action= link_to 'Active thoughts', thoughts_path
       - else
         - if @project
-          %span.subtle-action= link_to t(:archives), project_thoughts_path(@project, :state => 'archived')
+          %span.subtle-action= link_to t(:archives), project_thoughts_path(@project, :state => :archived)
         - else
-          %span.subtle-action= link_to t(:archives), thoughts_path(:state => 'archived')
+          %span.subtle-action= link_to t(:archives), thoughts_path(:state => :archived)
     %span.subtle-action.lil-space-left= link_to_new_thought 
   .clear
 %div
@@ -35,4 +36,5 @@
     .space-top= t(:suggestion).pluralize.capitalize + ':'
     %ul
       %li= t(:try_different_keywords)
-      %li= ('or ' + link_to(t(:see_all) + ' ' + t(:thought).pluralize, thoughts_path, :class => 'link')).html_safe
+      %li= ('or ' + link_to(t(:try_searching_archives), thoughts_path(:q => @query, :state => :archived), :class => 'link')).html_safe
+      %li= ('or ' + link_to(t(:browse) + ' ' + t(:thought).pluralize, thoughts_path, :class => 'link')).html_safe

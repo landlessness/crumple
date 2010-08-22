@@ -50,9 +50,10 @@ en:
   archives: archives
   empty_search_message: your search did not match any thoughts
   try_different_keywords: try different keywords
+  try_searching_archives: search archives
   suggestion: suggestion
   state: state
-  see_all: see all
+  browse: browse
   close: close
   person: person
   result: result

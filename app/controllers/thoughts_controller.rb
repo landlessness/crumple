@@ -4,6 +4,8 @@ class ThoughtsController < ApplicationController
   # GET /thoughts
   # GET /thoughts.xml
   def index
+    @state = (params[:state] || :active).to_sym
+    
     if @query = q = params[:q]
       start_query = Time.now
       if q.blank?
@@ -14,8 +16,9 @@ class ThoughtsController < ApplicationController
         search = Sunspot.search(Thought) do |query|
           query.paginate :page => page_number, :per_page => Thought.per_page
           query.keywords q
-          query.with :person_id, current_person.id
           query.order_by :updated_at, :desc
+          query.with :state, @state.to_s
+          query.with :person_id, current_person.id
         end
         @thoughts = search.results
         @search_total = search.total
@@ -35,7 +38,6 @@ class ThoughtsController < ApplicationController
       
       @project = current_person.projects.find(params[:project_id]) if params[:project_id] 
       @tag = current_person.tags.find(params[:tag_id]) if params[:tag_id]
-      @state = (params[:state] || :active).to_sym
       @viz_style = params[:viz_style]
 
 
