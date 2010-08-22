@@ -55,8 +55,9 @@ Devise.setup do |config|
 
   # ==> Configuration for :rememberable
   # The time the user will be remembered without asking for credentials again.
-  # config.remember_for = 2.weeks
-
+  config.remember_for = 2.weeks
+  # config.extend_remember_period = true
+  
   # ==> Configuration for :validatable
   # Range for password length
   # config.password_length = 6..20
