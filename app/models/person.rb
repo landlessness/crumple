@@ -2,7 +2,7 @@ class Person < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable, :timeoutable and :oauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :oauthable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
@@ -22,6 +22,18 @@ class Person < ActiveRecord::Base
   
   after_create do
     self.drop_boxes.create :name => self.email.split('@').first, :secret => rand(9999)
+  end
+  
+  
+  def self.find_for_github_oauth(access_token, signed_in_resource=nil)
+    # Get the user email info from Github for sign up
+    data = ActiveSupport::JSON.decode(access_token.get('/api/v2/json/user/show'))["user"]
+
+    if person = Person.find_by_email(data["email"])
+      person
+    else
+      Person.create!(:email => data["email"], :password => Devise.friendly_token)
+    end
   end
   
   def tags_with_state(state)

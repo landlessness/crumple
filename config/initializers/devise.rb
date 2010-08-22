@@ -134,7 +134,12 @@ Devise.setup do |config|
   #   :authorize_path    => '/login/oauth/authorize',
   #   :access_token_path => '/login/oauth/access_token',
   #   :scope             => %w(user public_repo)
-
+  config.oauth :github, '8256a83fa69d642504eb', '023a4cfafefb05a633ea797254b4d4c3fb7ba391',
+      :site              => 'https://github.com/',
+      :authorize_path    => '/login/oauth/authorize',
+      :access_token_path => '/login/oauth/access_token',
+      :scope             => %w(user public_repo)
+      
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.

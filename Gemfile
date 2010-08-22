@@ -7,6 +7,7 @@ gem "will_paginate", :git => 'http://github.com/mislav/will_paginate.git'
 gem 'sunspot', :git => 'http://github.com/outoftime/sunspot.git'
 gem 'sunspot_rails', :git => 'http://github.com/outoftime/sunspot.git'
 gem 'haml', :git => 'http://github.com/nex3/haml.git'
+gem 'oauth2', :git => 'http://github.com/intridea/oauth2.git'
 
 gem 'high_voltage'
 gem 'pg'
