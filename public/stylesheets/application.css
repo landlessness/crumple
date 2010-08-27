@@ -538,5 +538,5 @@ a.auto-link {
 .no-wrap {
   white-space: nowrap; }
 
-#loading {
+.loading {
   display: none; }

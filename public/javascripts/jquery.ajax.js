@@ -1,8 +1,17 @@
 jQuery(function($) {
   // create a convenient toggleLoading function
-  var toggleLoading = function() { $("#loading").toggle() };
+  var loading = function() { 
+    $(".loading").toggle();
+    $('.editing').css('visibility', 'hidden');
+  };
+
+  var complete = function() { 
+    $(".loading").toggle();
+    $('.editing').css('visibility', 'visible');
+    resize();
+  };
 
   $("#new_comment")
-    .bind("ajax:loading",  toggleLoading)
-    .bind("ajax:complete", toggleLoading);
+    .bind("ajax:loading",  loading)
+    .bind("ajax:complete", complete);
 });

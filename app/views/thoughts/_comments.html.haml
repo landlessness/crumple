@@ -2,11 +2,12 @@
   = render @thought.comments.order("created_at ASC")
 .prompt.lil-space-bottom
   %a{:name => 'comments'}= t(:comment)
-  %span#loading.lil-space-left
-    = image_tag 'ajax-loader.gif'
-- form_for [@thought, @comment], :remote => true do |f|
-  .body-container
-    = f.text_area :body, :class => 'resize-font resize-textarea body'
-  .align-right.lil-space-top
-    = f.submit t(:save)
-  .clear
+%span.loading.lil-space-left
+  = image_tag 'ajax-loader.gif'
+.editing
+  - form_for [@thought, @comment], :remote => true do |f|
+    .body-container
+      = f.text_area :body, :class => 'resize-font resize-textarea body'
+    .align-right.lil-space-top
+      = f.submit t(:save)
+    .clear
