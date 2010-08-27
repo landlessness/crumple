@@ -175,6 +175,9 @@ a.link {
 .big-space-bottom {
   margin-bottom: $big-padding;
 }
+.norm-space-bottom {
+  margin-bottom: $norm-space;
+}
 .half {
   width: 45%;
 }
@@ -557,4 +560,7 @@ a.auto-link {
 }
 .no-wrap {
   white-space:nowrap;
+}
+#loading {
+  display:none;
 }
