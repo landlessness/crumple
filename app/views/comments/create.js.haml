@@ -1,4 +1,5 @@
 $("#comments").append("#{escape_javascript(render(@comment))}");
+$("#comment_#{@comment.id} .people-content").animate({ backgroundColor: "#000", color: "#fff" }, 1000);
 resize();
 $("#comment_body").val('');
 $("#comment_body").keyup();

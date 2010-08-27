@@ -4,8 +4,5 @@ jQuery(function($) {
 
   $("#new_comment")
     .bind("ajax:loading",  toggleLoading)
-    .bind("ajax:complete", toggleLoading)
-    .bind("ajax:success", function(data, status, xhr) {
-      $("#response").html(status);
-    });
+    .bind("ajax:complete", toggleLoading);
 });
