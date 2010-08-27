@@ -1,0 +1,5 @@
+$("#comments_count").html("(#{@thought.comments.count})");
+$("#comments").append("#{escape_javascript(render(@comment))}");
+resize();
+$("#comment_body").val('');
+$("#comment_body").keyup();
