@@ -1,6 +1,4 @@
-class ThoughtsController < ApplicationController
-  skip_filter :authenticate_person!, :only => :new
-  
+class ThoughtsController < ApplicationController  
   # GET /thoughts
   # GET /thoughts.xml
   def index

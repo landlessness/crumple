@@ -23,14 +23,19 @@ $lil-padding: $lil-space;
 $sub-lil-padding: 0.5em;
 $ipad-list-main-size: 23px;
 $ipad-list-meta-size: 16px;  /* this is also the min size in the jquery script*/
-
+.system-font, a.system-font {
+  font-family: $system-font;  
+}
+.people-font, a.people-font {
+  font-family: $people-font;  
+}
 .big-size {
   font-size: $big-size;
 }
 .norm-size {
   font-size: $norm-size;
 }
-.lil-size {
+.lil-size, a.lil-size {
   font-size: $lil-size;
 }
 .sub-lil-size {
@@ -224,6 +229,15 @@ a.subtle-action, .subtle-action a {
   color: $subtle-gray;
   text-transform: capitalize;
 }
+a.subtle-delete-action, .subtle-delete-action a {
+  font-size: $big-size;
+  text-decoration: none;
+  color: $subtle-gray;
+}
+a:hover.subtle-delete-action, .subtle-delete-action a:hover {
+  color: $red-alert;
+  text-decoration: underline;
+}
 a:hover.clickable-object {
   text-decoration: underline;
 }
@@ -373,9 +387,6 @@ form .body {
   padding: 1%;
   border: solid 1px $white; /* this border is to help align the grid, it's a hack */
 }
-.body a {
-  color: $black;
-}
 #flash_notice, #flash_error, #flash_alert {
   padding: 0.75em;
   margin: 3% 0;
@@ -523,14 +534,11 @@ a.next_page {
 .white {
   color: $white;
 }
-.gray {
+.gray, a.gray {
   color: $gray;
 }
-.subtle-gray {
+.subtle-gray, a.subtle-gray {
   color: $subtle-gray;  
-}
-a.gray {
-  color: $gray;
 }
 a:hover.gray {
   text-decoration: underline;
@@ -546,4 +554,7 @@ a.auto-link {
   display: block;
   padding: $lil-padding;
   border: 1px solid $black;
+}
+.no-wrap {
+  white-space:nowrap;
 }

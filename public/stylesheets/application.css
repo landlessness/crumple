@@ -1,11 +1,17 @@
 /* this is also the min size in the jquery script*/
+.system-font, a.system-font {
+  font-family: Verdana, Helvetica, Arial, sans-serif; }
+
+.people-font, a.people-font {
+  font-family: "Times New Roman", Georgia, Serif; }
+
 .big-size {
   font-size: 0.8em; }
 
 .norm-size {
   font-size: 0.7em; }
 
-.lil-size {
+.lil-size, a.lil-size {
   font-size: 0.6em; }
 
 .sub-lil-size {
@@ -198,6 +204,15 @@ a.subtle-action, .subtle-action a {
   color: #555555;
   text-transform: capitalize; }
 
+a.subtle-delete-action, .subtle-delete-action a {
+  font-size: 0.8em;
+  text-decoration: none;
+  color: #555555; }
+
+a:hover.subtle-delete-action, .subtle-delete-action a:hover {
+  color: #7d0101;
+  text-decoration: underline; }
+
 a:hover.clickable-object {
   text-decoration: underline; }
 
@@ -349,9 +364,6 @@ form .body {
   border: solid 1px white;
   /* this border is to help align the grid, it's a hack */ }
 
-.body a {
-  color: black; }
-
 #flash_notice, #flash_error, #flash_alert {
   padding: 0.75em;
   margin: 3% 0;
@@ -499,14 +511,11 @@ a.next_page {
 .white {
   color: white; }
 
-.gray {
+.gray, a.gray {
   color: #aaaaaa; }
 
-.subtle-gray {
+.subtle-gray, a.subtle-gray {
   color: #555555; }
-
-a.gray {
-  color: #aaaaaa; }
 
 a:hover.gray {
   text-decoration: underline; }
@@ -522,3 +531,6 @@ a.auto-link {
   display: block;
   padding: 1em;
   border: 1px solid black; }
+
+.no-wrap {
+  white-space: nowrap; }

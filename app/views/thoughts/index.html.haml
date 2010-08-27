@@ -29,7 +29,7 @@
   .clear
 %div
   - if @thoughts.size > 0
-    = render 'thoughts' 
+    = render 'thoughts'
   - else
     .subtle-border-top.none-padding
     .space-top= t(:empty_search_message).capitalize + '.'

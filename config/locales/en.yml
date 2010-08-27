@@ -66,3 +66,6 @@ en:
   email: email
   web: web
   total: total
+  add_tag: add tag
+  change_project: change project
+  select_project: select project

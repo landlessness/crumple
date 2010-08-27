@@ -76,7 +76,7 @@ class TagsController < ApplicationController
     @tag.destroy
 
     respond_to do |format|
-      format.html { redirect_to(tags_url) }
+      format.html { redirect_to :back }
       format.xml  { head :ok }
     end
   end
