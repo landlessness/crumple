@@ -15,15 +15,15 @@ jQuery(function($) {
     .bind("ajax:complete", complete_new_comment);
 
   var deleting_comment = function() { 
-    comment = $(this).parent().parent().parent().parent();
-    spinner = comment.prev();
+    comment = $(this).parents('.comment');
+    spinner = comment.prev('.loading');
     
-    spinner.show();
     comment.css('visibility', 'hidden');
+    spinner.show();
   };
 
   var completed_deleting_comment = function() { 
-    spinner = $(this).parent().parent().parent().parent().prev();
+    spinner = $(this).parents('.comment').prev('.loading');
     spinner.hide();
   };
 
