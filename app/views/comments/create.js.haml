@@ -1,4 +1,6 @@
 $("#comments").append("#{escape_javascript(render(@comment))}");
 $("#comment_body").val('');
 $("#comment_body").keyup();
-$("#comment_#{@comment.id}").children('.people-content').animate({ backgroundColor: '#000', color: '#fff' }, 1000);
+
+-# not loving the animation.
+-# $("#comment_#{@comment.id}").children('.people-content').animate({ backgroundColor: '#000', color: '#fff' }, 1000);
