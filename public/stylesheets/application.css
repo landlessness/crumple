@@ -201,16 +201,11 @@ a.action, .action a {
 a:hover.action, .action a:hover, a:hover.subtle-action, .subtle-action a:hover {
   color: white; }
 
-a.subtle-action, .subtle-action a {
+a.subtle-action, .subtle-action a, a.subtle-delete-action, .subtle-delete-action a {
   font-size: 0.6em;
   text-decoration: underline;
   color: #555555;
   text-transform: capitalize; }
-
-a.subtle-delete-action, .subtle-delete-action a {
-  font-size: 0.8em;
-  text-decoration: none;
-  color: #555555; }
 
 a:hover.subtle-delete-action, .subtle-delete-action a:hover {
   color: #7d0101;
@@ -538,5 +533,9 @@ a.auto-link {
 .no-wrap {
   white-space: nowrap; }
 
-.loading {
+#new_comment_loading, .loading {
   display: none; }
+
+.on-top {
+  z-index: 10000;
+  position: absolute; }
