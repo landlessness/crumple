@@ -1,13 +1,13 @@
 - if comment && comment.person
   %span.loading
     = image_tag 'ajax-loader-bar.gif', :class => 'on-top'
-  .editing
+  .display-none.edit-comment.space-bottom
     - form_for comment, :remote => true do |f|
       .body-container
         = f.text_area :body, :class => 'resize-font resize-textarea body'
       .align-right.lil-space-top
         = f.submit t(:save)
-        = link_to t(:cancel), :back, :class => 'subtle-action lil-space-left'
+        %span.cancel-edit-comment-link= link_to t(:cancel), '', :class => 'subtle-action lil-space-left'
       .clear
   - div_for comment do
     .body.resize-font.people-content
@@ -15,7 +15,7 @@
       = display_text(comment.body)
     .sub-lil-space-top.norm-space-bottom
       .align-left
-        %span= link_to t(:edit), edit_thought_comment_path(@thought, comment), :class=>'subtle-action'
+        %span.edit-comment-link= link_to t(:edit),'', :class=>'subtle-action'
         %span.lil-space-left= link_to t(:permalink), [@thought, comment], :class=>'subtle-action'
         %span.lil-space-left= link_to t(:delete), [@thought, comment], :confirm => t(:r_u_sure), :method => :delete, :class=>'subtle-delete-action delete_comment', :remote => true
       .align-right
