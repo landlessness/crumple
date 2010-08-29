@@ -8,7 +8,6 @@
     $.fn.autogrow = function(options) {
         
         this.filter('textarea').each(function() {
-            
             var $this       = $(this),
                 textarea    = this,
                 minHeight   = $this.height(),

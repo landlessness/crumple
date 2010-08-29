@@ -321,7 +321,7 @@ body:before {
 #about {
   margin: 5% 0px; }
 
-.new_comment .body {
+.new_comment .body, .edit_comment .body {
   height: 1em; }
 
 .new_thought .body {
