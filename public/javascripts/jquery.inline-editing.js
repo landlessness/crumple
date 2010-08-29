@@ -5,7 +5,7 @@ $(document).ready(function(){
     comment_editor = comment.prev('.edit-comment');
     comment.hide();
     comment_editor.show();
-    comment_editor.focus();
+    comment_editor.find('#comment_body').focus();
     resize();
     return false;
   })
