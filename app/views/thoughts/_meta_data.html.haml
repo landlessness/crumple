@@ -20,7 +20,7 @@
     - thought.tags.each do |t|
       %span.no-wrap
         %span.people-content= link_to t.name, tag_thoughts_path(t), :class=>'clickable-object'
-        %span.subtle-delete-action.sub-lil-space-left= link_to 'x', t, :confirm => t(:r_u_sure).capitalize, :method => :delete
+        %span.super-subtle-delete-action.sub-lil-space-left= link_to 'x', t, :confirm => t(:r_u_sure).capitalize, :method => :delete
       %span.sub-lil-space-right &nbsp;
 .subtle-action.space-bottom= link_to t(:add_tag), '#'
 - if defined?(include_comments_count) && include_comments_count

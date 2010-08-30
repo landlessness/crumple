@@ -239,6 +239,16 @@ a:hover.subtle-delete-action, .subtle-delete-action a:hover {
   color: $red-alert;
   text-decoration: underline;
 }
+a.super-subtle-action, .super-subtle-action a, a.super-subtle-delete-action, .super-subtle-delete-action a {
+  font-size: $lil-size;
+  text-decoration: none;
+  color: $subtle-gray;
+  text-transform: none;
+}
+a:hover.super-subtle-delete-action, .super-subtle-delete-action a:hover {
+  color: $red-alert;
+  text-decoration: underline;
+}
 a:hover.clickable-object {
   text-decoration: underline;
 }
