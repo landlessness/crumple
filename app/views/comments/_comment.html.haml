@@ -10,8 +10,8 @@
         %span.cancel-edit-comment-link= link_to t(:cancel), '', :class => 'subtle-action lil-space-left'
       .clear
   - div_for comment do
+    %a{:name => comment_a_name(comment)}
     .body.resize-font.people-content
-      %a{:name => comment_a_name(comment)}
       = display_text(comment.body)
     .sub-lil-space-top.norm-space-bottom
       .align-left

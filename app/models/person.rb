@@ -6,6 +6,7 @@ class Person < ActiveRecord::Base
                     :email => true
   
   has_many :thoughts
+  has_many :comments, :through => :thoughts
   has_many :memberships, :dependent => :destroy
   has_many :projects, :through => :memberships
   has_many :drop_boxes, :dependent => :destroy

@@ -1,20 +1,8 @@
 class CommentsController < ApplicationController
-  before_filter :find_thought
-  # GET /comments
-  # GET /comments.xml
-  def index
-    @comments = @thought.comments.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @comments }
-    end
-  end
-
   # GET /comments/1
   # GET /comments/1.xml
   def show
-    @comment = @thought.comments.find(params[:id])
+    @comment = current_person.comments.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,6 +13,7 @@ class CommentsController < ApplicationController
   # GET /comments/new
   # GET /comments/new.xml
   def new
+    find_thought
     @comment = @thought.comments.build
 
     respond_to do |format|
@@ -35,12 +24,13 @@ class CommentsController < ApplicationController
 
   # GET /comments/1/edit
   def edit
-    @comment = @thought.comments.find(params[:id])
+    @comment = current_person.comments.find(params[:id])
   end
 
   # POST /comments
   # POST /comments.xml
   def create
+    find_thought
     @comment = @thought.comments.build(params[:comment])
     @comment.person = current_person
 
@@ -60,12 +50,14 @@ class CommentsController < ApplicationController
   # PUT /comments/1
   # PUT /comments/1.xml
   def update
-    @comment = @thought.comments.find(params[:id])
+    @comment = current_person.comments.find(params[:id], :readonly => false)
     respond_to do |format|
       if @comment.update_attributes(params[:comment])
-        format.html { redirect_to(@thought, :notice => 'Comment was successfully updated.') }
+        format.js
+        format.html { redirect_to(@comment.thought, :notice => 'Comment was successfully updated.') }
         format.xml  { head :ok }
       else
+        format.js
         format.html { render :action => "edit" }
         format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
       end
@@ -75,12 +67,12 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.xml
   def destroy
-    @comment = @thought.comments.find(params[:id])
+    @comment = current_person.comments.find(params[:id])
     @comment.destroy
 
     respond_to do |format|
       format.js
-      format.html { redirect_to(@thought, :notice => 'Comment was destroyed.') }
+      format.html { redirect_to(@comment.thought, :notice => 'Comment was destroyed.') }
       format.xml  { head :ok }
     end
   end

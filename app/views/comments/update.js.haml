@@ -1,0 +1,5 @@
+comment = $("#comment_#{@comment.id}");
+comment.children('.people-content').html("#{escape_javascript(@comment.body)}");
+text_area = $("#edit_comment_#{@comment.id}").find('#comment_body');
+text_area.val("#{escape_javascript(@comment.body)}");
+text_area.html("#{escape_javascript(@comment.body)}");
