@@ -1,5 +1,7 @@
 $(document).ready(function(){
-
+  initInlineEditBindings();
+})
+function initInlineEditBindings() {
   $('.edit-comment-link').click(function () {
     comment = $(this).parents('.comment')
     comment_editor = comment.prev('.edit-comment');
@@ -19,4 +21,4 @@ $(document).ready(function(){
     resize();
     return false;
   })
-})
+}
