@@ -7,6 +7,7 @@ $(document).ready(function(){
     comment_editor.show();
     comment_editor.find('#comment_body').focus();
     resize();
+    $(function() {$('.resize-textarea').autogrow();});
     return false;
   })
 
