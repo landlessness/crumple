@@ -1,0 +1,15 @@
+= javascript ['jquery.resize-font','jquery.autogrow-textarea', 'jquery.ajax', 'jquery.tipsy', 'jquery.inline-editing']
+%h1
+  = @project.name
+  - if @tags
+    with tags: 
+    = @tags.join(' ')
+    = link_to 'x', @project
+%p
+  = @project.description
+  .sub-lil-space-bottom.subtle-action= link_to_new_thought(@project)
+  = render :partial => "thoughts/thoughts", :locals => { :cloud => @tags_for_cloud, :thoughts => @thoughts, :project => @project }
+  = link_to_new_thought(@project)
+  = link_to 'Edit', edit_project_path(@project) 
+  |
+  = link_to 'Back', projects_path

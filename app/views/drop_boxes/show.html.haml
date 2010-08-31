@@ -1,0 +1,16 @@
+= javascript ['jquery.resize-font','jquery.ajax', 'jquery.inline-editing']
+#notice= notice
+= render :partial => "thoughts/thoughts", :locals => { :cloud => nil, :thoughts => @thoughts, :project => nil }
+%h2 Helpers
+%h3 Bookmarklet
+%p
+  = link_to 'Crumple Bookmarklet', %(javascript:(function(){e =''+(window.getSelection?window.getSelection():document.getSelection?document.getSelection():document.selection.createRange().text);if(e)e="\\n\\n"+e+"";open('http://#{Rails.application.config.top_level_domain}/thoughts/bookmarklet_new?thought[body]='+encodeURIComponent(location.href+'\\n\\n')+encodeURIComponent(document.title)+encodeURIComponent(e)+'&thought[state_event]=put_in_drop_box&thought[origin]=bookmarklet','Crumple','toolbar=no,width=400,height=400')})())
+%h3 Email
+%p
+  = link_to 'Download vCard', drop_box_vcf_path
+%p 
+  Email: 
+  = mail_to @drop_box.email_address, @drop_box.email_address
+  = link_to 'Edit', edit_drop_box_path(@drop_box)
+
+
