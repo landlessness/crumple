@@ -36,4 +36,8 @@ function initInlineEditBindings() {
     resize();
     return false;
   })
+  $('.edit_thought_project_select').change(function() {
+    form = $(this).parents('.edit_thought_project')
+    form.submit();
+  });
 }
