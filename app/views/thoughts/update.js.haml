@@ -1,0 +1,2 @@
+project_link = $("#thought_#{@thought.id}_project_link");
+project_link.html("#{escape_javascript(@thought.project ? link_to(@thought.project.name, @thought.project, :class => 'clickable-object link body people-content resize-font') : %(<div class="lil-size">none</div>).html_safe)}");

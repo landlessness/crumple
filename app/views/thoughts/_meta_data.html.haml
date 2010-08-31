@@ -3,14 +3,7 @@
   .lil-space-bottom
     - if thought.state
       .system-content-alert= t(thought.state.to_sym) 
-.subtle-prompt= t(:project)
-- if thought.project
-  .body.people-content.resize-font= link_to thought.project.name, thought.project, :class => 'clickable-object link'
-  .subtle-action.space-bottom= link_to t(:change_project), '#'
-- else
-  .lil-size
-    %em= t(:none)
-  .subtle-action.space-bottom= link_to t(:select_project), '#'
+= render 'meta_data_project', :thought => thought
 .subtle-prompt.lil-space-top= t(:tag).pluralize
 - if thought.tags.empty?
   .lil-size

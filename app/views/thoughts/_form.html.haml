@@ -13,7 +13,7 @@
       %span.align-left.space-left
         .prompt= t(:project)
         .align-left.subtle-prompt= t(:optional)
-      %span.align-left.lil-space-left= collection_select :thought, :project_id, current_person.projects.order('upper(name)').all, :id, :name, :prompt => true
+      %span.align-left.lil-space-left= collection_select :thought, :project_id, current_person.projects.order('upper(name)').all, :id, :name, :include_blank => t(:none)
     .align-right.actions
       = f.hidden_field :state_event
       = f.hidden_field :origin

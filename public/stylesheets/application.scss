@@ -18,6 +18,7 @@ $big-space: 6em;
 $big-padding: $big-space;
 $norm-space: 3em;
 $norm-padding: $norm-space;
+$sub-lil-space: 0.5em;
 $lil-space: 1em;
 $lil-padding: $lil-space;
 $sub-lil-padding: 0.5em;
@@ -128,10 +129,10 @@ a.link {
   margin-left: $lil-space;
 }
 .sub-lil-space-left {
-  margin-left: 0.5em;
+  margin-left: $sub-lil-space;
 }
 .sub-lil-space-right {
-  margin-right: 0.5em;
+  margin-right: $sub-lil-space;
 }
 .lil-space-right {
   margin-right: $lil-space;
@@ -140,13 +141,13 @@ a.link {
   margin-top: $lil-space;
 }
 .sub-lil-space-top {
-  margin-top: 0.5em;
+  margin-top: $sub-lil-space;
 }
 .lil-space-bottom {
   margin-bottom: $lil-space;
 }
 .sub-lil-space-bottom {
-  margin-bottom: 0.5em;  
+  margin-bottom: $sub-lil-space;  
 }
 .space-left {
   margin-left: 2em;

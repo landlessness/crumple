@@ -12,6 +12,9 @@ function initAjaxBindings() {
   $(".edit_comment")
     .bind("ajax:loading",  editing_comment)
     .bind("ajax:complete", completed_editing_comment);
+  $(".edit_thought_project")
+    .bind("ajax:loading",  editing_project)
+    .bind("ajax:complete", completed_editing_project);
 }
 
 function loading_new_comment() { 
@@ -56,5 +59,25 @@ function completed_editing_comment() {
   comment_editor.hide();
   spinner.hide();
   comment.show();
+  resize();
+};
+
+function editing_project() {
+  project_editor = $(this).parents('.edit-project');
+  spinner = project_editor.prev('.loading');
+
+  project_editor.css('visibility', 'hidden');
+  spinner.show();
+};
+
+function completed_editing_project() { 
+  project_editor = $(this).parents('.edit-project');
+  project = project_editor.next('.project');
+  spinner = project_editor.prev('.loading');
+    
+  project_editor.css('visibility', 'visible');
+  project_editor.hide();
+  spinner.hide();
+  project.show();
   resize();
 };

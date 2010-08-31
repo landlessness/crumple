@@ -202,9 +202,11 @@ class ThoughtsController < ApplicationController
 
     respond_to do |format|
       if @thought.update_attributes(params[:thought])
+        format.js
         format.html { redirect_to @thought }
         format.xml  { head :ok }
       else
+        format.js
         format.html { render :action => "edit" }
         format.xml  { render :xml => @thought.errors, :status => :unprocessable_entity }
       end
