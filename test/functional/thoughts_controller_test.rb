@@ -62,7 +62,7 @@ class ThoughtsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to t=assigns(:thought)
-    assert_equal 'localhost:3000', t.origin
+    assert_equal 'bookmarklet', t.origin
     
   end
 
