@@ -44,10 +44,12 @@ class TagsControllerTest < ActionController::TestCase
   end
 
   test "should destroy tag" do
+    target_url = 'thoughts/1'
+    @request.env['HTTP_REFERER'] = target_url
     assert_difference('Tag.count', -1) do
       delete :destroy, :id => @tag.to_param
     end
 
-    assert_redirected_to tags_path
+    assert_redirected_to target_url
   end
 end

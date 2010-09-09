@@ -10,17 +10,6 @@ class CommentsControllerTest < ActionController::TestCase
     sign_in @person
   end
 
-  test "should get index" do
-    get :index, :thought_id => @thought
-    assert_response :success
-    assert_not_nil assigns(:comments)
-  end
-
-  test "should get new" do
-    get :new, :thought_id => @thought
-    assert_response :success
-  end
-
   test "should create comment" do
     assert_difference('Comment.count') do
       post :create, :comment => @comment.attributes, :thought_id => @thought
@@ -31,11 +20,6 @@ class CommentsControllerTest < ActionController::TestCase
 
   test "should show comment" do
     get :show, :id => @comment.to_param, :thought_id => @thought
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get :edit, :id => @comment.to_param, :thought_id => @thought
     assert_response :success
   end
 

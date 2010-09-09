@@ -11,23 +11,6 @@ class CommentsController < ApplicationController
     end
   end
 
-  # GET /comments/new
-  # GET /comments/new.xml
-  def new
-    find_thought
-    @comment = @thought.comments.build
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @comment }
-    end
-  end
-
-  # GET /comments/1/edit
-  def edit
-    @comment = current_person.comments.find(params[:id])
-  end
-
   # POST /comments
   # POST /comments.xml
   def create

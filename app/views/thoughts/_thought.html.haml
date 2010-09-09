@@ -1,7 +1,7 @@
 .subtle-border-top.lil-big-padding
   .align-left.three-fourths.list_thoughts_main
     .list-thought.body.resize-font.people-content
-      = link_to(truncate(simpler_format(h(thought.body)), 313).html_safe, thought)
+      = link_to(truncate(simpler_format(h(thought.body)), :length => 313).html_safe, thought)
     .lil-space-top.subtle-action= render 'thoughts/thought_controls', :thought => thought
   .align-right.one-fourth.list_thoughts_meta
     = render 'thoughts/meta_data', :thought => thought, :include_comments_count => true

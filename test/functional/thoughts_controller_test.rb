@@ -29,7 +29,7 @@ class ThoughtsControllerTest < ActionController::TestCase
     assert_redirected_to new_person_session_url
     # post :controller => 'devise/sessions', :action => 'new', :person => @person
     # assert_redirected_to new_thought_url
-    assert_equal '/thoughts/new?thought[body]=this+is+me+typing+a+thought+before+i+have+signed+in.&thought[tags_list]=green+blue+red', @controller.session[:"person_return_to"]
+    assert_equal '/thoughts/auto_new?thought[body]=this+is+me+typing+a+thought+before+i+have+signed+in.&thought[tags_list]=green+blue+red', @controller.session[:"person_return_to"]
   end
 
   test "should create thought" do
@@ -62,7 +62,7 @@ class ThoughtsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to t=assigns(:thought)
-    assert_equal 'bookmarklet', t.origin
+    assert_equal 'localhost:3000', t.origin
     
   end
 
