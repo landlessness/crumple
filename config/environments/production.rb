@@ -49,5 +49,7 @@ Crumple::Application.configure do
   config.after_initialize do 
     Sunspot.config.solr.url = ENV["WEBSOLR_URL"] 
   end
-  
+  config.active_support.deprecation = :notify
+  # for devise mailer
+  config.action_mailer.default_url_options = { :host => 'crumpleapp.com' }
 end
