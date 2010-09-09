@@ -9,8 +9,9 @@ Devise.setup do |config|
   # config.mailer = "Devise::Mailer"
 
   # ==> ORM configuration
-  # Load and configure the ORM. Supports :active_record (default), :mongoid
-  # (bson_ext recommended) and :data_mapper (experimental).
+  # Load and configure the ORM. Supports :active_record (default) and
+  # :mongoid (bson_ext recommended) by default. Other ORMs may be
+  # available as additional gems.
   require 'devise/orm/active_record'
 
   # ==> Configuration for any authentication mechanism
@@ -27,6 +28,9 @@ Devise.setup do |config|
   # Tell if authentication through HTTP Basic Auth is enabled. True by default.
   # config.http_authenticatable = true
 
+  # Set this to true to use Basic Auth for AJAX requests.  True by default.
+  # config.http_authenticatable_on_xhr = true
+
   # The realm used in Http Basic Authentication
   # config.http_authentication_realm = "Application"
 
@@ -42,7 +46,7 @@ Devise.setup do |config|
   config.encryptor = :bcrypt
 
   # Setup a pepper to generate the encrypted password.
-  config.pepper = "aad609726d3842cd4f1bde271a4666e725c77b66eac42285d87b8e948f4329ec072daf3a2142c42d8039c6e4e07e64f9cd70364668243ab4594ca3b5a7424292"
+  config.pepper = "07acc89a4394f9c4821cb72e3a4e7cec7e6a697dd3c3b1b7fc179f09e21a920b4e2d8f5a760e84eccc49670f8747b6a10240d6e5b60cec460cb87fa3c0fbf9d7"
 
   # ==> Configuration for :confirmable
   # The time you want to give your user to confirm his account. During this time
@@ -55,9 +59,14 @@ Devise.setup do |config|
 
   # ==> Configuration for :rememberable
   # The time the user will be remembered without asking for credentials again.
-  config.remember_for = 2.weeks
-  # config.extend_remember_period = true
-  
+  # config.remember_for = 2.weeks
+
+  # If true, a valid remember token can be re-used between multiple browsers.
+  # config.remember_across_browsers = true
+
+  # If true, extends the user's remember period when remembered via cookie.
+  # config.extend_remember_period = false
+
   # ==> Configuration for :validatable
   # Range for password length
   # config.password_length = 6..20
@@ -96,21 +105,18 @@ Devise.setup do |config|
 
   # ==> Scopes configuration
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
-  # "sessions/users/new". It's turned off by default because it's slower if you
+  # "users/sessions/new". It's turned off by default because it's slower if you
   # are using only default views.
   # config.scoped_views = true
 
-  # By default, devise detects the role accessed based on the url. So whenever
-  # accessing "/users/sign_in", it knows you are accessing an User. This makes
-  # routes as "/sign_in" not possible, unless you tell Devise to use the default
-  # scope, setting true below.
-  # Note that devise does not generate default routes. You also have to
-  # specify them in config/routes.rb
-  config.use_default_scope = true
-
-  # Configure the default scope used by Devise. By default it's the first devise
-  # role declared in your routes.
+  # Configure the default scope given to Warden. By default it's the first
+  # devise role declared in your routes.
   # config.default_scope = :user
+
+  # Configure sign_out behavior. 
+  # By default sign_out is scoped (i.e. /users/sign_out affects only :user scope).
+  # In case of sign_out_all_scopes set to true any logout action will sign out all active scopes.
+  # config.sign_out_all_scopes = false
 
   # ==> Navigation configuration
   # Lists the formats that should be treated as navigational. Formats like

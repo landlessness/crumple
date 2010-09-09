@@ -1,10 +1,5 @@
 class Person < ActiveRecord::Base
   
-  validates :email, :presence => true, 
-                    :length => {:minimum => 3, :maximum => 254},
-                    :uniqueness => true,
-                    :email => true
-  
   has_many :thoughts
   has_many :comments, :through => :thoughts
   has_many :memberships, :dependent => :destroy

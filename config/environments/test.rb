@@ -30,4 +30,5 @@ Crumple::Application.configure do
   # like if you have constraints or database-specific column types
   # config.active_record.schema_format = :sql
   config.top_level_domain = 'localhost:3000'  
+  config.active_support.deprecation = :stderr
 end
