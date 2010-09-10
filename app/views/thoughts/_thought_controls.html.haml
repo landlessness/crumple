@@ -8,4 +8,4 @@
     = link_to t(:accept), accept_thought_path(thought), :method => :put, :class=>'space-right'
   -elsif thought.active?
     = link_to t(:archive), archive_thought_path(thought), :method => :put, :class=>'space-right'
-  = link_to t(:delete), thought, :confirm => t(:r_u_sure).capitalize, :method => :delete
+  = link_to t(:delete), thought, :confirm => t(:r_u_sure).capitalize, :method => :delete, :class => 'delete-action'

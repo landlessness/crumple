@@ -236,7 +236,7 @@ a.subtle-action, .subtle-action a, a.subtle-delete-action, .subtle-delete-action
   color: $subtle-gray;
   text-transform: capitalize;
 }
-a:hover.subtle-delete-action, .subtle-delete-action a:hover {
+a:hover.subtle-delete-action, .subtle-delete-action a:hover, a:hover.delete-action, .delete-action a:hover {
   color: $red-alert;
   text-decoration: underline;
 }
