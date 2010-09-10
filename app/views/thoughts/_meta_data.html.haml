@@ -1,6 +1,6 @@
 .lil-space-bottom= render 'thoughts/meta_data_state', :thought => thought      
 .lil-space-bottom= render 'thoughts/meta_data_project', :thought => thought
-.lil-space-bottom= render 'thoughts/meta_data_tags', :thought => thought
+.lil-space-bottom= render 'thoughts/meta_data_taggings', :thought => thought
 - if defined?(include_comments_count) && include_comments_count
   .lil-space-bottom= render 'thoughts/meta_data_comments', :thought => thought
 .lil-space-bottom= render 'thoughts/meta_data_time_stamp', :prompt => t(:updated_at), :time_stamp => thought.updated_at

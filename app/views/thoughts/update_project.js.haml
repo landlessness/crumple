@@ -1,0 +1,2 @@
+project_link = $("#thought_#{@thought.id}_project_link");
+project_link.html("#{escape_javascript(render('meta_data_project_link', :thought => @thought))}");

@@ -34,10 +34,12 @@ Crumple::Application.routes.draw do
       put :archive
       put :activate
       put :accept
+      put :update_project
       get :focus
       get :bookmarklet_confirmation
     end
     resources :comments
+    resources :taggings
   end
 
   resources :people do

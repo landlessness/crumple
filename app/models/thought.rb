@@ -10,10 +10,6 @@ class Thought < ActiveRecord::Base
     string :state
   end
 
-  # Sunspot.remove_all
-  # Sunspot.index(Thought.all)
-  # r = Sunspot.search(Thought) {keywords 'crumple', :fields => [:body]}.results
-    
   validates :body, :presence => true
   validates :person, :presence => true
 
@@ -25,6 +21,7 @@ class Thought < ActiveRecord::Base
   has_many :taggings, :dependent => :destroy
   has_many :tags, :through => :taggings, :uniq => true
 
+  # TODO: should this tagging logic be somewhere else? maybe a factory?
   def tags_list=(tags_string)
     return unless tags_string
     

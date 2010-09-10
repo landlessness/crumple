@@ -1,0 +1,4 @@
+%span.no-wrap
+  %span.people-content= link_to tagging.tag.name, tag_thoughts_path(tagging.tag), :class=>'clickable-object'
+  %span.super-subtle-delete-action.sub-lil-space-left= link_to 'x', tagging, :confirm => t(:r_u_sure).capitalize, :method => :delete, :remote => true
+%span.sub-lil-space-right &nbsp;

@@ -214,6 +214,15 @@ class ThoughtsController < ApplicationController
     end
   end
 
+  def update_project
+    @thought = current_person.thoughts.find(params[:id])
+
+    respond_to do |format|
+      @thought.update_attributes(params[:thought])
+      format.js
+    end
+  end
+
   # DELETE /thoughts/1
   # DELETE /thoughts/1.xml
   def destroy

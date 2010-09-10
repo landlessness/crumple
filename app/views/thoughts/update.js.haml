@@ -1,4 +1,0 @@
-project_link = $("#thought_#{@thought.id}_project_link");
-project_link.html("#{escape_javascript(render('meta_data_project_link', :thought => @thought))}");
-tag_links = $("#thought_#{@thought.id}_tag_links");
-tag_links.html("#{escape_javascript(render(@thought.tags))}");
