@@ -1,2 +1,2 @@
 tag_links = $("#thought_#{thought.id}_tag_links");
-tag_links.html("#{escape_javascript(render(thought.taggings.order('created_at')))}");
+tag_links.html("#{escape_javascript(render thought.taggings.order('created_at'))}");

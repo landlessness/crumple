@@ -1,10 +1,7 @@
 .subtle-prompt= t(:tag).pluralize
 .tags
-  - if thought.taggings.empty?
-    .lil-size
-      = t(:none)
-  - else
-    .body.resize-font{:id => ['thought', thought.id, 'tag', 'links']}
+  %div{:id => ['thought', thought.id, 'tag', 'links']}
+    .body.resize-font
       = render thought.taggings.order('created_at')
   %span.loading
     = image_tag 'ajax-loader-indicator.gif', :class => 'on-top'
