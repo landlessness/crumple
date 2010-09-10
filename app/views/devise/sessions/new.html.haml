@@ -1,0 +1,22 @@
+= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+  - if resource.errors.any?
+    #error_explanation
+      = pluralize(resource.errors.count, "error")
+      prohibited this thought from being saved:
+      %ul
+        - resource.errors.full_messages.each do |msg|
+          %li
+            = msg
+  %p
+    .prompt= f.label :email
+    = f.text_field :email
+  %p
+    .prompt= f.label :password
+    = f.password_field :password
+  - if devise_mapping.rememberable?
+    %p
+      = f.check_box :remember_me
+      %span.prompt= f.label :remember_me
+  %p
+    = f.submit t(:sign_in)
+.action= render :partial => 'devise/shared/links'
