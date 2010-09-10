@@ -70,3 +70,5 @@ en:
   change: change
   select: select
   update: update
+  updated_at: last updated
+  created_at: created

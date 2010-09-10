@@ -1,0 +1,6 @@
+.subtle-prompt= t(:comment).pluralize
+- if thought.comments.count > 0
+  .three-px-top.norm-size= link_to pluralize(thought.comments.count,t(:comment)), thought_path(thought, :anchor => 'comments'), :class=>'link gray'
+- else
+  .lil-size
+    = t(:none)

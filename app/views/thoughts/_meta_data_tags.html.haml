@@ -1,0 +1,17 @@
+.subtle-prompt= t(:tag).pluralize
+.tags
+  - if thought.tags.empty?
+    .lil-size
+      = t(:none)
+  - else
+    .body.resize-font{:id => ['thought', thought.id, 'tag', 'links']}
+      = render thought.tags
+  %span.loading
+    = image_tag 'ajax-loader-indicator.gif', :class => 'on-top'
+  .add-tags.display-none.sub-lil-space-top
+    = form_for thought, :html => {:class => "add_thought_tags"}, :remote => true do |f|
+      = f.text_field :tags_list_concat
+      %div
+        = f.submit t(:add)
+        = link_to t(:cancel), '', :class => 'subtle-action cancel-add-tags-link'
+  .subtle-action.add-tags-link-container= link_to t(:add), '', :class => 'add-tags-link'

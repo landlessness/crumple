@@ -1,2 +1,4 @@
 project_link = $("#thought_#{@thought.id}_project_link");
-project_link.html("#{escape_javascript(@thought.project ? link_to(@thought.project.name, @thought.project, :class => 'clickable-object link body people-content resize-font') : %(<div class="lil-size">none</div>).html_safe)}");
+project_link.html("#{escape_javascript(render('meta_data_project_link', :thought => @thought))}");
+tag_links = $("#thought_#{@thought.id}_tag_links");
+tag_links.html("#{escape_javascript(render(@thought.tags))}");

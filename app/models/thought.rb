@@ -32,7 +32,7 @@ class Thought < ActiveRecord::Base
     @tags_list_string = tags_string
     
     # TODO this is ugly code. clean it up.
-    taggings_to_create = tags_array = (tags_string||'').split(Tag.delimiter)
+    taggings_to_create = tags_array = tag_names_from_string(tags_string)
 
     unless self.taggings.empty?
       newly_requested_taggings_that_already_exist = self.taggings.joins(:tag).where(:tags=>{:name => tags_array}, :person_id => self.person.id)
@@ -41,11 +41,7 @@ class Thought < ActiveRecord::Base
       taggings_to_create = tags_array - newly_requested_taggings_that_already_exist.map {|t| t.tag.name}
     end
 
-    taggings_to_create.each do |t|
-      tag = Tag.find_or_create_by_name t
-      self.taggings.build :tag => tag, :person => self.person
-    end
-    
+    add_tags(taggings_to_create)
   end
   
   def tags_list
@@ -54,6 +50,13 @@ class Thought < ActiveRecord::Base
 
   def tags_list_string
     @tags_list_string || ''
+  end
+
+  def tags_list_concat=(tags_string)
+    add_tags(tag_names_from_string(tags_string))
+  end
+  def tags_list_concat
+    ''
   end
 
   def project_name
@@ -86,5 +89,15 @@ class Thought < ActiveRecord::Base
   end
   def viz_node_value
     self.class.name + '_' + self.id.to_s
+  end
+  protected
+  def tag_names_from_string(tags_string)
+    (tags_string||'').split(Tag.delimiter)
+  end
+  def add_tags(tag_names)
+    tag_names.each do |t|
+      tag = Tag.find_or_create_by_name t
+      self.taggings.build :tag => tag, :person => self.person
+    end    
   end
 end

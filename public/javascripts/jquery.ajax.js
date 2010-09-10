@@ -15,6 +15,9 @@ function initAjaxBindings() {
   $(".edit_thought_project")
     .bind("ajax:loading",  editing_project)
     .bind("ajax:complete", completed_editing_project);
+  $(".add_thought_tags")
+    .bind("ajax:loading",  adding_tags)
+    .bind("ajax:complete", completed_adding_tags);
 }
 
 function loading_new_comment() { 
@@ -80,4 +83,25 @@ function completed_editing_project() {
   spinner.hide();
   project.show();
   resize();
+};
+
+function adding_tags() {
+  tag_adder = $(this).parents('.add-tags');
+  spinner = tag_adder.prev('.loading');
+
+  tag_adder.css('visibility', 'hidden');
+  spinner.show();
+};
+
+function completed_adding_tags() { 
+  tags = $(this).parents('.tags');
+  add_tags_link_container = tags.find('.add-tags-link-container');
+  tag_adder = tags.find('.add-tags');
+  spinner = tag_adder.prev('.loading');
+  
+  add_tags_link_container.show();
+  tag_adder.css('visibility', 'visible');
+  tags.find('#thought_tags_list_concat').val('');
+  tag_adder.hide();
+  spinner.hide();
 };

@@ -1,16 +1,12 @@
-.space-bottom
-  .sub-lil-space-bottom.subtle-prompt= t(:project)
-  %span.loading
-    = image_tag 'ajax-loader-indicator.gif', :class => 'on-top'
-  .edit-project.display-none
-    = form_for thought, :html => {:class => "edit_thought_project"}, :remote => true do |f|
-      = f.collection_select :project_id, current_person.projects.order('upper(name)').all, :id, :name, {:include_blank => t(:none)}, :class => 'edit_thought_project_select'
-      %div
-        = link_to t(:cancel), '', :class => 'subtle-action cancel-select-project-link'
-  .project
-    .project-link{:id => ['thought', thought.id, 'project', 'link']}
-      - if thought.project
-        = link_to thought.project.name, thought.project, :class => 'clickable-object link body people-content resize-font'
-      - else
-        .lil-size= t(:none)
-    .subtle-action= link_to t(:change), '', :class => 'select-project-link'
+.subtle-prompt= t(:project)
+%span.loading
+  = image_tag 'ajax-loader-indicator.gif', :class => 'on-top sub-lil-space-top'
+.edit-project.display-none.sub-lil-space-top
+  = form_for thought, :html => {:class => "edit_thought_project"}, :remote => true do |f|
+    = f.collection_select :project_id, current_person.projects.order('upper(name)').all, :id, :name, {:include_blank => t(:none)}, :class => 'edit_thought_project_select'
+    %div
+      = link_to t(:cancel), '', :class => 'subtle-action cancel-select-project-link'
+.project
+  .project-link{:id => ['thought', thought.id, 'project', 'link']}
+    = render 'meta_data_project_link', :thought => thought
+  .subtle-action= link_to t(:change), '', :class => 'select-project-link'

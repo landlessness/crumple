@@ -20,6 +20,23 @@ function initInlineEditBindings() {
     resize();
     return false;
   })
+  $('.add-tags-link').click(function () {
+    tags = $(this).parents('.tags')
+    tags_adder = tags.find('.add-tags');
+    add_tags_link_container = tags.find('.add-tags-link-container');
+    add_tags_link_container.hide();
+    tags_adder.show();
+    tags_adder.find('#thought_tags_list_concat').focus();
+    return false;
+  })
+  $('.cancel-add-tags-link').click(function () {
+    tags = $(this).parents('.tags')
+    tags_adder = tags.find('.add-tags');
+    add_tags_link_container = tags.find('.add-tags-link-container');    
+    add_tags_link_container.show();
+    tags_adder.hide();
+    return false;
+  })
   $('.select-project-link').click(function () {
     project = $(this).parents('.project')
     project_editor = project.prev('.edit-project');

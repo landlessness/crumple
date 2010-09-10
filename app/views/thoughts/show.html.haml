@@ -3,8 +3,9 @@
   $(function() {$('.resize-textarea').autogrow();});
 #thoughts_show
   - if  @thought.in_drop_box?
-    = t :in_drop_box
-    = link_to(t(:accept), accept_thought_path(@thought), :method => :put, :class => 'action')
+    .lil-space-bottom
+      %span.lil-size= t :in_drop_box
+      = link_to(t(:accept), accept_thought_path(@thought), :method => :put, :class => 'action')
   .body.resize-font.people-content= display_text @thought.body
   .norm-space-bottom.norm-space-top
     .action
