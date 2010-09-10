@@ -8,5 +8,5 @@
       = link_to t(:cancel), '', :class => 'subtle-action cancel-select-project-link'
 .project
   .project-link{:id => ['thought', thought.id, 'project', 'link']}
-    = render 'meta_data_project_link', :thought => thought
+    = render 'thoughts/meta_data_project_link', :thought => thought
   .subtle-action= link_to t(:change), '', :class => 'select-project-link'
