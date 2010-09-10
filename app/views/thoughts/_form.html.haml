@@ -4,19 +4,20 @@
 = form_for @thought do |f|
   .body-container
     = f.text_area :body, :class => 'resize-font resize-textarea body auto-focus'
-  .lil-space-top    
-    %span.align-left
-      .prompt= f.label :tags_list, t(:tag).pluralize
-      .align-left.subtle-prompt= t(:optional)
-    %span.align-left.lil-space-left= f.text_field :tags_list
-    - if person_signed_in?
-      %span.align-left.space-left
-        .prompt= t(:project)
+  - if defined?(include_meta_form) && include_meta_form
+    .lil-space-top    
+      %span.align-left
+        .prompt= f.label :tags_list, t(:tag).pluralize
         .align-left.subtle-prompt= t(:optional)
-      %span.align-left.lil-space-left= f.collection_select :project_id, current_person.projects.order('upper(name)').all, :id, :name, :include_blank => t(:none)
-    .align-right.actions
-      = f.hidden_field :state_event
-      = f.hidden_field :origin
-      = f.submit t(:save)
-      = link_to t(:cancel), :back, :class => 'subtle-action lil-space-left' if person_signed_in?
-    .clear
+      %span.align-left.lil-space-left= f.text_field :tags_list
+      - if person_signed_in?
+        %span.align-left.space-left
+          .prompt= t(:project)
+          .align-left.subtle-prompt= t(:optional)
+        %span.align-left.lil-space-left= f.collection_select :project_id, current_person.projects.order('upper(name)').all, :id, :name, :include_blank => t(:none)
+  .align-right.actions
+    = f.hidden_field :state_event
+    = f.hidden_field :origin
+    = f.submit t(:save)
+    = link_to t(:cancel), :back, :class => 'subtle-action lil-space-left' if person_signed_in?
+  .clear

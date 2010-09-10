@@ -11,6 +11,9 @@
     .action
       = render 'thought_controls', :thought => @thought
     .clear
+  .display-none
+    = render 'form'
+    .norm-space-bottom.norm-space-top
 .subtle-border-top.norm-none-padding
   .align-left.three-fourths
     = render 'comments', :thought => @thought
