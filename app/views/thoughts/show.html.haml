@@ -1,6 +1,8 @@
 = javascript ['jquery.resize-font','jquery.autogrow-textarea', 'jquery.ajax', 'jquery.tipsy', 'jquery.inline-editing']
 :javascript
   $(function() {$('.resize-textarea').autogrow();});
+%span.loading
+  = image_tag 'ajax-loader-bar.gif', :class => 'on-top'
 #thoughts_show
   - if  @thought.in_drop_box?
     .lil-space-bottom
@@ -11,9 +13,9 @@
     .action
       = render 'thought_controls', :thought => @thought
     .clear
-  .display-none
-    = render 'form'
-    .norm-space-bottom.norm-space-top
+#thoughts_edit.display-none
+  = render 'form', :remote => true
+  .norm-space-bottom.norm-space-top
 .subtle-border-top.norm-none-padding
   .align-left.three-fourths
     = render 'comments', :thought => @thought

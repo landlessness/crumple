@@ -2,6 +2,20 @@ $(document).ready(function(){
   initInlineEditBindings();
 })
 function initInlineEditBindings() {
+  $('#thoughts_show').find('.edit-thought-link').click(function () {
+    $('#thoughts_show').hide();
+    thought_editor = $('#thoughts_edit').show();
+    thought_editor.find('#thought_body').focus();
+    resize();
+    $(function() {$('.resize-textarea').autogrow();});
+    return false;
+  })
+  $('#thoughts_edit').find('.cancel-edit-thought-link').click(function () {
+    $('#thoughts_edit').hide();
+    $('#thoughts_show').show();
+    resize();
+    return false;
+  })
   $('.edit-comment-link').click(function () {
     comment = $(this).parents('.comment')
     comment_editor = comment.prev('.edit-comment');

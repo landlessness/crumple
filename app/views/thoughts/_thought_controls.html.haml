@@ -1,6 +1,6 @@
 .align-left
   = link_to t(:focus), focus_thought_path(thought), :class=>'space-right'
-  = link_to t(:edit), edit_thought_path(thought)
+  %span.edit-thought-link= link_to t(:edit), edit_thought_path(thought)
 .align-right
   - if thought.archived?
     = link_to t(:activate), activate_thought_path(thought), :method => :put, :class=>'space-right'
