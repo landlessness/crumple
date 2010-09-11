@@ -72,3 +72,8 @@ en:
   update: update
   updated_at: last updated
   created_at: created
+  drop_box_settings: drop box settings
+  download: download
+  drop_box_email_address: drop box email address
+  install_bookmarklet: 'install bookmarklet'
+  drag_and_drop_to_toolbar: 'drag link above to browser toolbar'

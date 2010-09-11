@@ -1,0 +1,5 @@
+#notice= notice
+.prompt= t(:email)
+.people-content= current_person.email
+.action= link_to t(:edit), edit_person_path(current_person)
+.lil-space-top.action= link_to t(:drop_box_settings), edit_drop_box_path(current_person.drop_box)

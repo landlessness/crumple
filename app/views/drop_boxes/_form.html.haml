@@ -1,0 +1,15 @@
+= form_for(@drop_box) do |f|
+  - if @drop_box.errors.any?
+    .error_explanation
+      = pluralize(@drop_box.errors.count, "error")
+      prohibited this drop_box from being saved:
+      %ul
+        - @drop_box.errors.full_messages.each do |msg|
+          %li= msg
+  .prompt= f.label :name
+  = f.text_field :name
+  .prompt= f.label :secret
+  = f.text_field :secret
+  .action
+    = f.submit
+    = link_to t(:cancel), my_drop_box_path
