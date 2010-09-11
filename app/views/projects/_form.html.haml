@@ -1,0 +1,20 @@
+= javascript ['jquery.resize-font','jquery.autogrow-textarea']
+:javascript
+  $(function() {$('.resize-textarea').autogrow();});
+= form_for(@project) do |f|
+  - if @project.errors.any?
+    .error_explanation
+      %h2
+        = pluralize(@project.errors.count, "error")
+        prohibited this project from being saved:
+      %ul
+        - @project.errors.full_messages.each do |msg|
+          %li= msg
+  .lil-space-bottom.prompt= f.label :name
+  = f.text_field :name, :class => 'resize-font body auto-focus'
+  .space-top.lil-space-bottom.prompt= f.label :description
+  = f.text_area :description, :class => 'resize-font resize-textarea body auto-focus'
+  .lil-space-top.align-right
+    = f.submit
+    %span.action= link_to t(:cancel), @project
+  .clear

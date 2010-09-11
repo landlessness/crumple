@@ -13,7 +13,7 @@
 - if defined?(include_people_count) && include_people_count
   .lil-space-top.subtle-prompt= t(:person).pluralize
   - if project.members.count > 0
-    .three-px-top.norm-size= link_to pluralize(project.members.count,t(:person)), project, :class=>'link gray'
+    .three-px-top.norm-size= pluralize(project.members.count,t(:person))
   - else
     .lil-size
       %em= t(:none)
