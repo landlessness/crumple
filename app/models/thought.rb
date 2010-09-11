@@ -4,7 +4,7 @@ class Thought < ActiveRecord::Base
 
   searchable do
     text :body, :boost => 2.0
-    text :tags_list, :project_name
+    text :tags_list, :project_name, :comments_list
     integer :person_id
     date :updated_at
     string :state
@@ -54,6 +54,10 @@ class Thought < ActiveRecord::Base
   end
   def tags_list_concat
     ''
+  end
+
+  def comments_list
+    comments.map(&:body).join(' ')
   end
 
   def project_name
