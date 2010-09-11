@@ -214,15 +214,19 @@ a:hover.subtle-delete-action, .subtle-delete-action a:hover, a:hover.delete-acti
   color: #7d0101;
   text-decoration: underline; }
 
-a.super-subtle-action, .super-subtle-action a, a.super-subtle-delete-action, .super-subtle-delete-action a {
-  font-size: 0.6em;
+.super-subtle-action a {
   text-decoration: none;
   color: #555555;
   text-transform: none; }
 
-a:hover.super-subtle-delete-action, .super-subtle-delete-action a:hover {
-  color: #7d0101;
-  text-decoration: underline; }
+.super-subtle-delete-action a {
+  color: #555555; }
+
+.super-subtle-delete-action a:hover {
+  color: #7d0101; }
+
+.super-subtle-delete-action {
+  visibility: hidden; }
 
 a:hover.clickable-object {
   text-decoration: underline; }

@@ -1,11 +1,11 @@
-= javascript ['jquery.resize-font', 'jquery.inline-editing', 'jquery.ajax']
+= javascript ['jquery.resize-font', 'jquery.inline-editing', 'jquery.ajax', 'jquery.hover']
 .align-left.three-fourths
   = form_tag(thoughts_path, :method => :get) do
     %table
       %tbody
         %tr
           %td= text_field_tag :q, @query, :class => ''
-          = hidden_field_tag :state, @state 
+          %td= hidden_field_tag :state, @state 
           %td#q_submit= submit_tag t(:search)
 .clear
 .lil-space-top.sub-lil-space-bottom
