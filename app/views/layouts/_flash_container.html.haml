@@ -3,7 +3,7 @@
     - next if msg.blank?
     %div{:id => ['flash', name]}
       .align-left
-        = msg
+        = msg.html_safe
       .align-right.action
-        .close-flash-message-link= link_to t(:close), ''
+        .close-flash-message-link= link_to(t(:close), '')
       .clear

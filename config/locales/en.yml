@@ -87,4 +87,5 @@ en:
       signed_in: ''
     registrations:
       signed_up: 'Welcome to Crumple! You have signed up successfully.'
-  
+    failure:
+      unauthenticated: 'Please <a href="/people/sign_in" class="link">sign in</a> or <a href="/people/sign_up" class="link">sign up</a>.'
