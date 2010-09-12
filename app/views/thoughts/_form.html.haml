@@ -15,6 +15,7 @@
           .prompt= t(:project)
           .align-left.subtle-prompt= t(:optional)
         %span.align-left.lil-space-left= f.collection_select :project_id, current_person.projects.order('upper(name)').all, :id, :name, :include_blank => t(:none)
+        %span.align-left.subtle-action.lil-space-left= link_to t(:new_project), new_project_path
   .align-right.actions
     = f.hidden_field :state_event
     = f.hidden_field :origin

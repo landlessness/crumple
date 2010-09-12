@@ -2,6 +2,14 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  devise:
+    sessions:
+      signed_in: ''
+    registrations:
+      signed_up: 'Welcome to Crumple! You have signed up successfully.'
+    failure:
+      unauthenticated: 'Please <a href="/people/sign_in" class="link">sign in</a> or <a href="/people/sign_up" class="link">sign up</a>.'
+
   product_name: crumple
   product_tag_line: a notebook
   product_version: proto
@@ -81,11 +89,3 @@ en:
   bookmarklet: drop box bookmarklet
   drag_and_drop_to_toolbar: 'drag link above to browser toolbar'
   add_ons: add-ons
-  
-  devise:
-    sessions:
-      signed_in: ''
-    registrations:
-      signed_up: 'Welcome to Crumple! You have signed up successfully.'
-    failure:
-      unauthenticated: 'Please <a href="/people/sign_in" class="link">sign in</a> or <a href="/people/sign_up" class="link">sign up</a>.'

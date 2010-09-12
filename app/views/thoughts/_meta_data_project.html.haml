@@ -3,7 +3,8 @@
   = image_tag 'ajax-loader-indicator.gif', :class => 'on-top sub-lil-space-top'
 .edit-project.display-none.sub-lil-space-top
   = form_for thought, :url => update_project_thought_path(thought), :html => {:class => "edit_thought_project"}, :remote => true do |f|
-    = f.collection_select :project_id, current_person.projects.order('upper(name)').all, :id, :name, {:include_blank => t(:none)}, :class => 'edit_thought_project_select'
+    %span= f.collection_select :project_id, current_person.projects.order('upper(name)').all, :id, :name, {:include_blank => t(:none)}, :class => 'edit_thought_project_select'
+    %span.subtle-action.new-project-link= link_to t(:new_project), new_project_path
     %div
       = link_to t(:cancel), '', :class => 'subtle-action cancel-select-project-link'
 .project

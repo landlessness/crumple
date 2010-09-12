@@ -207,14 +207,19 @@ a.link {
 .center-text {
   text-align: center 
 }
+.subtle-prompt {
+  font-size: $lil-size;
+  color: $subtle-gray;
+  text-transform: capitalize;
+}
 .prompt {
   font-size: $norm-size;
   color: $gray;
   text-transform: capitalize;
 }
-.subtle-prompt {
-  font-size: $lil-size;
-  color: $subtle-gray;
+.big-prompt {
+  font-size: $big-size;
+  color: $gray;
   text-transform: capitalize;
 }
 @mixin action-links {

@@ -1,7 +1,6 @@
 = javascript ['jquery.resize-font','jquery.autogrow-textarea', 'jquery.ajax', 'jquery.tipsy', 'jquery.inline-editing']
-.people-content.resize-font
-  %div= @project.name
-  .gray= @project.description
+.people-content.resize-font= @project.name
+.people-content.resize-font.gray= @project.description
 - if @tags
   with tags: 
   = @tags.join(' ')
