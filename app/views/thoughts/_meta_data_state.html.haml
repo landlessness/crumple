@@ -1,4 +1,5 @@
 - if !thought.active?
-  .subtle-prompt= t(:state)
-  - if thought.state
-    .lil-size= t(thought.state.to_sym) 
+  .lil-space-bottom
+    .subtle-prompt= t(:state)
+    - if thought.state
+      .lil-size= t(thought.state.to_sym) 
