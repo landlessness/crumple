@@ -85,4 +85,6 @@ en:
   devise:
     sessions:
       signed_in: ''
+    registrations:
+      signed_up: 'Welcome to Crumple! You have signed up successfully. Thanks for checking us out.'
   
