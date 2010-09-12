@@ -11,7 +11,7 @@ class DropBox < ActiveRecord::Base
   has_many :send_grid_emails
 
   def thoughts
-    Thought.with_state(:in_drop_box)
+    self.person.thoughts.with_state(:in_drop_box)
   end
 
   def email_address
