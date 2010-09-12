@@ -338,7 +338,7 @@ body:before {
 #about {
   margin: 5% 0px; }
 
-.new_comment .body, .edit_comment .body, .edit_project .body, .edit_thought .body {
+.new_comment .body, .edit_comment .body, .edit_project .body, .new_project .body, .edit_thought .body {
   height: 1em; }
 
 .new_thought .body {
