@@ -8,7 +8,8 @@
         = link_to t(:project).pluralize, projects_path, :class => 'lil-space-left' + projects_nav_class
         = link_to_drop_box
       .align-right
-        = link_to t(:settings), me_path
+        = link_to t(:add_ons), add_ons_path, :class => add_ons_nav_class
+        = link_to t(:settings), me_path, :class => 'lil-space-left' + settings_nav_class
         = link_to t(:sign_out), destroy_person_session_path, :class => 'lil-space-left'
       .clear
   - else

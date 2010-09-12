@@ -1,0 +1,16 @@
+- form_for @add_on do |f|
+  = f.error_messages
+  %p
+    = f.label :name
+    %br
+    = f.text_field :name
+  %p
+    = f.label :description
+    %br
+    = f.text_area :description
+  %p
+    = f.label :person
+    %br
+    = f.text_field :person
+  %p
+    = f.submit

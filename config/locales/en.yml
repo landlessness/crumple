@@ -26,12 +26,16 @@ en:
   privacy: privacy
   legal: legal
   creative_commons_license: Creative Commons 3.0 License
+  archive_success: Thought is now archived.
+  activate_success: Thought is now active.
+  accept_success: Thought is now accepted from drop box.
   archived: archived
+  archives: archives
+  archive: archive  
   in_drop_box: in drop box
   active: active
   accept: accept
   activate: activate
-  archive: archive
   r_u_sure: are you sure?
   delete: delete
   destroy: delete
@@ -47,7 +51,6 @@ en:
   search: search
   next: next
   previous: previous
-  archives: archives
   empty_search_message: your search did not match any thoughts
   try_different_keywords: try different keywords
   try_searching_archives: search archives
@@ -75,8 +78,9 @@ en:
   drop_box_settings: drop box settings
   download: download to address book
   drop_box_email_address: drop box email
-  bookmarklet: drop dox bookmarklet
+  bookmarklet: drop box bookmarklet
   drag_and_drop_to_toolbar: 'drag link above to browser toolbar'
+  add_ons: add-ons
   
   devise:
     sessions:

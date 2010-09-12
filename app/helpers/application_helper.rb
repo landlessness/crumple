@@ -58,6 +58,18 @@ module ApplicationHelper
   def drop_box_nav_class
     drop_box_nav? ? ' current-nav ' : ''
   end
+  def add_ons_nav?
+    controller_name == 'add_ons'
+  end
+  def add_ons_nav_class
+    add_ons_nav? ? ' current-nav ' : ''
+  end
+  def settings_nav?
+    controller_name == 'people' && action_name == 'show'
+  end
+  def settings_nav_class
+    settings_nav? ? ' current-nav ' : ''
+  end
   def page_entries_info(collection, options = {})
     entry_name = options[:entry_name] ||
       (collection.empty?? 'entry' : collection.first.class.name.underscore.sub('_', ' '))

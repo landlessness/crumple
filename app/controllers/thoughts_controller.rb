@@ -145,7 +145,7 @@ class ThoughtsController < ApplicationController
     @thought = current_person.thoughts.find(params[:id])
     respond_to do |format|
       if @thought.archive!
-        format.html { redirect_to(@thought, :notice => 'Thought was successfully archived.') }
+        format.html { redirect_to(@thought, :notice => t(:archive_success)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -158,7 +158,7 @@ class ThoughtsController < ApplicationController
     @thought = current_person.thoughts.find(params[:id])
     respond_to do |format|
       if @thought.accept!
-        format.html { redirect_to(@thought, :notice => 'Thought was accepted from the drop box.') }
+        format.html { redirect_to(@thought, :notice => t(:accept_success)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -171,7 +171,7 @@ class ThoughtsController < ApplicationController
     @thought = current_person.thoughts.find(params[:id])
     respond_to do |format|
       if @thought.activate!
-        format.html { redirect_to(@thought, :notice => 'Thought was successfully activated.') }
+        format.html { redirect_to(@thought, :notice => t(:activate_success)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

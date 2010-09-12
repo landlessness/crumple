@@ -1,0 +1,18 @@
+- title "Add On"
+
+%p
+  %strong Name:
+  = @add_on.name
+%p
+  %strong Description:
+  = @add_on.description
+%p
+  %strong Person:
+  = @add_on.person
+
+%p
+  = link_to "Edit", edit_add_on_path(@add_on)
+  |
+  = link_to "Destroy", @add_on, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", add_ons_path

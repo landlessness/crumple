@@ -1,4 +1,6 @@
 Crumple::Application.routes.draw do
+  resources :add_ons
+
   resources :pages, :only => [:show]
 
   resources :comments
