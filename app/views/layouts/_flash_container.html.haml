@@ -1,0 +1,9 @@
+#flash_container
+  - flash.each do |name, msg|
+    - next if msg.blank?
+    %div{:id => ['flash', name]}
+      .align-left
+        = msg
+      .align-right.action
+        .close-flash-message-link= link_to t(:close), ''
+      .clear
