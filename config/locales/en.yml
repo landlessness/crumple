@@ -77,3 +77,8 @@ en:
   drop_box_email_address: drop box email
   bookmarklet: drop dox bookmarklet
   drag_and_drop_to_toolbar: 'drag link above to browser toolbar'
+  
+  devise:
+    sessions:
+      signed_in: ''
+  

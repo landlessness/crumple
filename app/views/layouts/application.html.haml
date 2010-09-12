@@ -8,6 +8,7 @@
           = render 'layouts/header'
           #flash_container
             - flash.each do |name, msg|
+              - next if msg.blank?
               = content_tag :div, msg, :id => "flash_#{name}"
           #content
             = yield
