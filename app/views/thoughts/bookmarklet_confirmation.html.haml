@@ -5,6 +5,6 @@ My
 = link_to t(:new_thought), thought_path(@thought), :class => 'link'
 is in my
 = link_to(t(:drop_box), my_drop_box_path, :class => 'link') + ':'
-.lil-space-top.body.people-content= link_to(truncate(simpler_format(h(@thought.body)), :length => 313).html_safe, @thought)
+.lil-space-top.body.people-content= link_to(truncate(h(@thought.body), :length => 313).html_safe, @thought)
 .lil-space-top.action
   = link_to_function t(:close), 'window.close()'

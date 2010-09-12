@@ -58,12 +58,6 @@ module ThoughtsHelper
       link_to tag.name, link_path(tag, project)
     end.join(' ').html_safe
   end
-  def simpler_format(text)
-    text = text.to_s.dup
-    text.gsub!(/\r\n?/, "\n")
-    text.gsub!(/\n/, '\1<br />')
-    text
-  end
   private 
   def link_path(tag, project)
     project ? project_tag_thoughts_path(project, tag) : tag_thoughts_path(tag)

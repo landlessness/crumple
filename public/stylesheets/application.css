@@ -428,7 +428,8 @@ a.current-nav, #footer a.current-nav {
   line-height: 1.4em;
   letter-spacing: 0.04em;
   font-family: "Times New Roman", Georgia, Serif;
-  color: white; }
+  color: white;
+  white-space: pre-line; }
 
 .people-content a {
   color: white; }
