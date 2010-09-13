@@ -11,8 +11,9 @@
       .clear
   = div_for comment do
     %a{:name => comment_a_name(comment)}
-    .body.resize-font.people-content
-      = display_text(comment.body)
+    -# important to have the body and the classes on the same line
+    -# otherwise creates a new line break
+    .body.resize-font.people-content= display_text(comment.body)
     .sub-lil-space-top.norm-space-bottom
       .align-left
         %span.edit-comment-link= link_to t(:edit),'', :class=>'subtle-action'
