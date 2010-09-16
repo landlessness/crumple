@@ -9,5 +9,8 @@ gem 'sunspot_rails', :git => 'http://github.com/outoftime/sunspot.git'
 gem 'haml'
 gem 'high_voltage'
 
-gem 'nifty-generators', :group => :development
-gem 'jquery-rails', :group => :development
+group :development do
+  gem 'nifty-generators'
+  # heroku cannot find this gem
+  # gem 'jquery-rails'
+end
