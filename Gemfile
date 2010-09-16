@@ -6,7 +6,10 @@ gem "will_paginate", "~> 3.0.pre2"
 gem 'hoptoad_notifier'
 gem 'nokogiri'
 gem 'sunspot_rails', :git => 'http://github.com/outoftime/sunspot.git'
-gem 'nifty-generators'
 gem 'haml'
 gem 'high_voltage'
-gem 'jquery-rails'
+
+group :development do
+  gem 'nifty-generators'
+  gem 'jquery-rails'
+end
