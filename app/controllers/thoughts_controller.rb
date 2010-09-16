@@ -141,6 +141,7 @@ class ThoughtsController < ApplicationController
     @thought = current_person.thoughts.find(params[:id])
   end
 
+  # TODO: dry up all these puts
   def archive
     @thought = current_person.thoughts.find(params[:id])
     respond_to do |format|
@@ -172,6 +173,19 @@ class ThoughtsController < ApplicationController
     respond_to do |format|
       if @thought.activate!
         format.html { redirect_to(@thought, :notice => t(:activate_success)) }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @thought.errors, :status => :unprocessable_entity }
+      end
+    end      
+  end
+
+  def put_in_drop_box
+    @thought = current_person.thoughts.find(params[:id])
+    respond_to do |format|
+      if @thought.put_in_drop_box!
+        format.html { redirect_to(@thought, :notice => t(:put_in_drop_box_success)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

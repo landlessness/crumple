@@ -65,6 +65,10 @@ class Thought < ActiveRecord::Base
   end
 
   state_machine :initial => :active do
+    event :accept do
+      transition :in_drop_box => :active
+    end
+    
     event :archive do
       transition [:active, :in_drop_box] => :archived
     end
@@ -75,10 +79,6 @@ class Thought < ActiveRecord::Base
 
     event :put_in_drop_box do
       transition :active => :in_drop_box
-    end
-
-    event :accept do
-      transition :in_drop_box => :active
     end
   end
 

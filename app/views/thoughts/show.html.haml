@@ -4,10 +4,6 @@
 %span.loading
   = image_tag 'ajax-loader-bar.gif', :class => 'on-top'
 #thoughts_show
-  - if  @thought.in_drop_box?
-    .lil-space-bottom
-      %span.lil-size= t :in_drop_box
-      = link_to(t(:accept), accept_thought_path(@thought), :method => :put, :class => 'action')
   .body.resize-font.people-content= display_text @thought.body
   .norm-space-bottom.norm-space-top
     .action

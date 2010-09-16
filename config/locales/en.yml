@@ -34,16 +34,18 @@ en:
   privacy: privacy
   legal: legal
   creative_commons_license: Creative Commons 3.0 License
-  archive_success: Thought is now archived.
-  activate_success: Thought is now active.
-  accept_success: Thought is now accepted from drop box.
+  archive_success: Thought is archived.
+  activate_success: Thought is active.
+  put_in_drop_box_success: Thought is in drop box.
+  accept_success: Thought is accepted from drop box.
   archived: archived
   archives: archives
-  archive: archive  
+  archive: archive
   in_drop_box: in drop box
   active: active
   accept: accept
   activate: activate
+  put_in_drop_box: put in drop box
   r_u_sure: are you sure?
   delete: delete
   destroy: delete

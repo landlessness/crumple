@@ -1,5 +1,4 @@
-- if !thought.active?
-  .lil-space-bottom
-    .subtle-prompt= t(:state)
-    - if thought.state
-      .lil-size= t(thought.state.to_sym) 
+.lil-space-bottom
+  .subtle-prompt= t(:state)
+  .lil-size= t(thought.state.to_sym)
+  %span.subtle-action= link_to_state_events(thought, 'lil-space-right')

@@ -36,6 +36,7 @@ Crumple::Application.routes.draw do
       put :archive
       put :activate
       put :accept
+      put :put_in_drop_box
       put :update_project
       get :focus
       get :bookmarklet_confirmation

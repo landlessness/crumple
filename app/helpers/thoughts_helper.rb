@@ -41,6 +41,11 @@ module ThoughtsHelper
     end
     cloud.html_safe
   end
+  def link_to_state_events(thought, link_classes)
+    thought.state_events.map do |e|
+      link_to t(e), instance_eval(e.to_s+'_thought_path(thought)'), :method => :put, :class => link_classes
+    end.join(' ').html_safe
+  end
 
   def link_to_new_thought(project=nil)
      if project 
