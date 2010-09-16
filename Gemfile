@@ -8,7 +8,7 @@ gem 'nokogiri'
 gem 'sunspot_rails', :git => 'http://github.com/outoftime/sunspot.git'
 gem 'haml'
 gem 'high_voltage'
-gem 'jquery-rails'
+gem 'jquery-rails', :git => 'http://github.com/indirect/jquery-rails.git' 
 
 group :development do
   gem 'nifty-generators'
