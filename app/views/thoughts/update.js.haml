@@ -1,2 +1,2 @@
 thought = $("#thoughts_show");
-thought.children('.people-content').html("#{escape_javascript(@thought.body)}");
+thought.children('.people-content').html("#{escape_javascript(display_text(@thought.body))}");
