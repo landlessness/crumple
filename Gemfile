@@ -9,7 +9,5 @@ gem 'sunspot_rails', :git => 'http://github.com/outoftime/sunspot.git'
 gem 'haml'
 gem 'high_voltage'
 
-group :development do
-  gem 'nifty-generators'
-  gem 'jquery-rails'
-end
+gem 'nifty-generators', :group => :development
+gem 'jquery-rails', :group => :development
