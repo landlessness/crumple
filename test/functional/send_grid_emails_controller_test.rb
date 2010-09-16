@@ -56,6 +56,7 @@ class SendGridEmailsControllerTest < ActionController::TestCase
   end
 
   test "should create send_grid_email" do
+    assert_not_nil @send_grid_email
     assert_difference('SendGridEmail.count') do
       post :create, :send_grid_email => @send_grid_email.attributes
     end

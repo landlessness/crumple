@@ -5,7 +5,7 @@ class CommentsControllerTest < ActionController::TestCase
   
   setup do
     @comment = comments(:one)
-    @thought = thoughts(:one)
+    @thought = thoughts(:deep)
     @person = people(:brian)
     sign_in @person
   end

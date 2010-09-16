@@ -1,5 +1,4 @@
 brian:
-  id: 1
   email: brian@landlessness.net
   encrypted_password: $2a$10$MpTrcwba5Iw1PxvE35kr/uH.3hd6zqLrEXmBQqvGwWsGjTX/CcNk6
   password_salt: $2a$10$MpTrcwba5Iw1PxvE35kr/u
@@ -15,7 +14,6 @@ brian:
   updated_at: 2010-07-28 22:53:09.227903
 
 fred:
-  id: 2
   email: fred@landlessness.net
   encrypted_password: $2a$10$MpTrcwba5Iw1PxvE35kr/uH.3hd6zqLrEXmBQqvGwWsGjTX/CcNk6
   password_salt: $2a$10$MpTrcwba5Iw1PxvE35kr/u

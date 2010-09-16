@@ -30,13 +30,13 @@ class ThoughtTest < ActiveSupport::TestCase
   end
 
   test "tags are assigned to thoughts and have owners" do
+    new_tags_list = %w(blue green orange)
+    orig_tags = %w(foo bar)
     
-    tags_list = %w(blue green orange)
+    assert_equal orig_tags, @person.tags.map(&:name)
+    t = @person.thoughts.create :body => 'this is a thought with tags', :tags_list => new_tags_list.join(' ')
     
-    assert @person.tags.empty?, 'person should not own any tags at the beginning'
-    t = @person.thoughts.create :body => 'this is a thought with tags', :tags_list => tags_list.join(' ')
-    
-    assert_equal tags_list.sort, @person.tags.map(&:name).sort
-    assert_equal tags_list.join(' '), t.tags_list
+    assert_equal ["bar", "blue", "foo", "green", "orange"], @person.tags.reload.map(&:name).sort
+    assert_equal new_tags_list.join(' '), t.tags_list
   end
 end

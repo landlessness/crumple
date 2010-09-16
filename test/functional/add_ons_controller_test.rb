@@ -1,6 +1,13 @@
 require 'test_helper'
 
 class AddOnsControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
+  
+  setup do
+    @person = people(:brian)
+    sign_in @person
+  end
+  
   def test_index
     get :index
     assert_template 'index'

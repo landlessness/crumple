@@ -35,7 +35,7 @@ class DropBox < ActiveRecord::Base
     body.gsub!(/^[\s]*project:(.+)?[\s]*$[\n]?/i, '')
     project_name = $1.strip if $1    
     project = self.person.projects.where('projects.name ilike ?', project_name).first if project_name
-    
+
     # get the tags
     body.gsub!(/^[\s]*tag[s]?:(.+)?[\s]*$[\n]?/i, '')
     tags_list = $1.strip if $1

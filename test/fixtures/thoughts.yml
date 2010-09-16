@@ -1,11 +1,9 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  id: 1
+deep:
   body: this is a really deep thought
-  person_id: 1
+  person: brian
 
-two:
-  id: 2
+shallow:
   body: this is a really shallow thought
-  person_id: 1
+  person: brian

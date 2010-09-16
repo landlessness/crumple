@@ -1,11 +1,11 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  tag: 
-  thought: 
-  person: 
+  tag: foo
+  thought: deep
+  person: brian
 
 two:
-  tag: 
-  thought: 
-  person: 
+  tag: bar
+  thought: deep
+  person: brian

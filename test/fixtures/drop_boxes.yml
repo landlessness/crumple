@@ -1,13 +1,11 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 brians_drop_box:
-  id: 1
-  person_id: 1
+  person: brian
   name: brian
   secret: 4444
 
 ahabs_drop_box:
-  id: 2
-  person_id: 
+  person: fred 
   name: ahab
   secret: mobydick

@@ -107,8 +107,8 @@ class ThoughtsController < ApplicationController
     end
   end
 
-  def auto_new
-    @thought = create_thought(params)
+  def auto_create
+    @thought = current_person.thoughts.new(params[:thought])
     
     respond_to do |format|
       if @thought.save
@@ -124,14 +124,15 @@ class ThoughtsController < ApplicationController
     render :layout => 'simple'
   end
 
-  def bookmarklet_new
-    @thought = create_thought(params)
+  def bookmarklet_create
+    params[:thought].merge!(:state_event=>:put_in_drop_box, :origin=>'bookmarklet')
+    @thought = current_person.thoughts.new(params[:thought])
     
     respond_to do |format|
-      if @thought.save
+      if @thought.save!
         format.html { redirect_to bookmarklet_confirmation_thought_path(@thought) }
       else
-        format.html { render :action => "new" }
+        render :text => 'Internal Server Error'
       end
     end    
   end
@@ -201,12 +202,18 @@ class ThoughtsController < ApplicationController
   # POST /thoughts
   # POST /thoughts.xml
   def create
-    @thought = create_thought(params)
+    @thought = current_person.thoughts.new(params[:thought])
     
     respond_to do |format|
       if @thought.save
-        format.html { redirect_to @thought }
-        format.xml  { render :xml => @thought, :status => :created, :location => @thought }
+        format.html do
+          @thought.update_attribute(:origin, 'web') if @thought.origin.blank?
+          redirect_to @thought
+        end
+        format.xml do
+          @thought.update_attribute(:origin, 'api') if @thought.origin.blank?
+          render :xml => @thought, :status => :created, :location => @thought
+        end
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @thought.errors, :status => :unprocessable_entity }
@@ -252,12 +259,4 @@ class ThoughtsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  protected
-  
-  def create_thought(params)
-    @thought = current_person.thoughts.new(params[:thought])
-    @thought.origin = Rails.application.config.top_level_domain if @thought.origin.blank?    
-    @thought
-  end
-  
 end

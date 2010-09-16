@@ -29,8 +29,8 @@ Crumple::Application.routes.draw do
   resources :drop_boxes
   resources :thoughts do
     collection do
-      get :auto_new
-      get :bookmarklet_new
+      get :auto_create
+      get :bookmarklet_create
     end
     member do
       put :archive

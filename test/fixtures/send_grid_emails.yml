@@ -7,7 +7,7 @@ one:
   from: brian@landlessness.net
   subject: Detroit Hackerspaces
   attachments: 10
-  drop_box: 1
+  drop_box: brians_drop_box
 
 two:
   text: MyText
@@ -16,7 +16,7 @@ two:
   from: MyString
   subject: MyString
   attachments: 1
-  drop_box: 2
+  drop_box: ahabs_drop_box
 
 without_subject:
   text: "this is a new thought\ntags: detroit hackerspace\nproject: Crumple"
@@ -24,7 +24,7 @@ without_subject:
   to: brian+4444@crumpleapp.com
   from: brian@landlessness.net
   attachments: 10
-  drop_box: 1
+  drop_box: brians_drop_box
 
 without_text:
   html: "<html><body><p>this is a new thought\ntags: detroit hackerspace\nproject: Crumple</p></body></html>"
@@ -32,12 +32,12 @@ without_text:
   from: brian@landlessness.net
   subject: Detroit Hackerspaces
   attachments: 10
-  drop_box: 1
+  drop_box: brians_drop_box
 
 without_text_or_subject:
   html: "<html><body><p>this is a new thought\ntags: detroit hackerspace\nproject: Crumple</p></body></html>"
   to: brian+4444@crumpleapp.com
   from: brian@landlessness.net
   attachments: 10
-  drop_box: 1
+  drop_box: brians_drop_box
 

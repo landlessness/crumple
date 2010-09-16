@@ -1,10 +1,8 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 exercise:
-  id: 1
   name: Exercise
   description: A project to track my thoughts about fitness
 crumple:
-  id: 2
   name: Crumple
   description: A notebook for creative thinkers

@@ -4,7 +4,7 @@ class ThoughtsControllerTest < ActionController::TestCase
   include Devise::TestHelpers
   
   setup do
-    @thought = thoughts(:one)
+    @thought = thoughts(:deep)
     @person = people(:brian)
     sign_in @person
   end
@@ -29,7 +29,7 @@ class ThoughtsControllerTest < ActionController::TestCase
     assert_redirected_to new_person_session_url
     # post :controller => 'devise/sessions', :action => 'new', :person => @person
     # assert_redirected_to new_thought_url
-    assert_equal '/thoughts/auto_new?thought[body]=this+is+me+typing+a+thought+before+i+have+signed+in.&thought[tags_list]=green+blue+red', @controller.session[:"person_return_to"]
+    assert_equal '/thoughts/auto_create?thought[body]=this+is+me+typing+a+thought+before+i+have+signed+in.&thought[tags_list]=green+blue+red', @controller.session[:"person_return_to"]
   end
 
   test "should create thought" do
@@ -38,31 +38,43 @@ class ThoughtsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to t=assigns(:thought)
-    assert_equal Rails.application.config.top_level_domain, t.origin    
+    assert_equal 'web', t.origin
   end
 
   test "should create thought, tags and tag ownership" do
     
     tags = %w(blue brown black).sort
     
-    assert @person.tags.empty?, 'person should not own any tags at the beginning'
+    assert !@person.tags.empty?, 'person should own any tags at the beginning'
     
     assert_difference('Thought.count') do
       post :create, :thought => @thought.attributes.merge(:tags_list => tags.join(' '))
     end
     
-    assert_equal tags, @person.tags.map(&:name).sort
+    assert_equal ["bar", "black", "blue", "brown", "foo"], @person.tags.map(&:name).sort
 
     assert_redirected_to t=assigns(:thought)
   end
 
   test "should create thought from bookmarklet" do
+    
     assert_difference('Thought.count') do
-      post :create, :thought => @thought.attributes.merge(:origin => 'bookmarklet')
+      post :create, :thought => @thought.attributes.merge('origin' => 'bookmarklet')
     end
 
     assert_redirected_to t=assigns(:thought)
     assert_equal 'bookmarklet', t.origin
+    
+  end
+
+  test "should create thought from bookmarklet_create" do
+    assert_difference('Thought.count') do
+      get :bookmarklet_create, :thought => @thought.attributes
+    end
+
+    assert_redirected_to bookmarklet_confirmation_thought_path(t=assigns(:thought))
+    assert_equal 'bookmarklet', t.origin
+    assert t.in_drop_box?
     
   end
 
@@ -73,7 +85,7 @@ class ThoughtsControllerTest < ActionController::TestCase
     t = assigns(:thought)
     assert_redirected_to t
     assert t.in_drop_box?, 'thought expected to be in drop box.'
-    assert_equal Rails.application.config.top_level_domain, t.origin
+    assert_equal 'web', t.origin
   end
 
   test "should show thought" do
@@ -95,7 +107,7 @@ class ThoughtsControllerTest < ActionController::TestCase
     
     tags = %w(blue brown black).sort
     
-    assert @person.tags.empty?, 'person should not own any tags at the beginning'
+    assert !@person.tags.empty?, 'person should own any tags at the beginning'
     
     put :update, :id => @thought.to_param, :thought => @thought.attributes.merge(:tags_list => tags.join(' '))
     

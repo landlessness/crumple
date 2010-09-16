@@ -1,3 +1,3 @@
 class AddOn < ActiveRecord::Base
-  attr_accessible :name, :description, :person
+  belongs_to :person
 end

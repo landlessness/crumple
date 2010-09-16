@@ -4,7 +4,7 @@ class TagsControllerTest < ActionController::TestCase
   include Devise::TestHelpers
   
   setup do
-    @tag = tags(:one)
+    @tag = tags(:foo)
     @person = people(:brian)
     sign_in @person
   end
