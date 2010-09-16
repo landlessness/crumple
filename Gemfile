@@ -10,11 +10,3 @@ gem 'haml'
 gem 'high_voltage'
 gem 'jquery-rails', :git => 'http://github.com/indirect/jquery-rails.git' 
 
-group :development do
-  gem 'nifty-generators'
-end
-
-group :development, :test do
-  gem 'mocha'
-  gem 'factory_girl_rails'
-end
