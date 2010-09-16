@@ -1,0 +1,3 @@
+state_container = $("#thought_#{@thought.id}_state_container");
+state_container.append("#{escape_javascript(render('meta_data_state_links', :thought => @thought))}");
+initAjaxBindings();

@@ -21,6 +21,9 @@ function initAjaxBindings() {
   $(".edit_thought")
     .bind("ajax:loading",  editing_thought)
     .bind("ajax:complete", completed_editing_thought);
+  $(".change-state")
+    .bind("ajax:loading",  changing_state)
+    .bind("ajax:complete", completed_changing_state);
 }
 
 function loading_new_comment() { 
@@ -126,4 +129,21 @@ function completed_editing_thought() {
   thought_editor.hide();
   spinner.hide();  
   resize();
+};
+
+function changing_state() { 
+  stateContainer = $(this).parents('.state-container');
+  stateLinks = $(this).parents('.state-links');
+  stateLinks.css('visibility', 'hidden');
+  spinner = stateContainer.prev('.loading');
+  spinner.show();
+};
+
+function completed_changing_state() { 
+  stateContainer = $(this).parents('.state-container');
+  stateLinks = $(this).parents('.state-links');
+  stateLinks.css('visibility', 'visible');
+  stateLinks.hide();
+  spinner = stateContainer.prev('.loading');
+  spinner.hide();
 };

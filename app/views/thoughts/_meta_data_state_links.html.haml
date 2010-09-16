@@ -1,0 +1,3 @@
+.state-links
+  .lil-size= t(thought.state.to_sym)
+  %span.subtle-action= link_to_state_events(thought, :class=>'lil-space-right change-state', :remote => true)

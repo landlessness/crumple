@@ -2,5 +2,4 @@
   = link_to t(:focus), focus_thought_path(thought), :class=>'space-right'
   %span.edit-thought-link= link_to t(:edit), edit_thought_path(thought)
 .align-right
-  = link_to_state_events(thought, 'space-right')
   = link_to t(:delete), thought, :confirm => t(:r_u_sure).capitalize, :method => :delete, :class => 'delete-action'

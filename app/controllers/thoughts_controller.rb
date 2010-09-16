@@ -148,6 +148,7 @@ class ThoughtsController < ApplicationController
       if @thought.archive!
         format.html { redirect_to(@thought, :notice => t(:archive_success)) }
         format.xml  { head :ok }
+        format.js {render 'change_state'}
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @thought.errors, :status => :unprocessable_entity }
@@ -161,6 +162,7 @@ class ThoughtsController < ApplicationController
       if @thought.accept!
         format.html { redirect_to(@thought, :notice => t(:accept_success)) }
         format.xml  { head :ok }
+        format.js {render 'change_state'}
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @thought.errors, :status => :unprocessable_entity }
@@ -174,6 +176,7 @@ class ThoughtsController < ApplicationController
       if @thought.activate!
         format.html { redirect_to(@thought, :notice => t(:activate_success)) }
         format.xml  { head :ok }
+        format.js {render 'change_state'}
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @thought.errors, :status => :unprocessable_entity }
@@ -187,6 +190,7 @@ class ThoughtsController < ApplicationController
       if @thought.put_in_drop_box!
         format.html { redirect_to(@thought, :notice => t(:put_in_drop_box_success)) }
         format.xml  { head :ok }
+        format.js {render 'change_state'}
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @thought.errors, :status => :unprocessable_entity }

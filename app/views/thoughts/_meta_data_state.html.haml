@@ -1,4 +1,5 @@
-.lil-space-bottom
-  .subtle-prompt= t(:state)
-  .lil-size= t(thought.state.to_sym)
-  %span.subtle-action= link_to_state_events(thought, 'lil-space-right')
+.subtle-prompt= t(:state)
+%span.loading
+  = image_tag 'ajax-loader-indicator.gif', :class => 'on-top sub-lil-space-top'
+.state-container{:id => ['thought', thought.id, 'state', 'container']}
+  = render 'thoughts/meta_data_state_links', :thought => thought

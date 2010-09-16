@@ -41,9 +41,9 @@ module ThoughtsHelper
     end
     cloud.html_safe
   end
-  def link_to_state_events(thought, link_classes)
+  def link_to_state_events(thought, options)
     thought.state_events.map do |e|
-      link_to t(e), instance_eval(e.to_s+'_thought_path(thought)'), :method => :put, :class => link_classes
+      link_to t(e), instance_eval(e.to_s+'_thought_path(thought)'), {:method => :put}.merge(options)
     end.join(' ').html_safe
   end
 
