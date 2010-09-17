@@ -10,6 +10,13 @@ module ApplicationHelper
       truncate(text, :length => 55)
     end.html_safe
   end
+  
+  def display_text_store_links(thought, screen_shot_urls)
+    display_text(thought.body.strip) do |url|
+      next if /^file/ =~ url
+      screen_shot_urls << url
+    end
+  end
   # todo DRY this stuff up
   def about_nav?
     controller_name == 'pages' && @page_name == 'about'

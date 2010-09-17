@@ -1,14 +1,11 @@
 = javascript ['jquery.resize-font','jquery.autogrow-textarea', 'jquery.ajax', 'jquery.tipsy', 'jquery.inline-editing', 'jquery.hover']
 :javascript
   $(function() {$('.resize-textarea').autogrow();});
+- screen_shot_urls = []
 %span.loading
   = image_tag 'ajax-loader-bar.gif', :class => 'on-top'
 #thoughts_show
-  .body.resize-font.people-content
-    - screen_shot_urls = []
-    = display_text(@thought.body) do |url|
-      - next if /^file/ =~ url
-      - screen_shot_urls << url
+  .body.resize-font.people-content<= display_text_store_links(@thought, screen_shot_urls)
   .norm-space-bottom.norm-space-top
     .action
       = render 'thought_controls', :thought => @thought

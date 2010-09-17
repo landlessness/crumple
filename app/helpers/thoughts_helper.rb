@@ -63,7 +63,7 @@ module ThoughtsHelper
       link_to tag.name, link_path(tag, project)
     end.join(' ').html_safe
   end
-  def pinky(url)
+  def link_to_pinky_img(url)
     pinky_url = 'http://pinkyurl.com/i'
     width = 225
     height = 130
