@@ -1,0 +1,6 @@
+- unless screen_shot_urls.empty?
+  .subtle-border-top.norm-none-padding
+    - screen_shot_urls.each do |url|
+      %span.align-left.space-right.space-bottom 
+        = link_to pinky(url)
+    .clear

@@ -9,4 +9,3 @@ gem 'sunspot_rails', :git => 'http://github.com/outoftime/sunspot.git'
 gem 'haml'
 gem 'high_voltage'
 gem 'jquery-rails', :git => 'http://github.com/indirect/jquery-rails.git' 
-

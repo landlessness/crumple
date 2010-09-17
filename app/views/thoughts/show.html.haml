@@ -4,7 +4,10 @@
 %span.loading
   = image_tag 'ajax-loader-bar.gif', :class => 'on-top'
 #thoughts_show
-  .body.resize-font.people-content= display_text @thought.body
+  .body.resize-font.people-content
+    - screen_shot_urls = []
+    = display_text(@thought.body) do |url|
+      - screen_shot_urls << url
   .norm-space-bottom.norm-space-top
     .action
       = render 'thought_controls', :thought => @thought
@@ -12,6 +15,7 @@
 #thoughts_edit.display-none
   = render 'form', :remote => true
   .norm-space-bottom.norm-space-top
+= render 'light_box', :screen_shot_urls => screen_shot_urls
 .subtle-border-top.norm-none-padding
   .align-left.three-fourths
     = render 'comments', :thought => @thought

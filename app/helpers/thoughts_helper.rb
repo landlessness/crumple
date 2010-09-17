@@ -63,6 +63,21 @@ module ThoughtsHelper
       link_to tag.name, link_path(tag, project)
     end.join(' ').html_safe
   end
+  def pinky(url)
+    pinky_url = 'http://pinkyurl.com/i'
+    width = 225
+    height = 130
+    api_key = 'crumpleapp1285081537'
+    link_to(image_tag(
+      pinky_url +
+      '?url=' + url +
+      '&out-format=png' +
+      '&resize=' + width.to_s +
+      "&crop=0%2C0%2C#{width}%2C#{height}" +
+      '&key=#{api_key}',
+      :class => 'image-top' ),
+      url, :class => 'auto-link')
+  end
   private 
   def link_path(tag, project)
     project ? project_tag_thoughts_path(project, tag) : tag_thoughts_path(tag)
