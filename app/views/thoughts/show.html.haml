@@ -7,6 +7,7 @@
   .body.resize-font.people-content
     - screen_shot_urls = []
     = display_text(@thought.body) do |url|
+      - next if /^file/ =~ url
       - screen_shot_urls << url
   .norm-space-bottom.norm-space-top
     .action
