@@ -16,7 +16,7 @@ class Thought < ActiveRecord::Base
   belongs_to :person
   belongs_to :project
   has_many :comments, :dependent => :destroy
-  has_many :send_grid_emails
+  has_many :send_grid_emails, :dependent => :destroy
   
   has_many :taggings, :dependent => :destroy
   has_many :tags, :through => :taggings, :uniq => true

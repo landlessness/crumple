@@ -1,6 +1,6 @@
 class Person < ActiveRecord::Base
   
-  has_many :thoughts
+  has_many :thoughts, :dependent => :destroy
   has_many :comments, :through => :thoughts
   has_many :memberships, :dependent => :destroy
   has_many :projects, :through => :memberships
