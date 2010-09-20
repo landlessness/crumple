@@ -1,0 +1,8 @@
+.space-bottom.prompt Forgot your password?
+
+= form_for(resource, :as => resource_name, :url => password_path(resource_name)) do |f|
+  = devise_error_messages!
+  .prompt= f.label :email
+  = f.text_field :email
+  = f.submit 'Send reset email'
+.lil-space-top.action= render :partial => 'devise/shared/links'
