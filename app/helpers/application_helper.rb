@@ -7,7 +7,7 @@ module ApplicationHelper
   def display_text(text)
     auto_link(h(text), :html => {:class => 'auto-link'}) do |text|
       yield text if block_given?
-      truncate(text, :length => 55)
+      truncate(text, :length => 52)
     end.html_safe
   end
   
