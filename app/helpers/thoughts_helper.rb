@@ -65,7 +65,7 @@ module ThoughtsHelper
   end
   def link_to_pinky_img(url)
     pinky_url = 'http://pinkyurl.com/i'
-    width = 225
+    width = 208
     height = 130
     api_key = 'crumpleapp1285081537'
     link_to(image_tag(
@@ -75,8 +75,8 @@ module ThoughtsHelper
       '&resize=' + width.to_s +
       "&crop=0%2C0%2C#{width}%2C#{height}" +
       '&key=#{api_key}',
-      :class => 'image-top' ),
-      url, :class => 'auto-link')
+      {:class => 'image-top', :height => height, :width => width} ),
+      url, :class => 'auto-link light-box-img')
   end
   private 
   def link_path(tag, project)

@@ -592,3 +592,10 @@ a.auto-link {
   z-index: 10000;
   position: absolute;
 }
+.light-box-img {
+  display: block;
+  border: 2px solid $subtle-gray;
+}
+.light-box-img:hover {
+  border: 2px solid $white;
+}
