@@ -14,7 +14,7 @@ class DropBoxesController < ApplicationController
   # GET /drop_boxes/1.xml
   def show
     @drop_box = current_person.drop_box
-    @thoughts = @drop_box.thoughts.paginate(:per_page => 25, :page => params[:page], :order => 'updated_at DESC')
+    @thoughts = current_person.thoughts.with_state(:in_drop_box).paginate(:per_page => 25, :page => params[:page], :order => 'updated_at DESC')
     respond_to do |format|
       format.html # show.html.erb
       format.xml { render :xml => @drop_box }

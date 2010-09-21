@@ -8,6 +8,11 @@ class SendGridEmailTest < ActiveSupport::TestCase
     @project = projects(:crumple)
   end
 
+  test 'cannot find drop box email' do
+    m = SendGridEmail.create send_grid_emails(:bogus_email_address).attributes
+    assert !m.assigned_drop_box?
+  end
+
   test 'create a send grid email' do
     assert_not_nil @send_grid_email
     assert_difference('SendGridEmail.count') do    

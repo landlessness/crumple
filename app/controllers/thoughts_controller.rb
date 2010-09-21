@@ -40,21 +40,13 @@ class ThoughtsController < ApplicationController
 
 
       if @project && @tag
-        @tags = [@tag]
         @thoughts = @tag.thoughts.where(:project_id=>@project)
-        @taggings = @tag.taggings.joins(:thought).where(:thoughts=>{:project_id=>@project, :state=>@state.to_s})
       elsif @tag
-        @tags = [@tag]
         @thoughts = @tag.thoughts.where(:person_id=>current_person)
-        @taggings = @tag.taggings.where(:person_id=>current_person)
       elsif @project
-        @tags = @project.tags(@state)
         @thoughts = @project.thoughts
-        @taggings = @project.taggings(@state)
       else
-        @tags = current_person.tags_with_state(@state)
         @thoughts = current_person.thoughts
-        @taggings = current_person.taggings_with_state(@state)
       end
 
       @thoughts = @thoughts.with_state(@state)
@@ -112,6 +104,7 @@ class ThoughtsController < ApplicationController
     
     respond_to do |format|
       if @thought.save
+        @thought.update_attribute(:origin, 'web') if @thought.origin.blank?
         format.html { redirect_to @thought }
       else
         format.html { render :action => "new" }
@@ -142,61 +135,20 @@ class ThoughtsController < ApplicationController
     @thought = current_person.thoughts.find(params[:id])
   end
 
-  # TODO: dry up all these puts
   def archive
-    @thought = current_person.thoughts.find(params[:id])
-    respond_to do |format|
-      if @thought.archive!
-        format.html { redirect_to(@thought, :notice => t(:archive_success)) }
-        format.xml  { head :ok }
-        format.js {render 'change_state'}
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @thought.errors, :status => :unprocessable_entity }
-      end
-    end      
+    fire_event(:archive)
   end
 
   def accept
-    @thought = current_person.thoughts.find(params[:id])
-    respond_to do |format|
-      if @thought.accept!
-        format.html { redirect_to(@thought, :notice => t(:accept_success)) }
-        format.xml  { head :ok }
-        format.js {render 'change_state'}
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @thought.errors, :status => :unprocessable_entity }
-      end
-    end      
+    fire_event(:accept)
   end
 
   def activate
-    @thought = current_person.thoughts.find(params[:id])
-    respond_to do |format|
-      if @thought.activate!
-        format.html { redirect_to(@thought, :notice => t(:activate_success)) }
-        format.xml  { head :ok }
-        format.js {render 'change_state'}
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @thought.errors, :status => :unprocessable_entity }
-      end
-    end      
+    fire_event(:activate)
   end
 
   def put_in_drop_box
-    @thought = current_person.thoughts.find(params[:id])
-    respond_to do |format|
-      if @thought.put_in_drop_box!
-        format.html { redirect_to(@thought, :notice => t(:put_in_drop_box_success)) }
-        format.xml  { head :ok }
-        format.js {render 'change_state'}
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @thought.errors, :status => :unprocessable_entity }
-      end
-    end      
+    fire_event(:put_in_drop_box)
   end
 
   # POST /thoughts
@@ -258,5 +210,19 @@ class ThoughtsController < ApplicationController
       format.html { redirect_to(thoughts_url) }
       format.xml  { head :ok }
     end
+  end
+  protected
+  def fire_event(event)
+    @thought = current_person.thoughts.find(params[:id])
+    respond_to do |format|
+      if @thought.fire_events(event)
+        format.html { redirect_to(@thought, :notice => t((event.to_s+'_success').to_sym)) }
+        format.xml  { head :ok }
+        format.js {render 'change_state'}
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @thought.errors, :status => :unprocessable_entity }
+      end
+    end      
   end
 end

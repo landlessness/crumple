@@ -15,21 +15,58 @@ class ThoughtsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:thoughts)
   end
 
+  test "should get index with query" do
+    get :index, :q => 'test'
+    assert_response :success
+    assert_not_nil assigns(:thoughts)
+  end
+
+  test "should get index with blank query" do
+    get :index, :q => ''
+    assert_response :success
+    assert_not_nil assigns(:thoughts)
+  end
+  
+  test "should get index with project & tag" do
+    get :index, :project_id => projects(:crumple).to_param, :tag_id => tags(:foo).to_param
+    assert_response :success
+    assert_not_nil assigns(:thoughts)
+  end
+  
+  test "should get index with project" do
+    get :index, :project_id => projects(:crumple).to_param
+    assert_response :success
+    assert_not_nil assigns(:thoughts)
+  end
+  
+  test "should get index with tag" do
+    get :index, :tag_id => tags(:foo).to_param
+    assert_response :success
+    assert_not_nil assigns(:thoughts)
+  end
+  
   test "should get new" do
     get :new
     assert_response :success
   end
 
-  test "should create thought after signing in" do
+  test "should redirect to auto_create signing in" do
     sign_out @person
     get :new
     assert !@controller.person_signed_in?, 'person should NOT be signed in'
     assert_response :success
     post :create, :thought => {:body => 'this is me typing a thought before i have signed in.', :tags_list => 'green blue red'}
     assert_redirected_to new_person_session_url
-    # post :controller => 'devise/sessions', :action => 'new', :person => @person
-    # assert_redirected_to new_thought_url
     assert_equal '/thoughts/auto_create?thought[body]=this+is+me+typing+a+thought+before+i+have+signed+in.&thought[tags_list]=green+blue+red', @controller.session[:"person_return_to"]
+  end
+
+  test "should auto create thought" do
+    assert_difference('Thought.count') do
+      post :auto_create, :thought => @thought.attributes
+    end
+
+    assert_redirected_to t=assigns(:thought)
+    assert_equal 'web', t.origin
   end
 
   test "should create thought" do
@@ -77,6 +114,11 @@ class ThoughtsControllerTest < ActionController::TestCase
     assert t.in_drop_box?
     
   end
+  
+  test "should do bookmarklet confirm" do
+    get :bookmarklet_confirmation, :id => @thought.to_param
+    assert_response :success
+  end
 
   test "should create thought in drop box" do
     assert_difference('Thought.count') do
@@ -90,6 +132,11 @@ class ThoughtsControllerTest < ActionController::TestCase
 
   test "should show thought" do
     get :show, :id => @thought.to_param
+    assert_response :success
+  end
+
+  test "should focus thought" do
+    get :focus, :id => @thought.to_param
     assert_response :success
   end
 
@@ -118,7 +165,34 @@ class ThoughtsControllerTest < ActionController::TestCase
 
   test "should archive thought" do
     put :archive, :id => @thought.to_param
-    assert_redirected_to assigns(:thought)
+    assert_redirected_to t=assigns(:thought)
+    assert t.archived?
+  end
+
+  test "should accept thought" do
+    @thought.put_in_drop_box!
+    put :accept, :id => @thought.to_param
+    assert_redirected_to t=assigns(:thought)
+    assert t.active?
+  end
+
+  test "should activate thought" do
+    @thought.archive!
+    put :activate, :id => @thought.to_param
+    assert_redirected_to t=assigns(:thought)
+    assert t.active?
+  end
+
+  test "should put thought in drop box" do
+    put :put_in_drop_box, :id => @thought.to_param
+    assert_redirected_to t=assigns(:thought)
+    assert t.in_drop_box?
+  end
+
+  test "should update project" do
+    assert_equal projects(:crumple), @thought.project
+    put :update_project, :id => @thought.to_param, :thought => {:project_id => projects(:exercise).to_param}
+    assert_equal projects(:exercise), @thought.reload.project
   end
 
   test "should destroy thought" do
@@ -128,4 +202,5 @@ class ThoughtsControllerTest < ActionController::TestCase
 
     assert_redirected_to thoughts_url
   end
+  
 end

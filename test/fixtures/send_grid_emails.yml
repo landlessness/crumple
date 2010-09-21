@@ -41,3 +41,9 @@ without_text_or_subject:
   attachments: 10
   drop_box: brians_drop_box
 
+bogus_email_address:
+  html: "<html><body><p>this is a new thought\ntags: detroit hackerspace\nproject: Crumple</p></body></html>"
+  to: fscottfitznobody+missing@crumpleapp.com
+  from: brian@landlessness.net
+  attachments: 10
+  

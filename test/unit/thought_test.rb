@@ -6,6 +6,21 @@ class ThoughtTest < ActiveSupport::TestCase
     @person = people(:brian)
   end
   
+  test 'taggings' do
+    assert t = @person.thoughts.create!(:body => 'this is a cool thought.', :tags_list => 'foo bar baz'), 'thought should create smoothly'
+    assert_equal 'foo bar baz', t.tags_list
+    t.update_attributes(:tags_list => 'red white blue')
+    assert_equal 'red white blue', t.reload.tags_list
+  end
+  
+  test 'taggings concat' do
+    assert t = @person.thoughts.create!(:body => 'this is a cool thought.', :tags_list => 'foo bar baz'), 'thought should create smoothly'
+    assert_equal 'foo bar baz', t.tags_list
+    t.update_attributes(:tags_list_concat => 'red white blue')
+    assert_equal 'foo bar baz red white blue', t.reload.tags_list
+    assert_equal '', t.tags_list_concat
+  end
+  
   test "a thought with a person and a body is valid" do
     assert @person.thoughts.create!(:body => 'this is a cool thought.'), 'thought should create smoothly'
   end

@@ -23,5 +23,8 @@ class DropBoxTest < ActiveSupport::TestCase
     assert_match /Validation failed: Person can't be blank/, e.message
   end
 
+  test "drop box email makes sense" do
+    assert_equal 'ahab+mobydick@localhost:3000', @person.drop_box.email_address
+  end
 end
 

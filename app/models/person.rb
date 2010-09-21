@@ -13,14 +13,6 @@ class Person < ActiveRecord::Base
     self.drop_boxes.create :name => self.email.split('@').first + Time.now.hash.to_s, :secret => rand(9999)
   end
   
-  def tags_with_state(state)
-    self.tags.joins(:thoughts).where(:thoughts=>{:state=>state.to_s})
-  end
-  
-  def taggings_with_state(state)
-    self.taggings.joins(:thought).where(:thoughts=>{:state=>state.to_s})
-  end
-  
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable and :timeoutable
   devise :database_authenticatable, :registerable,

@@ -29,7 +29,7 @@ Crumple::Application.routes.draw do
   resources :drop_boxes
   resources :thoughts do
     collection do
-      get :auto_create
+      get :auto_create # for the non-signed-in case
       get :bookmarklet_create
     end
     member do

@@ -10,10 +10,6 @@ class DropBox < ActiveRecord::Base
   belongs_to :person
   has_many :send_grid_emails
 
-  def thoughts
-    self.person.thoughts.with_state(:in_drop_box)
-  end
-
   def email_address
     self.name + '+' + self.secret + '@' + Rails.application.config.top_level_domain
   end

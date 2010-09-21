@@ -33,6 +33,11 @@ class ProjectsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should show project with archived thoughts" do
+    get :show, :id => @project.to_param, :archived_thoughts => true
+    assert_response :success
+  end
+
   test "should get edit" do
     get :edit, :id => @project.to_param
     assert_response :success
