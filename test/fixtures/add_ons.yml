@@ -2,8 +2,11 @@ music_notation:
   name: Music Notation
   underscored_name: music_notation
   description: create music notation using the simple ABC Notation http://abcnotation.com/
+  site: http://addons.crumpleapp.com/music_notation_thoughts
   
 textile:
   name: Textile
   underscored_name: textile
   description: create formatted thoughts with textile notation
+  site: http://addons.crumpleapp.com/textile_thoughts
+  
