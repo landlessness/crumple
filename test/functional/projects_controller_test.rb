@@ -21,11 +21,18 @@ class ProjectsControllerTest < ActionController::TestCase
   end
 
   test "should create project" do
+    Project.any_instance.stubs(:valid?).returns(true)
     assert_difference('Project.count') do
       post :create, :project => {:name => 'Foobar'}
     end
 
     assert_redirected_to project_path(assigns(:project))
+  end
+
+  test "invalid create project" do
+    Project.any_instance.stubs(:valid?).returns(false)
+    post :create, :project => {:name => 'Foobar'}
+    assert_template 'new'
   end
 
   test "should show project" do
@@ -44,8 +51,15 @@ class ProjectsControllerTest < ActionController::TestCase
   end
 
   test "should update project" do
+    Project.any_instance.stubs(:valid?).returns(true)
     put :update, :id => @project.to_param, :project =>  {:name => 'Fuzzbaz'}
     assert_redirected_to project_path(assigns(:project))
+  end
+  
+  test "invalid update project" do
+    Project.any_instance.stubs(:valid?).returns(false)
+    put :update, :id => @project.to_param, :project =>  {:name => 'Fuzzbaz'}
+    assert_template 'edit'
   end
 
   test "should destroy project" do

@@ -17,4 +17,9 @@ class ApplicationHelperTest < ActionView::TestCase
     display_text_store_links(thought, urls)
     assert_equal 2, urls.size
   end
+  
+  test "page entries info" do
+    @projects = Project.order('upper(name)').paginate(:page => 1, :per_page => Project.per_page)
+    assert_equal '2 projects', page_entries_info(@projects, :entry_name => t(:project))
+  end
 end

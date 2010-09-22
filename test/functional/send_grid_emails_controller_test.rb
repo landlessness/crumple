@@ -22,6 +22,8 @@ class SendGridEmailsControllerTest < ActionController::TestCase
   end
   
   test "should create thought from email using xml" do    
+    SendGridEmail.any_instance.stubs(:valid?).returns(true)
+    
     send_grid_mail_fixture = send_grid_mail_fixture()
     
     assert send_grid_mail_fixture[:to] && send_grid_mail_fixture[:from]
@@ -38,7 +40,20 @@ class SendGridEmailsControllerTest < ActionController::TestCase
     assert_response :ok
   end
 
+  test "invalid create thought from email using xml" do
+    SendGridEmail.any_instance.stubs(:valid?).returns(false)
+    
+    send_grid_mail_fixture = send_grid_mail_fixture()
+    
+    assert send_grid_mail_fixture[:to] && send_grid_mail_fixture[:from]
+    @request.user_agent = 'SendGrid 1.0'
+    post :create, send_grid_mail_fixture.merge(:format => 'xml')
+    assert_response :internal_server_error
+  end
+
   test "should create thought from html email " do    
+    SendGridEmail.any_instance.stubs(:valid?).returns(true)
+    
     send_grid_html_mail_fixture = send_grid_html_mail_fixture()
     
     assert send_grid_html_mail_fixture[:to] && send_grid_html_mail_fixture[:from]
@@ -56,12 +71,19 @@ class SendGridEmailsControllerTest < ActionController::TestCase
   end
 
   test "should create send_grid_email" do
+    SendGridEmail.any_instance.stubs(:valid?).returns(true)
     assert_not_nil @send_grid_email
     assert_difference('SendGridEmail.count') do
       post :create, :send_grid_email => @send_grid_email.attributes
     end
 
     assert_redirected_to send_grid_email_path(assigns(:send_grid_email))
+  end
+
+  test "invalid create send_grid_email" do
+    SendGridEmail.any_instance.stubs(:valid?).returns(false)
+    post :create, :send_grid_email => @send_grid_email.attributes
+    assert_template 'new'
   end
 
   test "should create send_grid_email using xml format" do
@@ -83,8 +105,15 @@ class SendGridEmailsControllerTest < ActionController::TestCase
   end
 
   test "should update send_grid_email" do
+    SendGridEmail.any_instance.stubs(:valid?).returns(true)
     put :update, :id => @send_grid_email.to_param, :send_grid_email => @send_grid_email.attributes
     assert_redirected_to send_grid_email_path(assigns(:send_grid_email))
+  end
+
+  test "invalid update send_grid_email" do
+    SendGridEmail.any_instance.stubs(:valid?).returns(false)
+    put :update, :id => @send_grid_email.to_param, :send_grid_email => @send_grid_email.attributes
+    assert_template 'edit'
   end
 
   test "should destroy send_grid_email" do

@@ -11,4 +11,7 @@ gem 'haml'
 gem 'high_voltage'
 gem 'jquery-rails', '~> 0.1.3'
 
-gem 'mocha'
+group :development, :test do 
+  gem 'mocha'
+  gem 'rails_code_qa'
+end

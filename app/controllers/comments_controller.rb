@@ -21,12 +21,8 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         format.js
-        format.html { redirect_to(@thought, :notice => 'Comment was successfully created.') }
-        format.xml  { render :xml => @comment, :status => :created, :location => @comment }
       else
-        format.js
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
+        format.js   { render :json => @comment.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -38,12 +34,8 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.update_attributes(params[:comment])
         format.js
-        format.html { redirect_to(@comment.thought, :notice => 'Comment was successfully updated.') }
-        format.xml  { head :ok }
       else
-        format.js
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
+        format.js { render :json => @comment.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -56,8 +48,6 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       format.js
-      format.html { redirect_to(@comment.thought, :notice => 'Comment was destroyed.') }
-      format.xml  { head :ok }
     end
   end
   

@@ -10,7 +10,7 @@
         %span.cancel-edit-comment-link= link_to t(:cancel), '', :class => 'subtle-action lil-space-left'
       .clear
   = div_for comment do
-    %a{:name => comment_a_name(comment)}
+    %a{:name => dom_id(comment)}
     -# important to have the body and the classes on the same line
     -# otherwise creates a new line break
     .body.resize-font.people-content= display_text(comment.body)

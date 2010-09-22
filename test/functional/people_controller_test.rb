@@ -20,11 +20,18 @@ class PeopleControllerTest < ActionController::TestCase
   end
 
   test "should create person" do
+    Person.any_instance.stubs(:valid?).returns(true)
     assert_difference('Person.count') do
       post :create, :person => {:email => 'brian@michiganessay.com', :password => 'foobar'}
     end
 
     assert_redirected_to person_path(assigns(:person))
+  end
+
+  test "invalid create person" do
+    Person.any_instance.stubs(:valid?).returns(false)
+    post :create, :person => {:email => 'brian@michiganessay.com', :password => 'foobar'}
+    assert_template 'new'
   end
 
   test "should show person" do
@@ -38,8 +45,15 @@ class PeopleControllerTest < ActionController::TestCase
   end
 
   test "should update person" do
+    Person.any_instance.stubs(:valid?).returns(true)
     put :update, :id => @person.to_param, :person => {:email => 'brian@mulloy.us', :password => 'fuzzbaz'}
     assert_redirected_to person_path(assigns(:person))
+  end
+
+  test "invalid update person" do
+    Person.any_instance.stubs(:valid?).returns(false)
+    put :update, :id => @person.to_param, :person => {:email => 'brian@mulloy.us', :password => 'fuzzbaz'}
+    assert_template 'edit'
   end
 
   test "should destroy person" do

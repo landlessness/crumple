@@ -21,11 +21,18 @@ class DropBoxesControllerTest < ActionController::TestCase
   end
 
   test "should create drop_box" do
+    DropBox.any_instance.stubs(:valid?).returns(true)
     assert_difference('DropBox.count') do
       post :create, :drop_box => {:name => 'foo', :secret => 'bar'}
     end
 
     assert_redirected_to my_drop_box_url
+  end
+
+  test "invalid create drop_box" do
+    DropBox.any_instance.stubs(:valid?).returns(false)
+    post :create, :drop_box => {:name => 'foo', :secret => 'bar'}
+    assert_template 'new'
   end
 
   test "should show drop_box" do
@@ -39,8 +46,15 @@ class DropBoxesControllerTest < ActionController::TestCase
   end
 
   test "should update drop_box" do
+    DropBox.any_instance.stubs(:valid?).returns(true)
     put :update, :id => @drop_box.to_param, :drop_box => {:name => 'fuzz', :secret => 'baz'}
     assert_redirected_to my_drop_box_url
+  end
+
+  test "should invalid update drop_box" do
+    DropBox.any_instance.stubs(:valid?).returns(false)
+    put :update, :id => @drop_box.to_param, :drop_box => {:name => 'fuzz', :secret => 'baz'}
+    assert_template 'edit'
   end
 
   test "should destroy drop_box" do

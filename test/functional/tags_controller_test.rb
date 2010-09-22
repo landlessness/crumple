@@ -21,11 +21,17 @@ class TagsControllerTest < ActionController::TestCase
   end
 
   test "should create tag" do
+    Tag.any_instance.stubs(:valid?).returns(true)
     assert_difference('Tag.count') do
       post :create, :tag => {:name => 'newuniquetag'}
     end
-
     assert_redirected_to tag_path(assigns(:tag))
+  end
+
+  test "invalid create tag" do
+    Tag.any_instance.stubs(:valid?).returns(false)
+    post :create, :tag => {:name => 'newuniquetag'}
+    assert_template 'new'
   end
 
   test "should show tag" do
@@ -39,8 +45,15 @@ class TagsControllerTest < ActionController::TestCase
   end
 
   test "should update tag" do
+    Tag.any_instance.stubs(:valid?).returns(true)
     put :update, :id => @tag.to_param, :tag =>  {:name => 'anothernewuniquetag'}
     assert_redirected_to tag_path(assigns(:tag))
+  end
+  
+  test "invalid update tag" do
+    Tag.any_instance.stubs(:valid?).returns(false)
+    put :update, :id => @tag.to_param, :tag =>  {:name => 'anothernewuniquetag'}
+    assert_template 'edit'
   end
 
   test "should destroy tag" do

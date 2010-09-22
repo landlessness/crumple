@@ -122,10 +122,10 @@ class ThoughtsController < ApplicationController
     @thought = current_person.thoughts.new(params[:thought])
     
     respond_to do |format|
-      if @thought.save!
+      if @thought.save
         format.html { redirect_to bookmarklet_confirmation_thought_path(@thought) }
       else
-        render :text => 'Internal Server Error'
+        format.html {render :text => 'Internal Server Error', :status => :unprocessable_entity}
       end
     end    
   end
