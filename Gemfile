@@ -12,6 +12,7 @@ gem 'high_voltage'
 gem 'jquery-rails', '~> 0.1.3'
 
 group :development, :test do 
+  gem 'nifty-generators'
   gem 'mocha'
   gem 'rails_code_qa'
 end

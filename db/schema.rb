@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(:version => 20100922094420) do
     t.integer  "person_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "underscored_name"
+    t.string   "element_name"
     t.string   "site"
     t.string   "type"
   end

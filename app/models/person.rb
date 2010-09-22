@@ -8,7 +8,7 @@ class Person < ActiveRecord::Base
 
   has_many :taggings, :dependent => :destroy
   has_many :tags, :through => :taggings, :uniq => true
-  
+
   after_create do
     self.drop_boxes.create :name => self.email.split('@').first + Time.now.hash.to_s, :secret => rand(9999)
   end
