@@ -1,3 +1,9 @@
-first:
-  name: To Do Lists
-  description: if you tag a tought as todo it will turn it into a todo item and provide todo list capability.
+music_notation:
+  name: Music Notation
+  underscored_name: music_notation
+  description: create music notation using the simple ABC Notation http://abcnotation.com/
+  
+textile:
+  name: Textile
+  underscored_name: textile
+  description: create formatted thoughts with textile notation

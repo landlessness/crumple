@@ -58,4 +58,5 @@ class AddOnsControllerTest < ActionController::TestCase
     assert_redirected_to add_ons_url
     assert !AddOn.exists?(add_on.id)
   end
+  
 end
