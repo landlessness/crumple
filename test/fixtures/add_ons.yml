@@ -2,11 +2,11 @@ music_notation:
   name: Music Notation
   element_name: music_notation_thought
   description: create music notation using the simple ABC Notation http://abcnotation.com/
-  site: http://addons.crumpleapp.com
+  site: http://labs.crumpleapp.com
   
 textile:
   name: Textile
   element_name: textile_thought
   description: create formatted thoughts with textile notation
-  site: http://addons.crumpleapp.com
+  site: http://labs.crumpleapp.com
   
