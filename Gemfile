@@ -10,3 +10,5 @@ gem 'sunspot_rails', '~> 1.2.rc3'
 gem 'haml'
 gem 'high_voltage'
 gem 'jquery-rails', '~> 0.1.3'
+
+gem 'mocha'
