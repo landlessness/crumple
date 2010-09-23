@@ -100,14 +100,13 @@ class ThoughtsController < ApplicationController
   end
 
   def auto_create
-    @thought = current_person.thoughts.new(params[:thought])
-    
+    @thought = marshal_thought(params[:thought])    
+    @thought.origin = 'web' if @thought.origin.blank?
     respond_to do |format|
       if @thought.save
-        @thought.update_attribute(:origin, 'web') if @thought.origin.blank?
         format.html { redirect_to @thought }
       else
-        format.html { render :action => "new" }
+        format.html { render :action => 'new' }
       end
     end    
   end
@@ -119,7 +118,7 @@ class ThoughtsController < ApplicationController
 
   def bookmarklet_create
     params[:thought].merge!(:state_event=>:put_in_drop_box, :origin=>'bookmarklet')
-    @thought = current_person.thoughts.new(params[:thought])
+    @thought = marshal_thought(params[:thought])
     
     respond_to do |format|
       if @thought.save
@@ -154,8 +153,7 @@ class ThoughtsController < ApplicationController
   # POST /thoughts
   # POST /thoughts.xml
   def create
-    @thought = current_person.thoughts.new(params[:thought])
-    
+    @thought = marshal_thought(params[:thought])
     respond_to do |format|
       if @thought.save
         format.html do
@@ -224,5 +222,11 @@ class ThoughtsController < ApplicationController
         format.xml  { render :xml => @thought.errors, :status => :unprocessable_entity }
       end
     end      
+  end
+  def marshal_thought(thought_params)
+    thought_clazz = params[:thought].delete(:type).constantize
+    if Thought.descendants.include? thought_clazz
+      thought_clazz.new(params[:thought].merge(:person => current_person))
+    end
   end
 end

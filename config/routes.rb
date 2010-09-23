@@ -27,6 +27,7 @@ Crumple::Application.routes.draw do
   match 'me', :to => 'people#show'
 
   resources :drop_boxes
+  resources :plain_text_thoughts, :controller => :thoughts
   resources :thoughts do
     collection do
       get :auto_create # for the non-signed-in case

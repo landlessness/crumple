@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100922185907) do
+ActiveRecord::Schema.define(:version => 20100923021007) do
 
   create_table "add_ons", :force => true do |t|
     t.string   "name"
@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(:version => 20100922185907) do
     t.datetime "updated_at"
     t.string   "state",      :default => "active"
     t.string   "origin"
+    t.string   "type"
   end
 
 end

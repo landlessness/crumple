@@ -37,7 +37,7 @@ class DropBox < ActiveRecord::Base
     tags_list = $1.strip if $1
     
     # create the thought
-    thought = self.person.thoughts.create :origin => 'email', :body => body, :tags_list => tags_list, :project => project
+    thought = self.person.plain_text_thoughts.create :origin => 'email', :body => body, :tags_list => tags_list, :project => project
     
     # put it in the drop dox
     thought.put_in_drop_box

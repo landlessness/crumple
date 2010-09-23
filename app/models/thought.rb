@@ -1,16 +1,15 @@
-class Thought < ActiveRecord::Base  
+class Thought < ActiveRecord::Base
   cattr_reader :per_page
   @@per_page = 10
 
   searchable do
-    text :body, :boost => 2.0
+    text :search_text, :boost => 2.0
     text :tags_list, :project_name, :comments_list
     integer :person_id
     date :updated_at
     string :state
   end
 
-  validates :body, :presence => true
   validates :person, :presence => true
 
   belongs_to :person
@@ -21,7 +20,7 @@ class Thought < ActiveRecord::Base
   has_many :taggings, :dependent => :destroy
   has_many :tags, :through => :taggings, :uniq => true
 
-  # TODO: should this tagging logic be somewhere else? maybe a factory?
+  # TODO: should this tagging logic be somewhere else? maybe a mixin module?
   def tags_list=(tags_string)
     return unless tags_string
     

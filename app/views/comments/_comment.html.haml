@@ -17,8 +17,8 @@
     .sub-lil-space-top.norm-space-bottom
       .align-left
         %span.edit-comment-link= link_to t(:edit),'', :class=>'subtle-action'
-        %span.lil-space-left= link_to t(:permalink), [@thought, comment], :class=>'subtle-action'
-        %span.lil-space-left= link_to t(:delete), [@thought, comment], :confirm => t(:r_u_sure), :method => :delete, :class=>'subtle-delete-action delete_comment', :remote => true
+        %span.lil-space-left= link_to t(:permalink), comment, :class=>'subtle-action'
+        %span.lil-space-left= link_to t(:delete), comment, :confirm => t(:r_u_sure), :method => :delete, :class=>'subtle-delete-action delete_comment', :remote => true
       .align-right
         %span.lil-size
           = time_ago_in_words comment.created_at

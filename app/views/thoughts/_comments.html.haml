@@ -5,7 +5,7 @@
 %span#new_comment_loading
   = image_tag 'ajax-loader-bar.gif', :class => 'on-top'
 .editing
-  = form_for [@thought, @comment], :remote => true do |f|
+  = form_for [@thought, @comment], :url => thought_comments_path(@thought), :remote => true do |f|
     .body-container
       = f.text_area :body, :class => 'resize-font resize-textarea body'
     .align-right.lil-space-top

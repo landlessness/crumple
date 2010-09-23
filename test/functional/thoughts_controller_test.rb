@@ -61,7 +61,7 @@ class ThoughtsControllerTest < ActionController::TestCase
   end
 
   test "should auto create thought" do
-    Thought.any_instance.stubs(:valid?).returns(true)
+    PlainTextThought.any_instance.stubs(:valid?).returns(true)
     assert_difference('Thought.count') do
       post :auto_create, :thought => @thought.attributes
     end
@@ -71,29 +71,30 @@ class ThoughtsControllerTest < ActionController::TestCase
   end
 
   test "invalid auto create thought" do
-    Thought.any_instance.stubs(:valid?).returns(false)
+    PlainTextThought.any_instance.stubs(:valid?).returns(false)
     post :auto_create, :thought => @thought.attributes
     assert_template 'new'
   end
 
   test "should create thought" do
-    Thought.any_instance.stubs(:valid?).returns(true)
+    PlainTextThought.any_instance.stubs(:valid?).returns(true)
     assert_difference('Thought.count') do
       post :create, :thought => @thought.attributes
     end
 
     assert_redirected_to t=assigns(:thought)
+    assert_equal @person, t.person
     assert_equal 'web', t.origin
   end
 
   test "invalid create thought" do
-    Thought.any_instance.stubs(:valid?).returns(false)
+    PlainTextThought.any_instance.stubs(:valid?).returns(false)
     post :create, :thought => @thought.attributes
     assert_template 'new'  
   end
 
   test "should create thought, tags and tag ownership" do
-    Thought.any_instance.stubs(:valid?).returns(true)
+    PlainTextThought.any_instance.stubs(:valid?).returns(true)
     
     tags = %w(blue brown black).sort
     
@@ -109,7 +110,7 @@ class ThoughtsControllerTest < ActionController::TestCase
   end
 
   test "should create thought from bookmarklet" do
-    Thought.any_instance.stubs(:valid?).returns(true)
+    PlainTextThought.any_instance.stubs(:valid?).returns(true)
     
     assert_difference('Thought.count') do
       post :create, :thought => @thought.attributes.merge('origin' => 'bookmarklet')
@@ -121,7 +122,7 @@ class ThoughtsControllerTest < ActionController::TestCase
   end
 
   test "should create thought from bookmarklet_create" do
-    Thought.any_instance.stubs(:valid?).returns(true)
+    PlainTextThought.any_instance.stubs(:valid?).returns(true)
     
     assert_difference('Thought.count') do
       get :bookmarklet_create, :thought => @thought.attributes
@@ -134,7 +135,7 @@ class ThoughtsControllerTest < ActionController::TestCase
   end
   
   test "invalid create thought from bookmarklet_create" do
-    Thought.any_instance.stubs(:valid?).returns(false)
+    PlainTextThought.any_instance.stubs(:valid?).returns(false)
     
     get :bookmarklet_create, :thought => @thought.attributes
     assert_response :unprocessable_entity
@@ -146,10 +147,10 @@ class ThoughtsControllerTest < ActionController::TestCase
   end
 
   test "should create thought in drop box" do
-    Thought.any_instance.stubs(:valid?).returns(true)
+    PlainTextThought.any_instance.stubs(:valid?).returns(true)
     
     assert_difference('Thought.count') do
-      post :create, :thought => {:body => 'this is a test thought', :state_event => 'put_in_drop_box'}
+      post :create, :thought => {:body => 'this is a test thought', :state_event => 'put_in_drop_box', :type => 'PlainTextThought'}
     end
     t = assigns(:thought)
     assert_redirected_to t
@@ -173,21 +174,21 @@ class ThoughtsControllerTest < ActionController::TestCase
   end
 
   test "should update thought" do
-    Thought.any_instance.stubs(:valid?).returns(true)
+    PlainTextThought.any_instance.stubs(:valid?).returns(true)
     
     put :update, :id => @thought.to_param, :thought => @thought.attributes
     assert_redirected_to assigns(:thought)
   end
   
   test "invalid update thought" do
-    Thought.any_instance.stubs(:valid?).returns(false)
+    PlainTextThought.any_instance.stubs(:valid?).returns(false)
     
     put :update, :id => @thought.to_param, :thought => @thought.attributes
     assert_template 'edit'
   end
   
   test "should update thought with new tag and tag ownership" do
-    Thought.any_instance.stubs(:valid?).returns(true)
+    PlainTextThought.any_instance.stubs(:valid?).returns(true)
     
     tags = %w(blue brown black).sort
     
@@ -201,7 +202,7 @@ class ThoughtsControllerTest < ActionController::TestCase
   end
 
   test "should archive thought" do
-    Thought.any_instance.stubs(:valid?).returns(true)
+    PlainTextThought.any_instance.stubs(:valid?).returns(true)
     
     put :archive, :id => @thought.to_param
     assert_redirected_to t=assigns(:thought)
@@ -209,7 +210,7 @@ class ThoughtsControllerTest < ActionController::TestCase
   end
 
   test "should accept thought" do
-    Thought.any_instance.stubs(:valid?).returns(true)
+    PlainTextThought.any_instance.stubs(:valid?).returns(true)
     
     @thought.put_in_drop_box!
     put :accept, :id => @thought.to_param
@@ -218,7 +219,7 @@ class ThoughtsControllerTest < ActionController::TestCase
   end
 
   test "should activate thought" do
-    Thought.any_instance.stubs(:valid?).returns(true)
+    PlainTextThought.any_instance.stubs(:valid?).returns(true)
     
     @thought.archive!
     put :activate, :id => @thought.to_param
@@ -227,7 +228,7 @@ class ThoughtsControllerTest < ActionController::TestCase
   end
 
   test "should put thought in drop box" do
-    Thought.any_instance.stubs(:valid?).returns(true)
+    PlainTextThought.any_instance.stubs(:valid?).returns(true)
     
     put :put_in_drop_box, :id => @thought.to_param
     assert_redirected_to t=assigns(:thought)
@@ -235,14 +236,14 @@ class ThoughtsControllerTest < ActionController::TestCase
   end
 
   test "invalid put thought in drop box" do
-    Thought.any_instance.stubs(:valid?).returns(false)
+    PlainTextThought.any_instance.stubs(:valid?).returns(false)
     
     put :put_in_drop_box, :id => @thought.to_param
     assert_template 'edit'
   end
 
   test "should update project" do
-    Thought.any_instance.stubs(:valid?).returns(true)
+    PlainTextThought.any_instance.stubs(:valid?).returns(true)
     
     assert_equal projects(:crumple), @thought.project
     put :update_project, :id => @thought.to_param, :thought => {:project_id => projects(:exercise).to_param}

@@ -4,8 +4,10 @@ deep:
   body: this is a really deep thought
   person: brian
   project: crumple
+  type: PlainTextThought
 
 shallow:
   body: this is a really shallow thought
   person: brian
   project: crumple
+  type: PlainTextThought
