@@ -258,8 +258,8 @@ class ThoughtsControllerTest < ActionController::TestCase
     assert_redirected_to thoughts_url
   end
 
-  test "show a random thought" do
-    
+  test 'routes with inheritance' do
+    assert_routing '/thoughts', :controller => 'thoughts', :action => 'index'
+    assert_routing "/thoughts/#{thoughts(:deep).to_param}", :controller => 'thoughts', :action => 'show', :id => thoughts(:deep).to_param
   end
-  
 end

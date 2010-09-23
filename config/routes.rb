@@ -16,12 +16,6 @@ Crumple::Application.routes.draw do
 
   devise_for :people, :path_names => { :sign_in => 'login', :sign_out => 'logout' }
 
-  # must come before the resources :thoughts line
-  # 
-  # to test this route: 
-  # curl --data '' --header 'content-type: text/xml' -X POST --user-agent 'SendGrid 1.0' 'localhost:3000/thoughts.xml?to=brian%2B4444@crumpleapp.com&text=hello%0Atags%3Acurl%0Aproject%3Atest&subject=hi'
-  match '/thoughts.:format', :to => 'send_grid_emails#create', :constraints => { :user_agent => /SendGrid/i, :format => 'xml' }, :via => :post
-
   # to give a pretty name to the downloaded vCard file
   match '/drop_box', :to => 'drop_boxes#show', :as => 'my_drop_box'
   match '/drop_box/crumple.:format', :to => 'drop_boxes#show', :via => :get
@@ -29,7 +23,6 @@ Crumple::Application.routes.draw do
   match 'me', :to => 'people#show'
 
   resources :drop_boxes
-  resources :plain_text_thoughts, :controller => :thoughts
   resources :thoughts do
     collection do
       get :auto_create # for the non-signed-in case
@@ -47,6 +40,13 @@ Crumple::Application.routes.draw do
     resources :comments
     resources :taggings
   end
+  resources :plain_text_thoughts, :controller => :thoughts
+
+  # must come before the resources :thoughts line
+  # 
+  # to test this route: 
+  # curl --data '' --header 'content-type: text/xml' -X POST --user-agent 'SendGrid 1.0' 'localhost:3000/thoughts.xml?to=brian%2B4444@crumpleapp.com&text=hello%0Atags%3Acurl%0Aproject%3Atest&subject=hi'
+  match '/thoughts.:format', :to => 'send_grid_emails#create', :constraints => { :user_agent => /SendGrid/i, :format => 'xml' }, :via => :post
 
   resources :people do
     resources :drop_boxes
