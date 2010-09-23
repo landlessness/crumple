@@ -1,7 +1,7 @@
 = javascript ['jquery.resize-font','jquery.autogrow-textarea','jquery.auto-focus']
 :javascript
   $(function() {$('.resize-textarea').autogrow();});
-= form_for @thought, :remote => remote do |f|
+= form_for @thought, :as => :thought, :remote => remote do |f|
   .body-container
     = f.text_area :body, :class => 'resize-font resize-textarea body auto-focus'
   - if defined?(include_meta_form) && include_meta_form
@@ -19,6 +19,7 @@
   .align-right.actions
     = f.hidden_field :state_event
     = f.hidden_field :origin
+    = f.hidden_field :type
     = f.submit t(:save)
     %span.cancel-edit-thought-link= link_to t(:cancel), :back, :class => 'subtle-action lil-space-left' if person_signed_in?
   .clear

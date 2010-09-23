@@ -91,7 +91,7 @@ class ThoughtsController < ApplicationController
   # GET /thoughts/new
   # GET /thoughts/new.xml
   def new
-    @thought = Thought.new params[:thought]
+    @thought = PlainTextThought.new params[:thought]
     @thought.project = current_person.projects.find(params[:project_id]) if person_signed_in? && params[:project_id]
     respond_to do |format|
       format.html # new.html.erb
@@ -224,9 +224,9 @@ class ThoughtsController < ApplicationController
     end      
   end
   def marshal_thought(thought_params)
-    thought_clazz = params[:thought].delete(:type).constantize
+    thought_clazz = thought_params.delete(:type).constantize
     if Thought.descendants.include? thought_clazz
-      thought_clazz.new(params[:thought].merge(:person => current_person))
+      thought_clazz.new(thought_params.merge(:person => current_person))
     end
   end
 end

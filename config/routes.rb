@@ -1,4 +1,6 @@
 Crumple::Application.routes.draw do
+  resources :installations
+
   resources :add_ons
 
   resources :pages, :only => [:show]

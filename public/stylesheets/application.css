@@ -346,16 +346,16 @@ body:before {
 #about {
   margin: 5% 0px; }
 
-.new_comment .body, .edit_comment .body, .edit_project .body, .new_project .body, .edit_thought .body {
+.new_comment .body, .edit_comment .body, .edit_project .body, .new_project .body, .thought_edit .body {
   height: 1em; }
 
-.new_thought .body {
+.thought_new .body {
   height: 8em; }
 
-.edit_thought .body {
+.thought_edit .body {
   height: 0; }
 
-.edit_thought .body, .new_thought .body, .edit_comment .body, .new_comment .body {
+.thought_edit .body, .thought_new .body, .edit_comment .body, .new_comment .body {
   line-height: normal;
   letter-spacing: normal; }
 
