@@ -3,8 +3,7 @@
     = link_to(image_tag(add_on.icon_57_url, :width => 57, :height => 57), add_on_path(add_on))
   %span.align-left
     = link_to add_on.name, add_on_path(add_on), :class => 'link'
-    .lil-size.sub-lil-space-top= add_on.tag_line
-    .subtle-action= link_to t(:learn_more), add_on_path(add_on)
+    .lil-size.lil-space-top= add_on.tag_line
   %span.align-left.space-left.subtle-gray
     .prompt= t(:developer)
     .system-content= add_on.developer.email

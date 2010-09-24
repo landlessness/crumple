@@ -32,15 +32,12 @@ class Person < ActiveRecord::Base
     self.drop_boxes.first
   end
   
-  def subscribes_to?(obj)
-    logger.info 'top: ' + obj.class.name
-    logger.info 'obj.is_a?(PricingPlan) ' + obj.is_a?(PricingPlan).to_s
-    if obj.is_a?(AddOn)
-      logger.info 'hello: AddOn'
-      self.pricing_plans.where(:add_on_id => obj).count > 0
-    elsif obj.is_a?(PricingPlan)
-      logger.info 'hello: PricingPlan'
-      self.pricing_plans.exists?(obj)
+  def subscribes_to?(subscribable)
+    if subscribable.is_a?(AddOn)
+      self.pricing_plans.where(:add_on_id => subscribable).count > 0
+    # checking on class name is a hack, don't why is_a? is not returning true
+    elsif subscribable.class.name ==  PricingPlan.name
+      self.pricing_plans.exists?(subscribable)
     end
   end
 end
