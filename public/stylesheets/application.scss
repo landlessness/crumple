@@ -80,6 +80,9 @@ input[type="text"],input[type="password"] {
 input[type="submit"] {
   text-transform: capitalize;
 }
+.capitalize {
+  text-transform: capitalize;
+}
 select {
   font-size: $big-size;
   min-width: 10em;
@@ -112,6 +115,11 @@ a:link {
 a.link {
   text-decoration: underline;
   color: $white;  
+}
+.subtle-link a {
+  text-decoration: underline;
+  font-size: $norm-size;
+  color: $gray;
 }
 .align-left {
   float: left;

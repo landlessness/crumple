@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(:version => 20100924040653) do
     t.string   "icon_57_url"
     t.string   "icon_29_url"
     t.string   "icon_29_subtle_url"
+    t.string   "tag_line"
+    t.string   "info_url"
   end
 
   create_table "comments", :force => true do |t|

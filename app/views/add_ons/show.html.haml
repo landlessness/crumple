@@ -1,17 +1,30 @@
-.lil-space-bottom.super-dooper-big-prompt= @add_on.name
-.align-left.one-third
-  .as-is<= auto_link(@add_on.description, :html => {:class => 'link'}) {|t| truncate(t, :length => 33)}
-  .prompt.space-top= t(:add_on_type) + ':'
-  .system-content= t(@add_on.type)
-  .prompt.lil-space-top= t(:developer) + ':'
-  .system-content= @add_on.developer.email
-.align-right.two-thirds=image_tag @add_on.icon_512_url, :class => 'border'
-.clear
-.super-big-prompt= t(:pricing_plans)
-= render @add_on.pricing_plans
-.action
-  -# TODO
-  -# comparing ids feels like a hack but object to object is not accurate
+.two-thirds.align-left
+  %span.align-left.border.lil-space-right
+    = image_tag(@add_on.icon_57_url)
+  %span.align-left.lil-space-right
+    .super-dooper-big-prompt=  @add_on.name
+    .sub-lil-space-top.small-font.norm-size.subtle-gray= @add_on.tag_line
+
+  %span.align-left.space-left
+    .subtle-link.capitalize.lil-space-bottom= link_to(t(:more_info), @add_on.info_url)
+
+    .subtle-link.subtle-prompt.lil-space-top= t(:created_by)
+    -# TODO: replace the link to person profile with a link to developer's site
+    %span.subtle-link= link_to(@add_on.developer.email, @add_on.developer)
+  .clear
+
+  .lil-space-top
+    = @add_on.description
+
+  .lil-space-top
+    = render @add_on.pricing_plans
+
   - if (@add_on.developer.id == current_person.id)
-    %span.lil-space-right= link_to t(:edit), edit_add_on_path(@add_on)
-    %span.lil-space-right= link_to t(:delete), add_on_path(@add_on), :confirm => 'Are you sure?', :method => :delete
+    .action.space-top
+      -# TODO
+      -# comparing ids feels like a hack but object to object is not accurate
+      %span.lil-space-right= link_to t(:edit), edit_add_on_path(@add_on)
+      %span.lil-space-right= link_to t(:delete), add_on_path(@add_on), :confirm => 'Are you sure?', :method => :delete
+.one-third.align-right
+  .prompt= t(:what_is_an_add_on)
+  .lil-space-top.lil-size= t(:lorem)
