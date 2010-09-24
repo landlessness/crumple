@@ -3,6 +3,8 @@ class ThoughtsController < ApplicationController
   # GET /thoughts
   # GET /thoughts.xml
   def index
+    # TODO: use Thought.scoped for building the queries
+    # http://m.onkey.org/2010/1/22/active-record-query-interface
     @state = (params[:state] || :active).to_sym
     
     if @query = q = params[:q]
