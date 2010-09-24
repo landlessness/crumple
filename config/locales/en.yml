@@ -80,6 +80,7 @@ en:
   web: web
   total: total
   add: add
+  remove: remove
   change: change
   select: select
   update: update
@@ -93,10 +94,11 @@ en:
   add_ons: add-ons
   links: links
   new_add_on: new add-on
-  icon_29_url: small image (29x29)
-  icon_29_subtle_url: small subtle image (29x29)
-  icon_57_url: Medium Image (57x57)
-  icon_512_url: Large Image (512x512)
+  edit_add_on: edit add-on
+  icon_29_url: toolbar icon (29x29)
+  icon_29_subtle_url: subtle toolbar icon (29x29)
+  icon_57_url: listing image (57x57)
+  icon_512_url: advertising image (512x512)
   ContainerAddOn: container
   ThoughtAddOn: thought
   add_on_type: type
@@ -110,3 +112,6 @@ en:
   more_info: more info
   what_is_an_add_on: what is an add-on?
   lorem: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+  marketing: marketing
+  integration: integration
+  subscribed: subscribed

@@ -20,4 +20,8 @@ class AddOnTest < ActiveSupport::TestCase
     assert_equal p, a.developer
     assert p.developed_add_ons.include?(a), 'new add on should be in developers list of add-ons'
   end
+  def test_accepts_nested_attributes
+    p = people(:brian)
+    assert AddOn.new(:developer => p, :name => 'test nested', :pricing_plans_attributes => [{:name => 'free'},{:name => 'bronze'},{:name => 'silver'},{:name => 'gold'}]).valid?
+  end
 end

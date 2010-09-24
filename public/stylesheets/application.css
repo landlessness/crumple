@@ -409,6 +409,13 @@ form .body {
   border: solid 1px white;
   /* this border is to help align the grid, it's a hack */ }
 
+.subscribed {
+  padding: 0.3em;
+  color: #aaaaaa;
+  border: solid 1px #aaaaaa;
+  font-size: 0.8em;
+  background-color: none; }
+
 #flash_notice, #flash_error, #flash_alert {
   padding: 0.75em;
   margin: 3% 0;

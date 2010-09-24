@@ -9,6 +9,10 @@ class AddOnsController < ApplicationController
   
   def new
     @add_on = AddOn.new
+    @add_on.pricing_plans.build :name => 'free', :monthly_fee => 0.0
+    @add_on.pricing_plans.build :name => 'bronze', :monthly_fee => 9.99
+    @add_on.pricing_plans.build :name => 'silver', :monthly_fee => 49.99
+    @add_on.pricing_plans.build :name => 'gold', :monthly_fee => 99.99
   end
   
   def create

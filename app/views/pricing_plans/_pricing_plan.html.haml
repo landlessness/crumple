@@ -1,4 +1,19 @@
-%div= pricing_plan.name
-%div= pricing_plan.description
-%div= pricing_plan.monthly_fee
-%div (t:per_month)
+- current_person_subscribes = current_person.subscribes_to?(pricing_plan)
+.subtle-border-bottom.lil-padding
+  - if current_person_subscribes
+    .center-text.subscribed.lil-space-bottom
+      = t(:subscribed)
+  .align-left.two-thirds
+    %span.super-big-size.capitalize.sub-lil-space-bottom
+      = pricing_plan.name
+    .norm-size= pricing_plan.description
+  .align-right.one-third
+    .align-left
+      %div= number_to_currency(pricing_plan.monthly_fee)
+      .lil-size.subtle-gray= (t:per_month)
+    .align-left.lil-space-left
+      - if current_person_subscribes
+        = button_to t(:remove), current_person.subscriptions.where(:pricing_plan_id => pricing_plan).first, :method => 'delete', :confirm => t(:r_u_sure)
+      - else
+        = button_to t(:add), pricing_plan_subscriptions_path(pricing_plan)
+  .clear

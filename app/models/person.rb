@@ -31,7 +31,16 @@ class Person < ActiveRecord::Base
   def drop_box
     self.drop_boxes.first
   end
-  def subscribed_to_pricing_plan?(plan)
-    self.pricing_plans.include?(plan)
+  
+  def subscribes_to?(obj)
+    logger.info 'top: ' + obj.class.name
+    logger.info 'obj.is_a?(PricingPlan) ' + obj.is_a?(PricingPlan).to_s
+    if obj.is_a?(AddOn)
+      logger.info 'hello: AddOn'
+      self.pricing_plans.where(:add_on_id => obj).count > 0
+    elsif obj.is_a?(PricingPlan)
+      logger.info 'hello: PricingPlan'
+      self.pricing_plans.exists?(obj)
+    end
   end
 end

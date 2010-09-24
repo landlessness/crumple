@@ -12,10 +12,12 @@ class SubscriptionsController < ApplicationController
   end
   
   def create
-    @subscription = Subscription.new(params[:subscription])
+    @pricing_plan = PricingPlan.find(params[:pricing_plan_id])
+    @subscription = @pricing_plan.subscriptions.new(params[:subscription])
+    @subscription.person = current_person
     if @subscription.save
-      flash[:notice] = "Successfully created subscription."
-      redirect_to @subscription
+      flash[:notice] = "Successfully subscribed."
+      redirect_to add_on_url(@pricing_plan.add_on)
     else
       render :action => 'new'
     end
@@ -38,7 +40,7 @@ class SubscriptionsController < ApplicationController
   def destroy
     @subscription = Subscription.find(params[:id])
     @subscription.destroy
-    flash[:notice] = "Successfully destroyed subscription."
-    redirect_to subscriptions_url
+    flash[:notice] = "Successfully canceled subscription."
+    redirect_to @subscription.pricing_plan.add_on
   end
 end

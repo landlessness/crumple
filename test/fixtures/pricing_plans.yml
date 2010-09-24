@@ -1,18 +1,24 @@
+free_textile:
+  add_on: textile
+  monthly_fee: 0
+  name: free
+  description: format your text for free
+
 free:
   add_on: music_notation
-  monthly_fee_cents: 0
+  monthly_fee: 0
   name: free
   description: create up to 100 musical thoughts for free.
 
 silver:
   add_on: music_notation
-  monthly_fee_cents: 999
+  monthly_fee: 9.99
   name: silver
   description: create up to 1000 musical thoughts.
 
 gold:
   add_on: music_notation
-  monthly_fee_cents: 1999
+  monthly_fee: 19.99
   name: gold
   description: create up to 10000 musical thoughts.
 
@@ -23,7 +29,7 @@ nil_fee:
 
 negative_fee:
   add_on: music_notation
-  monthly_fee_cents: -1999
+  monthly_fee: -19.99
   name: negative fee
   description: specified a negative fee
   

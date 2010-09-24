@@ -1,12 +1,11 @@
+-# = form_for(@add_on, :as => :add_on) do |f|
 = form_for @add_on, :as => :add_on do |f|
   = f.error_messages
   
-  - if @add_on.new_record?
-    .lil-space-bottom
-      .prompt= f.label :type
-      = f.select :type, AddOn.descendants.sort{|a,b| t(a) <=> t(b)}.collect {|q| [t(q).capitalize,q]}, :prompt => true
-    
-  .prompt= f.label :name
+  .big-prompt.lil-space-top
+    = t(:marketing)
+
+  .prompt.lil-space-top= f.label :name
   = f.text_field :name
 
   .prompt.lil-space-top= f.label :tag_line  
@@ -18,6 +17,19 @@
   .prompt.lil-space-top= f.label :info_url
   = f.text_field :info_url
   
+  .prompt.lil-space-top= f.label t(:icon_57_url)
+  = f.text_field :icon_57_url
+  
+  .prompt.lil-space-top= f.label t(:icon_512_url)
+  = f.text_field :icon_512_url
+
+  .space-top.big-prompt
+    = t(:integration)
+
+  - if @add_on.new_record?
+    .prompt.lil-space-top= f.label :type
+    = f.select :type, AddOn.descendants.sort{|a,b| t(a) <=> t(b)}.collect {|q| [t(q).capitalize,q]}, :prompt => true
+
   .prompt.lil-space-top= f.label :site
   = f.text_field :site
   
@@ -30,10 +42,10 @@
   .prompt.lil-space-top= f.label t(:icon_29_subtle_url)
   = f.text_field :icon_29_subtle_url
   
-  .prompt.lil-space-top= f.label t(:icon_57_url)
-  = f.text_field :icon_57_url
-  
-  .prompt.lil-space-top= f.label t(:icon_512_url)
-  = f.text_field :icon_512_url
-  
-  .prompt.lil-space-top= f.submit
+  .space-top.big-prompt
+    = t(:pricing_plans)
+
+  = f.fields_for :pricing_plans do |pricing_plan_fields|
+    .space-bottom= render 'pricing_plans/pricing_plan_fields', :f => pricing_plan_fields
+
+  .prompt.space-top.space-bottom= f.submit

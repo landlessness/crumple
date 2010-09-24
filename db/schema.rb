@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(:version => 20100924040653) do
 
   create_table "pricing_plans", :force => true do |t|
     t.integer  "add_on_id"
-    t.integer  "monthly_fee_cents"
+    t.decimal  "monthly_fee"
     t.string   "name"
     t.text     "description"
     t.datetime "created_at"

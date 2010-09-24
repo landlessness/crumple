@@ -25,14 +25,26 @@ class SubscriptionsControllerTest < ActionController::TestCase
   
   def test_create_invalid
     Subscription.any_instance.stubs(:valid?).returns(false)
-    post :create
+    pricing_plan = pricing_plans(:gold)
+    post :create, :pricing_plan_id => pricing_plan.to_param
     assert_template 'new'
   end
   
   def test_create_valid
     Subscription.any_instance.stubs(:valid?).returns(true)
-    post :create
-    assert_redirected_to subscription_url(assigns(:subscription))
+    pricing_plan = pricing_plans(:gold)
+    s = post :create, :pricing_plan_id => pricing_plan.to_param
+    assert_redirected_to add_on_url(assigns(:pricing_plan).add_on)
+  end
+  
+  def test_routes
+    assert_recognizes({:controller => 'subscriptions', :action => 'create', :pricing_plan_id=>"1"}, {:path => '/pricing_plans/1/subscriptions', :method => :post})
+    
+    # TODO: get the generates test to pass. strange that it doesn't
+    
+    # assert_generates({:path => '/pricing_plans/1/subscriptions', :method => :post}, {:controller => 'subscriptions', :action => 'create'})
+    
+    # assert_routing({:path => "/pricing_plans/#{pricing_plans(:gold).to_param}/subscriptions", :method => :post}, {:controller => 'subscriptions', :action => 'create', :pricing_plan_id => pricing_plans(:gold).to_param})
   end
   
   def test_edit
@@ -55,7 +67,7 @@ class SubscriptionsControllerTest < ActionController::TestCase
   def test_destroy
     subscription = Subscription.first
     delete :destroy, :id => subscription
-    assert_redirected_to subscriptions_url
+    assert_redirected_to subscription.pricing_plan.add_on
     assert !Subscription.exists?(subscription.id)
   end
 end

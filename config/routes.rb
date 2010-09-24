@@ -1,11 +1,10 @@
 Crumple::Application.routes.draw do
-  resources :subscriptions
-
   resources :screenshots
 
-  resources :pricing_plans
-
-  resources :installations
+  resources :subscriptions
+  resources :pricing_plans do
+    resources :subscriptions
+  end
 
   resources :add_ons
   resources :thought_add_ons, :controller => :add_ons

@@ -2,6 +2,6 @@ one:
   person: fred
   pricing_plan: gold
 
-two:
+brian_free:
   person: brian
   pricing_plan: free

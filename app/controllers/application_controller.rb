@@ -23,13 +23,14 @@ class ApplicationController < ActionController::Base
   end
   protected
   def marshal_type(params, base_class = nil, options = {})
+    params.merge!(options)
     clazz = params.delete(:type).constantize
     if base_class
       if base_class.descendants.include? clazz
-        clazz.new(params.merge(options))
+        clazz.new(params)
       end
     else
-      clazz.new(params.merge(options))
+      clazz.new(params)
     end
   end
 end
