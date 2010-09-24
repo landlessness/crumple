@@ -92,3 +92,16 @@ en:
   drag_and_drop_to_toolbar: 'drag link above to browser toolbar'
   add_ons: add-ons
   links: links
+  new_add_on: new add-on
+  icon_29_url: small image (29x29)
+  icon_29_subtle_url: small subtle image (29x29)
+  icon_57_url: Medium Image (57x57)
+  icon_512_url: Large Image (512x512)
+  ContainerAddOn: container
+  ThoughtAddOn: thought
+  add_on_type: type
+  developer: developer
+  install: install
+  installed: installed
+  learn_more: learn more
+  pricing_plans: pricing plans

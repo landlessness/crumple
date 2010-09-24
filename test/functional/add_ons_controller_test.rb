@@ -24,14 +24,16 @@ class AddOnsControllerTest < ActionController::TestCase
   end
   
   def test_create_invalid
-    AddOn.any_instance.stubs(:valid?).returns(false)
-    post :create
+    ThoughtAddOn.any_instance.stubs(:valid?).returns(false)
+    post :create, :add_on => {:type => 'ThoughtAddOn'}
     assert_template 'new'
   end
   
   def test_create_valid
-    AddOn.any_instance.stubs(:valid?).returns(true)
-    post :create
+    ThoughtAddOn.any_instance.stubs(:valid?).returns(true)
+    post :create, :add_on => {:type => 'ThoughtAddOn'}
+    add_on = assigns(:add_on)
+    assert_equal @person, add_on.developer
     assert_redirected_to add_on_url(assigns(:add_on))
   end
   

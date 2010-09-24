@@ -100,7 +100,7 @@ class ThoughtsController < ApplicationController
   end
 
   def auto_create
-    @thought = marshal_thought(params[:thought])    
+    @thought = marshal_type(params[:thought],Thought,:person => current_person)
     @thought.origin = 'web' if @thought.origin.blank?
     respond_to do |format|
       if @thought.save
@@ -118,7 +118,7 @@ class ThoughtsController < ApplicationController
 
   def bookmarklet_create
     params[:thought].merge!(:state_event=>:put_in_drop_box, :origin=>'bookmarklet')
-    @thought = marshal_thought(params[:thought])
+    @thought = marshal_type(params[:thought],Thought,:person => current_person)
     
     respond_to do |format|
       if @thought.save
@@ -153,7 +153,7 @@ class ThoughtsController < ApplicationController
   # POST /thoughts
   # POST /thoughts.xml
   def create
-    @thought = marshal_thought(params[:thought])
+    @thought = marshal_type(params[:thought],Thought,:person => current_person)
     respond_to do |format|
       if @thought.save
         format.html do
@@ -222,11 +222,5 @@ class ThoughtsController < ApplicationController
         format.xml  { render :xml => @thought.errors, :status => :unprocessable_entity }
       end
     end      
-  end
-  def marshal_thought(thought_params)
-    thought_clazz = thought_params.delete(:type).constantize
-    if Thought.descendants.include? thought_clazz
-      thought_clazz.new(thought_params.merge(:person => current_person))
-    end
   end
 end

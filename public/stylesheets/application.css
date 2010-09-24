@@ -61,7 +61,7 @@ select {
 img, a img {
   vertical-align: middle; }
 
-.image-top {
+.image-top .text-top {
   vertical-align: text-top; }
 
 a img {
@@ -159,20 +159,26 @@ a.link {
 .norm-space-top {
   margin-top: 3em; }
 
-.half {
-  width: 45%; }
-
-.one-third {
-  width: 30%; }
-
-.two-thirds {
-  width: 60%; }
+.one-eighth {
+  width: 11.25%; }
 
 .one-fourth {
   width: 22.5%; }
 
+.one-third {
+  width: 30%; }
+
+.half {
+  width: 45%; }
+
+.two-thirds {
+  width: 60%; }
+
 .three-fourths {
   width: 67.5%; }
+
+.seven-eighths {
+  width: 78.75%; }
 
 .full {
   width: 100%; }
@@ -197,6 +203,16 @@ a.link {
 
 .big-prompt {
   font-size: 0.8em;
+  color: #aaaaaa;
+  text-transform: capitalize; }
+
+.super-big-prompt {
+  font-size: 0.9em;
+  color: #aaaaaa;
+  text-transform: capitalize; }
+
+.super-dooper-big-prompt {
+  font-size: 1.5em;
   color: #aaaaaa;
   text-transform: capitalize; }
 
@@ -439,11 +455,26 @@ a.current-nav, #footer a.current-nav {
   color: white;
   white-space: pre-line; }
 
+.as-is {
+  white-space: pre-line; }
+
 .people-content a {
   color: white; }
 
+.subtle-border {
+  border: 1px dashed #555555; }
+
+.border {
+  border: 1px solid #555555; }
+
+.thick-border {
+  border: 2px solid #555555; }
+
 .subtle-border-top {
   border-top: 1px dashed #555555; }
+
+.subtle-border-bottom {
+  border-bottom: 1px dashed #555555; }
 
 .big-padding {
   padding-top: 6em;
@@ -459,6 +490,9 @@ a.current-nav, #footer a.current-nav {
 
 .lil-padding-left {
   padding-left: 1em; }
+
+.lil-padding-bottom {
+  padding-bottom: 1em; }
 
 .big-norm-padding {
   padding-top: 6em;

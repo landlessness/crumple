@@ -22,4 +22,10 @@ Crumple::Application.configure do
 
   config.top_level_domain = 'localhost:3000'
   config.active_support.deprecation = :log 
+  
+  # for STI for AddOns
+  %w[add_on thought_add_on container_add_on].each do |c|
+    require_dependency File.join("app","models","#{c}.rb")
+  end
+  
 end

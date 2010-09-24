@@ -15,6 +15,7 @@ $lil-size: $sub-lil-size + 0.1em;
 $norm-size: $sub-lil-size + 0.2em;
 $big-size: $sub-lil-size + 0.3em;
 $super-big-size: $sub-lil-size + 0.4em;
+$super-dooper-big-size: $sub-lil-size + 1.0em;
 
 $big-space: 6em;
 $big-padding: $big-space;
@@ -86,7 +87,7 @@ select {
 img, a img {
   vertical-align:middle;
 }
-.image-top {
+.image-top .text-top {
   vertical-align:text-top;
 }
 a img {
@@ -184,20 +185,26 @@ a.link {
 .norm-space-top {
   margin-top: $norm-space;
 }
-.half {
-  width: 45%;
-}
-.one-third {
-  width: 30%;
-}
-.two-thirds {
-  width: 60%;
+.one-eighth {
+  width: 11.25%;
 }
 .one-fourth {
   width: 22.5%;
 }
+.one-third {
+  width: 30%;
+}
+.half {
+  width: 45%;
+}
+.two-thirds {
+  width: 60%;
+}
 .three-fourths {
   width: 67.5%;
+}
+.seven-eighths{
+  width: 78.75%;
 }
 .full {
   width: 100%;
@@ -222,6 +229,16 @@ a.link {
 }
 .big-prompt {
   font-size: $big-size;
+  color: $gray;
+  text-transform: capitalize;
+}
+.super-big-prompt {
+  font-size: $super-big-size;
+  color: $gray;
+  text-transform: capitalize;
+}
+.super-dooper-big-prompt {
+  font-size: $super-dooper-big-size;
   color: $gray;
   text-transform: capitalize;
 }
@@ -468,11 +485,26 @@ a.current-nav, #footer a.current-nav {
   color: $white;
   white-space: pre-line;
 }
+.as-is {
+  white-space: pre-line;
+}
 .people-content a {
   color: $white;
 }
+.subtle-border {
+  border: 1px dashed $subtle-gray;
+}
+.border {
+  border: 1px solid $subtle-gray;
+}
+.thick-border {
+  border: 2px solid $subtle-gray;
+}
 .subtle-border-top {
   border-top: 1px dashed $subtle-gray;
+}
+.subtle-border-bottom {
+  border-bottom: 1px dashed $subtle-gray;
 }
 .big-padding {
   padding-top: $big-padding;
@@ -488,6 +520,9 @@ a.current-nav, #footer a.current-nav {
 }
 .lil-padding-left {
   padding-left: $lil-padding;
+}
+.lil-padding-bottom {
+  padding-bottom: $lil-padding;
 }
 .big-norm-padding {
   padding-top: $big-padding;

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100923060616) do
+ActiveRecord::Schema.define(:version => 20100923191135) do
 
   create_table "add_ons", :force => true do |t|
     t.string   "name"
@@ -21,6 +21,10 @@ ActiveRecord::Schema.define(:version => 20100923060616) do
     t.string   "element_name"
     t.string   "site"
     t.string   "type"
+    t.string   "icon_512_url"
+    t.string   "icon_57_url"
+    t.string   "icon_29_url"
+    t.string   "icon_29_subtle_url"
   end
 
   create_table "comments", :force => true do |t|

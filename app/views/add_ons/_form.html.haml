@@ -1,20 +1,22 @@
-= form_for @add_on do |f|
+= form_for @add_on, :as => :add_on do |f|
   = f.error_messages
-  %p
-    = f.label :name
-    %br
-    = f.text_field :name
-  %p
-    = f.label :description
-    %br
-    = f.text_area :description
-  %p
-    = f.label :site
-    %br
-    = f.text_field :site
-  %p
-    = f.label :element_name
-    %br
-    = f.text_field :element_name
-  %p
-    = f.submit
+  .prompt= f.label :name
+  = f.text_field :name
+  - if @add_on.new_record?
+    .prompt.lil-space-top= f.label :type
+    = f.select :type, AddOn.descendants.sort{|a,b| t(a) <=> t(b)}.collect {|q| [t(q).capitalize,q]}, :prompt => true
+  .prompt.lil-space-top= f.label :description
+  = f.text_area :description
+  .prompt.lil-space-top= f.label :site
+  = f.text_field :site
+  .prompt.lil-space-top= f.label :element_name
+  = f.text_field :element_name
+  .prompt.lil-space-top= f.label t(:icon_29_url)
+  = f.text_field :icon_29_url
+  .prompt.lil-space-top= f.label t(:icon_29_subtle_url)
+  = f.text_field :icon_29_subtle_url
+  .prompt.lil-space-top= f.label t(:icon_57_url)
+  = f.text_field :icon_57_url
+  .prompt.lil-space-top= f.label t(:icon_512_url)
+  = f.text_field :icon_512_url
+  .prompt.lil-space-top= f.submit

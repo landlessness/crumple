@@ -12,10 +12,10 @@ class AddOnsController < ApplicationController
   end
   
   def create
-    @add_on = AddOn.new(params[:add_on])
+    @add_on = marshal_type(params[:add_on],AddOn,:developer => current_person)
     if @add_on.save
       flash[:notice] = "Successfully created add on."
-      redirect_to @add_on
+      redirect_to add_on_path(@add_on)
     else
       render :action => 'new'
     end

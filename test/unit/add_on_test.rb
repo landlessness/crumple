@@ -14,4 +14,10 @@ class AddOnTest < ActiveSupport::TestCase
     assert_equal 'http://labs.crumpleapp.com', a.site
     assert_equal 'textile_thought', a.element_name
   end
+  def test_belongs_to_person
+    p = people(:brian)
+    a = p.developed_add_ons.create :name => 'Drawing'
+    assert_equal p, a.developer
+    assert_equal p.developed_add_ons.first.to_param, a.to_param
+  end
 end

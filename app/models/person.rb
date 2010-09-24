@@ -9,6 +9,12 @@ class Person < ActiveRecord::Base
 
   has_many :taggings, :dependent => :destroy
   has_many :tags, :through => :taggings, :uniq => true
+  
+  has_many :installations
+  has_many :add_ons, :through => :installations
+
+  # for developers only
+  has_many :developed_add_ons, :class_name => 'AddOn', :foreign_key => 'person_id'  
 
   after_create do
     self.drop_boxes.create :name => self.email.split('@').first + Time.now.hash.to_s, :secret => rand(9999)
@@ -24,5 +30,8 @@ class Person < ActiveRecord::Base
   
   def drop_box
     self.drop_boxes.first
+  end
+  def add_on_installed?(add_on)
+    self.add_ons.include?(add_on)
   end
 end

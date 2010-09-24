@@ -21,4 +21,15 @@ class ApplicationController < ActionController::Base
   def check_drop_box
     @drop_box_count = current_person.thoughts.with_state(:in_drop_box).count if person_signed_in?
   end
+  protected
+  def marshal_type(params, base_class = nil, options = {})
+    clazz = params.delete(:type).constantize
+    if base_class
+      if base_class.descendants.include? clazz
+        clazz.new(params.merge(options))
+      end
+    else
+      clazz.new(params.merge(options))
+    end
+  end
 end

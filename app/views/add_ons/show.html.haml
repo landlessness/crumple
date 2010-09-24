@@ -1,21 +1,16 @@
-- title "Add On"
-
-%p
-  %strong Name:
-  = @add_on.name
-%p
-  %strong Description:
-  = @add_on.description
-%p
-  %strong Site:
-  = @add_on.site
-%p
-  %strong Element Name:
-  = @add_on.element_name
-
-%p
-  = link_to "Edit", edit_add_on_path(@add_on)
-  |
-  = link_to "Destroy", @add_on, :confirm => 'Are you sure?', :method => :delete
-  |
-  = link_to "View All", add_ons_path
+.lil-space-bottom.super-dooper-big-prompt= @add_on.name
+.align-left.one-third
+  .as-is<= auto_link(@add_on.description, :html => {:class => 'link'}) {|t| truncate(t, :length => 33)}
+  .prompt.space-top= t(:add_on_type) + ':'
+  .system-content= t(@add_on.type)
+  .prompt.lil-space-top= t(:developer) + ':'
+  .system-content= @add_on.developer.email
+.align-right.two-thirds=image_tag @add_on.icon_512_url, :class => 'border'
+.clear
+.super-big-prompt= t(:pricing_plans)
+.action
+  -# TODO
+  -# comparing ids feels like a hack but object to object is not accurate
+  - if (@add_on.developer.id == current_person.id)
+    %span.lil-space-right= link_to t(:edit), edit_add_on_path(@add_on)
+    %span.lil-space-right= link_to t(:delete), add_on_path(@add_on), :confirm => 'Are you sure?', :method => :delete

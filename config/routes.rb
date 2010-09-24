@@ -1,7 +1,12 @@
 Crumple::Application.routes.draw do
+  resources :screenshots
+
+  resources :pricing_plans
+
   resources :installations
 
   resources :add_ons
+  resources :thought_add_ons, :controller => :add_ons
 
   resources :pages, :only => [:show]
 

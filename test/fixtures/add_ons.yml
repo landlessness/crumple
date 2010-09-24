@@ -3,10 +3,16 @@ music_notation:
   element_name: music_notation_thought
   description: create music notation using the simple ABC Notation http://abcnotation.com/
   site: http://labs.crumpleapp.com
+  icon_57_url: http://labs.crumpleapp.com/images/music_notation/icon_57.png
+  icon_512_url: http://labs.crumpleapp.com/images/music_notation/icon_512.png
+  developer: brian
   
 textile:
   name: Textile
   element_name: textile_thought
   description: create formatted thoughts with textile notation
   site: http://labs.crumpleapp.com
+  icon_57_url: http://labs.crumpleapp.com/images/music_notation/icon_57.png
+  icon_512_url: http://labs.crumpleapp.com/images/textile/icon_512.png
+  developer: brian
   
