@@ -1,0 +1,29 @@
+free:
+  add_on: music_notation
+  monthly_fee_cents: 0
+  name: free
+  description: create up to 100 musical thoughts for free.
+
+silver:
+  add_on: music_notation
+  monthly_fee_cents: 999
+  name: silver
+  description: create up to 1000 musical thoughts.
+
+gold:
+  add_on: music_notation
+  monthly_fee_cents: 1999
+  name: gold
+  description: create up to 10000 musical thoughts.
+
+nil_fee:
+  add_on: music_notation
+  name: nil fee
+  description: forgot to specify a fee
+
+negative_fee:
+  add_on: music_notation
+  monthly_fee_cents: -1999
+  name: negative fee
+  description: specified a negative fee
+  

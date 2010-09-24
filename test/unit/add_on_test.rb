@@ -18,6 +18,6 @@ class AddOnTest < ActiveSupport::TestCase
     p = people(:brian)
     a = p.developed_add_ons.create :name => 'Drawing'
     assert_equal p, a.developer
-    assert_equal p.developed_add_ons.first.to_param, a.to_param
+    assert p.developed_add_ons.include?(a), 'new add on should be in developers list of add-ons'
   end
 end

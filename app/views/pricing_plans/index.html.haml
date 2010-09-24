@@ -1,0 +1,19 @@
+- title "Pricing Plans"
+
+%table
+  %tr
+    %th Add on
+    %th Monthly fee
+    %th Name
+    %th Description
+  - for pricing_plan in @pricing_plans
+    %tr
+      %td= pricing_plan.add_on
+      %td= pricing_plan.monthly_fee
+      %td= pricing_plan.name
+      %td= pricing_plan.description
+      %td= link_to 'Show', pricing_plan
+      %td= link_to 'Edit', edit_pricing_plan_path(pricing_plan)
+      %td= link_to 'Destroy', pricing_plan, :confirm => 'Are you sure?', :method => :delete
+
+%p= link_to "New Pricing Plan", new_pricing_plan_path

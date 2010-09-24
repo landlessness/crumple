@@ -8,6 +8,7 @@
 .align-right.two-thirds=image_tag @add_on.icon_512_url, :class => 'border'
 .clear
 .super-big-prompt= t(:pricing_plans)
+= render @add_on.pricing_plans
 .action
   -# TODO
   -# comparing ids feels like a hack but object to object is not accurate

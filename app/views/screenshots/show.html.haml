@@ -1,0 +1,21 @@
+- title "Screenshot"
+
+%p
+  %strong Add On:
+  = @screenshot.add_on
+%p
+  %strong Image Url:
+  = @screenshot.image_url
+%p
+  %strong Name:
+  = @screenshot.name
+%p
+  %strong Description:
+  = @screenshot.description
+
+%p
+  = link_to "Edit", edit_screenshot_path(@screenshot)
+  |
+  = link_to "Destroy", @screenshot, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", screenshots_path

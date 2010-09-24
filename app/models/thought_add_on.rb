@@ -1,0 +1,3 @@
+class ThoughtAddOn < AddOn
+  
+end

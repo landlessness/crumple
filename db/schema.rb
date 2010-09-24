@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100923191135) do
+ActiveRecord::Schema.define(:version => 20100924040653) do
 
   create_table "add_ons", :force => true do |t|
     t.string   "name"
@@ -43,13 +43,6 @@ ActiveRecord::Schema.define(:version => 20100923191135) do
     t.datetime "updated_at"
   end
 
-  create_table "installations", :force => true do |t|
-    t.integer  "person_id"
-    t.integer  "add_on_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "memberships", :force => true do |t|
     t.integer  "person_id"
     t.integer  "project_id"
@@ -76,11 +69,29 @@ ActiveRecord::Schema.define(:version => 20100923191135) do
   add_index "people", ["email"], :name => "index_people_on_email", :unique => true
   add_index "people", ["reset_password_token"], :name => "index_people_on_reset_password_token", :unique => true
 
+  create_table "pricing_plans", :force => true do |t|
+    t.integer  "add_on_id"
+    t.integer  "monthly_fee_cents"
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "projects", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "description"
+  end
+
+  create_table "screenshots", :force => true do |t|
+    t.integer  "add_on_id"
+    t.string   "image_url"
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "send_grid_emails", :force => true do |t|
@@ -95,6 +106,13 @@ ActiveRecord::Schema.define(:version => 20100923191135) do
     t.integer  "drop_box_id"
     t.integer  "thought_id"
     t.boolean  "assigned_drop_box"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "subscriptions", :force => true do |t|
+    t.integer  "person_id"
+    t.integer  "pricing_plan_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

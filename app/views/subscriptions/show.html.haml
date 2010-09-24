@@ -1,0 +1,15 @@
+- title "Subscription"
+
+%p
+  %strong Person:
+  = @subscription.person
+%p
+  %strong Pricing Plan:
+  = @subscription.pricing_plan
+
+%p
+  = link_to "Edit", edit_subscription_path(@subscription)
+  |
+  = link_to "Destroy", @subscription, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", subscriptions_path

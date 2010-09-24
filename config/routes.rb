@@ -1,4 +1,6 @@
 Crumple::Application.routes.draw do
+  resources :subscriptions
+
   resources :screenshots
 
   resources :pricing_plans

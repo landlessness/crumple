@@ -1,0 +1,3 @@
+class ContainerAddOn < AddOn
+  
+end

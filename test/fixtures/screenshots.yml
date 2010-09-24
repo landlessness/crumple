@@ -1,0 +1,11 @@
+create:
+  add_on: music_notation
+  image_url: http://farm1.static.flickr.com/211/459219845_2ee286d641_z.jpg
+  name: create
+  description: compositions are created using abc notation
+
+edit:
+  add_on: music_notation
+  image_url: http://farm5.static.flickr.com/4015/4348385448_0483978a4b_z.jpg
+  name: edit
+  description: compositions are edited using abc notation. graphical notes are highlighted as you enter new text.

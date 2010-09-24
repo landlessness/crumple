@@ -1,0 +1,21 @@
+- title "Pricing Plan"
+
+%p
+  %strong Add On:
+  = @pricing_plan.add_on
+%p
+  %strong Monthly Fee:
+  = @pricing_plan.monthly_fee
+%p
+  %strong Name:
+  = @pricing_plan.name
+%p
+  %strong Description:
+  = @pricing_plan.description
+
+%p
+  = link_to "Edit", edit_pricing_plan_path(@pricing_plan)
+  |
+  = link_to "Destroy", @pricing_plan, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", pricing_plans_path

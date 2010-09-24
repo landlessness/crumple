@@ -10,8 +10,8 @@ class Person < ActiveRecord::Base
   has_many :taggings, :dependent => :destroy
   has_many :tags, :through => :taggings, :uniq => true
   
-  has_many :installations
-  has_many :add_ons, :through => :installations
+  has_many :subscriptions
+  has_many :pricing_plans, :through => :subscriptions
 
   # for developers only
   has_many :developed_add_ons, :class_name => 'AddOn', :foreign_key => 'person_id'  
@@ -31,7 +31,7 @@ class Person < ActiveRecord::Base
   def drop_box
     self.drop_boxes.first
   end
-  def add_on_installed?(add_on)
-    self.add_ons.include?(add_on)
+  def subscribed_to_pricing_plan?(plan)
+    self.pricing_plans.include?(plan)
   end
 end

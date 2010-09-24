@@ -1,0 +1,12 @@
+.subtle-border-bottom.lil-padding-bottom
+  %span.align-left.border.lil-space-right
+    = link_to(image_tag(add_on.icon_57_url), add_on_path(add_on), :class => 'link')
+  %span.align-left
+    = link_to add_on.name, add_on_path(add_on), :class => 'link'
+    .subtle-action= link_to t(:learn_more), add_on_path(add_on)
+    .lil-space-top
+      .prompt= t(:developer)
+      .system-content= add_on.developer.email
+  %span.align-left.lil-space-left
+    = render add_on.pricing_plans
+  .clear

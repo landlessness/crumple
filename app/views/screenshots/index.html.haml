@@ -1,0 +1,19 @@
+- title "Screenshots"
+
+%table
+  %tr
+    %th Add on
+    %th Image url
+    %th Name
+    %th Description
+  - for screenshot in @screenshots
+    %tr
+      %td= screenshot.add_on
+      %td= screenshot.image_url
+      %td= screenshot.name
+      %td= screenshot.description
+      %td= link_to 'Show', screenshot
+      %td= link_to 'Edit', edit_screenshot_path(screenshot)
+      %td= link_to 'Destroy', screenshot, :confirm => 'Are you sure?', :method => :delete
+
+%p= link_to "New Screenshot", new_screenshot_path

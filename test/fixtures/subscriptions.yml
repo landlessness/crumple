@@ -1,0 +1,7 @@
+one:
+  person: fred
+  pricing_plan: gold
+
+two:
+  person: brian
+  pricing_plan: free

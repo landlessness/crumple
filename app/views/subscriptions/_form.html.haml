@@ -1,0 +1,12 @@
+= form_for @subscription do |f|
+  = f.error_messages
+  %p
+    = f.label :person
+    %br
+    = f.text_field :person
+  %p
+    = f.label :pricing_plan
+    %br
+    = f.text_field :pricing_plan
+  %p
+    = f.submit

@@ -1,0 +1,20 @@
+= form_for @pricing_plan do |f|
+  = f.error_messages
+  %p
+    = f.label :add_on
+    %br
+    = f.text_field :add_on
+  %p
+    = f.label :monthly_fee
+    %br
+    = f.text_field :monthly_fee
+  %p
+    = f.label :name
+    %br
+    = f.text_field :name
+  %p
+    = f.label :description
+    %br
+    = f.text_area :description
+  %p
+    = f.submit
