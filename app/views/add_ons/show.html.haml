@@ -13,8 +13,8 @@
     %span.subtle-link= link_to(@add_on.developer.email, @add_on.developer)
   .clear
 
-  .lil-space-top
-    = @add_on.description
+  .lil-space-top.as-is
+    = display_text @add_on.description
 
   .lil-space-top.subtle-border-top  
     = render @add_on.pricing_plans, :add_on => @add_on
