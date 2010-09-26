@@ -50,6 +50,13 @@ class ThoughtsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should get new signed out" do
+    sign_out @person
+    assert !@controller.person_signed_in?, 'person should NOT be signed in'
+    get :new
+    assert_response :success
+  end
+
   test "should redirect to auto_create signing in" do
     sign_out @person
     get :new

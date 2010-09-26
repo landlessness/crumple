@@ -43,22 +43,22 @@ class AddOnsControllerTest < ActionController::TestCase
   end
   
   def test_update_invalid
-    AddOn.any_instance.stubs(:valid?).returns(false)
-    put :update, :id => AddOn.first
+    ThoughtAddOn.any_instance.stubs(:valid?).returns(false)
+    put :update, :id => ThoughtAddOn.first
     assert_template 'edit'
   end
   
   def test_update_valid
-    AddOn.any_instance.stubs(:valid?).returns(true)
-    put :update, :id => AddOn.first
+    ThoughtAddOn.any_instance.stubs(:valid?).returns(true)
+    put :update, :id => ThoughtAddOn.first
     assert_redirected_to add_on_url(assigns(:add_on))
   end
   
   def test_destroy
-    add_on = AddOn.first
+    add_on = ThoughtAddOn.first
     delete :destroy, :id => add_on
     assert_redirected_to add_ons_url
-    assert !AddOn.exists?(add_on.id)
+    assert !ThoughtAddOn.exists?(add_on.id)
   end
   
 end

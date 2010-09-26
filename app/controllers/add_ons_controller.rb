@@ -33,7 +33,7 @@ class AddOnsController < ApplicationController
     @add_on = AddOn.find(params[:id])
     if @add_on.update_attributes(params[:add_on])
       flash[:notice] = "Successfully updated add on."
-      redirect_to @add_on
+      redirect_to add_on_url(@add_on)
     else
       render :action => 'edit'
     end

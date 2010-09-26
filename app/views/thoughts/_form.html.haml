@@ -1,9 +1,26 @@
-= javascript ['jquery.resize-font','jquery.autogrow-textarea','jquery.auto-focus']
+= javascript ['http://jqueryui.com/themeroller/themeswitchertool/','jquery.resize-font','jquery.autogrow-textarea','jquery.auto-focus']
 :javascript
-  $(function() {$('.resize-textarea').autogrow();});
+  $(document).ready(function(){
+    $(function() {$('.resize-textarea').autogrow();});
+    $(function() { $("#tabs").tabs().find(".ui-tabs-nav").sortable({axis:'x'});});
+    $('#switcher').themeswitcher();
+  });
 = form_for @thought, :as => :thought, :remote => remote do |f|
   .body-container
-    = f.text_area :body, :class => 'resize-font resize-textarea body auto-focus'
+    - if person_signed_in? && current_person.thought_add_ons.count > 0
+      #tabs.ui-tabs.ui-widget.ui-widget-content.ui-corner-all
+        %ul.ui-tabs-nav.ui-helper-reset.ui-helper-clearfix.ui-widget-header.ui-corner-all
+          %li.ui-state-default.ui-corner-top.ui-tabs-selected.ui-state-active
+            %a{:href=>'#tabs-1'} Plain Text
+          - current_person.thought_add_ons.each_with_index do |a,i|
+            %li.ui-state-default.ui-corner-top
+              %a{:href=>"#tabs-#{i+2}"}= a.name
+        #tabs-1.ui-tabs-panel.ui-widget-content.ui-corner-bottom
+          = f.text_area :body, :class => 'resize-font resize-textarea body auto-focus'
+        #tabs-2.ui-tabs-panel.ui-widget-content.ui-corner-bottom.ui-tabs-hide
+          %p add on
+    - else
+      = f.text_area :body, :class => 'resize-font resize-textarea body auto-focus'
   - if defined?(include_meta_form) && include_meta_form
     .lil-space-top    
       %span.align-left

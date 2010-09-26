@@ -20,6 +20,10 @@ class Person < ActiveRecord::Base
     AddOn.joins(:pricing_plans => {:subscriptions => :person}).where(:person_id => self)
   end
 
+  def thought_add_ons
+    ThoughtAddOn.joins(:pricing_plans => {:subscriptions => :person}).where(:person_id => self)
+  end
+
   after_create do
     self.drop_boxes.create :name => self.email.split('@').first + Time.now.hash.to_s, :secret => rand(9999)
   end

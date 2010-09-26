@@ -6,6 +6,7 @@ music_notation:
   icon_57_url: http://labs.crumpleapp.com/images/music_notation/icon_57.png
   icon_512_url: http://labs.crumpleapp.com/images/music_notation/icon_512.png
   developer: brian
+  type: ThoughtAddOn
   
 textile:
   name: Textile
@@ -15,4 +16,4 @@ textile:
   icon_57_url: http://labs.crumpleapp.com/images/music_notation/icon_57.png
   icon_512_url: http://labs.crumpleapp.com/images/textile/icon_512.png
   developer: brian
-  
+  type: ThoughtAddOn
