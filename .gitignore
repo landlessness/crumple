@@ -5,7 +5,7 @@ log/*.log
 log/*.log.lck
 tmp/**/*
 doc
-solr
+solr/data
 stark-dusk-49.tar.gz
 .sass-cache
 coverage/*
