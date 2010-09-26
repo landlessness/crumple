@@ -10,3 +10,4 @@ stark-dusk-49.tar.gz
 .sass-cache
 coverage/*
 Gemfile.lock
+config/database.yml
