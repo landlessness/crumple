@@ -46,6 +46,12 @@ class PersonTest < ActiveSupport::TestCase
     assert @person.subscribes_to?(pricing_plan), 'should be subscribed to pricing plan.'
     assert @person.thought_add_ons.exists?(add_on), 'should be subscribed to a pricing plan.'
   end
+  def test_two_people_add_ons
+    fred = people(:fred)
+    assert_equal 1, fred.subscriptions.count
+    assert_equal 1, fred.pricing_plans.count
+    assert_equal 1, fred.add_ons.count
+  end
   def test_person_equality
     add_on = add_ons(:music_notation)
     assert @person == add_on.developer

@@ -115,3 +115,5 @@ en:
   marketing: marketing
   integration: integration
   subscribed: subscribed
+  no_iframe_browser_support: your browser does not support iframes
+  

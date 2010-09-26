@@ -31,9 +31,12 @@
     = f.select :type, AddOn.descendants.sort{|a,b| t(a) <=> t(b)}.collect {|q| [t(q).capitalize,q]}, :prompt => true
 
   .prompt.lil-space-top= f.label :site
+  .sub-lil-size.subtle-gray example: http://www.myaddon.com
   = f.text_field :site
   
   .prompt.lil-space-top= f.label :element_name
+  .sub-lil-size.subtle-gray examples: music_notation, drawing
+  .sub-lil-size.subtle-gray (underscore, singular, lower case)
   = f.text_field :element_name
   
   .prompt.lil-space-top= f.label t(:icon_29_url)

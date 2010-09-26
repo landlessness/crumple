@@ -17,11 +17,11 @@ class Person < ActiveRecord::Base
   has_many :developed_add_ons, :class_name => 'AddOn', :foreign_key => 'person_id'  
   
   def add_ons
-    AddOn.joins(:pricing_plans => {:subscriptions => :person}).where(:person_id => self)
+    add_ons_for(AddOn)
   end
 
   def thought_add_ons
-    ThoughtAddOn.joins(:pricing_plans => {:subscriptions => :person}).where(:person_id => self)
+    add_ons_for(ThoughtAddOn)
   end
 
   after_create do
@@ -47,5 +47,9 @@ class Person < ActiveRecord::Base
     elsif subscribable.class.name ==  PricingPlan.name
       self.pricing_plans.exists?(subscribable)
     end
+  end
+  protected
+  def add_ons_for(c)
+    c.joins(:pricing_plans => {:subscriptions => :person}).where(:subscriptions => {:person_id => self})
   end
 end

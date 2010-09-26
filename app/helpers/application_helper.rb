@@ -1,4 +1,7 @@
 module ApplicationHelper
+  def add_on_new(a)
+    a.site + '/' + a.element_name.pluralize + '/' + 'new'
+  end
   def link_to_drop_box
     drop_box_text = t(:drop_box)
     drop_box_text = drop_box_text + " (#{@drop_box_count})" if @drop_box_count > 0
