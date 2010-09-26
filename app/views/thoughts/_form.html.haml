@@ -18,7 +18,7 @@
         = f.text_area :body, :class => 'resize-font resize-textarea body auto-focus'
       - current_person.thought_add_ons.each_with_index do |a,i|
         %div{:id => "tabs-#{i+2}", :class => 'ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide'}
-          %iframe{:src=>add_on_new(a), :width=>'100%', :height=>'100%'}
+          %iframe{:src=>add_on_new(a), :width=>'100%', :height=>'300px', :frameborder => 0}
             %p= t(:no_iframe_browser_support)
   - else
     .body-container
