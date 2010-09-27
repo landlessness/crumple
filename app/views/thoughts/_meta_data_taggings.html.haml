@@ -6,7 +6,7 @@
   %span.loading
     = image_tag 'ajax-loader-indicator.gif', :class => 'on-top'
   .add-tags.display-none.sub-lil-space-top
-    = form_for thought, :url => thought_taggings_path(thought), :html => {:class => "add_thought_tags", :method => :post}, :remote => true do |f|
+    = form_for thought, :as => :thought, :url => thought_taggings_path(thought), :html => {:class => "add_thought_tags", :method => :post}, :remote => true do |f|
       = f.text_field :tags_list_concat
       %div
         = f.submit t(:add)

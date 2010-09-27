@@ -5,7 +5,7 @@
     $(function() { $("#tabs").tabs().find(".ui-tabs-nav").sortable({axis:'x'});});
     $('#switcher').themeswitcher();
   });
-= form_for @thought, :as => :thought, :remote => remote do |f|
+= form_for @thought, :as => :thought, :url => (@thought.new_record? ? thoughts_path : thought_path(@thought)), :remote => remote do |f|
   - if person_signed_in? && current_person.thought_add_ons.count > 0
     #tabs.ui-tabs.ui-widget.ui-widget-content.ui-corner-all
       %ul.ui-tabs-nav.ui-helper-reset.ui-helper-clearfix.ui-widget-header.ui-corner-all

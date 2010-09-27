@@ -9,10 +9,12 @@ class ThoughtsControllerTest < ActionController::TestCase
     sign_in @person
   end
 
-  test "should get index" do
+  def test_should_get_index
     get :index
     assert_response :success
     assert_not_nil assigns(:thoughts)
+    # make sure all forms use :as => :thought
+    assert_no_tag :tag => 'form', :attributes => {:action => '/plain_text_thoughts/'+@thought.to_param}
   end
 
   test "should get index with query" do
@@ -164,9 +166,12 @@ class ThoughtsControllerTest < ActionController::TestCase
     assert_equal 'web', t.origin
   end
 
-  test "should show thought" do
+  def test_should_show_thought
     get :show, :id => @thought.to_param
     assert_response :success
+    # make sure all forms use :as => :thought and the proper URL
+    assert_no_tag :tag => 'select', :attributes => {:name => 'plain_text_thought[project_id]'}
+    assert_no_tag :tag => 'form', :attributes => {:action => '/plain_text_thoughts/'+@thought.to_param}
   end
 
   test "should focus thought" do
@@ -179,7 +184,7 @@ class ThoughtsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should update thought" do
+  def test_should_update_thought
     PlainTextThought.any_instance.stubs(:valid?).returns(true)
     
     put :update, :id => @thought.to_param, :thought => @thought.attributes
@@ -248,7 +253,7 @@ class ThoughtsControllerTest < ActionController::TestCase
     assert_template 'edit'
   end
 
-  test "should update project" do
+  def test_should_update_project
     PlainTextThought.any_instance.stubs(:valid?).returns(true)
     
     assert_equal projects(:crumple), @thought.project
