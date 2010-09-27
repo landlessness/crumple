@@ -18,7 +18,7 @@ function initAjaxBindings() {
   $(".add_thought_tags")
     .bind("ajax:loading",  adding_tags)
     .bind("ajax:complete", completed_adding_tags);
-  $(".edit_thought")
+  $(".thought_edit")
     .bind("ajax:loading",  editing_thought)
     .bind("ajax:complete", completed_editing_thought);
   $(".change-state")
@@ -113,8 +113,8 @@ function completed_adding_tags() {
 };
 
 function editing_thought() { 
-  thought_editor = $('#thoughts_edit');
-  spinner = thought_editor.prev().prev('.loading');
+  main = $('#main');
+  spinner = main.find('.loading');
 
   thought_editor.css('visibility', 'hidden');
   spinner.show();
