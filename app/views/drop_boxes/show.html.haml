@@ -10,5 +10,5 @@
   %span.lil-space-left.action= link_to t(:download), drop_box_vcf_path
 .space-top
 .prompt=t(:bookmarklet)
-.action= link_to '+Crumple', %(javascript:(function(){e =''+(window.getSelection?window.getSelection():document.getSelection?document.getSelection():document.selection.createRange().text);if(e)e="\\n\\n"+e+"";open('http://#{Rails.application.config.top_level_domain}#{bookmarklet_create_thoughts_path}?thought[body]='+encodeURIComponent(location.href+'\\n\\n')+encodeURIComponent(document.title)+encodeURIComponent(e),'Crumple','toolbar=no,width=400,height=400')})())
+.action= link_to '+Crumple', %(javascript:(function(){e =''+(window.getSelection?window.getSelection():document.getSelection?document.getSelection():document.selection.createRange().text);if(e)e="\\n\\n"+e+"";open('http://#{Rails.application.config.top_level_domain}#{bookmarklet_create_thoughts_path}?thought[type]=PlainTextThought&thought[body]='+encodeURIComponent(location.href+'\\n\\n')+encodeURIComponent(document.title)+encodeURIComponent(e),'Crumple','toolbar=no,width=400,height=400')})())
 .lil-space-top.subtle-prompt=t(:drag_and_drop_to_toolbar)

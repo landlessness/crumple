@@ -106,7 +106,7 @@ class ThoughtsController < ApplicationController
     @thought.origin = 'web' if @thought.origin.blank?
     respond_to do |format|
       if @thought.save
-        format.html { redirect_to @thought }
+        format.html { redirect_to thought_path(@thought) }
       else
         format.html { render :action => 'new' }
       end
@@ -160,7 +160,7 @@ class ThoughtsController < ApplicationController
       if @thought.save
         format.html do
           @thought.update_attribute(:origin, 'web') if @thought.origin.blank?
-          redirect_to @thought
+          redirect_to thought_path(@thought)
         end
         format.xml do
           @thought.update_attribute(:origin, 'api') if @thought.origin.blank?
@@ -181,7 +181,7 @@ class ThoughtsController < ApplicationController
     respond_to do |format|
       if @thought.update_attributes(params[:thought])
         format.js
-        format.html { redirect_to @thought }
+        format.html { redirect_to thought_path(@thought) }
         format.xml  { head :ok }
       else
         format.js

@@ -73,7 +73,7 @@ class ThoughtsControllerTest < ActionController::TestCase
       post :auto_create, :thought => @thought.attributes
     end
 
-    assert_redirected_to t=assigns(:thought)
+    assert_redirected_to thought_path(t=assigns(:thought))
     assert_equal 'web', t.origin
   end
 
@@ -89,7 +89,7 @@ class ThoughtsControllerTest < ActionController::TestCase
       post :create, :thought => @thought.attributes
     end
 
-    assert_redirected_to t=assigns(:thought)
+    assert_redirected_to thought_path(t=assigns(:thought))
     assert_equal @person, t.person
     assert_equal 'web', t.origin
   end
@@ -113,7 +113,7 @@ class ThoughtsControllerTest < ActionController::TestCase
     
     assert_equal ["bar", "black", "blue", "brown", "foo"], @person.tags.map(&:name).sort
 
-    assert_redirected_to t=assigns(:thought)
+    assert_redirected_to thought_path(t=assigns(:thought))
   end
 
   test "should create thought from bookmarklet" do
@@ -123,7 +123,7 @@ class ThoughtsControllerTest < ActionController::TestCase
       post :create, :thought => @thought.attributes.merge('origin' => 'bookmarklet')
     end
 
-    assert_redirected_to t=assigns(:thought)
+    assert_redirected_to thought_path(t=assigns(:thought))
     assert_equal 'bookmarklet', t.origin
     
   end
@@ -159,8 +159,7 @@ class ThoughtsControllerTest < ActionController::TestCase
     assert_difference('Thought.count') do
       post :create, :thought => {:body => 'this is a test thought', :state_event => 'put_in_drop_box', :type => 'PlainTextThought'}
     end
-    t = assigns(:thought)
-    assert_redirected_to t
+    assert_redirected_to thought_path(t=assigns(:thought))
     assert t.in_drop_box?, 'thought expected to be in drop box.'
     assert_equal 'web', t.origin
   end
@@ -184,7 +183,7 @@ class ThoughtsControllerTest < ActionController::TestCase
     PlainTextThought.any_instance.stubs(:valid?).returns(true)
     
     put :update, :id => @thought.to_param, :thought => @thought.attributes
-    assert_redirected_to assigns(:thought)
+    assert_redirected_to thought_path(assigns(:thought))
   end
   
   test "invalid update thought" do
@@ -205,7 +204,7 @@ class ThoughtsControllerTest < ActionController::TestCase
     
     assert_equal tags, @person.tags.map(&:name).sort
 
-    assert_redirected_to t=assigns(:thought)
+    assert_redirected_to thought_path(assigns(:thought))
   end
 
   test "should archive thought" do

@@ -20,10 +20,6 @@ class Thought < ActiveRecord::Base
   has_many :taggings, :dependent => :destroy
   has_many :tags, :through => :taggings, :uniq => true
   
-  def search_text
-    self.body
-  end
-
   # TODO: should this tagging logic be somewhere else? maybe a mixin module?
   def tags_list=(tags_string)
     return unless tags_string
