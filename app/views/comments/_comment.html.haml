@@ -1,5 +1,5 @@
 - if comment && comment.person
-  %span.loading
+  %span.loading.display-none
     = image_tag 'ajax-loader-bar.gif', :class => 'on-top'
   .display-none.edit-comment.space-bottom
     = form_for comment, :remote => true do |f|
