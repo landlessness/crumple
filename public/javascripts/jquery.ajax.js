@@ -113,8 +113,8 @@ function completed_adding_tags() {
 };
 
 function editing_thought() { 
-  main = $('#main');
-  spinner = main.find('.loading');
+  thought_editor = $('#thoughts_edit');
+  spinner = thought_editor.prev().prev('.loading');
 
   thought_editor.css('visibility', 'hidden');
   spinner.show();
