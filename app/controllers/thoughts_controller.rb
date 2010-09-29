@@ -93,8 +93,17 @@ class ThoughtsController < ApplicationController
   # GET /thoughts/new
   # GET /thoughts/new.xml
   def new
+    project = current_person.projects.find(params[:project_id]) if person_signed_in? && params[:project_id]
     @thought = PlainTextThought.new params[:thought]
-    @thought.project = current_person.projects.find(params[:project_id]) if person_signed_in? && params[:project_id]
+    @thought.project = project
+    @add_on_thoughts = []
+    # current_person.thought_add_ons.each do |a|
+    #   # @add_on_thoughts << (t = AddOnThought.sub_clazz(a.).new)
+    #   
+    #   
+    #   new_type(params[:thought],Thought,:person => current_person)
+    #   t.project = project
+    # end
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @thought }
@@ -102,7 +111,8 @@ class ThoughtsController < ApplicationController
   end
 
   def auto_create
-    @thought = marshal_type(params[:thought],Thought,:person => current_person)
+    @thought = marshal_type(params[:thought].merge(:person => current_person),Thought)
+    @thought.person = current_person
     @thought.origin = 'web' if @thought.origin.blank?
     respond_to do |format|
       if @thought.save
@@ -120,8 +130,8 @@ class ThoughtsController < ApplicationController
 
   def bookmarklet_create
     params[:thought].merge!(:state_event=>:put_in_drop_box, :origin=>'bookmarklet')
-    @thought = marshal_type(params[:thought],Thought,:person => current_person)
-    
+    @thought = marshal_type(params[:thought].merge(:person => current_person),Thought)
+    @thought.person = current_person
     respond_to do |format|
       if @thought.save
         format.html { redirect_to bookmarklet_confirmation_thought_path(@thought) }
@@ -155,7 +165,7 @@ class ThoughtsController < ApplicationController
   # POST /thoughts
   # POST /thoughts.xml
   def create
-    @thought = marshal_type(params[:thought],Thought,:person => current_person)
+    @thought = marshal_type(params[:thought].merge(:person => current_person),Thought)
     respond_to do |format|
       if @thought.save
         format.html do
@@ -177,6 +187,7 @@ class ThoughtsController < ApplicationController
   # PUT /thoughts/1.xml
   def update
     @thought = current_person.thoughts.find(params[:id])
+    logger.info 'update params[:thought].to_yaml: ' + params[:thought].to_yaml
 
     respond_to do |format|
       if @thought.update_attributes(params[:thought])

@@ -38,7 +38,7 @@ class AddOnsControllerTest < ActionController::TestCase
   end
   
   def test_edit
-    get :edit, :id => AddOn.first
+    get :edit, :id => add_ons(:music_notation).to_param
     assert_template 'edit'
   end
   

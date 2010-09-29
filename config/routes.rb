@@ -66,7 +66,5 @@ Crumple::Application.routes.draw do
     resources :thoughts 
   end
 
-  resources :add_on_thoughts, :path => '(:add_on)_thoughts'
-
   root :to => 'thoughts#new'
 end

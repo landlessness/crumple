@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100924040653) do
+ActiveRecord::Schema.define(:version => 20100927092453) do
 
   create_table "add_ons", :force => true do |t|
     t.string   "name"
@@ -139,9 +139,11 @@ ActiveRecord::Schema.define(:version => 20100924040653) do
     t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "state",      :default => "active"
+    t.string   "state",                      :default => "active"
     t.string   "origin"
     t.string   "type"
+    t.integer  "add_on_id"
+    t.integer  "add_on_thought_resource_id"
   end
 
 end

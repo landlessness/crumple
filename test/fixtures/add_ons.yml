@@ -2,9 +2,9 @@ music_notation:
   name: Music Notation
   element_name: music_notation_thought
   description: create music notation using the simple ABC Notation http://abcnotation.com/
-  site: http://labs.crumpleapp.com
-  icon_57_url: http://labs.crumpleapp.com/images/music_notation/icon_57.png
-  icon_512_url: http://labs.crumpleapp.com/images/music_notation/icon_512.png
+  site: http://localhost:3001
+  icon_57_url: http://localhost:3001/images/music_notation/icon_57.png
+  icon_512_url: http://localhost:3001/images/music_notation/icon_512.png
   developer: brian
   type: ThoughtAddOn
   
@@ -12,8 +12,18 @@ textile:
   name: Textile
   element_name: textile_thought
   description: create formatted thoughts with textile notation
-  site: http://labs.crumpleapp.com
-  icon_57_url: http://labs.crumpleapp.com/images/music_notation/icon_57.png
-  icon_512_url: http://labs.crumpleapp.com/images/textile/icon_512.png
+  site: http://localhost:3001
+  icon_57_url: http://localhost:3001/images/music_notation/icon_57.png
+  icon_512_url: http://localhost:3001/images/textile/icon_512.png
   developer: brian
   type: ThoughtAddOn
+
+todo_list:
+  name: To Do List
+  element_name: todo_list_container
+  description: track your thoughts that require action
+  site: http://localhost:3001
+  icon_57_url: http://localhost:3001/images/to_do_list/icon_57.png
+  icon_512_url: http://localhost:3001/images/to_do_list/icon_512.png
+  developer: brian
+  type: ContainerAddOn

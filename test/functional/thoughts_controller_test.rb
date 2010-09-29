@@ -47,9 +47,10 @@ class ThoughtsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:thoughts)
   end
   
-  test "should get new" do
+  def test_should_get_new
     get :new
     assert_response :success
+    assert_not_nil assigns(:thought), 'plain text thought should be set'
   end
 
   test "should get new signed out" do
@@ -85,7 +86,7 @@ class ThoughtsControllerTest < ActionController::TestCase
     assert_template 'new'
   end
 
-  test "should create thought" do
+  def test_should_create_thought
     PlainTextThought.any_instance.stubs(:valid?).returns(true)
     assert_difference('Thought.count') do
       post :create, :thought => @thought.attributes
@@ -102,12 +103,12 @@ class ThoughtsControllerTest < ActionController::TestCase
     assert_template 'new'  
   end
 
-  test "should create thought, tags and tag ownership" do
+  def test_create_thought_tags_tag_ownership
     PlainTextThought.any_instance.stubs(:valid?).returns(true)
     
     tags = %w(blue brown black).sort
     
-    assert !@person.tags.empty?, 'person should own any tags at the beginning'
+    assert !@person.tags.empty?, 'person should own some tags at the beginning'
     
     assert_difference('Thought.count') do
       post :create, :thought => @thought.attributes.merge(:tags_list => tags.join(' '))
@@ -116,21 +117,12 @@ class ThoughtsControllerTest < ActionController::TestCase
     assert_equal ["bar", "black", "blue", "brown", "foo"], @person.tags.map(&:name).sort
 
     assert_redirected_to thought_path(t=assigns(:thought))
-  end
-
-  test "should create thought from bookmarklet" do
-    PlainTextThought.any_instance.stubs(:valid?).returns(true)
     
-    assert_difference('Thought.count') do
-      post :create, :thought => @thought.attributes.merge('origin' => 'bookmarklet')
-    end
-
-    assert_redirected_to thought_path(t=assigns(:thought))
-    assert_equal 'bookmarklet', t.origin
+    assert_equal tags, t.taggings.map{|t|t.tag.name}.sort
     
   end
 
-  test "should create thought from bookmarklet_create" do
+  def test_should_create_thought_from_bookmarklet_create
     PlainTextThought.any_instance.stubs(:valid?).returns(true)
     
     assert_difference('Thought.count') do
@@ -198,7 +190,7 @@ class ThoughtsControllerTest < ActionController::TestCase
     assert_template 'edit'
   end
   
-  test "should update thought with new tag and tag ownership" do
+  def test_should_update_thought_with_new_tag_and_tag_ownership
     PlainTextThought.any_instance.stubs(:valid?).returns(true)
     
     tags = %w(blue brown black).sort
