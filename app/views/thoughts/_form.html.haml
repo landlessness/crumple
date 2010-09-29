@@ -9,7 +9,7 @@
   #tabs.ui-tabs.ui-widget.ui-widget-content.ui-corner-all
     = render 'tab_nav'
     #tabs-1.ui-tabs-panel.ui-widget-content.ui-corner-bottom.body-container
-      = form_for @thought, :as => :thought, :url => (@thought.new_record? ? thoughts_path : thought_path(@thought)), :remote => remote do |f|
+      = form_for thought, :as => :thought, :url => (thought.new_record? ? thoughts_path : thought_path(thought)), :remote => remote do |f|
         = f.text_area :body, :class => 'resize-font resize-textarea body auto-focus'
         = render 'meta_form', :f => f
     - @add_on_thoughts.each_with_index do |t,i|
@@ -21,6 +21,6 @@
           = render 'meta_form', :f => f            
 - else
   .body-container
-    = form_for @thought, :as => :thought, :url => (@thought.new_record? ? thoughts_path : thought_path(@thought)), :remote => remote do |f|
+    = form_for thought, :as => :thought, :url => (thought.new_record? ? thoughts_path : thought_path(thought)), :remote => remote do |f|
       = f.text_area :body, :class => 'resize-font resize-textarea body auto-focus'
       = render 'meta_form', :f => f

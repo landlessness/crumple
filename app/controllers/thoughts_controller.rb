@@ -168,7 +168,7 @@ class ThoughtsController < ApplicationController
   def create
     params[:thought].merge!(:person => current_person)
     @thought = nil
-    if @add_on = params[:thought][:add_on]
+    if params[:thought][:add_on] && (@add_on = params[:thought][:add_on] = AddOn.find(params[:thought][:add_on]))
       logger.info 'create add on thought'
       @thought = AddOnThought.subclazz_create! params[:thought]
     else

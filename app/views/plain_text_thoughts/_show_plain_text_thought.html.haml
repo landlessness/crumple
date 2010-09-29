@@ -1,0 +1,22 @@
+= javascript ['jquery.resize-font','jquery.autogrow-textarea', 'jquery.ajax', 'jquery.tipsy', 'jquery.inline-editing', 'jquery.hover']
+:javascript
+  $(function() {$('.resize-textarea').autogrow();});
+- screen_shot_urls = []
+%span.loading
+  = image_tag 'ajax-loader-bar.gif', :class => 'on-top'
+#thoughts_show
+  .body.resize-font.people-content<= display_text_store_links(plain_text_thought, screen_shot_urls)
+  .norm-space-bottom.norm-space-top
+    .action
+      = render 'thought_controls', :thought => plain_text_thought
+    .clear
+#thoughts_edit.display-none
+  = render 'form', :remote => true, :thought => plain_text_thought
+  .norm-space-bottom.norm-space-top
+= render 'light_box', :screen_shot_urls => screen_shot_urls
+.subtle-border-top.norm-none-padding
+  .align-left.three-fourths
+    = render 'comments', :thought => plain_text_thought
+  .align-right.one-fourth
+    = render 'meta_data', :thought => plain_text_thought
+  .clear
