@@ -94,7 +94,7 @@ class ThoughtsControllerTest < ActionController::TestCase
     K:C
     {g}A3 A{g}AA|{gAGAG}A3 {g}A{d}A{e}A|])
     assert_difference('Thought.count') do
-      post :create, :thought => {:add_on_id => music_add_on.to_param, :music_notation_thought => {:body => abc_notation}}
+      post :create, :music_notation_thought => {:body => abc_notation}, :thought => {:add_on_id => music_add_on.to_param}
     end
     assert_redirected_to thought_path(t=assigns(:thought))
     assert t.is_a?(MusicNotationThought), 'should be a music notation thought'
