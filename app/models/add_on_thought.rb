@@ -24,8 +24,14 @@ class AddOnThought < Thought
     self.add_on_thought_resource.destroy
   end
   def add_on_thought_resource(force_reload=false)
-    logger.info '@add_on_thought_resource: ' + @add_on_thought_resource
-    @add_on_thought_resource
+    logger.info '@add_on_thought_resource: ' + @add_on_thought_resource.to_yaml
+    logger.info 'self.add_on_thought_resource_id: ' + self.add_on_thought_resource_id.to_param
+    r = @add_on_thought_resource || @add_on_thought_resource = AddOnThoughtResource.find(self.add_on_thought_resource_id)
+    if r.nil?
+      raise AddOnResourceMissing, 'the add on resource is missing for ' + self.add_on.element_name.classify + 'Resource'
+    else
+      r
+    end
   end
   def add_on_thought_resource=(associate)
     @add_on_thought_resource = associate
@@ -79,3 +85,4 @@ end
 class AddOnTypeMismatch < Exception; end
 class AddOnMissing < Exception; end
 class AddOnResourceAttributesMissing < Exception; end
+class AddOnResourceMissing < Exception; end
