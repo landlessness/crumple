@@ -11,18 +11,20 @@ class AddOnThoughtTest < ActiveSupport::TestCase
     {g}A3 A{g}AA|{gAGAG}A3 {g}A{d}A{e}A|])
   end
   def test_validity
+    assert AddOnThought.subclazz_new(:person => @person, :add_on => @music_add_on, :music_notation_thought => {:body => @abc_notation}).valid?, "everything looked good. what's missing?"
+
     todo_add_on = add_ons(:todo_list)
-
-    assert @person.add_on_thoughts.new(:add_on => @music_add_on).valid?, "everything looked good. what's missing?"
-
-    assert !@person.add_on_thoughts.new(:add_on => todo_add_on).valid?, "not valid because wrong type of add on"
     assert_raise AddOnTypeMismatch do
-      AddOnThought.subclazz_new(:add_on => todo_add_on)
+      AddOnThought.subclazz_new(:person => @person, :add_on => todo_add_on, :music_notation_thought => {:body => @abc_notation})
     end
-    assert !AddOnThought.new.valid?, 'not valid because no person or add-on included'
-    assert !AddOnThought.new(:add_on => @music_add_on).valid?, 'not valid because no person included'
-    assert !@person.add_on_thoughts.new.valid?, 'not valid because no add on included'
+
+    assert_raise AddOnMissing do
+      AddOnThought.subclazz_new(:person => @person, :music_notation_thought => {:body => @abc_notation})
+    end
+    
+    assert !AddOnThought.subclazz_new(:add_on => @music_add_on, :music_notation_thought => {:body => @abc_notation}).valid?, 'not valid because no person included'
   end
+  
   def test_foreign_ids
     t = AddOnThought.subclazz_new :add_on => @music_add_on
     assert t.respond_to?(:add_on_id), 'should have method for add_on_id'
@@ -43,10 +45,17 @@ class AddOnThoughtTest < ActiveSupport::TestCase
     assert t.is_a?(MusicNotationThought)
     assert_equal @music_add_on, t.add_on
   end
+  def test_has_search_text
+    t = create_music_thought
+    assert_equal 'Grace notes', t.add_on_thought_resource.search_text
+  end
   def test_create_thought_from_add_on_shortcut
     t = create_music_thought
     assert t.is_a?(MusicNotationThought)
     assert_equal @music_add_on, t.add_on
+    assert !t.new_record?
+    assert_not_nil t.add_on_thought_resource_id
+    assert_not_nil t.add_on_thought_resource
   end
   def test_create
     t = create_music_thought
@@ -64,18 +73,22 @@ class AddOnThoughtTest < ActiveSupport::TestCase
     K:C
     {g}A3 A{g}AA|{gAGAG}A3 {g}A{d}A{e}A|])
     t.update_attributes(:music_notation_thought => {:body => updated_abc_notation})
-    assert_equal updated_abc_notation, t.add_on_thought_resource.body
+    assert_equal updated_abc_notation, t.add_on_thought_resource.reload.body
   end
-  def test_delete
+  def test_destroy
     t = create_music_thought
-    t.add_on_thought_resource.destroy
+    assert t.add_on_thought_resource_clazz.find(t.add_on_thought_resource.id).valid?
+    t.destroy
+    assert_raise ActiveResource::ResourceNotFound do
+      t.add_on_thought_resource_clazz.find(t.add_on_thought_resource.id)
+    end
     assert_raise ActiveRecord::RecordNotFound do
-      AddOnThought.find(t.to_param)
+      AddOnThought.find t.to_param
     end
   end
   protected
   def create_music_thought
-    AddOnThought.subclazz_create :add_on => @music_add_on, :music_notation_thought => {:body => @abc_notation}    
+    AddOnThought.subclazz_create! :person => @person, :add_on => @music_add_on, :music_notation_thought => {:body => @abc_notation}    
   end
 end
 
