@@ -1,4 +1,8 @@
 .list-thoughts
-  = render @thoughts
+  - @thoughts.each do |t|
+    - if t.is_a?(PlainTextThought)
+      = render t
+    - else
+      = render :partial => 'add_on_thoughts/add_on_thought', :locals => {:add_on_thought => t}
 .subtle-border-top.none-norm-padding
 .center-text= will_paginate @thoughts, :next_label => t(:next) +  ' &raquo;', :previous_label => '&laquo; ' + t(:previous)

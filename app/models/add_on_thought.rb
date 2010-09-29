@@ -8,6 +8,9 @@ class AddOnThought < Thought
   def search_text
     add_on_thought_resource.search_text
   end
+  def body
+    add_on_thought_resource.body
+  end
   def create_resource
     logger.info '!!! create_resource'
     raise AddOnResourceAttributesMissing, 'the resource attributes were not set. probably because the options hash did not have the key: ' + self.add_on.element_name if @resource_attributes.nil?
@@ -21,6 +24,7 @@ class AddOnThought < Thought
     self.add_on_thought_resource.destroy
   end
   def add_on_thought_resource(force_reload=false)
+    logger.info '@add_on_thought_resource: ' + @add_on_thought_resource
     @add_on_thought_resource
   end
   def add_on_thought_resource=(associate)
