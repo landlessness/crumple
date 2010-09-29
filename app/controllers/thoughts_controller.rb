@@ -168,15 +168,16 @@ class ThoughtsController < ApplicationController
   def create
     params[:thought].merge!(:person => current_person)
     @thought = nil
-    if params[:thought][:add_on] && (@add_on = params[:thought][:add_on] = AddOn.find(params[:thought][:add_on]))
-      logger.info 'create add on thought'
-      @thought = AddOnThought.subclazz_create! params[:thought]
+    @add_on = AddOn.find(params[:thought][:add_on_id]) if params[:thought][:add_on_id]
+    if @add_on
+      logger.info '!!! create add on thought'
+      @thought = AddOnThought.subclazz_new params[:thought].merge(:add_on => @add_on, @add_on.element_name.to_sym => params[@add_on.element_name.to_sym])
     else
-      logger.info 'create plain text thought'
+      logger.info '!!! create plain text thought'
       @thought = marshal_type(params[:thought])
-      logger.info '@thought.class.name: ' + @thought.class.name
+      logger.info '!!! @thought.class.name: ' + @thought.class.name
     end
-    logger.info 'params[:thought] ' + params[:thought].to_yaml
+    logger.info '!!! params[:thought] ' + params[:thought].to_yaml
     respond_to do |format|
       if @thought.save
         format.html do
@@ -198,7 +199,7 @@ class ThoughtsController < ApplicationController
   # PUT /thoughts/1.xml
   def update
     @thought = current_person.thoughts.find(params[:id])
-    logger.info 'update params[:thought].to_yaml: ' + params[:thought].to_yaml
+    logger.info '!!! update params[:thought].to_yaml: ' + params[:thought].to_yaml
 
     respond_to do |format|
       if @thought.update_attributes(params[:thought])
