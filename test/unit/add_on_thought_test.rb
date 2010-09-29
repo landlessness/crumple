@@ -46,11 +46,11 @@ class AddOnThoughtTest < ActiveSupport::TestCase
     assert_equal @music_add_on, t.add_on
   end
   def test_has_search_text
-    t = create_music_thought
+    t = create_music_thought!
     assert_equal 'Grace notes', t.add_on_thought_resource.search_text
   end
   def test_create_thought_from_add_on_shortcut
-    t = create_music_thought
+    t = create_music_thought!
     assert t.is_a?(MusicNotationThought)
     assert_equal @music_add_on, t.add_on
     assert !t.new_record?
@@ -58,15 +58,15 @@ class AddOnThoughtTest < ActiveSupport::TestCase
     assert_not_nil t.add_on_thought_resource
   end
   def test_create
-    t = create_music_thought
+    t = create_music_thought!
     assert_equal @abc_notation, t.add_on_thought_resource.body
   end
   def test_find
-    t = create_music_thought
+    t = create_music_thought!
     assert t.add_on_thought_resource_clazz.find(t.add_on_thought_resource.to_param).valid?
   end
   def test_update
-    t = create_music_thought
+    t = create_music_thought!
     updated_abc_notation = %(X:1
     T:Updated Grace notes
     M:6/8
@@ -76,7 +76,7 @@ class AddOnThoughtTest < ActiveSupport::TestCase
     assert_equal updated_abc_notation, t.add_on_thought_resource.reload.body
   end
   def test_destroy
-    t = create_music_thought
+    t = create_music_thought!
     assert t.add_on_thought_resource_clazz.find(t.add_on_thought_resource.id).valid?
     t.destroy
     assert_raise ActiveResource::ResourceNotFound do
@@ -87,7 +87,7 @@ class AddOnThoughtTest < ActiveSupport::TestCase
     end
   end
   protected
-  def create_music_thought
+  def create_music_thought!
     AddOnThought.subclazz_create! :person => @person, :add_on => @music_add_on, :music_notation_thought => {:body => @abc_notation}    
   end
 end

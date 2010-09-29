@@ -86,6 +86,24 @@ class ThoughtsControllerTest < ActionController::TestCase
     assert_template 'new'
   end
 
+  def test_add_on
+    music_add_on = add_ons(:music_notation)
+    abc_notation = %(X:1
+    T:Grace notes
+    M:6/8
+    K:C
+    {g}A3 A{g}AA|{gAGAG}A3 {g}A{d}A{e}A|])
+    assert_difference('Thought.count') do
+      post :create, :thought => {:add_on => music_add_on, :music_notation_thought => {:body => abc_notation}}
+    end
+    assert_redirected_to thought_path(t=assigns(:thought))
+    assert t.is_a?(MusicNotationThought), 'should be a music notation thought'
+    assert_equal @person, t.person
+    assert_equal 'web', t.origin
+    get :show, :id => t.to_param
+    assert_response :success
+  end
+
   def test_should_create_thought
     PlainTextThought.any_instance.stubs(:valid?).returns(true)
     assert_difference('Thought.count') do
@@ -265,4 +283,5 @@ class ThoughtsControllerTest < ActionController::TestCase
     assert_routing '/thoughts', :controller => 'thoughts', :action => 'index'
     assert_routing "/thoughts/#{thoughts(:deep).to_param}", :controller => 'thoughts', :action => 'show', :id => thoughts(:deep).to_param
   end
+  
 end

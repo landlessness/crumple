@@ -1,5 +1,7 @@
 class ThoughtsController < ApplicationController  
   skip_filter :authenticate_person!, :only => :new
+  before_filter :init_add_on_thoughts
+  
   # GET /thoughts
   # GET /thoughts.xml
   def index
@@ -96,22 +98,21 @@ class ThoughtsController < ApplicationController
     project = current_person.projects.find(params[:project_id]) if person_signed_in? && params[:project_id]
     @thought = PlainTextThought.new params[:thought]
     @thought.project = project
-    @add_on_thoughts = []
-    # current_person.thought_add_ons.each do |a|
-    #   # @add_on_thoughts << (t = AddOnThought.sub_clazz(a.).new)
-    #   
-    #   
-    #   new_type(params[:thought],Thought,:person => current_person)
-    #   t.project = project
-    # end
+    if person_signed_in?
+      current_person.thought_add_ons.each do |a|
+        t = AddOnThought.subclazz_new :add_on => a
+        t.project = project
+        @add_on_thoughts << t
+      end
+    end
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @thought }
+      format.xml  { render :xml => [@thought] + @add_on_thoughts}
     end
   end
 
   def auto_create
-    @thought = marshal_type(params[:thought].merge(:person => current_person),Thought)
+    @thought = marshal_type(params[:thought].merge(:person => current_person))
     @thought.person = current_person
     @thought.origin = 'web' if @thought.origin.blank?
     respond_to do |format|
@@ -130,7 +131,7 @@ class ThoughtsController < ApplicationController
 
   def bookmarklet_create
     params[:thought].merge!(:state_event=>:put_in_drop_box, :origin=>'bookmarklet')
-    @thought = marshal_type(params[:thought].merge(:person => current_person),Thought)
+    @thought = marshal_type(params[:thought].merge(:person => current_person))
     @thought.person = current_person
     respond_to do |format|
       if @thought.save
@@ -165,7 +166,17 @@ class ThoughtsController < ApplicationController
   # POST /thoughts
   # POST /thoughts.xml
   def create
-    @thought = marshal_type(params[:thought].merge(:person => current_person),Thought)
+    params[:thought].merge!(:person => current_person)
+    @thought = nil
+    if @add_on = params[:thought][:add_on]
+      logger.info 'create add on thought'
+      @thought = AddOnThought.subclazz_create! params[:thought]
+    else
+      logger.info 'create plain text thought'
+      @thought = marshal_type(params[:thought])
+      logger.info '@thought.class.name: ' + @thought.class.name
+    end
+    logger.info 'params[:thought] ' + params[:thought].to_yaml
     respond_to do |format|
       if @thought.save
         format.html do
@@ -236,4 +247,8 @@ class ThoughtsController < ApplicationController
       end
     end      
   end
+  def init_add_on_thoughts  
+    @add_on_thoughts = []
+  end
 end
+

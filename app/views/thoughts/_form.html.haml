@@ -5,40 +5,22 @@
     $(function() { $("#tabs").tabs().find(".ui-tabs-nav").sortable({axis:'x'});});
     $('#switcher').themeswitcher();
   });
-= form_for @thought, :as => :thought, :url => (@thought.new_record? ? thoughts_path : thought_path(@thought)), :remote => remote do |f|
-  - if person_signed_in? && current_person.thought_add_ons.count > 0
-    #tabs.ui-tabs.ui-widget.ui-widget-content.ui-corner-all
-      %ul.ui-tabs-nav.ui-helper-reset.ui-helper-clearfix.ui-widget-header.ui-corner-all
-        %li.ui-state-default.ui-corner-top.ui-tabs-selected.ui-state-active
-          %a{:href=>'#tabs-1'}= image_tag('plain_text_29.png')
-        - current_person.thought_add_ons.each_with_index do |a,i|
-          %li.ui-state-default.ui-corner-top
-            %a{:href=>"#tabs-#{i+2}"}= a.icon_29_url.blank? ? a.name : image_tag(a.icon_29_url)
-      #tabs-1.ui-tabs-panel.ui-widget-content.ui-corner-bottom.body-container
+- if person_signed_in? && current_person.thought_add_ons.count > 0
+  #tabs.ui-tabs.ui-widget.ui-widget-content.ui-corner-all
+    = render 'tab_nav'
+    #tabs-1.ui-tabs-panel.ui-widget-content.ui-corner-bottom.body-container
+      = form_for @thought, :as => :thought, :url => (@thought.new_record? ? thoughts_path : thought_path(@thought)), :remote => remote do |f|
         = f.text_area :body, :class => 'resize-font resize-textarea body auto-focus'
-      - current_person.thought_add_ons.each_with_index do |a,i|
-        %div{:id => "tabs-#{i+2}", :class => 'ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide'}
-          %iframe{:src=>add_on_new(a), :width=>'100%', :height=>'300px', :frameborder => 0}
+        = render 'meta_form', :f => f
+    - @add_on_thoughts.each_with_index do |t,i|
+      %div{:id => "tabs-#{i+2}", :class => 'ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide'}
+        = form_for t, :as => :thought, :url => (t.new_record? ? thoughts_path : thought_path(t)), :remote => remote do |f|
+          = f.hidden_field :add_on
+          %iframe{:src=>add_on_new(t.add_on), :width=>'100%', :height=>'300px', :frameborder => 0}
             %p= t(:no_iframe_browser_support)
-  - else
-    .body-container
+          = render 'meta_form', :f => f            
+- else
+  .body-container
+    = form_for @thought, :as => :thought, :url => (@thought.new_record? ? thoughts_path : thought_path(@thought)), :remote => remote do |f|
       = f.text_area :body, :class => 'resize-font resize-textarea body auto-focus'
-  - if defined?(include_meta_form) && include_meta_form
-    .lil-space-top    
-      %span.align-left
-        .prompt= f.label :tags_list, t(:tag).pluralize
-        .align-left.subtle-prompt= t(:optional)
-      %span.align-left.lil-space-left= f.text_field :tags_list
-      - if person_signed_in?
-        %span.align-left.space-left
-          .prompt= t(:project)
-          .align-left.subtle-prompt= t(:optional)
-        %span.align-left.lil-space-left= f.collection_select :project_id, current_person.projects.order('upper(name)').all, :id, :name, :include_blank => t(:none)
-        %span.align-left.subtle-action.lil-space-left= link_to t(:new_project), new_project_path
-  .align-right.actions
-    = f.hidden_field :state_event
-    = f.hidden_field :origin
-    = f.hidden_field :type
-    = f.submit t(:save)
-    %span.cancel-edit-thought-link= link_to t(:cancel), :back, :class => 'subtle-action lil-space-left' if person_signed_in?
-  .clear
+      = render 'meta_form', :f => f

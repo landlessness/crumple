@@ -16,16 +16,18 @@ Crumple::Application.configure do
 
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
-  
+
   # for devise mailer
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
   config.top_level_domain = 'localhost:3000'
   config.active_support.deprecation = :log 
-  
   # for STI for AddOns
   %w[add_on thought_add_on container_add_on].each do |c|
     require_dependency File.join("app","models","#{c}.rb")
   end
-  
+  # for STI for Thoughts
+  # %w[thought add_on_thought plain_text_thought].each do |c|
+  #   require_dependency File.join("app","models","#{c}.rb")
+  # end
 end

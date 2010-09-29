@@ -22,19 +22,10 @@ class ApplicationController < ActionController::Base
     @drop_box_count = current_person.thoughts.with_state(:in_drop_box).count if person_signed_in?
   end
   protected
-  def marshal_type(params, base_class = nil)
-    type = params.delete(:type)
-    if base_class
-      if base_class.descendants.include? type.constantize
-        new_type(type,params)
-      end
-    else
-      new_type(type,params)
-    end
+  def marshal_type(params)
+    type_new(params.delete(:type),params)
   end
-  def new_type(type, params={})
-    logger.info 'new_type params.to_yaml: ' + params.to_yaml
-    
+  def type_new(type, params={})
     type.constantize.new(params)    
   end
 end
