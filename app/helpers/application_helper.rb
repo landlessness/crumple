@@ -1,18 +1,4 @@
 module ApplicationHelper
-  def fetch_url(url)
-    r = Net::HTTP.get_response( URI.parse( url ) )
-    if r.is_a? Net::HTTPSuccess
-      r.body.html_safe
-    else
-      nil
-    end
-  end
-  def add_on_new(a)
-    a.site + '/' + a.element_name.pluralize + '/new' + '?platform=crumple'
-  end
-  def add_on_show(t)
-    t.add_on.site + '/' + t.add_on.element_name.pluralize + '/' + t.add_on_thought_resource_id.to_param  + '?platform=crumple'
-  end
   def link_to_drop_box
     drop_box_text = t(:drop_box)
     drop_box_text = drop_box_text + " (#{@drop_box_count})" if @drop_box_count > 0

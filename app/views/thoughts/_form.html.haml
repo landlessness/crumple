@@ -16,8 +16,9 @@
       %div{:id => "tabs-#{i+2}", :class => 'ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide'}
         = form_for t, :as => :thought, :url => (t.new_record? ? thoughts_path : thought_path(t)), :remote => remote do |f|
           = f.hidden_field :add_on_id
-          = fetch_url add_on_new(t.add_on)
-          = render 'meta_form', :f => f            
+          %iframe{:id=>"iframe_new_#{i+1}", :src => new_add_on_proxy_path(t.add_on), :width=>'100%', :height=>'300px', :frameborder => 0}
+            %p= t(:no_iframe_browser_support)
+          = render 'meta_form', :f => f
 - else
   .body-container
     = form_for thought, :as => :thought, :url => (thought.new_record? ? thoughts_path : thought_path(thought)), :remote => remote do |f|
