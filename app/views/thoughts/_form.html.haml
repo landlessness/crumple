@@ -1,9 +1,8 @@
-= javascript ['http://jqueryui.com/themeroller/themeswitchertool/','jquery.resize-font','jquery.autogrow-textarea','jquery.auto-focus']
+= javascript ['jquery.resize-font','jquery.autogrow-textarea','jquery.auto-focus']
 :javascript
   $(document).ready(function(){
     $(function() {$('.resize-textarea').autogrow();});
     $(function() { $("#tabs").tabs().find(".ui-tabs-nav").sortable({axis:'x'});});
-    $('#switcher').themeswitcher();
   });
 - if person_signed_in? && current_person.thought_add_ons.count > 0
   #tabs.ui-tabs.ui-widget.ui-widget-content.ui-corner-all
@@ -12,13 +11,7 @@
       = form_for thought, :as => :thought, :url => (thought.new_record? ? thoughts_path : thought_path(thought)), :remote => remote do |f|
         = f.text_area :body, :class => 'resize-font resize-textarea body auto-focus'
         = render 'meta_form', :f => f
-    - @add_on_thoughts.each_with_index do |t,i|
-      %div{:id => "tabs-#{i+2}", :class => 'ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide'}
-        = form_for t, :as => :thought, :url => (t.new_record? ? thoughts_path : thought_path(t)), :remote => remote do |f|
-          = f.hidden_field :add_on_id
-          %iframe{:id=>"iframe_new_#{i+1}", :src => new_add_on_proxy_path(t.add_on), :width=>'100%', :height=>'300px', :frameborder => 0}
-            %p= t(:no_iframe_browser_support)
-          = render 'meta_form', :f => f
+    = render :partial => 'add_on_thoughts/form', :collection => @add_on_thoughts, :locals => {:remote => remote}
 - else
   .body-container
     = form_for thought, :as => :thought, :url => (thought.new_record? ? thoughts_path : thought_path(thought)), :remote => remote do |f|

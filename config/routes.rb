@@ -6,9 +6,7 @@ Crumple::Application.routes.draw do
     resources :subscriptions
   end
 
-  resources :add_ons do
-    resources :proxy, :controller => 'proxy'
-  end
+  resources :add_ons
   resources :thought_add_ons, :controller => :add_ons
 
   resources :pages, :only => [:show]
