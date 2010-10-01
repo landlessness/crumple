@@ -43,9 +43,7 @@ class SendGridEmailsController < ApplicationController
   # POST /send_grid_emails
   # POST /send_grid_emails.xml
   def create
-    p = request.user_agent.match(/SendGrid/i) ? SendGridEmail.remove_unknown_attributes(params) : params[:send_grid_email]
-
-    @send_grid_email = SendGridEmail.new(p)
+    @send_grid_email = SendGridEmail.new(params[:send_grid_email])
 
     respond_to do |format|
       if @send_grid_email.save
@@ -89,4 +87,5 @@ class SendGridEmailsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  protected
 end

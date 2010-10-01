@@ -1,2 +1,2 @@
-module SendGridEmailsHelper
+module SendGridEmailsHelper  
 end

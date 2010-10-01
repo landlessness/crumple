@@ -2,7 +2,7 @@ class SendGridEmail < ActiveRecord::Base
   belongs_to :drop_box
   belongs_to :thought
   after_create :assign_drop_box
-
+  
   # to make this model robust enough to handle changes
   # from SendGrid we're going to remove all unknown attrs
   def self.remove_unknown_attributes(params)

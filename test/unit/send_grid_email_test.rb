@@ -83,5 +83,5 @@ class SendGridEmailTest < ActiveSupport::TestCase
     assert_not_nil thought.project
     assert_equal projects(:crumple), thought.project
   end
-
+  
 end
