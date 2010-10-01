@@ -32,7 +32,7 @@ class SendGridEmailsControllerTest < ActionController::TestCase
     assert send_grid_mail_fixture[:to] && send_grid_mail_fixture[:from]
     @request.user_agent = @send_grid_user_agent
     assert_difference('SendGridEmail.count') do
-      post :create, :send_grid_email => send_grid_mail_fixture, :format => 'xml'
+      post :create, send_grid_mail_fixture.merge(:format => 'xml')
     end
     thought = assigns(:send_grid_email).thought
     assert thought.body.include?("this is another test.\n"), 'thought should create  expected text'
@@ -53,7 +53,7 @@ class SendGridEmailsControllerTest < ActionController::TestCase
     
     assert send_grid_mail_fixture[:to] && send_grid_mail_fixture[:from]
     @request.user_agent = 'SendGrid 1.0'
-    post :create, :send_grid_email => send_grid_mail_fixture, :format => 'xml'
+    post :create, send_grid_mail_fixture.merge(:format => 'xml')
     assert_response :internal_server_error
   end
 
@@ -68,7 +68,7 @@ class SendGridEmailsControllerTest < ActionController::TestCase
     assert send_grid_html_mail_fixture[:to] && send_grid_html_mail_fixture[:from]
     @request.user_agent = 'SendGrid 1.0'
     assert_difference('SendGridEmail.count') do
-      post :create, :send_grid_email => send_grid_html_mail_fixture, :format => 'xml'
+      post :create, send_grid_html_mail_fixture.merge(:format => 'xml')
     end
     thought = assigns(:send_grid_email).thought
     assert thought.body.include?("\"I very rarely think in words at all. A thought comes, and I may try to express it in words afterwards,\" -Albert Einstein (Wertheimer, 1959, 213; Pais, 1982). \n\nhttp://www.psychologytoday.com/blog/imagine/201003/einstein-creative-thinking-music-and-the-intuitive-art-scientific-imagination\n"), 'thought should include expected text.'
@@ -86,7 +86,7 @@ class SendGridEmailsControllerTest < ActionController::TestCase
     SendGridEmail.any_instance.stubs(:valid?).returns(true)
     assert_not_nil @send_grid_email
     assert_difference('SendGridEmail.count') do
-      post :create, :send_grid_email => @send_grid_email.attributes
+      post :create, @send_grid_email.attributes
     end
 
     assert_redirected_to send_grid_email_path(assigns(:send_grid_email))
@@ -97,16 +97,16 @@ class SendGridEmailsControllerTest < ActionController::TestCase
     assert !@controller.person_signed_in?
     
     SendGridEmail.any_instance.stubs(:valid?).returns(false)
-    post :create, :send_grid_email => @send_grid_email.attributes
+    post :create, @send_grid_email.attributes
     assert_template 'new'
   end
 
-  test "should create send_grid_email using xml format" do
+  def test_should_create_send_grid_email_using_xml_format
     sign_out @person
     assert !@controller.person_signed_in?
     
     assert_difference('SendGridEmail.count') do
-      post :create, :send_grid_email => @send_grid_email.attributes, :format => :xml
+      post :create, @send_grid_email.attributes.merge(:format => :xml)
     end
 
     assert_response :ok
@@ -124,13 +124,13 @@ class SendGridEmailsControllerTest < ActionController::TestCase
 
   test "should update send_grid_email" do
     SendGridEmail.any_instance.stubs(:valid?).returns(true)
-    put :update, :id => @send_grid_email.to_param, :send_grid_email => @send_grid_email.attributes
+    put :update, @send_grid_email.attributes.merge(:id => @send_grid_email.to_param)
     assert_redirected_to send_grid_email_path(assigns(:send_grid_email))
   end
 
   test "invalid update send_grid_email" do
     SendGridEmail.any_instance.stubs(:valid?).returns(false)
-    put :update, :id => @send_grid_email.to_param, :send_grid_email => @send_grid_email.attributes
+    put :update, @send_grid_email.attributes.merge(:id => @send_grid_email.to_param)
     assert_template 'edit'
   end
 
@@ -160,6 +160,6 @@ class SendGridEmailsControllerTest < ActionController::TestCase
     sign_out @person
     assert !@controller.person_signed_in?
     
-    post :create, :format => :xml, :send_grid_email => {:to => 'brian+4444@crumpleapp.com', :text => "hello\ntags: curl\nproject: test", :subject => 'hi'}
+    post :create, :to => 'brian+4444@crumpleapp.com', :text => "hello\ntags: curl\nproject: test", :subject => 'hi', :format => :xml
   end
 end

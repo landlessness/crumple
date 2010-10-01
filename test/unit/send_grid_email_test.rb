@@ -59,7 +59,7 @@ class SendGridEmailTest < ActiveSupport::TestCase
   test 'find person and create new thought via drop box' do
     person = people(:brian)
 
-    email_params = SendGridEmail.remove_unknown_attributes send_grid_mail_fixture
+    email_params = send_grid_mail_fixture.merge(:unknown => 'attribute')
     assert_not_nil email_params[:to]
 
     drop_box_name, drop_box_secret = DropBox.name_and_secret_from_email_address(email_params[:to])

@@ -43,7 +43,8 @@ class SendGridEmailsController < ApplicationController
   # POST /send_grid_emails
   # POST /send_grid_emails.xml
   def create
-    @send_grid_email = SendGridEmail.new(params[:send_grid_email])
+    logger.info '!!!params.to_yaml: ' + params.to_yaml
+    @send_grid_email = SendGridEmail.new(params)
 
     respond_to do |format|
       if @send_grid_email.save

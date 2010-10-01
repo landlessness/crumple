@@ -2,13 +2,18 @@ class SendGridEmail < ActiveRecord::Base
   belongs_to :drop_box
   belongs_to :thought
   after_create :assign_drop_box
-  
+
+  def initialize(options={})
+    logger.info 'options.to_yaml: ' + options.to_yaml
+    options=remove_unknown_attributes(options)
+    super
+  end
+
   # to make this model robust enough to handle changes
   # from SendGrid we're going to remove all unknown attrs
-  def self.remove_unknown_attributes(params)
+  def remove_unknown_attributes(options)
     known_attributes = SendGridEmail.column_names
-    params.stringify_keys!.delete_if {|k,v| !known_attributes.include?(k)}
-    params.symbolize_keys
+    options.stringify_keys.delete_if {|k,v| !known_attributes.include?(k)}.symbolize_keys
   end
 
   def assign_drop_box
