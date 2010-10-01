@@ -30,6 +30,9 @@ td, th, tr, table {
 html, body {
   height: 100%; }
 
+.white-bg {
+  background-color: white; }
+
 body {
   background-color: black;
   color: #aaaaaa;
