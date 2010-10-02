@@ -33,6 +33,9 @@ html, body {
 .white-bg {
   background-color: white; }
 
+.black-bg {
+  background-color: black; }
+
 body {
   background-color: black;
   color: #aaaaaa;
