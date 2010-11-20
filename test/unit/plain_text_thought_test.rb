@@ -6,11 +6,11 @@ class PlainTextThoughtTest < ActiveSupport::TestCase
     @person = people(:brian)
   end
   
-  test 'taggings' do
+  def test_taggings
     assert t = @person.plain_text_thoughts.create!(:body => 'this is a cool plain_text_thought.', :tags_list => 'foo bar baz'), 'plain_text_thought should create smoothly'
     assert_equal 'foo bar baz', t.tags_list
     t.update_attributes(:tags_list => 'red white blue')
-    assert_equal 'red white blue', t.reload.tags_list
+    assert_ equal 'red white blue', t.reload.tags_list
   end
   
   test 'taggings concat' do

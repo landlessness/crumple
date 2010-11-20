@@ -1,6 +1,9 @@
-%ul.ui-tabs-nav.ui-helper-reset.ui-helper-clearfix.ui-widget-header.ui-corner-all
-  %li.ui-state-default.ui-corner-top.ui-tabs-selected.ui-state-active
-    %a{:href=>'#tabs-1'}= image_tag('plain_text_29.png')
-  - current_person.thought_add_ons.each_with_index do |a,i|
-    %li.ui-state-default.ui-corner-top
-      %a{:href=>"#tabs-#{i+2}"}= a.icon_29_url.blank? ? a.name : image_tag(a.icon_29_url)
+= javascript ['jquery.tabs']
+%ul.ui-tabs-nav
+  %li.tab{:data_add_on_id => 0}
+    %a.active-tab{:href=>'#tab-0'}= image_tag('plain_text_29.png')
+    %a.subtle-tab.hidden{:href=>'#tab-0'}= image_tag('plain_text_29_subtle.png')
+  - current_person.thought_add_ons.each do |a|
+    %li.tab{:data_add_on_id => a.to_param}
+      %a.active-tab.hidden{:href=>"#tab-#{a.to_param}"}= a.icon_29_url.blank? ? a.name : image_tag(a.icon_29_url)
+      %a.subtle-tab{:href=>"#tab-#{a.to_param}"}= a.icon_29_subtle_url.blank? ? a.name : image_tag(a.icon_29_subtle_url)

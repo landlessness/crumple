@@ -404,16 +404,10 @@ body:before {
   overflow: hidden; }
 
 .ui-tabs li {
-  float: left;
-  border-top: 1px solid #999;
-  border-right: 1px solid #999;
-  border-bottom: 0;
-  border-left: 1px solid #999;
-  margin-right: 0.5em; }
+  float: left; }
 
 .ui-tabs ul {
-  list-style: none;
-  padding: 0; }
+  list-style: none; }
 
 form {
   display: inline; }

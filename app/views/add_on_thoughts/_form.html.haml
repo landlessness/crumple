@@ -1,6 +1,6 @@
-%div{:id => "tabs-#{form_counter+2}", :class => 'ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide'}
+%div{:id => "tab-#{form.add_on_id}", :class => 'add-on-form thought-form'}
   = form_for form, :as => :thought, :url => (form.new_record? ? thoughts_path : thought_path(t)), :remote => remote do |f|
     = f.hidden_field :add_on_id
-    %div{:id => "add_on_form_#{form_counter+1}"}
+    %div{:id => "add_on_form_#{form.add_on_id}"}
       = render_add_on_new form
     = render 'meta_form', :f => f

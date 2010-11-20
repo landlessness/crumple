@@ -432,6 +432,18 @@ body:before {
   width: 100%;
   overflow: hidden;
 }
+.ui-tabs li {
+  float: left;
+  border-top: 1px solid #999;
+  border-right: 1px solid #999;
+  border-bottom: 0;
+  border-left: 1px solid #999;
+  margin-right: 0.5em;
+}
+.ui-tabs ul {
+  list-style: none;
+  padding: 0;
+}
 form {
   display: inline;
 }
@@ -592,6 +604,9 @@ a.current-nav, #footer a.current-nav {
 .disabled {
   visibility: hidden;
 }
+.hidden {
+  display: none;
+}
 .pagination a, .pagination em {
   margin: 0 0.5em;
 }
@@ -655,4 +670,7 @@ a.auto-link {
 }
 .light-box-img:hover {
   border: 2px solid $white;
+}
+.add-on-form {
+  display:none;
 }

@@ -2,12 +2,11 @@
 :javascript
   $(document).ready(function(){
     $(function() {$('.resize-textarea').autogrow();});
-    $(function() { $("#tabs").tabs().find(".ui-tabs-nav").sortable({axis:'x'});});
   });
 - if person_signed_in? && current_person.thought_add_ons.count > 0
-  #tabs.ui-tabs.ui-widget.ui-widget-content.ui-corner-all
+  #tabs.ui-tabs
     = render 'tab_nav'
-    #tabs-1.ui-tabs-panel.ui-widget-content.ui-corner-bottom.body-container
+    #tab-0.thought-form
       = form_for thought, :as => :thought, :url => (thought.new_record? ? thoughts_path : thought_path(thought)), :remote => remote do |f|
         = f.text_area :body, :class => 'resize-font resize-textarea body auto-focus'
         = render 'meta_form', :f => f

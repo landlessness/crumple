@@ -81,13 +81,13 @@ class Thought < ActiveRecord::Base
     end
   end
   protected
-  def tag_names_from_string(tags_string)
+  def tag_names_from_string(tags_string='')
     (tags_string||'').split(Tag.delimiter)
   end
   def add_tags(tag_names)
     tag_names.each do |t|
       tag = Tag.find_or_create_by_name t
       self.taggings.build :tag => tag, :person => self.person
-    end    
+    end
   end
 end

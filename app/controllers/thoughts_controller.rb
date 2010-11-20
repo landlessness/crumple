@@ -1,4 +1,4 @@
-class ThoughtsController < ApplicationController  
+class ThoughtsController < ApplicationController
   skip_filter :authenticate_person!, :only => :new
   before_filter :init_add_on_thoughts
   
