@@ -434,10 +434,10 @@ body:before {
 }
 .ui-tabs li {
   float: left;
-  border-top: 1px solid #999;
-  border-right: 1px solid #999;
+  border-top: 1px solid $subtle-gray;
+  border-right: 1px solid $subtle-gray;
   border-bottom: 0;
-  border-left: 1px solid #999;
+  border-left: 1px solid $subtle-gray;
   margin-right: 0.5em;
 }
 .ui-tabs ul {

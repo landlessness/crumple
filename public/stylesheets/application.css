@@ -405,10 +405,10 @@ body:before {
 
 .ui-tabs li {
   float: left;
-  border-top: 1px solid #999;
-  border-right: 1px solid #999;
+  border-top: 1px solid #555555;
+  border-right: 1px solid #555555;
   border-bottom: 0;
-  border-left: 1px solid #999;
+  border-left: 1px solid #555555;
   margin-right: 0.5em; }
 
 .ui-tabs ul {
