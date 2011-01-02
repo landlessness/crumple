@@ -1,0 +1,1 @@
+AddOn.all.each{|a| AddOnThought.subclazz a}
