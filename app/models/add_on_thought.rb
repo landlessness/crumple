@@ -28,7 +28,7 @@ class AddOnThought < Thought
     logger.info 'self.add_on_thought_resource_id: ' + self.add_on_thought_resource_id.to_param
     r = @add_on_thought_resource || @add_on_thought_resource = AddOnThoughtResource.find(self.add_on_thought_resource_id) rescue nil
     if r.nil?
-      raise AddOnResourceMissing, 'the add on resource is missing for ' + self.add_on.element_name.classify + 'Resource with external ID '  + self.add_on_thought_resource_id.to_s + ' and internal ID ' + self.id.to_s '.'
+      raise AddOnResourceMissing, 'the add on resource is missing for ' + self.add_on.element_name.classify + 'Resource with external ID '  + self.add_on_thought_resource_id.to_s + ' and internal ID ' + self.id.to_s + '.'
     else
       r
     end
