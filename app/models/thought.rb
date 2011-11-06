@@ -2,13 +2,13 @@ class Thought < ActiveRecord::Base
   cattr_reader :per_page
   @@per_page = 10
 
-  searchable do
-    text :search_text, :boost => 2.0
-    text :tags_list, :project_name, :comments_list
-    integer :person_id
-    date :updated_at
-    string :state
-  end
+  # searchable do
+  #   text :search_text, :boost => 2.0
+  #   text :tags_list, :project_name, :comments_list
+  #   integer :person_id
+  #   date :updated_at
+  #   string :state
+  # end
 
   validates :person, :presence => true
 
